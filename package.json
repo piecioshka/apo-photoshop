@@ -1,0 +1,9 @@
+{
+    "name": "apo-photoshop",
+    "main": "index.html",
+
+    "window": {
+        "width": 800,
+        "height": 600
+    }
+}
