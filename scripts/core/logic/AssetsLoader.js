@@ -24,7 +24,7 @@
     };
 
     AssetsLoader.EVENTS = {
-        IMAGE_LOADED: 'canvas:loadImage'
+        IMAGE_LOADED: 'assetsLoader:loadImage'
     };
 
     // Extend `AssetsLoader` module with events.

@@ -4,14 +4,12 @@
     "private": true,
 
     "window": {
-        "//": "screen settings",
         "title": "APO: Photoshop",
         "width": 1024,
         "height": 600
     },
 
     "devDependencies": {
-        "rekuire": "latest",
         "cjson": "latest",
         "gulp": "latest",
         "gulp-jshint": "latest",
