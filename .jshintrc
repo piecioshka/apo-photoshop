@@ -1,0 +1,10 @@
+{
+    "debug": true,
+    "devel": true,
+    "browser": true,
+    "strict": true,
+    "maxerr": 1000,
+    "predef": [
+        "_"
+    ]
+}

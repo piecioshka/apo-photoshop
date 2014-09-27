@@ -1,9 +1,22 @@
 {
     "name": "apo-photoshop",
     "main": "index.html",
+    "private": true,
 
     "window": {
+        "//": "screen settings",
+        "title": "APO: Photoshop",
         "width": 800,
         "height": 600
+    },
+
+    "devDependencies": {
+        "rekuire": "latest",
+        "cjson": "latest",
+        "gulp": "latest",
+        "gulp-jshint": "latest",
+        "jshint-stylish": "latest",
+        "gulp-help": "latest",
+        "underscore": "latest"
     }
 }

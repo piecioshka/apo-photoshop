@@ -1,12 +1,10 @@
 (function (root) {
     'use strict';
 
-    var doc = root.document;
-
     var Canvas = function (params) {
         this.settings = params;
 
-        this.$el = doc.querySelector(this.settings.place);
+        this.$el = document.querySelector(this.settings.place);
         this.canvas = null;
         this.ctx = null;
 
@@ -14,7 +12,7 @@
     };
 
     Canvas.prototype.initialize = function () {
-        this.canvas = doc.createElement('canvas');
+        this.canvas = document.createElement('canvas');
         this.canvas.width = this.settings.width;
         this.canvas.height = this.settings.height;
     };
@@ -32,6 +30,14 @@
         this.ctx = this.canvas.getContext('2d');
         this.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.ctx.fillRect(10, 20, 100, 200);
+    };
+
+    Canvas.prototype.loadImage = function (url) {
+        var img = new Image();
+        img.addEventListener('load', function () {
+            console.log('image loaded', this);
+        });
+        img.src = url;
     };
 
     // Export `Canvas`.

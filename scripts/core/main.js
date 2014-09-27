@@ -16,7 +16,7 @@
         canvas.render();
 
         // Join modules: Menu & Canvas
-        menu.on('sample', function () {
+        menu.on('help:sample', function () {
             canvas.buildSample();
         });
     }
