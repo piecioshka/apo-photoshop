@@ -1,6 +1,12 @@
 (function (root) {
     'use strict';
 
+    var cjson = require('cjson');
+    var locale = cjson.load('./locale/pl_PL.json');
+
+    // Set title of application.
+    root.document.title = locale.NAME;
+
     function bootstrap() {
         // Create main `Menu`.
         var menu = new root.Menu();
@@ -11,7 +17,7 @@
             });
 
             file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
-                // listen for load image from user
+                // Listen for load image from user.
                 root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
                     // Create `Canvas` instance.
                     var canvas = new root.Canvas({
@@ -23,16 +29,16 @@
                     // Create $canvas space.
                     canvas.render();
 
-                    // put image to canvas
+                    // Put image to canvas.
                     canvas.buildImage(image);
                 });
 
-                // loading choose file
+                // Loading choose file.
                 root.AssetsLoader.loadImage(params.file);
             });
         });
 
-        // Join modules: Menu & Canvas
+        // Join modules: Menu & Canvas.
         menu.on(root.Menu.EVENTS.SAMPLE, function () {
             // Create `Canvas` instance.
             var canvas = new root.Canvas({
@@ -44,12 +50,12 @@
             // Create $canvas space.
             canvas.render();
 
-            // create something stupid
+            // Create something stupid.
             canvas.buildSample();
         });
     }
 
     // Waiting for trigger `load` event by engine.
-    window.addEventListener('load', bootstrap);
+    root.addEventListener('load', bootstrap);
 
 }(this));
