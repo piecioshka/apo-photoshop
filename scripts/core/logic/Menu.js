@@ -1,6 +1,9 @@
 (function (root) {
     'use strict';
 
+    var cjson = require('cjson');
+    var locale = cjson.load('./locale/pl_PL.json');
+
     function Menu() {
         this.gui = null;
         this.windowMenu = null;
@@ -17,7 +20,7 @@
 
         // if application run under Mac OS must set that option, to fixed main window menu
         if (root.Utilities.isDarwin()) {
-            this.windowMenu.createMacBuiltin('APO: Photoshop', {
+            this.windowMenu.createMacBuiltin(locale.NAME, {
                 hideEdit: true,
                 hideWindow: true
             });
@@ -41,7 +44,7 @@
 
         // append to file menu `open` option
         fileMenu.append(new this.gui.MenuItem({
-            label: 'Open',
+            label: locale.FILE_OPEN,
             click: function () {
                 self.emit(Menu.EVENTS.FILE_OPEN);
             }
@@ -49,7 +52,7 @@
 
         // append to main window menu new option
         this.windowMenu.append(new this.gui.MenuItem({
-            label: 'File',
+            label: locale.FILE,
             submenu: fileMenu
         }));
     };
@@ -62,7 +65,7 @@
 
         // append to help menu `sample` option
         helpMenu.append(new this.gui.MenuItem({
-            label: 'sample',
+            label: locale.SAMPLE,
             click: function () {
                 self.emit(Menu.EVENTS.SAMPLE);
             }
@@ -70,7 +73,7 @@
 
         // append to main window menu new option
         this.windowMenu.append(new this.gui.MenuItem({
-            label: 'Help',
+            label: locale.ABOUT,
             submenu: helpMenu
         }));
     };
