@@ -6,7 +6,7 @@
     var Canvas = function (params) {
         this.settings = params;
 
-        this.$el = doc.querySelector(this.settings.place);
+        this.placeHolder = null;
         this.$canvas = null;
         this.ctx = null;
 
@@ -20,13 +20,17 @@
         this.ctx = this.$canvas.getContext('2d');
     };
 
+    Canvas.prototype.setWindow = function (win) {
+        this.placeHolder = win;
+    };
+
     Canvas.prototype.render = function () {
-        this.$el.appendChild(this.$canvas);
+        this.placeHolder.setContent(this.$canvas);
     };
 
     Canvas.prototype.buildSample = function () {
         this.ctx.fillStyle = 'rgb(255, 0, 0)';
-        this.ctx.fillRect(0, 0, 100, 200);
+        this.ctx.fillRect(0, 0, 200, 100);
     };
 
     Canvas.prototype.buildImage = function (params) {

@@ -1,20 +1,27 @@
 # APO: Photoshop
 
-##### Temat
+#### Temat
 
 _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje obrazów kolorowych._
 
-##### Wykorzystanie
+#### Wykorzystanie
+
+Wszystkie wykorzystywane narzędzia są darmowe.
+
+##### Silnik
 
 - node-webkit - https://github.com/rogerwang/node-webkit
 - node.js - http://nodejs.org/
+
+##### Obróbka obrazów
+
 - Canvas - http://www.w3.org/TR/2dcontext/
 
-### QA
+##### QA
 
 - JSHint - http://www.jshint.com/docs/options/
 
-#### TODO
+#### Lista zadań
 
 - [ ] Drag & drop na obrazkach
 - [ ] Wyświetlanie histogramu
@@ -23,5 +30,5 @@ _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje 
 
 ###### Linki
 
-http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
-http://www.cs.huji.ac.il/~yweiss/Colorization/
+- http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
+- http://www.cs.huji.ac.il/~yweiss/Colorization/

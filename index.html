@@ -3,26 +3,30 @@
 <head>
     <meta charset="utf-8">
     <title>APO</title>
-    <link rel="stylesheet" href="styles/vendor/bootstrap.css"/>
+    <link rel="stylesheet" href="styles/core/global.css"/>
+    <link rel="stylesheet" href="styles/core/default.css"/>
 </head>
 <body>
     <div id="app"></div>
 
-    <!-- vendor //-->
-    <script src="scripts/vendor/underscore/underscore.js"></script>
+    <div id="scripts" class="hide">
+        <!-- vendor //-->
+        <script src="scripts/vendor/underscore/underscore.js"></script>
 
-    <!-- core/common //-->
-    <script src="scripts/core/common/EventEmitter.js"></script>
-    <script src="scripts/core/common/Utilities.js"></script>
+        <!-- core/common //-->
+        <script src="scripts/core/common/EventEmitter.js"></script>
+        <script src="scripts/core/common/Utilities.js"></script>
 
-    <!-- core/logic //-->
-    <script src="scripts/core/logic/AssetsLoader.js"></script>
-    <script src="scripts/core/logic/Canvas.js"></script>
-    <script src="scripts/core/logic/FileChooser.js"></script>
-    <script src="scripts/core/logic/KeyboardShortcut.js"></script>
-    <script src="scripts/core/logic/Menu.js"></script>
+        <!-- core/logic //-->
+        <script src="scripts/core/logic/AssetsLoader.js"></script>
+        <script src="scripts/core/logic/Canvas.js"></script>
+        <script src="scripts/core/logic/FileChooser.js"></script>
+        <script src="scripts/core/logic/InternalWindow.js"></script>
+        <script src="scripts/core/logic/KeyboardShortcut.js"></script>
+        <script src="scripts/core/logic/Menu.js"></script>
 
-    <!-- main //-->
-    <script src="scripts/core/main.js"></script>
+        <!-- main //-->
+        <script src="scripts/core/main.js"></script>
+    </div>
 </body>
 </html>

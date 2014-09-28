@@ -1,10 +1,12 @@
 (function (root) {
     'use strict';
 
+    var doc = root.document;
+
     var FileChooser = function (params) {
         this.settings = params;
 
-        this.$el = document.querySelector(this.settings.place);
+        this.placeHolder = doc.querySelector(this.settings.place);
         this.$input = null;
 
         this.initialize();
@@ -18,20 +20,24 @@
     FileChooser.prototype.createInput = function () {
         var self = this;
 
-        this.$input = document.createElement('input');
+        this.$input = doc.createElement('input');
         this.$input.setAttribute('type', 'file');
         this.$input.classList.add('hide');
         this.$input.addEventListener('change', function () {
             self.emit(FileChooser.EVENTS.SELECT_FILE, {
                 file: self.$input.files[0].path
             });
-            self.$input.parentNode.removeChild(self.$input);
+            self.remove();
         });
         this.$input.click();
     };
 
     FileChooser.prototype.render = function () {
-        this.$el.appendChild(this.$input);
+        this.placeHolder.appendChild(this.$input);
+    };
+
+    FileChooser.prototype.remove = function () {
+        this.$input.parentNode.removeChild(this.$input);
     };
 
     FileChooser.EVENTS = {
