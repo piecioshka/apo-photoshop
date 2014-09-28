@@ -43,7 +43,7 @@
             // Create `Canvas` instance.
             var canvas = new root.Canvas({
                 place: '#app',
-                width: 400,
+                width: 100,
                 height: 200
             });
 
@@ -57,5 +57,8 @@
 
     // Waiting for trigger `load` event by engine.
     root.addEventListener('load', bootstrap);
+
+    // Handle each `keydown` event and check about shortcut.
+    root.addEventListener('keydown', KeyboardShortcut.handler);
 
 }(this));

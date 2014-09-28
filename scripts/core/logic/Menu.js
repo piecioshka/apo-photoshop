@@ -37,23 +37,55 @@
     };
 
     Menu.prototype.file = function () {
-        var self = this;
-
         // Create file menu.
         var fileMenu = new this.gui.Menu();
 
-        // Append to file menu `open` option.
-        fileMenu.append(new this.gui.MenuItem({
-            label: locale.FILE_OPEN,
-            click: function () {
-                self.emit(Menu.EVENTS.FILE_OPEN);
-            }
-        }));
+        // Add open file option.
+        this.openFile(fileMenu);
+
+        // Add save file option.
+        this.saveFile(fileMenu);
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
             label: locale.FILE,
             submenu: fileMenu
+        }));
+    };
+
+    Menu.prototype.saveFile = function (fileMenu) {
+        var self = this;
+        var saveFileShortcut = 'Ctrl+S';
+
+        function runSaveFile() {
+            self.emit(Menu.EVENTS.FILE_SAVE);
+        }
+
+        // Add shortcut.
+        KeyboardShortcut.add(saveFileShortcut, runSaveFile);
+
+        // Append to file menu `open` option.
+        fileMenu.append(new this.gui.MenuItem({
+            label: locale.FILE_SAVE + ' ' + saveFileShortcut,
+            click: runSaveFile
+        }));
+    };
+
+    Menu.prototype.openFile = function (fileMenu) {
+        var self = this;
+        var openFileShortcut = 'Ctrl+O';
+
+        function runOpenFile() {
+            self.emit(Menu.EVENTS.FILE_OPEN);
+        }
+
+        // Add shortcut.
+        KeyboardShortcut.add(openFileShortcut, runOpenFile);
+
+        // Append to file menu `open` option.
+        fileMenu.append(new this.gui.MenuItem({
+            label: locale.FILE_OPEN + ' ' + openFileShortcut,
+            click: runOpenFile
         }));
     };
 
@@ -80,6 +112,7 @@
 
     Menu.EVENTS = {
         FILE_OPEN: 'file:open',
+        FILE_SAVE: 'file:save',
         SAMPLE: 'help:sample'
     };
 

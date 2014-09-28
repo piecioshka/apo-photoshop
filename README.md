@@ -19,3 +19,9 @@ _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje 
 - [ ] Drag & drop na obrazkach
 - [ ] Wyświetlanie histogramu
 - [ ] Implementacja 3 sposobów wyrównywania histogramu + dodatkowo wymyślić jeden swój sposób na wyrównywanie
+- [x] Skróty klawiaturowe
+
+###### Linki
+
+http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
+http://www.cs.huji.ac.il/~yweiss/Colorization/

@@ -1,7 +1,10 @@
 {
     "NAME": "APO: Photoshop",
+
     "FILE": "Plik",
     "FILE_OPEN": "Otwórz",
+    "FILE_SAVE": "Zapisz",
+
     "ABOUT": "O programie",
     "SAMPLE": "[Przykład]"
 }

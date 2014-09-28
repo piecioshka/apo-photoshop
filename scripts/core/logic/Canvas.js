@@ -26,7 +26,7 @@
 
     Canvas.prototype.buildSample = function () {
         this.ctx.fillStyle = 'rgb(255, 0, 0)';
-        this.ctx.fillRect(10, 20, 100, 200);
+        this.ctx.fillRect(0, 0, 100, 200);
     };
 
     Canvas.prototype.buildImage = function (params) {
