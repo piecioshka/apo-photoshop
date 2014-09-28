@@ -7,12 +7,11 @@
             var img = new Image();
 
             img.addEventListener('load', function () {
-                var attrs = {
+                self.emit(AssetsLoader.EVENTS.IMAGE_LOADED, {
                     image: img,
                     width: img.width,
                     height: img.height
-                };
-                self.emit(AssetsLoader.EVENTS.IMAGE_LOADED, attrs);
+                });
             });
 
             img.addEventListener('error', function () {

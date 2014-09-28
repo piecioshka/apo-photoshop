@@ -6,7 +6,10 @@
     var InternalWindow = function (params) {
         this.settings = params;
 
+        this.placeHolder = doc.querySelector(this.settings.renderAreaID);
         this.$window = doc.createElement('div');
+        this.$window.setAttribute('draggable', 'false');
+
         this.$window.classList.add('internal-window');
 
         if (root.Utilities.isDarwin()) {
@@ -22,21 +25,25 @@
     InternalWindow.prototype.initialize = function () {
         this.createTopBar();
         this.createContent();
+
+        new root.MoveMaster(this.$bar, this.placeHolder);
     };
 
     InternalWindow.prototype.createTopBar = function () {
         this.$bar = doc.createElement('nav');
         this.$bar.classList.add('internal-window-bar');
 
+        this.$bar.appendChild(this.createTopBarTitle());
+        this.$bar.appendChild(this.createTopBarButtons());
+
+        this.$window.appendChild(this.$bar);
+    };
+
+    InternalWindow.prototype.createTopBarTitle = function () {
         var title = doc.createElement('h4');
         title.classList.add('internal-window-title');
         title.innerText = 'Nazwa okna';
-        this.$bar.appendChild(title);
-
-        var buttons = this.createTopBarButtons();
-        this.$bar.appendChild(buttons);
-
-        this.$window.appendChild(this.$bar);
+        return title;
     };
 
     InternalWindow.prototype.createTopBarButtons = function () {
@@ -63,6 +70,7 @@
         closeButton.addEventListener('click', function (evt) {
             evt.preventDefault();
             self.remove();
+            self.emit(InternalWindow.EVENTS.CLOSE_WINDOW);
         });
 
         return buttons;
@@ -82,7 +90,7 @@
     };
 
     InternalWindow.prototype.render = function () {
-        doc.querySelector(this.settings.renderAreaID).appendChild(this.$window);
+        this.placeHolder.appendChild(this.$window);
     };
 
     InternalWindow.prototype.remove = function () {
@@ -90,7 +98,7 @@
     };
 
     InternalWindow.EVENTS = {
-
+        CLOSE_WINDOW: 'internalWindow:close'
     };
 
     // Extend `InternalWindow` module with events.

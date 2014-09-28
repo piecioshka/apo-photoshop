@@ -94,6 +94,6 @@
     root.addEventListener('load', Bootstrap.setup);
 
     // Handle each `keydown` event and check about shortcut.
-    root.addEventListener('keydown', KeyboardShortcut.handler);
+    root.addEventListener('keydown', root.KeyboardShortcut.handler);
 
 }(this));

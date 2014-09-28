@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+body {
+    margin: 0;
+}
+
 #app {
     position: relative;
     font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -10,7 +14,8 @@
     position: absolute;
     left: 0;
     top: 0;
-    box-shadow: 0 25px 30px 0 rgba(0, 0, 0, 0.6);
+    /*box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);*/
+    overflow: hidden;
 }
 
 .internal-window .internal-window-bar {
@@ -21,6 +26,7 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom: none;
+    overflow: hidden;
 }
 
 .internal-window .internal-window-bar .internal-window-title { padding: 0; margin: 0; font-size: 11px; color: #383838; float: left; }

@@ -62,7 +62,7 @@
         }
 
         // Add shortcut.
-        KeyboardShortcut.add(saveFileShortcut, runSaveFile);
+        root.KeyboardShortcut.add(saveFileShortcut, runSaveFile);
 
         // Append to file menu `open` option.
         fileMenu.append(new this.gui.MenuItem({
@@ -80,7 +80,7 @@
         }
 
         // Add shortcut.
-        KeyboardShortcut.add(openFileShortcut, runOpenFile);
+        root.KeyboardShortcut.add(openFileShortcut, runOpenFile);
 
         // Append to file menu `open` option.
         fileMenu.append(new this.gui.MenuItem({

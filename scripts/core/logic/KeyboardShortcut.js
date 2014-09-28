@@ -8,7 +8,7 @@
             var shortcut = [];
 
             if (evt.metaKey) {
-                if (Utilities.isDarwin()) {
+                if (root.Utilities.isDarwin()) {
                     shortcut.push('Ctrl');
                 } else {
                     shortcut.push('Meta');
