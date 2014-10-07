@@ -1,6 +1,7 @@
 (function (root) {
     'use strict';
 
+    // Aliases.
     var doc = root.document;
 
     var FileChooser = function (params) {
@@ -24,8 +25,10 @@
         this.$input.setAttribute('type', 'file');
         this.$input.classList.add('hide');
         this.$input.addEventListener('change', function () {
+            var image = self.$input.files[0];
             self.emit(FileChooser.EVENTS.SELECT_FILE, {
-                file: self.$input.files[0].path
+                file: image.path,
+                name: image.name
             });
             self.remove();
         });
@@ -41,7 +44,7 @@
     };
 
     FileChooser.EVENTS = {
-        SELECT_FILE: 'fileChooser:select'
+        SELECT_FILE: 'select'
     };
 
     // Extend `FileChooser` module with events.

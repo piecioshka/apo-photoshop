@@ -2,13 +2,14 @@
     'use strict';
 
     var AssetsLoader = {
-        loadImage: function (url) {
+        loadImage: function (url, name) {
             var self = this;
             var img = new Image();
 
             img.addEventListener('load', function () {
                 self.emit(AssetsLoader.EVENTS.IMAGE_LOADED, {
                     image: img,
+                    name: name,
                     width: img.width,
                     height: img.height
                 });
@@ -23,7 +24,7 @@
     };
 
     AssetsLoader.EVENTS = {
-        IMAGE_LOADED: 'assetsLoader:loadImage'
+        IMAGE_LOADED: 'loadImage'
     };
 
     // Extend `AssetsLoader` module with events.

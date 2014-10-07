@@ -111,9 +111,9 @@
     };
 
     Menu.EVENTS = {
-        FILE_OPEN: 'file:open',
-        FILE_SAVE: 'file:save',
-        SAMPLE: 'help:sample'
+        FILE_OPEN: 'open',
+        FILE_SAVE: 'save',
+        SAMPLE: 'sample'
     };
 
     // Extend `Menu` module with events.

@@ -1,6 +1,7 @@
 (function (root) {
     'use strict';
 
+    // Aliases.
     var doc = root.document;
 
     var Canvas = function (params) {
@@ -28,13 +29,13 @@
         this.placeHolder.setContent(this.$canvas);
     };
 
+    Canvas.prototype.buildImage = function (params) {
+        this.ctx.drawImage(params.image, 0, 0, params.width, params.height);
+    };
+
     Canvas.prototype.buildSample = function () {
         this.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.ctx.fillRect(0, 0, 200, 100);
-    };
-
-    Canvas.prototype.buildImage = function (params) {
-        this.ctx.drawImage(params.image, 0, 0, params.width, params.height);
     };
 
     // Extend `Canvas` module with events.

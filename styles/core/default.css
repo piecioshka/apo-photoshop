@@ -11,14 +11,23 @@ body {
 }
 
 .internal-window {
+    -webkit-user-drag: none;
     position: absolute;
     left: 0;
     top: 0;
-    /*box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);*/
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
     overflow: hidden;
+    z-index: 10;
+    opacity: 0.6;
+}
+
+.internal-window.active {
+    z-index: 20;
+    opacity: 1;
 }
 
 .internal-window .internal-window-bar {
+    cursor: pointer;
     height: 11px;
     padding: 5px;
     background: linear-gradient(180deg, #e8e8e8, #b6b5b6);
@@ -29,11 +38,30 @@ body {
     overflow: hidden;
 }
 
-.internal-window .internal-window-bar .internal-window-title { padding: 0; margin: 0; font-size: 11px; color: #383838; float: left; }
-.internal-window.macosx .internal-window-bar .internal-window-title { float: right; }
+.internal-window .internal-window-bar .internal-window-title {
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    color: #383838;
+    float: left;
+    -webkit-touch-callout: none;
+    -webkit-user-select: element;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-.internal-window .internal-window-bar .internal-window-buttons { float: right; }
-.internal-window.macosx .internal-window-bar .internal-window-buttons { float: left; }
+.internal-window.macosx .internal-window-bar .internal-window-title {
+    float: right;
+}
+
+.internal-window .internal-window-bar .internal-window-buttons {
+    float: right;
+}
+
+.internal-window.macosx .internal-window-bar .internal-window-buttons {
+    float: left;
+}
 
 .internal-window .internal-window-bar .internal-window-buttons .internal-window-button {
     display: inline-block;
@@ -44,16 +72,37 @@ body {
     margin-right: 8px;
 }
 
-.internal-window .internal-window-bar .internal-window-buttons .internal-window-button:first-child { margin-right: 0; }
-.internal-window .internal-window-bar .internal-window-buttons .internal-window-button:last-child { margin-left: 3px; }
+.internal-window .internal-window-bar .internal-window-buttons .internal-window-button:first-child {
+    margin-right: 0;
+}
 
-.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-close { background: url("../../images/icons/close-icon.png"); }
-.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-min { background: url("../../images/icons/min-icon.png"); }
-.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-max { background: url("../../images/icons/max-icon.png"); }
+.internal-window .internal-window-bar .internal-window-buttons .internal-window-button:last-child {
+    margin-left: 3px;
+}
 
-.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-close { background: url("../../images/icons/close-icon-active.png"); }
-.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-min { background: url("../../images/icons/min-icon-active.png"); }
-.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-max { background: url("../../images/icons/max-icon-active.png"); }
+.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-close {
+    background: url("../../images/icons/close-icon.png");
+}
+
+.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-min {
+    background: url("../../images/icons/min-icon.png");
+}
+
+.internal-window .internal-window-bar .internal-window-buttons .internal-window-button.internal-window-button-max {
+    background: url("../../images/icons/max-icon.png");
+}
+
+.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-close {
+    background: url("../../images/icons/close-icon-active.png");
+}
+
+.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-min {
+    background: url("../../images/icons/min-icon-active.png");
+}
+
+.internal-window .internal-window-bar .internal-window-buttons:hover .internal-window-button.internal-window-button-max {
+    background: url("../../images/icons/max-icon-active.png");
+}
 
 .internal-window .internal-window-content {
     padding: 5px;
@@ -62,6 +111,7 @@ body {
     border: 1px solid #999999;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    -webkit-user-select: none;
 }
 
 canvas {

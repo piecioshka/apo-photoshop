@@ -1,5 +1,6 @@
 @charset "utf-8";
 
 .hide { display: none; }
+.sky-hide { position: absolute; left: -9999px; top: -9999px; }
 .left { float: left; }
 .right { float: right; }

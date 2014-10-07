@@ -7,88 +7,103 @@
     // Set title of application.
     root.document.title = locale.NAME;
 
+    function buildImageWindow(image) {
+        // Create window container.
+        var win = new InternalWindow({
+            renderAreaID: '#app'
+        });
+
+        // Update title of window.
+        win.updateTitle(image.name);
+
+        // Append window list.
+        root.App.windowManager.addWindow(win);
+
+        // Create `Canvas` instance.
+        var canvas = new root.Canvas({
+            width: image.width,
+            height: image.height
+        });
+
+        // Set reference to window, where will be rendered.
+        canvas.setWindow(win);
+
+        // Create $canvas space.
+        canvas.render();
+
+        // Put image to canvas.
+        canvas.buildImage(image);
+
+        // Render window.
+        win.render();
+    }
+
+    function buildSampleWindow() {
+        // Create window container.
+        var win = new InternalWindow({
+            renderAreaID: '#app'
+        });
+
+        // Update title of window.
+        win.updateTitle('Sample');
+
+        // Append window list.
+        root.App.windowManager.addWindow(win);
+
+        // Create `Canvas` instance.
+        var canvas = new root.Canvas({
+            width: 200,
+            height: 100
+        });
+
+        // Set reference to window, where will be rendered.
+        canvas.setWindow(win);
+
+        // Create $canvas space.
+        canvas.render();
+
+        // Create something stupid.
+        canvas.buildSample();
+
+        // Render window.
+        win.render();
+    }
+
     var Bootstrap = {
         setup: function () {
-            this.buildMenu();
+            this.setupMainMenu();
+            this.setupWindowManager();
         },
 
-        buildMenu: function () {
-            var self = this;
-
+        setupMainMenu: function () {
             // Create main `Menu`.
-            var menu = new root.Menu();
+            root.App.menu = new root.Menu();
 
-            menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
+            root.App.menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
                 var file = new FileChooser({
                     place: '#app'
                 });
 
                 file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
                     // Listen for load image from user.
-                    root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, self._buildImage);
+                    root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, buildImageWindow);
 
                     // Loading choose file.
-                    root.AssetsLoader.loadImage(params.file);
+                    root.AssetsLoader.loadImage(params.file, params.name);
                 });
             });
 
             // Join modules: Menu & Canvas.
-            menu.on(root.Menu.EVENTS.SAMPLE, this._buildSample);
+            root.App.menu.on(root.Menu.EVENTS.SAMPLE, buildSampleWindow);
         },
 
-        _buildImage: function (image) {
-            // Create window container.
-            var win = new InternalWindow({
-                renderAreaID: '#app'
-            });
-
-            // Create `Canvas` instance.
-            var canvas = new root.Canvas({
-                width: image.width,
-                height: image.height
-            });
-
-            // Set reference to window, where will be rendered.
-            canvas.setWindow(win);
-
-            // Create $canvas space.
-            canvas.render();
-
-            // Put image to canvas.
-            canvas.buildImage(image);
-
-            // Render window.
-            win.render();
-        },
-
-        _buildSample: function () {
-            // Create window container.
-            var win = new InternalWindow({
-                renderAreaID: '#app'
-            });
-
-            // Create `Canvas` instance.
-            var canvas = new root.Canvas({
-                width: 200,
-                height: 100
-            });
-
-            // Set reference to window, where will be rendered.
-            canvas.setWindow(win);
-
-            // Create $canvas space.
-            canvas.render();
-
-            // Create something stupid.
-            canvas.buildSample();
-
-            // Render window.
-            win.render();
+        setupWindowManager: function () {
+            root.App.windowManager = new root.InternalWindowManager();
         }
     };
 
     // Block modify context.
-    _.bindAll(Bootstrap, 'setup', 'buildMenu');
+    _.bindAll(Bootstrap, 'setup', 'setupMainMenu');
 
     // Waiting for trigger `load` event by engine.
     root.addEventListener('load', Bootstrap.setup);
