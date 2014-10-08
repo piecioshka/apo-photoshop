@@ -5,6 +5,9 @@
     "FILE_OPEN": "Otwórz",
     "FILE_SAVE": "Zapisz",
 
+    "BOX": "Okno",
+    "BOX_HISTOGRAM": "Histogram",
+
     "ABOUT": "O programie",
     "SAMPLE": "[Przykład]"
 }

@@ -25,7 +25,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 #### Lista zadań
 
 - [x] Skróty klawiaturowe
-- [ ] Drag & drop na okienkach
+- [x] Drag & drop na okienkach
 - [ ] Wyświetlanie histogramu
 - [ ] Ćw. 1: Implementacja 3 sposobów wyrównywania histogramu + dodatkowo wymyślić jeden swój sposób na wyrównywanie.
 

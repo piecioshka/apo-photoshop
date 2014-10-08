@@ -93,6 +93,10 @@
                 });
             });
 
+            root.App.menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
+                console.log('show hist');
+            });
+
             // Join modules: Menu & Canvas.
             root.App.menu.on(root.Menu.EVENTS.SAMPLE, buildSampleWindow);
         },

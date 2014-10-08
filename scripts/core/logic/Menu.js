@@ -32,6 +32,9 @@
         // Create `file` option in main menu.
         this.file();
 
+        // Create `box` option in main menu.
+        this.box();
+
         // Create `help` option in main menu.
         this.help();
     };
@@ -89,6 +92,38 @@
         }));
     };
 
+    Menu.prototype.box = function () {
+        // Create file menu.
+        var boxMenu = new this.gui.Menu();
+
+        // Add histogram option.
+        this.histogram(boxMenu);
+
+        // Append to main window menu new option.
+        this.windowMenu.append(new this.gui.MenuItem({
+            label: locale.BOX,
+            submenu: boxMenu
+        }));
+    };
+
+    Menu.prototype.histogram = function (boxMenu) {
+        var self = this;
+        var histogramShortcut = 'Ctrl+Shift+H';
+
+        function runHistogram() {
+            self.emit(Menu.EVENTS.BOX_HISTOGRAM);
+        }
+
+        // Add shortcut.
+        root.KeyboardShortcut.add(histogramShortcut, runHistogram);
+
+        // Append to file menu `open` option.
+        boxMenu.append(new this.gui.MenuItem({
+            label: locale.BOX_HISTOGRAM + ' ' + histogramShortcut,
+            click: runHistogram
+        }));
+    };
+
     Menu.prototype.help = function () {
         var self = this;
 
@@ -113,6 +148,7 @@
     Menu.EVENTS = {
         FILE_OPEN: 'open',
         FILE_SAVE: 'save',
+        BOX_HISTOGRAM: 'histogram',
         SAMPLE: 'sample'
     };
 
