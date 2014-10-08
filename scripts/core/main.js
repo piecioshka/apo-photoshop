@@ -24,7 +24,7 @@
                 file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
                     // Listen for load image from user.
                     root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
-                        return new Picture(image);
+                        return new PictureWindow(image);
                     });
 
                     // Loading choose file.
@@ -33,17 +33,19 @@
             });
 
             root.App.menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
-                return new Histogram();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                console.log(activeWindow);
+                // return new HistogramWindow(content);
             });
 
             // Join modules: Menu & Canvas.
             root.App.menu.on(root.Menu.EVENTS.SAMPLE, function () {
-                return new Sample();
+                return new SampleWindow();
             });
         },
 
         setupWindowManager: function () {
-            root.App.windowManager = new root.InternalWindowManager();
+            root.App.windowManager = new root.WindowManager();
         }
     };
 

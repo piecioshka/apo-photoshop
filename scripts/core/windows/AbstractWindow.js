@@ -4,12 +4,12 @@
     // Aliases.
     var doc = root.document;
 
-    var InternalWindow = function (params) {
+    var AbstractWindow = function (params) {
         var self = this;
 
         this.settings = params;
 
-        this.placeHolder = doc.querySelector(this.settings.renderAreaID);
+        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
 
         this.$window = null;
         this.$bar = null;
@@ -17,31 +17,36 @@
         this.$title = null;
         this.$content = null;
 
-        this.on(InternalWindow.EVENTS.ACTIVE_WINDOW, function () {
+        // Flag tell that window is active.
+        this.isActive = false;
+
+        this.on(AbstractWindow.EVENTS.ACTIVE_WINDOW, function () {
+            self.isActive = true;
             self.$window.classList.add('active');
         });
 
-        this.on(InternalWindow.EVENTS.INACTIVE_WINDOW, function () {
+        this.on(AbstractWindow.EVENTS.INACTIVE_WINDOW, function () {
+            self.isActive = false;
             self.$window.classList.remove('active');
         });
 
         this.initialize();
     };
 
-    InternalWindow.prototype.initialize = function () {
+    AbstractWindow.prototype.initialize = function () {
         this.createWindow();
         this.createTopBar();
         this.createContent();
     };
 
-    InternalWindow.prototype.createWindow = function () {
+    AbstractWindow.prototype.createWindow = function () {
         var self = this;
         this.$window = doc.createElement('div');
         this.$window.classList.add('internal-window');
         this.$window.classList.add('internal-window');
 
         this.$window.addEventListener('click', function () {
-            self.emit(InternalWindow.EVENTS.ACTIVE_WINDOW);
+            self.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW);
         }, false);
 
         if (root.Utilities.isDarwin()) {
@@ -49,7 +54,7 @@
         }
     };
 
-    InternalWindow.prototype.createTopBar = function () {
+    AbstractWindow.prototype.createTopBar = function () {
         this.$bar = doc.createElement('nav');
         this.$bar.classList.add('internal-window-bar');
 
@@ -59,13 +64,13 @@
         this.$window.appendChild(this.$bar);
     };
 
-    InternalWindow.prototype.createTopBarTitle = function () {
+    AbstractWindow.prototype.createTopBarTitle = function () {
         this.$title = doc.createElement('h4');
         this.$title.classList.add('internal-window-title');
         return this.$title;
     };
 
-    InternalWindow.prototype.createTopBarButtons = function () {
+    AbstractWindow.prototype.createTopBarButtons = function () {
         var self = this;
 
         this.$buttons = doc.createElement('div');
@@ -89,25 +94,25 @@
         closeButton.addEventListener('click', function (evt) {
             evt.preventDefault();
             self.remove();
-            self.emit(InternalWindow.EVENTS.CLOSE_WINDOW);
+            self.emit(AbstractWindow.EVENTS.CLOSE_WINDOW);
         });
 
         return this.$buttons;
     };
 
-    InternalWindow.prototype.createContent = function () {
+    AbstractWindow.prototype.createContent = function () {
         this.$content = doc.createElement('div');
         this.$content.classList.add('internal-window-content');
         this.$window.appendChild(this.$content);
     };
 
-    InternalWindow.prototype.setContent = function (item) {
+    AbstractWindow.prototype.setContent = function (item) {
         if (this.$content.firstChild === null) {
             this.$content.appendChild(item);
         }
     };
 
-    InternalWindow.prototype.updateTitle = function (name) {
+    AbstractWindow.prototype.updateTitle = function (name) {
         var self = this;
         var DOTS_WIDTH = 15;
         this.$title.innerText = name;
@@ -125,31 +130,31 @@
         }, 0);
     };
 
-    InternalWindow.prototype.render = function () {
-        this.placeHolder.appendChild(this.$window);
+    AbstractWindow.prototype.render = function () {
+        this.$placeHolder.appendChild(this.$window);
 
         // Warning! Container which is rendered in DOM.
         new root.MoveMaster({
             object: this.$window,
             reference: this.$bar,
-            parent: this.placeHolder
+            parent: this.$placeHolder
         });
     };
 
-    InternalWindow.prototype.remove = function () {
+    AbstractWindow.prototype.remove = function () {
         this.$window.parentNode.removeChild(this.$window);
     };
 
-    InternalWindow.EVENTS = {
+    AbstractWindow.EVENTS = {
         INACTIVE_WINDOW: 'inactive',
         ACTIVE_WINDOW: 'active',
         CLOSE_WINDOW: 'close'
     };
 
-    // Extend `InternalWindow` module with events.
-    _.extend(InternalWindow.prototype, EventEmitter);
+    // Extend `AbstractWindow` module with events.
+    _.extend(AbstractWindow.prototype, EventEmitter);
 
-    // Export `InternalWindow`.
-    return (root.InternalWindow = InternalWindow);
+    // Export `AbstractWindow`.
+    return (root.AbstractWindow = AbstractWindow);
 
 }(this));

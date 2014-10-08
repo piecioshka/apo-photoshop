@@ -1,18 +1,20 @@
 (function (root) {
     'use strict';
 
-    var Histogram = function (image) {
+    var assert = require('assert');
+
+    var HistogramWindow = function (params) {
         this.width = 300;
         this.height = 200;
-        this.image = image;
+        this.image = params.image;
         this.canvas = null;
 
         this.initialize();
     };
 
-    Histogram.prototype.initialize = function () {
+    HistogramWindow.prototype.initialize = function () {
         // Create window container.
-        var win = new InternalWindow({
+        var win = new AbstractWindow({
             renderAreaID: '#app'
         });
 
@@ -41,7 +43,7 @@
         win.render();
     };
 
-    Histogram.prototype.buildBarGraph = function () {
+    HistogramWindow.prototype.buildBarGraph = function () {
         var items = [0, 2, 4, 2, 5, 6, 49, 20, 50, 3, 83, 2, 34, 15, 1, 44];
         items = items.concat(items);
 
@@ -57,7 +59,7 @@
         }, this);
     };
 
-    // Exports `Histogram`.
-    return (root.Histogram = Histogram);
+    // Exports `HistogramWindow`.
+    return (root.HistogramWindow = HistogramWindow);
 
 }(this));

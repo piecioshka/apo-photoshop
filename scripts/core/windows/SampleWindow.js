@@ -1,15 +1,15 @@
 (function (root) {
     'use strict';
 
-    var Sample = function () {
+    var SampleWindow = function () {
         this.canvas = null;
 
         this.initialize();
     };
 
-    Sample.prototype.initialize = function () {
+    SampleWindow.prototype.initialize = function () {
         // Create window container.
-        var win = new InternalWindow({
+        var win = new AbstractWindow({
             renderAreaID: '#app'
         });
 
@@ -38,12 +38,12 @@
         win.render();
     };
 
-    Sample.prototype.buildSample = function () {
+    SampleWindow.prototype.buildSample = function () {
         this.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.canvas.ctx.fillRect(0, 0, 200, 100);
     };
 
-    // Exports `Sample`.
-    return (root.Sample = Sample);
+    // Exports `SampleWindow`.
+    return (root.SampleWindow = SampleWindow);
 
 }(this));

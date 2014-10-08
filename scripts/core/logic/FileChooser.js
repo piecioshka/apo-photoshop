@@ -7,7 +7,7 @@
     var FileChooser = function (params) {
         this.settings = params;
 
-        this.placeHolder = doc.querySelector(this.settings.place);
+        this.$placeHolder = doc.querySelector(this.settings.place);
         this.$input = null;
 
         this.initialize();
@@ -36,7 +36,7 @@
     };
 
     FileChooser.prototype.render = function () {
-        this.placeHolder.appendChild(this.$input);
+        this.$placeHolder.appendChild(this.$input);
     };
 
     FileChooser.prototype.remove = function () {

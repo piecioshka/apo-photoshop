@@ -1,16 +1,16 @@
 (function (root) {
     'use strict';
 
-    var Picture = function (image) {
+    var PictureWindow = function (image) {
         this.image = image;
         this.canvas = null;
 
         this.initialize();
     };
 
-    Picture.prototype.initialize = function () {
+    PictureWindow.prototype.initialize = function () {
         // Create window container.
-        var win = new InternalWindow({
+        var win = new AbstractWindow({
             renderAreaID: '#app'
         });
 
@@ -39,11 +39,11 @@
         win.render();
     };
 
-    Picture.prototype.buildImage = function () {
+    PictureWindow.prototype.buildImage = function () {
         this.canvas.ctx.drawImage(this.image.image, 0, 0, this.image.width, this.image.height);
     };
 
-    // Exports `Picture`.
-    return (root.Picture = Picture);
+    // Exports `PictureWindow`.
+    return (root.PictureWindow = PictureWindow);
 
 }(this));

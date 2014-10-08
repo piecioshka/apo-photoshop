@@ -7,7 +7,7 @@
     var Canvas = function (params) {
         this.settings = params;
 
-        this.placeHolder = null;
+        this.$placeHolder = null;
         this.$canvas = null;
         this.ctx = null;
 
@@ -22,11 +22,11 @@
     };
 
     Canvas.prototype.setWindow = function (win) {
-        this.placeHolder = win;
+        this.$placeHolder = win;
     };
 
     Canvas.prototype.render = function () {
-        this.placeHolder.setContent(this.$canvas);
+        this.$placeHolder.setContent(this.$canvas);
     };
 
     // Extend `Canvas` module with events.
