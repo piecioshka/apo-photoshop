@@ -3,6 +3,8 @@
 
     var Picture = function (image) {
         this.image = image;
+        this.canvas = null;
+
         this.initialize();
     };
 
@@ -19,22 +21,26 @@
         root.App.windowManager.addWindow(win);
 
         // Create `Canvas` instance.
-        var canvas = new root.Canvas({
+        this.canvas = new root.Canvas({
             width: this.image.width,
             height: this.image.height
         });
 
         // Set reference to window, where will be rendered.
-        canvas.setWindow(win);
+        this.canvas.setWindow(win);
 
         // Create $canvas space.
-        canvas.render();
+        this.canvas.render();
 
         // Put image to canvas.
-        canvas.buildImage(this.image);
+        this.buildImage();
 
         // Render window.
         win.render();
+    };
+
+    Picture.prototype.buildImage = function () {
+        this.canvas.ctx.drawImage(this.image.image, 0, 0, this.image.width, this.image.height);
     };
 
     // Exports `Picture`.
