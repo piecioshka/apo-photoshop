@@ -33,6 +33,19 @@
         this.ctx.drawImage(params.image, 0, 0, params.width, params.height);
     };
 
+    Canvas.prototype.buildBarGraph = function (items) {
+        var BAR_WIDTH = parseInt(this.settings.width / items.length, 10);
+        this.ctx.fillStyle = 'rgb(100, 100, 100)';
+
+        items.forEach(function (size, index) {
+            var w = BAR_WIDTH;
+            var h = size * this.settings.height / 100;
+            var x = index * BAR_WIDTH;
+            var y = this.settings.height - h;
+            this.ctx.fillRect(x, y, w, h);
+        }, this);
+    };
+
     Canvas.prototype.buildSample = function () {
         this.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.ctx.fillRect(0, 0, 200, 100);

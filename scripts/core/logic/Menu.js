@@ -1,8 +1,7 @@
 (function (root) {
     'use strict';
 
-    var cjson = require('cjson');
-    var locale = cjson.load('./locale/pl_PL.json');
+    var locale = require('cjson').load('./locale/pl_PL.json');
 
     function Menu() {
         this.gui = null;
