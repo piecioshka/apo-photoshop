@@ -5,7 +5,9 @@
     var doc = root.document;
 
     var FileChooser = function (params) {
-        this.settings = {};
+        this.settings = {
+            place: null
+        };
         _.extend(this.settings, params);
 
         this.$placeHolder = doc.querySelector(this.settings.place);
