@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var SampleWindow = function (params) {
-        console.log('new SampleWindow', params);
+        console.warn('new SampleWindow', params);
 
         this.settings = {
             renderAreaID: '#app'
@@ -32,6 +32,8 @@
     SampleWindow.prototype.constructor = SampleWindow;
 
     SampleWindow.prototype.initialize = function () {
+        this.$window.classList.add('sample-window');
+
         // Update title of window.
         this.updateTitle('Sample');
 

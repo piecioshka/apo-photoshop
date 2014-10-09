@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var PictureWindow = function (params) {
-        console.log('new PictureWindow', params);
+        console.warn('new PictureWindow', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -33,6 +33,8 @@
     PictureWindow.prototype.constructor = PictureWindow;
 
     PictureWindow.prototype.initialize = function () {
+        this.$window.classList.add('picture-window');
+
         // Update title of window.
         this.updateTitle(this.settings.image.name);
 

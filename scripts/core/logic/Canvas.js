@@ -5,7 +5,10 @@
     var doc = root.document;
 
     var Canvas = function (params) {
-        this.settings = {};
+        this.settings = {
+            width: 100,
+            height: 50
+        };
         _.extend(this.settings, params);
 
         this.$placeHolder = null;
@@ -16,9 +19,14 @@
     };
 
     Canvas.prototype.initialize = function () {
+        // Create <canvas> object.
         this.$canvas = doc.createElement('canvas');
-        this.$canvas.setAttribute('width', this.settings.width);
-        this.$canvas.setAttribute('height', this.settings.height);
+
+        // Set dimensions.
+        this.setWidth();
+        this.setHeight();
+
+        // Set reference to Canvas context.
         this.ctx = this.$canvas.getContext('2d');
     };
 
@@ -26,17 +34,28 @@
         this.$placeHolder = win;
     };
 
-    Canvas.prototype.onEachPixel = function (handler, ctx) {
-        var i, j;
-        ctx = ctx || this;
-
-        for (i = 0; i < this.settings.width; ++i) {
-        // for (i = 30; i < 50; ++i) {
-            for (j = 0; j < this.settings.height; ++j) {
-            // for (j = 20; j < 30; ++j) {
-                handler.call(ctx, i, j);
-            }
+    /**
+     * Set height of <canvas> tag.
+     *
+     * @param {number} [height] Default get size from `this.settings`.
+     */
+    Canvas.prototype.setHeight = function (height) {
+        if (_.isNumber(height)) {
+            this.settings.height = height;
         }
+        this.$canvas.setAttribute('height', this.settings.height);
+    };
+
+    /**
+     * Set width of <canvas> tag.
+     *
+     * @param {number} [width] Default get size from `this.settings`.
+     */
+    Canvas.prototype.setWidth = function (width) {
+        if (_.isNumber(width)) {
+            this.settings.width = width;
+        }
+        this.$canvas.setAttribute('width', this.settings.width);
     };
 
     Canvas.prototype.render = function () {

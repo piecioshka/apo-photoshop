@@ -31,8 +31,8 @@
     AbstractWindow.prototype.createWindow = function () {
         var self = this;
         this.$window = doc.createElement('div');
-        this.$window.classList.add('internal-window');
-        this.$window.classList.add('internal-window');
+        this.$window.classList.add('abstract-window');
+        this.$window.classList.add('abstract-window');
 
         this.$window.addEventListener('click', function () {
             self.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW);
@@ -45,7 +45,7 @@
 
     AbstractWindow.prototype.createTopBar = function () {
         this.$bar = doc.createElement('nav');
-        this.$bar.classList.add('internal-window-bar');
+        this.$bar.classList.add('abstract-window-bar');
 
         this.$bar.appendChild(this.createTopBarTitle());
         this.$bar.appendChild(this.createTopBarButtons());
@@ -55,7 +55,7 @@
 
     AbstractWindow.prototype.createTopBarTitle = function () {
         this.$title = doc.createElement('h4');
-        this.$title.classList.add('internal-window-title');
+        this.$title.classList.add('abstract-window-title');
         return this.$title;
     };
 
@@ -63,21 +63,21 @@
         var self = this;
 
         this.$buttons = doc.createElement('div');
-        this.$buttons.classList.add('internal-window-buttons');
+        this.$buttons.classList.add('abstract-window-buttons');
 
         var maxButton = doc.createElement('a');
-        maxButton.classList.add('internal-window-button');
-        maxButton.classList.add('internal-window-button-max');
+        maxButton.classList.add('abstract-window-button');
+        maxButton.classList.add('abstract-window-button-max');
         this.$buttons.appendChild(maxButton);
 
         var minButton = doc.createElement('a');
-        minButton.classList.add('internal-window-button');
-        minButton.classList.add('internal-window-button-min');
+        minButton.classList.add('abstract-window-button');
+        minButton.classList.add('abstract-window-button-min');
         this.$buttons.appendChild(minButton);
 
         var closeButton = doc.createElement('a');
-        closeButton.classList.add('internal-window-button');
-        closeButton.classList.add('internal-window-button-close');
+        closeButton.classList.add('abstract-window-button');
+        closeButton.classList.add('abstract-window-button-close');
         this.$buttons.appendChild(closeButton);
 
         closeButton.addEventListener('click', function (evt) {
@@ -90,7 +90,7 @@
 
     AbstractWindow.prototype.createContent = function () {
         this.$content = doc.createElement('div');
-        this.$content.classList.add('internal-window-content');
+        this.$content.classList.add('abstract-window-content');
         this.$window.appendChild(this.$content);
     };
 

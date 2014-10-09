@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+}
+
+#app {
+    position: relative;
+    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}

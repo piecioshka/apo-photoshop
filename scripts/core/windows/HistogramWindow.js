@@ -7,14 +7,14 @@
     var doc = root.document;
 
     var HistogramWindow = function (params) {
-        console.log('new HistogramWindow', params);
+        console.warn('new HistogramWindow', params);
 
         this.settings = {
             renderAreaID: '#app',
             image: null,
             canvas: null,
-            width: 300,
-            height: 200
+            width: 256,
+            height: 144
         };
         _.extend(this.settings, params);
 
@@ -38,6 +38,8 @@
     HistogramWindow.prototype.constructor = HistogramWindow;
 
     HistogramWindow.prototype.initialize = function () {
+        this.$window.classList.add('histogram-window');
+
         // Update title of window.
         this.updateTitle('Histogram');
 
@@ -67,28 +69,55 @@
     };
 
     HistogramWindow.prototype.buildBarGraph = function () {
-        var items = [];
-        var channel = 0;
+        var channel;
+        var red = [], green = [], blue = [], alpha = [];
 
-        this.canvas.ctx.fillStyle = 'rgb(100, 100, 100)';
+        this.canvas.ctx.fillStyle = 'rgb(0, 0, 0)';
 
-        this.canvas.onEachPixel(function (x, y) {
-            var imageData = this.settings.canvas.ctx.getImageData(x, y, 1, 1);
+        var image = this.settings.canvas.ctx.getImageData(0, 0, this.settings.image.width, this.settings.image.height);
+        var pixels = image.data;
 
-            if (!items[imageData.data[channel]]) {
-                items[imageData.data[channel]] = 0;
-            }
+        for (var i = 0; i < pixels.length; i += 4) {
+            red[i / 4] = pixels[i];
+            green[i / 4] = pixels[i + 1];
+            blue[i / 4] = pixels[i + 2];
+            alpha[i / 4] = pixels[i + 3];
+        }
 
-            items[imageData.data[channel]]++;
+        channel = this.countChannel(red);
+        channel = this.scaleChannelCounts(channel);
+        this.paintHistogram(channel);
+    };
+
+    HistogramWindow.prototype.countChannel = function (channel) {
+        var results = [];
+
+        channel.forEach(function (color) {
+            results[color] = (results[color] || 0) + 1;
+        });
+
+        return results;
+    };
+
+    HistogramWindow.prototype.scaleChannelCounts = function (items) {
+        var max = Math.max.apply(Math, items);
+        return items.map(function (item) {
+            return item * this.settings.height / max;
         }, this);
+    };
 
-        var w = this.settings.width / items.length;
+    HistogramWindow.prototype.drawPipe = function () {
+        this.canvas.ctx.fillRect.apply(this.canvas.ctx, arguments);
+    };
 
+    HistogramWindow.prototype.paintHistogram = function (items) {
         items.forEach(function (size, index) {
+            var w = 1;
             var h = size * this.settings.height / 100;
             var x = index * w;
             var y = this.settings.height - h;
-            this.canvas.ctx.fillRect(x, y, w, h);
+
+            this.drawPipe(x, y, w, h);
         }, this);
     };
 
