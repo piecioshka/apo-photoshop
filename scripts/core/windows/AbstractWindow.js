@@ -4,22 +4,19 @@
     // Aliases.
     var doc = root.document;
 
-    var AbstractWindow = function (params) {
+    var AbstractWindow = function () {
+        return this;
+    };
+
+    AbstractWindow.prototype.setup = function () {
+        this.createWindow();
+        this.createTopBar();
+        this.createContent();
+        this.listenOnActivationEvents();
+    };
+
+    AbstractWindow.prototype.listenOnActivationEvents = function () {
         var self = this;
-
-        this.settings = params;
-
-        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
-
-        this.$window = null;
-        this.$bar = null;
-        this.$buttons = null;
-        this.$title = null;
-        this.$content = null;
-
-        // Flag tell that window is active.
-        this.isActive = false;
-
         this.on(AbstractWindow.EVENTS.ACTIVE_WINDOW, function () {
             self.isActive = true;
             self.$window.classList.add('active');
@@ -29,14 +26,6 @@
             self.isActive = false;
             self.$window.classList.remove('active');
         });
-
-        this.initialize();
-    };
-
-    AbstractWindow.prototype.initialize = function () {
-        this.createWindow();
-        this.createTopBar();
-        this.createContent();
     };
 
     AbstractWindow.prototype.createWindow = function () {
@@ -131,6 +120,7 @@
     };
 
     AbstractWindow.prototype.render = function () {
+        var self = this;
         this.$placeHolder.appendChild(this.$window);
 
         // Warning! Container which is rendered in DOM.
@@ -139,6 +129,10 @@
             reference: this.$bar,
             parent: this.$placeHolder
         });
+
+        setTimeout(function () {
+            self.emit(AbstractWindow.EVENTS.RENDER_WINDOW);
+        }, 0);
     };
 
     AbstractWindow.prototype.remove = function () {
@@ -148,7 +142,8 @@
     AbstractWindow.EVENTS = {
         INACTIVE_WINDOW: 'inactive',
         ACTIVE_WINDOW: 'active',
-        CLOSE_WINDOW: 'close'
+        CLOSE_WINDOW: 'close',
+        RENDER_WINDOW: 'render'
     };
 
     // Extend `AbstractWindow` module with events.

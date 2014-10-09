@@ -2,59 +2,94 @@
     'use strict';
 
     var assert = require('assert');
+    var extend = require('extend');
+
+    // Aliases.
+    var doc = root.document;
 
     var HistogramWindow = function (params) {
-        this.width = 300;
-        this.height = 200;
-        this.image = params.image;
+        console.log('new HistogramWindow', params);
+
+        this.settings = extend({
+            renderAreaID: '#app',
+            image: null,
+            canvas: null,
+            width: 300,
+            height: 200
+        }, params);
+
+        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
+        this.$window = null;
+        this.$bar = null;
+        this.$buttons = null;
+        this.$title = null;
+        this.$content = null;
+
+        // Flag tell that window is active.
+        this.isActive = false;
+
         this.canvas = null;
 
+        this.setup();
         this.initialize();
     };
 
-    HistogramWindow.prototype.initialize = function () {
-        // Create window container.
-        var win = new AbstractWindow({
-            renderAreaID: '#app'
-        });
+    HistogramWindow.prototype = new AbstractWindow();
+    HistogramWindow.prototype.constructor = HistogramWindow;
 
+    HistogramWindow.prototype.initialize = function () {
         // Update title of window.
-        win.updateTitle('Histogram');
+        this.updateTitle('Histogram');
 
         // Append window list.
-        root.App.windowManager.addWindow(win);
+        root.App.windowManager.addWindow(this);
 
         // Create `Canvas` instance.
         this.canvas = new root.Canvas({
-            width: this.width,
-            height: this.height
+            width: this.settings.width,
+            height: this.settings.height
         });
 
         // Set reference to window, where will be rendered.
-        this.canvas.setWindow(win);
+        this.canvas.setWindow(this);
 
         // Create $canvas space.
         this.canvas.render();
 
-        // Create something stupid.
-        this.buildBarGraph();
+        // Listen on window render.
+        this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
+            // Create something stupid.
+            this.buildBarGraph();
+        });
 
         // Render window.
-        win.render();
+        this.render();
     };
 
     HistogramWindow.prototype.buildBarGraph = function () {
-        var items = [0, 2, 4, 2, 5, 6, 49, 20, 50, 3, 83, 2, 34, 15, 1, 44];
-        items = items.concat(items);
+        var items = [];
+        var channel = 0;
 
-        var BAR_WIDTH = parseInt(this.width / items.length, 10);
+        this.canvas.onEachPixel(function (x, y) {
+            var imageData = this.settings.canvas.ctx.getImageData(x, y, 1, 1);
+
+            if (!items[imageData.data[channel]]) {
+                items[imageData.data[channel]] = 0;
+            }
+
+            items[imageData.data[channel]]++;
+        }, this);
+
+        console.warn(items);
+
+        var BAR_WIDTH = parseInt(this.settings.width / items.length, 10);
         this.canvas.ctx.fillStyle = 'rgb(100, 100, 100)';
 
         items.forEach(function (size, index) {
             var w = BAR_WIDTH;
-            var h = size * this.height / 100;
+            var h = size * this.settings.height / 100;
             var x = index * BAR_WIDTH;
-            var y = this.height - h;
+            var y = this.settings.height - h;
             this.canvas.ctx.fillRect(x, y, w, h);
         }, this);
     };

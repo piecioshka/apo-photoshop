@@ -24,7 +24,9 @@
                 file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
                     // Listen for load image from user.
                     root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
-                        return new PictureWindow(image);
+                        new PictureWindow({
+                            image: image
+                        });
                     });
 
                     // Loading choose file.
@@ -34,13 +36,19 @@
 
             root.App.menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
-                console.log(activeWindow);
-                // return new HistogramWindow(content);
+
+                // We can create histogram only for picture.
+                if (activeWindow instanceof PictureWindow) {
+                    new HistogramWindow({
+                        image: activeWindow.settings.image,
+                        canvas: activeWindow.canvas
+                    });
+                }
             });
 
             // Join modules: Menu & Canvas.
             root.App.menu.on(root.Menu.EVENTS.SAMPLE, function () {
-                return new SampleWindow();
+                new SampleWindow();
             });
         },
 

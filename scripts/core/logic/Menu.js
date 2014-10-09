@@ -45,31 +45,10 @@
         // Add open file option.
         this.openFile(fileMenu);
 
-        // Add save file option.
-        this.saveFile(fileMenu);
-
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
             label: locale.FILE,
             submenu: fileMenu
-        }));
-    };
-
-    Menu.prototype.saveFile = function (fileMenu) {
-        var self = this;
-        var saveFileShortcut = 'Ctrl+S';
-
-        function runSaveFile() {
-            self.emit(Menu.EVENTS.FILE_SAVE);
-        }
-
-        // Add shortcut.
-        root.KeyboardShortcut.add(saveFileShortcut, runSaveFile);
-
-        // Append to file menu `open` option.
-        fileMenu.append(new this.gui.MenuItem({
-            label: locale.FILE_SAVE + ' ' + saveFileShortcut,
-            click: runSaveFile
         }));
     };
 
@@ -124,18 +103,12 @@
     };
 
     Menu.prototype.help = function () {
-        var self = this;
 
         // Create help menu.
         var helpMenu = new this.gui.Menu();
 
-        // Append to help menu `sample` option.
-        helpMenu.append(new this.gui.MenuItem({
-            label: locale.SAMPLE,
-            click: function () {
-                self.emit(Menu.EVENTS.SAMPLE);
-            }
-        }));
+        // Add sample option.
+        this.sample(helpMenu);
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
@@ -144,9 +117,26 @@
         }));
     };
 
+    Menu.prototype.sample = function (helpMenu) {
+        var self = this;
+        var sampleShortcut = 'Ctrl+Shift+S';
+
+        function runSample() {
+            self.emit(Menu.EVENTS.SAMPLE);
+        }
+
+        // Add shortcut.
+        root.KeyboardShortcut.add(sampleShortcut, runSample);
+
+        // Append to help menu `sample` option.
+        helpMenu.append(new this.gui.MenuItem({
+            label: locale.SAMPLE + ' ' + sampleShortcut,
+            click: runSample
+        }));
+    };
+
     Menu.EVENTS = {
         FILE_OPEN: 'open',
-        FILE_SAVE: 'save',
         BOX_HISTOGRAM: 'histogram',
         SAMPLE: 'sample'
     };

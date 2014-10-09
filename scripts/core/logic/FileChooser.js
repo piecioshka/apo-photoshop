@@ -1,11 +1,13 @@
 (function (root) {
     'use strict';
 
+    var extend = require('extend');
+
     // Aliases.
     var doc = root.document;
 
     var FileChooser = function (params) {
-        this.settings = params;
+        this.settings = extend({}, params);
 
         this.$placeHolder = doc.querySelector(this.settings.place);
         this.$input = null;

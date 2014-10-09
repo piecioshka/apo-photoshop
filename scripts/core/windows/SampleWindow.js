@@ -1,23 +1,43 @@
 (function (root) {
     'use strict';
 
-    var SampleWindow = function () {
+    var extend = require('extend');
+
+    // Aliases.
+    var doc = root.document;
+
+    var SampleWindow = function (params) {
+        console.log('new SampleWindow', params);
+
+        this.settings = extend({
+            renderAreaID: '#app'
+        }, params);
+
+        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
+        this.$window = null;
+        this.$bar = null;
+        this.$buttons = null;
+        this.$title = null;
+        this.$content = null;
+
+        // Flag tell that window is active.
+        this.isActive = false;
+
         this.canvas = null;
 
+        this.setup();
         this.initialize();
     };
 
-    SampleWindow.prototype.initialize = function () {
-        // Create window container.
-        var win = new AbstractWindow({
-            renderAreaID: '#app'
-        });
+    SampleWindow.prototype = new AbstractWindow();
+    SampleWindow.prototype.constructor = SampleWindow;
 
+    SampleWindow.prototype.initialize = function () {
         // Update title of window.
-        win.updateTitle('Sample');
+        this.updateTitle('Sample');
 
         // Append window list.
-        root.App.windowManager.addWindow(win);
+        root.App.windowManager.addWindow(this);
 
         // Create `Canvas` instance.
         this.canvas = new root.Canvas({
@@ -26,16 +46,19 @@
         });
 
         // Set reference to window, where will be rendered.
-        this.canvas.setWindow(win);
+        this.canvas.setWindow(this);
 
         // Create $canvas space.
         this.canvas.render();
 
-        // Create something stupid.
-        this.buildSample();
+        // Listen on window render.
+        this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
+            // Create something stupid.
+            this.buildSample();
+        });
 
         // Render window.
-        win.render();
+        this.render();
     };
 
     SampleWindow.prototype.buildSample = function () {
