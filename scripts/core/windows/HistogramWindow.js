@@ -2,7 +2,6 @@
     'use strict';
 
     var assert = require('assert');
-    var extend = require('extend');
 
     // Aliases.
     var doc = root.document;
@@ -10,13 +9,14 @@
     var HistogramWindow = function (params) {
         console.log('new HistogramWindow', params);
 
-        this.settings = extend({
+        this.settings = {
             renderAreaID: '#app',
             image: null,
             canvas: null,
             width: 300,
             height: 200
-        }, params);
+        };
+        _.extend(this.settings, params);
 
         this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
         this.$window = null;
@@ -70,6 +70,8 @@
         var items = [];
         var channel = 0;
 
+        this.canvas.ctx.fillStyle = 'rgb(100, 100, 100)';
+
         this.canvas.onEachPixel(function (x, y) {
             var imageData = this.settings.canvas.ctx.getImageData(x, y, 1, 1);
 
@@ -80,15 +82,11 @@
             items[imageData.data[channel]]++;
         }, this);
 
-        console.warn(items);
-
-        var BAR_WIDTH = parseInt(this.settings.width / items.length, 10);
-        this.canvas.ctx.fillStyle = 'rgb(100, 100, 100)';
+        var w = this.settings.width / items.length;
 
         items.forEach(function (size, index) {
-            var w = BAR_WIDTH;
             var h = size * this.settings.height / 100;
-            var x = index * BAR_WIDTH;
+            var x = index * w;
             var y = this.settings.height - h;
             this.canvas.ctx.fillRect(x, y, w, h);
         }, this);

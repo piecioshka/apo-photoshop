@@ -82,8 +82,7 @@
 
         closeButton.addEventListener('click', function (evt) {
             evt.preventDefault();
-            self.remove();
-            self.emit(AbstractWindow.EVENTS.CLOSE_WINDOW);
+            self.close();
         });
 
         return this.$buttons;
@@ -137,6 +136,11 @@
 
     AbstractWindow.prototype.remove = function () {
         this.$window.parentNode.removeChild(this.$window);
+    };
+
+    AbstractWindow.prototype.close = function () {
+        this.remove();
+        this.emit(AbstractWindow.EVENTS.CLOSE_WINDOW);
     };
 
     AbstractWindow.EVENTS = {

@@ -15,7 +15,6 @@
         "gulp-jshint": "latest",
         "jshint-stylish": "latest",
         "gulp-help": "latest",
-        "underscore": "latest",
-        "extend": "latest"
+        "underscore": "latest"
     }
 }

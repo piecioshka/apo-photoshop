@@ -4,7 +4,13 @@
     var assert = require('assert');
 
     var WindowManager = function () {
+        var self = this;
         this._windows = [];
+
+        root.KeyboardShortcut.add('Ctrl+W', function () {
+            var activeWindow = self.getActiveWindow();
+            activeWindow.close();
+        });
     };
 
     WindowManager.prototype.addWindow = function (win) {

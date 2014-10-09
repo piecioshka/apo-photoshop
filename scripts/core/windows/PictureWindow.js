@@ -1,18 +1,17 @@
 (function (root) {
     'use strict';
 
-    var extend = require('extend');
-
     // Aliases.
     var doc = root.document;
 
     var PictureWindow = function (params) {
         console.log('new PictureWindow', params);
 
-        this.settings = extend({
+        this.settings = {
             renderAreaID: '#app',
             image: null
-        }, params);
+        };
+        _.extend(this.settings, params);
 
         this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
         this.$window = null;

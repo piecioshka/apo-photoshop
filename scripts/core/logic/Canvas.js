@@ -1,13 +1,12 @@
 (function (root) {
     'use strict';
 
-    var extend = require('extend');
-
     // Aliases.
     var doc = root.document;
 
     var Canvas = function (params) {
-        this.settings = extend({}, params);
+        this.settings = {};
+        _.extend(this.settings, params);
 
         this.$placeHolder = null;
         this.$canvas = null;
