@@ -19,7 +19,7 @@
         scripts: [path.join(__dirname, 'scripts', 'core', '**', '*js')]
     };
 
-    gulp.task('lint', function () {
+    gulp.task('lint', 'Validate each *.js file with JSHint.', function () {
         return gulp.src(paths.scripts)
             .pipe(jshint(jshintrc))
             .pipe(jshint.reporter(stylish, { verbose: true }));

@@ -4,16 +4,7 @@
     var assert = require('assert');
 
     var WindowManager = function () {
-        var self = this;
         this._windows = [];
-
-        root.KeyboardShortcut.add('Ctrl+W', function () {
-            var activeWindow = self.getActiveWindow();
-
-            if (activeWindow instanceof AbstractWindow) {
-                activeWindow.close();
-            }
-        });
     };
 
     WindowManager.prototype.addWindow = function (win) {

@@ -3,10 +3,12 @@
 
     "FILE": "Plik",
     "FILE_OPEN": "Otwórz",
+    "FILE_CLOSE": "Zamknij",
 
     "BOX": "Okno",
     "BOX_HISTOGRAM": "Histogram",
 
     "ABOUT": "O programie",
-    "SAMPLE": "[Przykład]"
+    "SAMPLE": "[Przykład]",
+    "AUTHORS": "Autorzy"
 }

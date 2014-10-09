@@ -10,8 +10,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 ##### Silnik
 
-- node-webkit - https://github.com/rogerwang/node-webkit
 - node.js - http://nodejs.org/
+- node-webkit - https://github.com/rogerwang/node-webkit
 
 ##### Obróbka obrazów
 
@@ -26,7 +26,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - [x] Skróty klawiaturowe
 - [x] Drag & drop na okienkach
-- [ ] Wyświetlanie histogramu
+- [x] Wyświetlanie histogramu
 - [ ] Ćw. 1: Implementacja 3 sposobów wyrównywania histogramu + dodatkowo wymyślić jeden swój sposób na wyrównywanie.
 
 #### Przydatne materiały odnośnie koloryzacji (projekt).

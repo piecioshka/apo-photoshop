@@ -14,9 +14,9 @@
 
         setupMainMenu: function () {
             // Create main `Menu`.
-            root.App.menu = new root.Menu();
+            var menu = root.App.menu = new root.Menu();
 
-            root.App.menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
+            menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
                 var file = new FileChooser({
                     place: '#app'
                 });
@@ -34,7 +34,15 @@
                 });
             });
 
-            root.App.menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
+            menu.on(root.Menu.EVENTS.FILE_CLOSE, function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                if (activeWindow instanceof AbstractWindow) {
+                    activeWindow.close();
+                }
+            });
+
+            menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
                 // We can create histogram only for picture.
@@ -47,7 +55,7 @@
             });
 
             // Join modules: Menu & Canvas.
-            root.App.menu.on(root.Menu.EVENTS.SAMPLE, function () {
+            menu.on(root.Menu.EVENTS.SAMPLE, function () {
                 new SampleWindow();
             });
         },

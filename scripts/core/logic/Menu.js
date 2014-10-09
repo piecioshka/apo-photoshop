@@ -38,12 +38,31 @@
         this.help();
     };
 
+    Menu.prototype.addSubMenu = function (menu, label, callback, shortcut) {
+        if (_.isString(shortcut)) {
+            root.KeyboardShortcut.add(shortcut, callback);
+        }
+
+        menu.append(new this.gui.MenuItem({
+            label: label + (shortcut ? ' ' + shortcut : ''),
+            click: callback
+        }));
+    };
+
     Menu.prototype.file = function () {
+        var self = this;
         // Create file menu.
         var fileMenu = new this.gui.Menu();
 
         // Add open file option.
-        this.openFile(fileMenu);
+        this.addSubMenu(fileMenu, locale.FILE_OPEN, function () {
+            self.emit(Menu.EVENTS.FILE_OPEN);
+        }, 'Ctrl+O');
+
+        // Add close file option.
+        this.addSubMenu(fileMenu, locale.FILE_CLOSE, function () {
+            self.emit(Menu.EVENTS.FILE_CLOSE);
+        }, 'Ctrl+W');
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
@@ -52,30 +71,15 @@
         }));
     };
 
-    Menu.prototype.openFile = function (fileMenu) {
-        var self = this;
-        var openFileShortcut = 'Ctrl+O';
-
-        function runOpenFile() {
-            self.emit(Menu.EVENTS.FILE_OPEN);
-        }
-
-        // Add shortcut.
-        root.KeyboardShortcut.add(openFileShortcut, runOpenFile);
-
-        // Append to file menu `open` option.
-        fileMenu.append(new this.gui.MenuItem({
-            label: locale.FILE_OPEN + ' ' + openFileShortcut,
-            click: runOpenFile
-        }));
-    };
-
     Menu.prototype.box = function () {
+        var self = this;
         // Create file menu.
         var boxMenu = new this.gui.Menu();
 
         // Add histogram option.
-        this.histogram(boxMenu);
+        this.addSubMenu(boxMenu, locale.BOX_HISTOGRAM, function () {
+            self.emit(Menu.EVENTS.BOX_HISTOGRAM);
+        }, 'Ctrl+Shift+H');
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
@@ -84,31 +88,24 @@
         }));
     };
 
-    Menu.prototype.histogram = function (boxMenu) {
-        var self = this;
-        var histogramShortcut = 'Ctrl+Shift+H';
-
-        function runHistogram() {
-            self.emit(Menu.EVENTS.BOX_HISTOGRAM);
-        }
-
-        // Add shortcut.
-        root.KeyboardShortcut.add(histogramShortcut, runHistogram);
-
-        // Append to file menu `open` option.
-        boxMenu.append(new this.gui.MenuItem({
-            label: locale.BOX_HISTOGRAM + ' ' + histogramShortcut,
-            click: runHistogram
-        }));
-    };
-
     Menu.prototype.help = function () {
-
+        var self = this;
         // Create help menu.
         var helpMenu = new this.gui.Menu();
 
         // Add sample option.
-        this.sample(helpMenu);
+        this.addSubMenu(helpMenu, locale.SAMPLE, function () {
+            self.emit(Menu.EVENTS.SAMPLE);
+        }, 'Ctrl+Shift+S');
+        // Add authors option.
+        this.addSubMenu(helpMenu, locale.AUTHORS, function () {
+            var lines = [];
+            lines.push('Autorzy:\n');
+            lines.push('Piotr Kowalski <piecioshka@gmail.com> @piecioshka');
+            lines.push('Krzysztof Snopkiewicz <k.snopkiewicz@me.com> @ikris77');
+
+            root.alert(lines.join('\n\n'));
+        });
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
@@ -117,26 +114,9 @@
         }));
     };
 
-    Menu.prototype.sample = function (helpMenu) {
-        var self = this;
-        var sampleShortcut = 'Ctrl+Shift+S';
-
-        function runSample() {
-            self.emit(Menu.EVENTS.SAMPLE);
-        }
-
-        // Add shortcut.
-        root.KeyboardShortcut.add(sampleShortcut, runSample);
-
-        // Append to help menu `sample` option.
-        helpMenu.append(new this.gui.MenuItem({
-            label: locale.SAMPLE + ' ' + sampleShortcut,
-            click: runSample
-        }));
-    };
-
     Menu.EVENTS = {
         FILE_OPEN: 'open',
+        FILE_CLOSE: 'close',
         BOX_HISTOGRAM: 'histogram',
         SAMPLE: 'sample'
     };
