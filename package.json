@@ -10,11 +10,9 @@
     },
 
     "devDependencies": {
-        "cjson": "latest",
         "gulp": "latest",
         "gulp-jshint": "latest",
         "jshint-stylish": "latest",
-        "gulp-help": "latest",
-        "underscore": "latest"
+        "gulp-help": "latest"
     }
 }

@@ -1,10 +1,8 @@
 (function (root) {
     'use strict';
 
-    var locale = require('cjson').load('./locale/pl_PL.json');
-
     // Set title of application.
-    root.document.title = locale.NAME;
+    root.document.title = root.locale.get('NAME');
 
     var Bootstrap = {
         setup: function () {

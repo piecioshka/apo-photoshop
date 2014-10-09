@@ -1,8 +1,6 @@
 (function (root) {
     'use strict';
 
-    var locale = require('cjson').load('./locale/pl_PL.json');
-
     function Menu() {
         this.gui = null;
         this.windowMenu = null;
@@ -19,7 +17,7 @@
 
         // If application run under Mac OS must set that option, to fixed main window menu.
         if (root.Utilities.isDarwin()) {
-            this.windowMenu.createMacBuiltin(locale.NAME, {
+            this.windowMenu.createMacBuiltin(root.locale.get('NAME'), {
                 hideEdit: true,
                 hideWindow: true
             });
@@ -55,18 +53,18 @@
         var fileMenu = new this.gui.Menu();
 
         // Add open file option.
-        this.addSubMenu(fileMenu, locale.FILE_OPEN, function () {
+        this.addSubMenu(fileMenu, root.locale.get('FILE_OPEN'), function () {
             self.emit(Menu.EVENTS.FILE_OPEN);
         }, 'Ctrl+O');
 
         // Add close file option.
-        this.addSubMenu(fileMenu, locale.FILE_CLOSE, function () {
+        this.addSubMenu(fileMenu, root.locale.get('FILE_CLOSE'), function () {
             self.emit(Menu.EVENTS.FILE_CLOSE);
         }, 'Ctrl+W');
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
-            label: locale.FILE,
+            label: root.locale.get('FILE'),
             submenu: fileMenu
         }));
     };
@@ -77,13 +75,13 @@
         var boxMenu = new this.gui.Menu();
 
         // Add histogram option.
-        this.addSubMenu(boxMenu, locale.BOX_HISTOGRAM, function () {
+        this.addSubMenu(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
             self.emit(Menu.EVENTS.BOX_HISTOGRAM);
         }, 'Ctrl+Shift+H');
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
-            label: locale.BOX,
+            label: root.locale.get('BOX'),
             submenu: boxMenu
         }));
     };
@@ -94,13 +92,13 @@
         var helpMenu = new this.gui.Menu();
 
         // Add sample option.
-        this.addSubMenu(helpMenu, locale.SAMPLE, function () {
+        this.addSubMenu(helpMenu, root.locale.get('SAMPLE'), function () {
             self.emit(Menu.EVENTS.SAMPLE);
         }, 'Ctrl+Shift+S');
         // Add authors option.
-        this.addSubMenu(helpMenu, locale.AUTHORS, function () {
+        this.addSubMenu(helpMenu, root.locale.get('AUTHORS'), function () {
             var lines = [];
-            lines.push('Autorzy:\n');
+            lines.push('Autorzy:\n-------\n');
             lines.push('Piotr Kowalski <piecioshka@gmail.com> @piecioshka');
             lines.push('Krzysztof Snopkiewicz <k.snopkiewicz@me.com> @ikris77');
 
@@ -109,7 +107,7 @@
 
         // Append to main window menu new option.
         this.windowMenu.append(new this.gui.MenuItem({
-            label: locale.ABOUT,
+            label: root.locale.get('ABOUT'),
             submenu: helpMenu
         }));
     };
