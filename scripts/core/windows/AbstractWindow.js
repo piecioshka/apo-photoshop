@@ -140,7 +140,9 @@
 
     AbstractWindow.prototype.close = function () {
         this.remove();
-        this.emit(AbstractWindow.EVENTS.CLOSE_WINDOW);
+        this.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, {
+            window: this
+        });
     };
 
     AbstractWindow.EVENTS = {

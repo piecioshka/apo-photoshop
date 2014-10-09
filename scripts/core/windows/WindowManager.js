@@ -9,7 +9,10 @@
 
         root.KeyboardShortcut.add('Ctrl+W', function () {
             var activeWindow = self.getActiveWindow();
-            activeWindow.close();
+
+            if (activeWindow instanceof AbstractWindow) {
+                activeWindow.close();
+            }
         });
     };
 
@@ -20,9 +23,22 @@
             self.inactivateWindowsWithout(win);
         });
 
+        win.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
+            self.removeWindow(params.window);
+        });
+
         win.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW);
 
         this._windows.push(win);
+    };
+
+    WindowManager.prototype.removeWindow = function (windowToRemove) {
+        var self = this;
+        this._windows.forEach(function (win, index) {
+            if (win === windowToRemove) {
+                self._windows.splice(index, 1);
+            }
+        });
     };
 
     WindowManager.prototype.inactivateWindowsWithout = function (windowToActive) {
