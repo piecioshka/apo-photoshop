@@ -35,6 +35,7 @@
             menu.on(root.Menu.EVENTS.FILE_CLOSE, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
+                // We can close only activate window.
                 if (activeWindow instanceof AbstractWindow) {
                     activeWindow.close();
                 }
@@ -50,6 +51,22 @@
                         canvas: activeWindow.canvas
                     });
                 }
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_1, function () {
+                console.log('Operacje -> Histogram -> Operacja 1');
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_2, function () {
+                console.log('Operacje -> Histogram -> Operacja 2');
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_3, function () {
+                console.log('Operacje -> Histogram -> Operacja 3');
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_4, function () {
+                console.log('Operacje -> Histogram -> Operacja 4');
             });
 
             // Join modules: Menu & Canvas.
