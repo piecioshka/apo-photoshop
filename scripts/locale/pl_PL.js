@@ -14,11 +14,11 @@
         'BOX_HISTOGRAM': 'Histogram',
 
         'OPERATIONS': 'Operacje',
-        'OPERATIONS_HISTOGRAM': 'Histogram',
-        'OPERATIONS_HISTOGRAM_1': 'Operacje 1',
-        'OPERATIONS_HISTOGRAM_2': 'Operacje 2',
-        'OPERATIONS_HISTOGRAM_3': 'Operacje 3',
-        'OPERATIONS_HISTOGRAM_4': 'Operacje 4',
+        'OPERATIONS_FLATTENING_HISTOGRAM': 'Wyrównywanie histogramu',
+        'OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD': 'Metoda średnich',
+        'OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD': 'Metoda losowa',
+        'OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD': 'Metoda sąsiedztwa',
+        'OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD': 'Metoda własna',
 
         'ABOUT': 'O programie',
         'ABOUT_SAMPLE': '[Przykład]',

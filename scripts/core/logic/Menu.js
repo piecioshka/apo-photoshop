@@ -38,6 +38,7 @@
         }
 
         var subMenu = new this.gui.MenuItem({
+            type: 'normal',
             label: label,
             key: key,
             modifiers: modifiers
@@ -50,6 +51,16 @@
         menu.append(subMenu);
 
         return subMenu;
+    };
+
+    Menu.prototype.addSeparator = function (menu) {
+        var separator = new this.gui.MenuItem({
+            type: 'separator'
+        });
+
+        menu.append(separator);
+
+        return separator;
     };
 
     Menu.prototype.setupFileMenu = function () {
@@ -87,26 +98,26 @@
     Menu.prototype.setupOperationsMenu = function () {
         var self = this;
         var operationsMenu = new this.gui.Menu();
-        var histogramOperationsMenu = new this.gui.Menu();
+        var flatteningHistogramOperationsMenu = new this.gui.Menu();
 
-        this.addSubMenuItem(histogramOperationsMenu, root.locale.get('OPERATIONS_HISTOGRAM_1'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_HISTOGRAM_1);
+        this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD);
         });
 
-        this.addSubMenuItem(histogramOperationsMenu, root.locale.get('OPERATIONS_HISTOGRAM_2'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_HISTOGRAM_2);
+        this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD);
         });
 
-        this.addSubMenuItem(histogramOperationsMenu, root.locale.get('OPERATIONS_HISTOGRAM_3'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_HISTOGRAM_3);
+        this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD);
         });
 
-        this.addSubMenuItem(histogramOperationsMenu, root.locale.get('OPERATIONS_HISTOGRAM_4'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_HISTOGRAM_4);
+        this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD);
         });
 
-        var histogramOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_HISTOGRAM'));
-        histogramOperationsMenuItem.submenu = histogramOperationsMenu;
+        var histogramOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM'));
+        histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('OPERATIONS'),
@@ -121,6 +132,8 @@
         this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_SAMPLE'), function () {
             self.emit(Menu.EVENTS.SAMPLE);
         }, 'Ctrl-Shift', 'S');
+
+        this.addSeparator(helpMenu);
 
         this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
             var lines = [];
@@ -141,10 +154,10 @@
         FILE_OPEN: 'open',
         FILE_CLOSE: 'close',
         BOX_HISTOGRAM: 'histogram',
-        OPERATIONS_HISTOGRAM_1: 'operation-histogram-1',
-        OPERATIONS_HISTOGRAM_2: 'operation-histogram-2',
-        OPERATIONS_HISTOGRAM_3: 'operation-histogram-3',
-        OPERATIONS_HISTOGRAM_4: 'operation-histogram-4',
+        OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
+        OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
+        OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'operation-flattening-histogram-neighbourhood-method',
+        OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD: 'operation-flattening-histogram-custom-method',
         SAMPLE: 'sample'
     };
 

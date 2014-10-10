@@ -53,20 +53,20 @@
                 }
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_1, function () {
-                console.log('Operacje -> Histogram -> Operacja 1');
+            menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
+                console.log('Operacje -> Wygładzanie histogram -> Metoda średnich');
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_2, function () {
-                console.log('Operacje -> Histogram -> Operacja 2');
+            menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD, function () {
+                console.log('Operacje -> Wygładzanie histogram -> Metoda losowa');
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_3, function () {
-                console.log('Operacje -> Histogram -> Operacja 3');
+            menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD, function () {
+                console.log('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_HISTOGRAM_4, function () {
-                console.log('Operacje -> Histogram -> Operacja 4');
+            menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD, function () {
+                console.log('Operacje -> Wygładzanie histogram -> Metoda własna');
             });
 
             // Join modules: Menu & Canvas.
