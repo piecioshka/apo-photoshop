@@ -32,11 +32,13 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 ## Lista zadań
 
 - [x] Skróty klawiaturowe
-- [x] Drag & drop na okienkach
+- [x] Słowniki tłumaczeń
+- [x] Drag & drop na oknach
 - [x] Wyświetlanie histogramu
 - [ ] Ćw. 1: Implementacja 3 sposobów wyrównywania histogramu + dodatkowo wymyślić jeden swój sposób na wyrównywanie.
+- [ ] Duplikacja aktywnego okna
 
-#### Przydatne materiały odnośnie koloryzacji czarno-białych obrazów
+#### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości
 
 - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
 - http://www.cs.huji.ac.il/~yweiss/Colorization/

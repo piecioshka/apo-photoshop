@@ -3,12 +3,13 @@
 // Author: Piotr Kowalski
 // Contact: piecioshka@gmail.com
 // License: The MIT License
-// Date: 2014-09-28
+// Date: 2014-10-10
 //
 // ### Example
 // ```js
-// var logo = document.querySelector('#logo');
-// new MoveMaster(logo);
+// new MoveMaster({
+//     object: document.querySelector('#logo')
+// });
 // ```
 
 /*global define */
@@ -134,7 +135,7 @@
         if (!value) {
             throw new Error(msg || "Assertion error");
         }
-    }
+    };
 
 
     // Exports `MoveMaster`.
