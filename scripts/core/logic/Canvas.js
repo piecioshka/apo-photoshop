@@ -43,7 +43,8 @@
         if (_.isNumber(height)) {
             this.settings.height = height;
         }
-        this.$canvas.setAttribute('height', this.settings.height);
+
+        this.$canvas.setAttribute('height', this.settings.height + 'px');
     };
 
     /**
@@ -55,7 +56,8 @@
         if (_.isNumber(width)) {
             this.settings.width = width;
         }
-        this.$canvas.setAttribute('width', this.settings.width);
+
+        this.$canvas.setAttribute('width', this.settings.width + 'px');
     };
 
     Canvas.prototype.render = function () {
