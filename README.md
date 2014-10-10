@@ -11,7 +11,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 3. Pobieramy (paczkę zip) `node-webkit` ze strony https://github.com/rogerwang/node-webkit#downloads na nasz system operacyjny.
 4. Rozpakowujemy paczkę z projektem `node-webkit`.
 5. Kopiujemy zawartość projektu `apo-photoshop` to katalogu który powstał po rozpakowaniu `node-webkit`.
-6. Uruchamiamy plik `nw.exe` (Window) lub `nw` (Linux) lub `node-webkit.app` (Mac OS).
+6. Uruchamiamy plik `nw.exe` (Windows) lub `nw` (Linux) lub `node-webkit.app` (Mac).
 
 ## Wykorzystywane narzędzia
 
@@ -24,10 +24,12 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - Canvas - http://www.w3.org/TR/2dcontext/
 
-##### Mniejsze narzędzie pomocne
+##### Inne pomocne narzędzia
 
 - JSHint - http://www.jshint.com/docs/options/
 - Gulp - http://gulpjs.com/
+- Underscore.js - http://underscorejs.org/
+- MoveMaster.js - https://github.com/piecioshka/MoveMaster.js
 
 ## Lista zadań
 
