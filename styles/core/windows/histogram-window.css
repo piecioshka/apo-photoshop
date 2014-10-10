@@ -1,9 +1,0 @@
-.histogram-window .abstract-window-content {
-    background: #e7e6e7;
-}
-
-.histogram-window .abstract-window-content canvas {
-    float: left;
-    background: #ffffff;
-    border-bottom: 0.07em solid#000000;
-}

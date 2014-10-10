@@ -86,6 +86,7 @@
 
         channel = this.countChannel(red);
         channel = this.scaleChannelCounts(channel);
+
         this.paintHistogram(channel);
     };
 
@@ -100,7 +101,8 @@
     };
 
     HistogramWindow.prototype.scaleChannelCounts = function (items) {
-        var max = Math.max.apply(Math, items);
+        var max = root.Utilities.max.apply(this, items);
+
         return items.map(function (item) {
             return item * this.settings.height / max;
         }, this);

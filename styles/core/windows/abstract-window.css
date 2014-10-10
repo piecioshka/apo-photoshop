@@ -95,9 +95,14 @@
 .abstract-window .abstract-window-content {
     padding: 5px;
     overflow: hidden;
-    background: #ffffff;
+    background: #e7e6e7;
     border: 1px solid #999999;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     -webkit-user-select: none;
+}
+
+.abstract-window .abstract-window-content canvas {
+    float: left;
+    background: #ffffff;
 }
