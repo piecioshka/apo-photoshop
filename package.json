@@ -13,6 +13,8 @@
         "gulp": "latest",
         "gulp-jshint": "latest",
         "jshint-stylish": "latest",
-        "gulp-help": "latest"
+        "gulp-help": "latest",
+        "gulp-shell": "latest",
+        "cjson": "latest"
     }
 }

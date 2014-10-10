@@ -4,6 +4,7 @@
     var gulp = require('gulp');
     var jshint = require('gulp-jshint');
     var stylish = require('jshint-stylish');
+    var shell = require('gulp-shell');
 
     // node.js modules
     var path = require('path');
@@ -24,6 +25,10 @@
             .pipe(jshint(jshintrc))
             .pipe(jshint.reporter(stylish, { verbose: true }));
     });
+
+    gulp.task('count', 'Count line of code in *.js files', shell.task([
+        'find scripts -name "*.js" | xargs wc -l'
+    ]));
 
     // exports
     module.exports = gulp;
