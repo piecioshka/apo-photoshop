@@ -32,19 +32,26 @@
         // Create `box` option in main menu.
         this.box();
 
+        // Create `operations` option in main menu.
+        this.operations();
+
         // Create `help` option in main menu.
         this.help();
     };
 
-    Menu.prototype.addSubMenu = function (menu, label, callback, shortcut) {
+    Menu.prototype.addSubMenuItem = function (menu, label, callback, shortcut) {
         if (_.isString(shortcut)) {
             root.KeyboardShortcut.add(shortcut, callback);
         }
 
-        menu.append(new this.gui.MenuItem({
+        var subMenu = new this.gui.MenuItem({
             label: label + (shortcut ? ' ' + shortcut : ''),
             click: callback
-        }));
+        });
+
+        menu.append(subMenu);
+
+        return subMenu;
     };
 
     Menu.prototype.file = function () {
@@ -53,12 +60,12 @@
         var fileMenu = new this.gui.Menu();
 
         // Add open file option.
-        this.addSubMenu(fileMenu, root.locale.get('FILE_OPEN'), function () {
+        this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
             self.emit(Menu.EVENTS.FILE_OPEN);
         }, 'Ctrl+O');
 
         // Add close file option.
-        this.addSubMenu(fileMenu, root.locale.get('FILE_CLOSE'), function () {
+        this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), function () {
             self.emit(Menu.EVENTS.FILE_CLOSE);
         }, 'Ctrl+W');
 
@@ -75,7 +82,7 @@
         var boxMenu = new this.gui.Menu();
 
         // Add histogram option.
-        this.addSubMenu(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
+        this.addSubMenuItem(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
             self.emit(Menu.EVENTS.BOX_HISTOGRAM);
         }, 'Ctrl+Shift+H');
 
@@ -86,17 +93,34 @@
         }));
     };
 
+    Menu.prototype.operations = function () {
+        var self = this;
+        // Create file menu.
+        var boxMenu = new this.gui.Menu();
+
+        // Add histogram option.
+        this.addSubMenuItem(boxMenu, root.locale.get('OPERATIONS_HISTOGRAM'), function () {
+            self.emit(Menu.EVENTS.BOX_HISTOGRAM);
+        });
+
+        // Append to main window menu new option.
+        this.windowMenu.append(new this.gui.MenuItem({
+            label: root.locale.get('OPERATIONS'),
+            submenu: boxMenu
+        }));
+    };
+
     Menu.prototype.help = function () {
         var self = this;
         // Create help menu.
         var helpMenu = new this.gui.Menu();
 
         // Add sample option.
-        this.addSubMenu(helpMenu, root.locale.get('SAMPLE'), function () {
+        this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_SAMPLE'), function () {
             self.emit(Menu.EVENTS.SAMPLE);
         }, 'Ctrl+Shift+S');
         // Add authors option.
-        this.addSubMenu(helpMenu, root.locale.get('AUTHORS'), function () {
+        this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
             var lines = [];
             lines.push('Autorzy:\n-------\n');
             lines.push('Piotr Kowalski <piecioshka@gmail.com> @piecioshka');
