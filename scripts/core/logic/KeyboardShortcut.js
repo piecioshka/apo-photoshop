@@ -14,9 +14,11 @@
                     shortcut.push('Meta');
                 }
             }
+
             if (evt.ctrlKey) {
                 shortcut.push('Ctrl');
             }
+
             if (evt.shiftKey) {
                 shortcut.push('Shift');
             }
@@ -32,7 +34,7 @@
         },
 
         add: function (type, callback) {
-            var elements = type.split('+').map(function (item) {
+            var elements = type.split('-').map(function (item) {
                 return item.trim();
             });
             shortcuts[elements] = callback;
