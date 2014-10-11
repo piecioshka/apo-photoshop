@@ -38,7 +38,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Drag & drop na oknach
 - [x] Wyświetlanie histogramu
 - [ ] Ćw. 1: Implementacja 3 sposobów wyrównywania histogramu + dodatkowo wymyślić jeden swój sposób na wyrównywanie.
-- [ ] Duplikacja aktywnego okna
+- [x] Duplikacja aktywnego okna
 - [ ] Resize okna
 
 #### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości

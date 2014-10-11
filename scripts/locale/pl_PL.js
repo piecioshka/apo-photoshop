@@ -14,6 +14,7 @@
 
         'BOX': 'Okno',
         'BOX_HISTOGRAM': 'Histogram',
+        'BOX_DUPLICATE': 'Duplikuj',
 
         'OPERATIONS': 'Operacje',
         'OPERATIONS_FLATTENING_HISTOGRAM': 'Wyrównywanie histogramu',

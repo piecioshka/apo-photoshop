@@ -127,8 +127,8 @@
         // Warning! Container which is rendered in DOM.
         new root.MoveMaster({
             object: this.$window,
-            reference: this.$bar,
-            parent: this.$placeHolder
+            parent: this.$placeHolder,
+            reference: this.$bar
         });
 
         setTimeout(function () {

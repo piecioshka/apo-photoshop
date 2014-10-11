@@ -89,6 +89,10 @@
             self.emit(Menu.EVENTS.BOX_HISTOGRAM);
         }, 'Ctrl-Shift', 'H');
 
+        this.addSubMenuItem(boxMenu, root.locale.get('BOX_DUPLICATE'), function () {
+            self.emit(Menu.EVENTS.BOX_DUPLICATE);
+        }, 'Ctrl-Shift', 'D');
+
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('BOX'),
             submenu: boxMenu
@@ -154,6 +158,7 @@
         FILE_OPEN: 'open',
         FILE_CLOSE: 'close',
         BOX_HISTOGRAM: 'histogram',
+        BOX_DUPLICATE: 'duplicate',
         OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
         OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'operation-flattening-histogram-neighbourhood-method',

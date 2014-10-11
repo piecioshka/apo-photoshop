@@ -53,6 +53,17 @@
                 }
             });
 
+            menu.on(root.Menu.EVENTS.BOX_DUPLICATE, function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support duplicate picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    new PictureWindow({
+                        image: activeWindow.settings.image
+                    });
+                }
+            });
+
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
                 console.log('Operacje -> Wygładzanie histogram -> Metoda średnich');
             });
