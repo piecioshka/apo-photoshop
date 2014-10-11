@@ -41,7 +41,7 @@
         this.$window.classList.add('histogram-window');
 
         // Update title of window.
-        this.updateTitle('Histogram');
+        this.updateTitle('Histogram - ' + this.settings.image.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
