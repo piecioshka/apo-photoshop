@@ -68,12 +68,14 @@
         var maxButton = doc.createElement('a');
         maxButton.classList.add('abstract-window-button');
         maxButton.classList.add('abstract-window-button-max');
-        this.$buttons.appendChild(maxButton);
+        // Hide unsupported button.
+        // this.$buttons.appendChild(maxButton);
 
         var minButton = doc.createElement('a');
         minButton.classList.add('abstract-window-button');
         minButton.classList.add('abstract-window-button-min');
-        this.$buttons.appendChild(minButton);
+        // Hide unsupported button.
+        // this.$buttons.appendChild(minButton);
 
         var closeButton = doc.createElement('a');
         closeButton.classList.add('abstract-window-button');
