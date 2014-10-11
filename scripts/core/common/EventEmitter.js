@@ -4,6 +4,13 @@
     var assert = require('assert');
 
     var EventEmitter = {
+        /**
+         * Register listener.
+         *
+         * @param {string} name
+         * @param {Function} fn
+         * @param {Object} ctx
+         */
         on: function on(name, fn, ctx) {
             assert(_.isString(name), 'EventEmitter#on: `name` is not a string');
             assert(_.isFunction(fn), 'EventEmitter#on: `fn` is not a function');
@@ -21,6 +28,13 @@
             });
         },
 
+        /**
+         * Register listener. Remove them after once event triggered.
+         *
+         * @param {string} name
+         * @param {Function} fn
+         * @param {Object} ctx
+         */
         once: function (name, fn, ctx) {
             assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
             assert(_.isFunction(fn), 'EventEmitter#once: `fn` is not a function');
@@ -34,8 +48,14 @@
             this.on(name, handle, ctx);
         },
 
+        /**
+         * Unregister listener.
+         *
+         * @param {string} name
+         * @param {Function} [fn]
+         */
         off: function (name, fn) {
-            assert(_.isString(name));
+            assert(_.isString(name), 'EventEmitter#off: `name` is not a string');
 
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
@@ -54,8 +74,14 @@
             }, this);
         },
 
+        /**
+         * Trigger event.
+         *
+         * @param {string} name
+         * @param {Object} [params]
+         */
         emit: function emit(name, params) {
-            assert(_.isString(name));
+            assert(_.isString(name), 'EventEmitter#emit: `name` is not a string');
 
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
