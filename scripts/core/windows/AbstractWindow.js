@@ -105,12 +105,14 @@
     AbstractWindow.prototype.updateTitle = function (name) {
         var self = this;
         var DOTS_WIDTH = 15;
+        var BUTTONS_MARGIN = 10;
+
         this.$title.innerText = name;
         this.$title.classList.add('sky-hide');
 
         // As quickly as render engine could.
         root.setTimeout(function () {
-            var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth;
+            var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth - BUTTONS_MARGIN;
 
             if (diff < self.$title.offsetWidth) {
                 self.$title.style.width = (diff - DOTS_WIDTH) + 'px';
