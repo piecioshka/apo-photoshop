@@ -69,28 +69,7 @@
     };
 
     HistogramWindow.prototype.buildBarGraph = function () {
-        var grayScalePixels = this.settings.canvas.getGrayScalePixels();
-        var channel = this.countChannel(grayScalePixels);
-        var scaleChannelCounts = this.scaleChannelCounts(channel);
-        this.paintHistogram(scaleChannelCounts);
-    };
-
-    HistogramWindow.prototype.countChannel = function (channel) {
-        var results = [];
-
-        channel.forEach(function (color) {
-            results[color] = (results[color] || 0) + 1;
-        });
-
-        return results;
-    };
-
-    HistogramWindow.prototype.scaleChannelCounts = function (items) {
-        var max = root.Utilities.max.apply(this, items);
-
-        return items.map(function (item) {
-            return item * this.settings.height / max;
-        }, this);
+        this.paintHistogram(this.settings.canvas.getHistogram());
     };
 
     HistogramWindow.prototype.drawPipe = function () {

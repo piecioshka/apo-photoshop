@@ -97,7 +97,7 @@
      *
      * @returns {Array}
      */
-    Canvas.prototype.getGrayScalePixels = function () {
+    Canvas.prototype.getRedChannelPixels = function () {
         var pixels = this.getExtendPixels();
         var red = [];
 
@@ -131,6 +131,26 @@
             blue: blue,
             alpha: alpha
         };
+    };
+
+    /**
+     * Returns list with counting pixel color from first channel.
+     *
+     * @returns {Array}
+     */
+    Canvas.prototype.getHistogram = function () {
+        var grayScalePixels = this.getRedChannelPixels();
+        var pixels = [];
+
+        grayScalePixels.forEach(function (color) {
+            pixels[color] = (pixels[color] || 0) + 1;
+        });
+
+        var max = root.Utilities.max.apply(this, pixels);
+
+        return pixels.map(function (item) {
+            return item * this.settings.height / max;
+        }, this);
     };
 
     // Extend `Canvas` module with events.
