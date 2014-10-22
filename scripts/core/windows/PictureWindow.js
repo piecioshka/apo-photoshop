@@ -57,6 +57,8 @@
         this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildImage();
+            // Trigger event after
+            this.emit(PictureWindow.EVENTS.RENDER_IMAGE);
         });
 
         // Render window.
@@ -65,6 +67,10 @@
 
     PictureWindow.prototype.buildImage = function () {
         this.canvas.ctx.drawImage(this.settings.image.image, 0, 0, this.settings.image.width, this.settings.image.height);
+    };
+
+    PictureWindow.EVENTS = {
+        RENDER_IMAGE: 'render-image'
     };
 
     // Exports `PictureWindow`.
