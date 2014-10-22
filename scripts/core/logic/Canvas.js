@@ -87,8 +87,7 @@
      * @returns {CanvasPixelArray}
      */
     Canvas.prototype.getExtendPixels = function () {
-        var image = this.getDataImage();
-        return image.data;
+        return this.getDataImage().data;
     };
 
     /**
@@ -111,12 +110,11 @@
     /**
      * Returns dict with channels RED, GREEN, BLUE, ALPHA.
      *
-     * @returns {{red: Array, green: Array, blue: Array, alpha: Array}}
+     * @returns {Array}
      */
     Canvas.prototype.getColorScalePixels = function () {
-        var pixels = this.getExtendPixels();
-
         var red = [], green = [], blue = [], alpha = [];
+        var pixels = this.getExtendPixels();
 
         for (var i = 0; i < pixels.length; i += 4) {
             red[i / 4]      = pixels[i];
@@ -125,12 +123,7 @@
             alpha[i / 4]    = pixels[i + 3];
         }
 
-        return {
-            red: red,
-            green: green,
-            blue: blue,
-            alpha: alpha
-        };
+        return [red, green, blue, alpha];
     };
 
     /**
@@ -139,18 +132,14 @@
      * @returns {Array}
      */
     Canvas.prototype.getHistogram = function () {
-        var grayScalePixels = this.getRedChannelPixels();
-        var pixels = [];
+        var hist = [];
+        var pixels = this.getRedChannelPixels();
 
-        grayScalePixels.forEach(function (color) {
-            pixels[color] = (pixels[color] || 0) + 1;
+        pixels.forEach(function (color) {
+            hist[color] = (hist[color] || 0) + 1;
         });
 
-        var max = root.Utilities.max.apply(this, pixels);
-
-        return pixels.map(function (item) {
-            return item * this.settings.height / max;
-        }, this);
+        return hist;
     };
 
     /**

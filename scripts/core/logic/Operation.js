@@ -51,8 +51,16 @@
 
         this._copyWorkspace(function (workspace) {
             var can = workspace.canvas;
-            var hist = can.getHistogram();
-            console.log('hist', hist);
+
+            // Maksymalny poziom
+            var l = 255;
+
+            // Stare poziomy
+            var h = can.getHistogram();
+            console.log('h (%d)', h.length, h);
+
+            // Nowe poziomy
+            var r = new Array(h.length);
 
             var average = can.getHistogramAverage();
             console.log('average', average);

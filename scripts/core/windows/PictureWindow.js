@@ -57,7 +57,7 @@
         this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildImage();
-            // Trigger event after
+            // Trigger event after building image.
             this.emit(PictureWindow.EVENTS.RENDER_IMAGE);
         });
 

@@ -60,33 +60,59 @@
 
         // Listen on window render.
         this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
-            // Create something stupid.
+            // Create bar graph histogram.
             this.buildBarGraph();
+            // Trigger event after building histogram.
+            this.emit(HistogramWindow.EVENTS.RENDER_HISTOGRAM);
         });
 
         // Render window.
         this.render();
     };
 
+    HistogramWindow.prototype.normalize = function (pixels) {
+        var max = root.Utilities.max.apply(this, pixels);
+
+        return pixels.map(function (item) {
+            return item * this.settings.height / max;
+        }, this);
+    };
+
     HistogramWindow.prototype.buildBarGraph = function () {
-        this.paintHistogram(this.settings.canvas.getHistogram());
+        var hist = this.settings.canvas.getHistogram();
+        var average = this.settings.canvas.getHistogramAverage();
+
+        var max = root.Utilities.max.apply(this, hist);
+
+        hist = this.normalize(hist);
+
+        this.paintHistogram(hist);
+
+        average = this.normalize([0, average, max])[1];
+
+        this.paintHistogramAverage(average);
     };
 
-    HistogramWindow.prototype.drawPipe = function () {
-        this.canvas.ctx.fillRect.apply(this.canvas.ctx, arguments);
-    };
-
-    HistogramWindow.prototype.paintHistogram = function (items) {
+    HistogramWindow.prototype.paintHistogram = function (normalizeHist) {
         this.canvas.ctx.fillStyle = 'rgb(0, 0, 0)';
 
-        items.forEach(function (size, index) {
+        normalizeHist.forEach(function (size, index) {
             var w = 1;
             var h = size * this.settings.height / 100;
             var x = index * w;
             var y = this.settings.height - h;
 
-            this.drawPipe(x, y, w, h);
+            this.canvas.ctx.fillRect(x, y, w, h);
         }, this);
+    };
+
+    HistogramWindow.prototype.paintHistogramAverage = function (average) {
+        this.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
+        this.canvas.ctx.fillRect(0, this.settings.height - average, this.settings.width, 1);
+    };
+
+    HistogramWindow.EVENTS = {
+        RENDER_HISTOGRAM: 'render-histogram'
     };
 
     // Exports `HistogramWindow`.
