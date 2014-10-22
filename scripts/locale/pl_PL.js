@@ -17,11 +17,15 @@
         'BOX_DUPLICATE': 'Duplikuj',
 
         'OPERATIONS': 'Operacje',
+
         'OPERATIONS_FLATTENING_HISTOGRAM': 'Wyrównywanie histogramu',
         'OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD': 'Metoda średnich',
         'OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD': 'Metoda losowa',
         'OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD': 'Metoda sąsiedztwa',
         'OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD': 'Metoda własna',
+
+        'OPERATIONS_COLORS': 'Kolory',
+        'OPERATIONS_COLORS_GREEN': 'Zielony',
 
         'ABOUT': 'O programie',
         'ABOUT_SAMPLE': '[Przykład]',

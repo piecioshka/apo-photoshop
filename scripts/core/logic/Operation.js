@@ -24,29 +24,34 @@
         imageWindow.updateTitle('* ' + imageWindow.getTitle());
     };
 
-    Operation.prototype.flatteningHistogramMedium = function () {
-        console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+    Operation.prototype.useOnlyGreenColor = function () {
+        console.info('Operacje -> Kolory -> Zielony');
 
         this._copyWorkspace(function (workspace) {
             var can = workspace.canvas;
             var ctx = can.ctx;
 
-            var pixels = ctx.getImageData(0, 0, can.$canvas.width, can.$canvas.height);
+            var pixels = can.getDataImage();
             var pixelsData = pixels.data;
             var len = pixelsData.length;
 
             for (var i = 0; i < len; i++) {
-                // R
-                pixelsData[(i * 4)] = 40;
-                // G
-                // pixelsData[(i * 4) + 1] = 40;
-                // B
-                // pixelsData[(i * 4) + 2] = 40;
-                // A
-                // pixelsData[(i * 4) + 3] = 1;
+                pixelsData[(i * 4)]         = 0;    // R
+                // pixelsData[(i * 4) + 1]  = 40;   // G
+                pixelsData[(i * 4) + 2]     = 0;    // B
+                // pixelsData[(i * 4) + 3]  = 1;    // A
             }
 
             ctx.putImageData(pixels, 0, 0);
+        });
+    };
+
+    Operation.prototype.flatteningHistogramMedium = function () {
+        console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+
+        this._copyWorkspace(function (workspace) {
+            var can = workspace.canvas;
+
         });
     };
 

@@ -73,6 +73,11 @@
             // Operations menu.
             // ----------------
 
+            menu.on(root.Menu.EVENTS.OPERATIONS_COLORS_GREEN, function () {
+                var o = new root.Operation();
+                o.useOnlyGreenColor();
+            });
+
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
                 var o = new root.Operation();
                 o.flatteningHistogramMedium();
@@ -93,10 +98,9 @@
                 o.flatteningHistogramCustom();
             });
 
-            // Operations menu.
-            // ----------------
+            // About menu.
+            // -----------
 
-            // Join modules: Menu & Canvas.
             menu.on(root.Menu.EVENTS.ABOUT_SAMPLE, function () {
                 new SampleWindow();
             });

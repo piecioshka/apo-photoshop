@@ -102,7 +102,14 @@
     Menu.prototype.setupOperationsMenu = function () {
         var self = this;
         var operationsMenu = new this.gui.Menu();
+
+        // Wygładzanie histogramu
+        // ----------------------
+
         var flatteningHistogramOperationsMenu = new this.gui.Menu();
+
+        var histogramOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM'));
+        histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
 
         this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
             self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD);
@@ -120,8 +127,19 @@
             self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD);
         });
 
-        var histogramOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM'));
-        histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
+        // Kolory
+        // -------
+
+        var colorsOperationsMenu = new this.gui.Menu();
+
+        this.addSubMenuItem(colorsOperationsMenu, root.locale.get('OPERATIONS_COLORS_GREEN'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_COLORS_GREEN);
+        });
+
+        var colorsOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_COLORS'));
+        colorsOperationsMenuItem.submenu = colorsOperationsMenu;
+
+        // ----
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('OPERATIONS'),
@@ -159,6 +177,9 @@
         FILE_CLOSE: 'file-close',
         BOX_HISTOGRAM: 'box-histogram',
         BOX_DUPLICATE: 'box-duplicate',
+
+        OPERATIONS_COLORS_GREEN: 'operation-colors-green',
+
         OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
         OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'operation-flattening-histogram-neighbourhood-method',
