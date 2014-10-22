@@ -51,7 +51,11 @@
 
         this._copyWorkspace(function (workspace) {
             var can = workspace.canvas;
+            var hist = can.getHistogram();
+            console.log('hist', hist);
 
+            var average = can.getHistogramAverage();
+            console.log('average', average);
         });
     };
 

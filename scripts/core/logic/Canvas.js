@@ -153,6 +153,20 @@
         }, this);
     };
 
+    /**
+     * Return average value from histogram.
+     *
+     * @returns {number}
+     */
+    Canvas.prototype.getHistogramAverage = function () {
+        var list = this.getHistogram();
+        var count = list.length;
+        var sum = list.reduce(function (res, item) {
+            return res + item;
+        }, 0);
+        return sum / count;
+    };
+
     // Extend `Canvas` module with events.
     _.extend(Canvas.prototype, root.EventEmitter);
 
