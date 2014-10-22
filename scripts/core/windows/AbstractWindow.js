@@ -122,6 +122,10 @@
         }, 0);
     };
 
+    AbstractWindow.prototype.getTitle = function () {
+        return this.$title.innerText;
+    };
+
     AbstractWindow.prototype.render = function () {
         var self = this;
         this.$placeHolder.appendChild(this.$window);

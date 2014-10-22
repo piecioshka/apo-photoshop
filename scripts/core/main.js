@@ -14,6 +14,9 @@
             // Create main `Menu`.
             var menu = root.App.menu = new root.Menu();
 
+            // File menu.
+            // ----------
+
             menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
                 var file = new FileChooser({
                     place: '#app'
@@ -41,6 +44,9 @@
                 }
             });
 
+            // Box menu.
+            // ---------
+
             menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -64,24 +70,34 @@
                 }
             });
 
+            // Operations menu.
+            // ----------------
+
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
-                console.log('Operacje -> Wygładzanie histogram -> Metoda średnich');
+                var o = new root.Operation();
+                o.flatteningHistogramMedium();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD, function () {
-                console.log('Operacje -> Wygładzanie histogram -> Metoda losowa');
+                var o = new root.Operation();
+                o.flatteningHistogramRandom();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD, function () {
-                console.log('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
+                var o = new root.Operation();
+                o.flatteningHistogramNeighbourhood();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD, function () {
-                console.log('Operacje -> Wygładzanie histogram -> Metoda własna');
+                var o = new root.Operation();
+                o.flatteningHistogramCustom();
             });
 
+            // Operations menu.
+            // ----------------
+
             // Join modules: Menu & Canvas.
-            menu.on(root.Menu.EVENTS.SAMPLE, function () {
+            menu.on(root.Menu.EVENTS.ABOUT_SAMPLE, function () {
                 new SampleWindow();
             });
         },

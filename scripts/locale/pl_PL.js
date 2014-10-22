@@ -6,7 +6,7 @@
     locale.pl_PL = {
         'NAME': 'APO: Photoshop',
 
-        'MSG_ERR_UNSUPPORTED': 'Plik nie obsługiwany!',
+        'MSG_ERR_UNSUPPORTED': 'Nieobsługiwany typ pliku!',
 
         'FILE': 'Plik',
         'FILE_OPEN': 'Otwórz',

@@ -134,7 +134,7 @@
         var helpMenu = new this.gui.Menu();
 
         this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_SAMPLE'), function () {
-            self.emit(Menu.EVENTS.SAMPLE);
+            self.emit(Menu.EVENTS.ABOUT_SAMPLE);
         }, 'Ctrl-Shift', 'S');
 
         this.addSeparator(helpMenu);
@@ -155,15 +155,15 @@
     };
 
     Menu.EVENTS = {
-        FILE_OPEN: 'open',
-        FILE_CLOSE: 'close',
-        BOX_HISTOGRAM: 'histogram',
-        BOX_DUPLICATE: 'duplicate',
+        FILE_OPEN: 'file-open',
+        FILE_CLOSE: 'file-close',
+        BOX_HISTOGRAM: 'box-histogram',
+        BOX_DUPLICATE: 'box-duplicate',
         OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
         OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'operation-flattening-histogram-neighbourhood-method',
         OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD: 'operation-flattening-histogram-custom-method',
-        SAMPLE: 'sample'
+        ABOUT_SAMPLE: 'about-sample'
     };
 
     // Extend `Menu` module with events.
