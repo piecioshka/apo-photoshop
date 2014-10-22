@@ -54,16 +54,27 @@
 
             // Maksymalny poziom
             var l = 255;
+            console.log('l', l);
 
             // Stare poziomy
             var h = can.getHistogram();
             console.log('h (%d)', h.length, h);
 
             // Nowe poziomy
-            var r = new Array(h.length);
+            var r = [];
+            _.times(h.length, function (i) {
+                r[i] = 0;
+            });
+            console.log('r', r);
 
-            var average = can.getHistogramAverage();
-            console.log('average', average);
+            // Średnia
+            var havg = can.getHistogramAverage();
+            console.log('havg', havg);
+
+            // Całka histogramu
+            var hint = 0;
+            console.log('hint', hint);
+
         });
     };
 

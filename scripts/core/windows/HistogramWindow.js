@@ -80,16 +80,13 @@
 
     HistogramWindow.prototype.buildBarGraph = function () {
         var hist = this.settings.canvas.getHistogram();
-        var average = this.settings.canvas.getHistogramAverage();
-
         var max = root.Utilities.max.apply(this, hist);
-
         hist = this.normalize(hist);
 
-        this.paintHistogram(hist);
-
+        var average = this.settings.canvas.getHistogramAverage();
         average = this.normalize([0, average, max])[1];
 
+        this.paintHistogram(hist);
         this.paintHistogramAverage(average);
     };
 
