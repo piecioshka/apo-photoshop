@@ -5,7 +5,7 @@
         return this;
     };
 
-    Operation.prototype._copyWorkspace = function (cb) {
+    Operation.prototype._copyWorkspace = function () {
         var activeWindow = root.App.windowManager.getActiveWindow();
 
         // Support only picture window.
@@ -13,69 +13,118 @@
             return;
         }
 
-        var imageWindow = new PictureWindow({
-            image: activeWindow.settings.image
-        });
+        var title = activeWindow.getTitle();
 
-        imageWindow.on(PictureWindow.EVENTS.RENDER_IMAGE, function () {
-            cb(imageWindow);
-        });
+        if (!(/^\* /).test(title)) {
+            activeWindow.updateTitle('* ' + title);
+        }
 
-        imageWindow.updateTitle('* ' + imageWindow.getTitle());
+        return activeWindow;
     };
 
     Operation.prototype.useOnlyGreenColor = function () {
         console.info('Operacje -> Kolory -> Zielony');
 
-        this._copyWorkspace(function (workspace) {
-            var can = workspace.canvas;
-            var ctx = can.ctx;
+        var workspace = this._copyWorkspace();
 
-            var pixels = can.getDataImage();
-            var pixelsData = pixels.data;
-            var len = pixelsData.length;
+        var can = workspace.canvas;
+        var ctx = can.ctx;
 
-            for (var i = 0; i < len; i++) {
-                pixelsData[(i * 4)]         = 0;    // R
-                // pixelsData[(i * 4) + 1]  = 40;   // G
-                pixelsData[(i * 4) + 2]     = 0;    // B
-                // pixelsData[(i * 4) + 3]  = 1;    // A
-            }
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
 
-            ctx.putImageData(pixels, 0, 0);
-        });
+        for (var i = 0; i < len / 4; i++) {
+            pixelsChannelsData[(i * 4)]         = 0;    // R
+            // pixelsChannelsData[(i * 4) + 1]  = 40;   // G
+            pixelsChannelsData[(i * 4) + 2]     = 0;    // B
+            // pixelsChannelsData[(i * 4) + 3]  = 1;    // A
+        }
+
+        ctx.putImageData(pixelsChannels, 0, 0);
     };
 
     Operation.prototype.flatteningHistogramMedium = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
 
-        this._copyWorkspace(function (workspace) {
-            var can = workspace.canvas;
+        var workspace = this._copyWorkspace();
+        var can = workspace.canvas;
+        var ctx = can.ctx;
 
-            // Maksymalny poziom
-            var l = 255;
-            console.log('l', l);
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
 
-            // Stare poziomy
-            var h = can.getHistogram();
-            console.log('h (%d)', h.length, h);
+        // Poziomy szarości
+        var l = 256;
 
-            // Nowe poziomy
-            var r = [];
-            _.times(h.length, function (i) {
-                r[i] = 0;
-            });
-            console.log('r', r);
+        // Tablica histogramu
+        var h = can.getHistogram();
 
-            // Średnia
-            var havg = can.getHistogramAverage();
-            console.log('havg', havg);
+        // Średnia
+        var havg = can.getHistogramAverage();
 
-            // Całka histogramu
-            var hint = 0;
-            console.log('hint', hint);
+        // Całka histogramu
+        var hint = 0;
 
-        });
+        // Nowe poziomy
+        var r = 0;
+
+        var left = [];
+        var right = [];
+        var news = [];
+
+        // 2 pkt. Po wszystkich poziomach szarości
+        for (var z = 0; z < l; ++z) {
+            // Reset value.
+            left[z] = right[z] = news[z] = 0;
+
+            // 3 pkt.
+            left[z] = r;
+            hint += h[z] || 0;
+
+            // 4 pkt.
+            while (hint > havg) {
+                // 5 pkt.
+                hint -= havg;
+                r++;
+            }
+
+            // 6 pkt.
+            right[z] = r;
+
+            // Reguła średnich
+            // news[z] = ((left[z] + right[z]) / 2);
+
+            // Reguła losowa
+            news[z] = right[z] - left[z];
+
+            // Reguła sąsiedztwa
+            // news[z] = null;
+        }
+
+        for (var i = 0; i < len / 4; i++) {
+            var color = 0;
+            var val = pixelsChannelsData[(i * 4)];
+
+            if (left[val] === right[val]) {
+                color = left[val];
+            } else {
+                // Reguła średnich
+                // color = news[val];
+
+                // Reguła losowa
+                color = _.random(0, news[val]) + left[val];
+
+                // Reguła sąsiedztwa
+                // color = ...
+            }
+
+            // Update
+            pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+        }
+
+        ctx.putImageData(pixelsChannels, 0, 0);
     };
 
     Operation.prototype.flatteningHistogramRandom = function () {

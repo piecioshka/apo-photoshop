@@ -86,7 +86,7 @@
      *
      * @returns {CanvasPixelArray}
      */
-    Canvas.prototype.getExtendPixels = function () {
+    Canvas.prototype.getPixelsChannels = function () {
         return this.getDataImage().data;
     };
 
@@ -97,7 +97,7 @@
      * @returns {Array}
      */
     Canvas.prototype.getRedChannelPixels = function () {
-        var pixels = this.getExtendPixels();
+        var pixels = this.getPixelsChannels();
         var red = [];
 
         for (var i = 0; i < pixels.length; i += 4) {
@@ -114,7 +114,7 @@
      */
     Canvas.prototype.getColorScalePixels = function () {
         var red = [], green = [], blue = [], alpha = [];
-        var pixels = this.getExtendPixels();
+        var pixels = this.getPixelsChannels();
 
         for (var i = 0; i < pixels.length; i += 4) {
             red[i / 4]      = pixels[i];
@@ -149,11 +149,7 @@
      */
     Canvas.prototype.getHistogramAverage = function () {
         var list = this.getHistogram();
-        var count = list.length;
-        var sum = list.reduce(function (res, item) {
-            return res + item;
-        }, 0);
-        return sum / count;
+        return Utilities.average.apply(this, list);
     };
 
     // Extend `Canvas` module with events.

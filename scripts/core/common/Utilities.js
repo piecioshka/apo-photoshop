@@ -11,6 +11,14 @@
             return Math.max.apply(Math, args.filter(function (val) {
                 return !isNaN(val);
             }));
+        },
+
+        average: function () {
+            var args = Array.prototype.slice.call(arguments);
+            var sum = args.reduce(function (mem, item) {
+                return mem + (item || 0);
+            }, 0);
+            return sum / args.length;
         }
     };
 
