@@ -132,10 +132,18 @@
      * @returns {Array}
      */
     Canvas.prototype.getHistogram = function () {
-        var hist = [];
+        // Create list of all gray levels.
+        var hist = new Array(256);
+
+        // Set default to 0.
+        hist = hist.map(function () { return 0; });
+
+        // Read all levels from first channel (RED).
         var pixels = this.getRedChannelPixels();
 
+        // Loop for each pixels.
         pixels.forEach(function (color) {
+            // Append histogram list.
             hist[color] = (hist[color] || 0) + 1;
         });
 

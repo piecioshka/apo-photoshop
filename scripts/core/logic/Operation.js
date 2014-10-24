@@ -67,15 +67,12 @@
         // Całka histogramu
         var hint = 0;
 
-        // Nowe poziomy
-        var r = 0;
-
         var left = [];
         var right = [];
         var news = [];
 
         // 2 pkt. Po wszystkich poziomach szarości
-        for (var z = 0; z < l; ++z) {
+        for (var z = 0, r = 0; z < l; ++z) {
             // Reset value.
             left[z] = right[z] = news[z] = 0;
 
@@ -94,10 +91,10 @@
             right[z] = r;
 
             // Reguła średnich
-            // news[z] = ((left[z] + right[z]) / 2);
+            news[z] = ((left[z] + right[z]) / 2);
 
             // Reguła losowa
-            news[z] = right[z] - left[z];
+            // news[z] = right[z] - left[z];
 
             // Reguła sąsiedztwa
             // news[z] = null;
@@ -111,10 +108,10 @@
                 color = left[val];
             } else {
                 // Reguła średnich
-                // color = news[val];
+                color = news[val];
 
                 // Reguła losowa
-                color = _.random(0, news[val]) + left[val];
+                // color = _.random(0, news[val]) + left[val];
 
                 // Reguła sąsiedztwa
                 // color = ...
