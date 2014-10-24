@@ -1,8 +1,6 @@
 (function (root) {
     'use strict';
 
-    var assert = require('assert');
-
     var WindowManager = function () {
         this._windows = [];
     };

@@ -1,6 +1,8 @@
 (function (root) {
     'use strict';
 
+    var assert = require('assert');
+
     var Operation = function () {
         return this;
     };
@@ -27,6 +29,11 @@
 
         var workspace = this._copyWorkspace();
 
+        // When you try do operation for non-picture window.
+        if (!workspace) {
+            return;
+        }
+
         var can = workspace.canvas;
         var ctx = can.ctx;
 
@@ -44,10 +51,16 @@
         ctx.putImageData(pixelsChannels, 0, 0);
     };
 
-    Operation.prototype.flatteningHistogramMedium = function () {
-        console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+    Operation.prototype._flatteningHistogram = function (method) {
+        assert(_.isNumber(method), 'Operation#_flatteningHistogram: `method` is not a number');
 
         var workspace = this._copyWorkspace();
+
+        // When you try do operation for non-picture window.
+        if (!workspace) {
+            return;
+        }
+
         var can = workspace.canvas;
         var ctx = can.ctx;
 
@@ -90,14 +103,27 @@
             // 6 pkt.
             right[z] = r;
 
-            // Reguła średnich
-            news[z] = ((left[z] + right[z]) / 2);
+            switch (method) {
+                case Operation.FLATTENING.MEDIUM:
+                    // Reguła średnich
+                    news[z] = ((left[z] + right[z]) / 2);
+                    break;
 
-            // Reguła losowa
-            // news[z] = right[z] - left[z];
+                case Operation.FLATTENING.RANDOM:
+                    // Reguła losowa
+                    news[z] = right[z] - left[z];
+                    break;
 
-            // Reguła sąsiedztwa
-            // news[z] = null;
+                case Operation.FLATTENING.NEIGHBOURHOOD:
+                    // Reguła sąsiedztwa
+                    news[z] = null;
+                    break;
+
+                case Operation.FLATTENING.CUSTOM:
+                    // Reguła dowolna
+                    news[z] = (left[z] > right[z]) ? left[z] : right[z];
+                    break;
+            }
         }
 
         for (var i = 0; i < len / 4; i++) {
@@ -107,14 +133,25 @@
             if (left[val] === right[val]) {
                 color = left[val];
             } else {
-                // Reguła średnich
-                color = news[val];
+                switch (method) {
+                    case Operation.FLATTENING.MEDIUM:
+                        // Reguła średnich
+                        color = news[val];
+                        break;
 
-                // Reguła losowa
-                // color = _.random(0, news[val]) + left[val];
+                    case Operation.FLATTENING.RANDOM:
+                        // Reguła losowa
+                        color = _.random(0, news[val]) + left[val];
+                        break;
 
-                // Reguła sąsiedztwa
-                // color = ...
+                    case Operation.FLATTENING.NEIGHBOURHOOD:
+                        // Reguła sąsiedztwa
+                        // color = ...
+                        break;
+
+                    case Operation.FLATTENING.CUSTOM:
+                        break;
+                }
             }
 
             // Update
@@ -124,16 +161,31 @@
         ctx.putImageData(pixelsChannels, 0, 0);
     };
 
+    Operation.prototype.flatteningHistogramMedium = function () {
+        console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+        this._flatteningHistogram(Operation.FLATTENING.MEDIUM);
+    };
+
     Operation.prototype.flatteningHistogramRandom = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda losowa');
+        this._flatteningHistogram(Operation.FLATTENING.RANDOM);
     };
 
     Operation.prototype.flatteningHistogramNeighbourhood = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
+        this._flatteningHistogram(Operation.FLATTENING.NEIGHBOURHOOD);
     };
 
     Operation.prototype.flatteningHistogramCustom = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda własna');
+        this._flatteningHistogram(Operation.FLATTENING.CUSTOM);
+    };
+
+    Operation.FLATTENING = {
+        MEDIUM: 1,
+        RANDOM: 2,
+        NEIGHBOURHOOD: 3,
+        CUSTOM: 4
     };
 
     // Exports `Operation`.
