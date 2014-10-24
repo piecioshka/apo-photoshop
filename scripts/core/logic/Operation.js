@@ -1,8 +1,6 @@
 (function (root) {
     'use strict';
 
-    var assert = require('assert');
-
     var Operation = function () {
         return this;
     };
@@ -52,7 +50,7 @@
     };
 
     Operation.prototype._flatteningHistogram = function (method) {
-        assert(_.isNumber(method), 'Operation#_flatteningHistogram: `method` is not a number');
+        console.assert(_.isNumber(method), 'Operation#_flatteningHistogram: `method` is not a number');
 
         var workspace = this._getWorkspace();
 
@@ -121,8 +119,26 @@
         // ------------------------------
 
         var pixelsChannels = can.getDataImage();
+        // Reference to origin canvas.
         var pixelsChannelsData = pixelsChannels.data;
+        // Count a number of pixels multiply 4 channels.
         var len = pixelsChannelsData.length;
+
+        // Copy to array. References was destroyed.
+        var pixelsArray = can.getCopyRedChannelPixels();
+
+        var matrix;
+
+        matrix = CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+        console.log('matrix 1');
+        console.table(matrix);
+
+        var comp = CanvasHelper.complete(matrix, can.settings.width, can.settings.height, -1);
+        console.log('comp', comp);
+
+        matrix = CanvasHelper.toPixelMatrix(comp, can.settings.width + 2);
+        console.log('matrix 2');
+        console.table(matrix);
 
         // 7 pkt.
         for (var i = 0; i < len / 4; i++) {

@@ -96,7 +96,7 @@
      *
      * @returns {Array}
      */
-    Canvas.prototype.getRedChannelPixels = function () {
+    Canvas.prototype.getCopyRedChannelPixels = function () {
         var pixels = this.getPixelsChannels();
         var red = [];
 
@@ -120,7 +120,7 @@
         hist = hist.map(function () { return 0; });
 
         // Read all levels from first channel (RED).
-        var pixels = this.getRedChannelPixels();
+        var pixels = this.getCopyRedChannelPixels();
 
         // Loop for each pixels.
         pixels.forEach(function (color) {
@@ -139,54 +139,6 @@
     Canvas.prototype.getHistogramAverage = function () {
         var list = this.getHistogram();
         return Utilities.average.apply(this, list);
-    };
-
-    /**
-     * Returns two-dimensions array with pixels.
-     *
-     * @param {Array} list Pixels.
-     * @param {number} width Width of matrix.
-     * @returns {Array}
-     */
-    Canvas.prototype.toPixelMatrix = function (list, width) {
-        var matrix = [];
-
-        for (var i = 0; i < list.length; i += width) {
-            var row = list.slice(i, i + width);
-            matrix.push(row);
-        }
-
-        return matrix;
-    };
-
-    /**
-     * Wrap pixels with passed border.
-     *
-     * @param {Array} pixels
-     * @param {number|string} border
-     * @returns {Array}
-     */
-    Canvas.prototype.complement = function (pixels, border) {
-        var complement = [];
-        var w = this.settings.width;
-        var h = this.settings.height;
-        var k = w + 2;
-
-        _.times(k, function () {
-            complement.push(border);
-        });
-
-        for (var i = 0; i < pixels.length; i += w) {
-            complement.push(border);
-            complement.push.apply(complement, pixels.slice(i, i + w));
-            complement.push(border);
-        }
-
-        _.times(k, function () {
-            complement.push(border);
-        });
-
-        return complement;
     };
 
     // Extend `Canvas` module with events.
