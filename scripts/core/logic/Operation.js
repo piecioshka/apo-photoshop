@@ -68,23 +68,16 @@
         var pixelsChannelsData = pixelsChannels.data;
         var len = pixelsChannelsData.length;
 
-        // Poziomy szarości
         var l = 256;
-
-        // Tablica histogramu
         var h = can.getHistogram();
-
-        // Średnia
         var havg = can.getHistogramAverage();
-
-        // Całka histogramu
         var hint = 0;
 
         var left = [];
         var right = [];
         var news = [];
 
-        // 2 pkt. Po wszystkich poziomach szarości
+        // 2 pkt. Convert old level to new levels.
         for (var z = 0, r = 0; z < l; ++z) {
             // Reset value.
             left[z] = right[z] = news[z] = 0;
@@ -126,12 +119,16 @@
             }
         }
 
+        // 7 pkt. Calculate new image.
         for (var i = 0; i < len / 4; i++) {
             var color = 0;
             var val = pixelsChannelsData[(i * 4)];
 
+            // 8 pkt.
             if (left[val] === right[val]) {
                 color = left[val];
+
+            // 9 pkt.
             } else {
                 switch (method) {
                     case Operation.FLATTENING.MEDIUM:
