@@ -7,7 +7,7 @@
         return this;
     };
 
-    Operation.prototype._copyWorkspace = function () {
+    Operation.prototype._getWorkspace = function () {
         var activeWindow = root.App.windowManager.getActiveWindow();
 
         // Support only picture window.
@@ -27,7 +27,7 @@
     Operation.prototype.useOnlyGreenColor = function () {
         console.info('Operacje -> Kolory -> Zielony');
 
-        var workspace = this._copyWorkspace();
+        var workspace = this._getWorkspace();
 
         // When you try do operation for non-picture window.
         if (!workspace) {
@@ -54,7 +54,7 @@
     Operation.prototype._flatteningHistogram = function (method) {
         assert(_.isNumber(method), 'Operation#_flatteningHistogram: `method` is not a number');
 
-        var workspace = this._copyWorkspace();
+        var workspace = this._getWorkspace();
 
         // When you try do operation for non-picture window.
         if (!workspace) {
@@ -64,11 +64,9 @@
         var can = workspace.canvas;
         var ctx = can.ctx;
 
-        var pixelsChannels = can.getDataImage();
-        var pixelsChannelsData = pixelsChannels.data;
-        var len = pixelsChannelsData.length;
+        // Stage 1 - Convert old level to new levels.
+        // ------------------------------------------
 
-        var l = 256;
         var h = can.getHistogram();
         var havg = can.getHistogramAverage();
         var hint = 0;
@@ -77,8 +75,8 @@
         var right = [];
         var news = [];
 
-        // 2 pkt. Convert old level to new levels.
-        for (var z = 0, r = 0; z < l; ++z) {
+        // 2 pkt.
+        for (var z = 0, r = 0; z < h.length; ++z) {
             // Reset value.
             left[z] = right[z] = news[z] = 0;
 
@@ -119,7 +117,14 @@
             }
         }
 
-        // 7 pkt. Calculate new image.
+        // Stage 2 - Calculate new image.
+        // ------------------------------
+
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+
+        // 7 pkt.
         for (var i = 0; i < len / 4; i++) {
             var color = 0;
             var val = pixelsChannelsData[(i * 4)];
@@ -147,14 +152,16 @@
                         break;
 
                     case Operation.FLATTENING.CUSTOM:
+                        // Reguła dowolna
                         break;
                 }
             }
 
-            // Update
+            // Update each channel (RGB) of pixel. Not modify channel alpha.
             pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
         }
 
+        // Update <canvas>
         ctx.putImageData(pixelsChannels, 0, 0);
     };
 
