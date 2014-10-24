@@ -12,7 +12,7 @@
          * @param {number|string} border
          * @returns {Array}
          */
-        complete: function (pixels, width, height, border) {
+        completePixelList: function (pixels, width, height, border) {
             var complement = [];
             var k = width + 2;
 
@@ -29,6 +29,39 @@
             _.times(k, function () {
                 complement.push(border);
             });
+
+            return complement;
+        },
+
+        /**
+         * Wrap pixels with passed border.
+         *
+         * @param {Array} pixels
+         * @param {number|string} border
+         * @returns {Array}
+         */
+        completePixelArray: function (pixels, border) {
+            var complement = [];
+            var k = pixels[0].length + 2;
+            var borderRow = [];
+
+            _.times(k, function () {
+                borderRow.push(border);
+            });
+
+            complement.push(borderRow);
+
+            for (var i = 0; i < pixels.length; i++) {
+                var row = [];
+
+                row.push(border);
+                row.push.apply(row, pixels[i]);
+                row.push(border);
+
+                complement.push(row);
+            }
+
+            complement.push(borderRow);
 
             return complement;
         },

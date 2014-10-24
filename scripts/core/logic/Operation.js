@@ -127,18 +127,13 @@
         // Copy to array. References was destroyed.
         var pixelsArray = can.getCopyRedChannelPixels();
 
-        var matrix;
+        var pixelsMatrix = CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+        console.log('pixelsMatrix');
+        console.table(pixelsMatrix);
 
-        matrix = CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
-        console.log('matrix 1');
-        console.table(matrix);
-
-        var comp = CanvasHelper.complete(matrix, can.settings.width, can.settings.height, -1);
-        console.log('comp', comp);
-
-        matrix = CanvasHelper.toPixelMatrix(comp, can.settings.width + 2);
-        console.log('matrix 2');
-        console.table(matrix);
+        var pixelsWithBorder = CanvasHelper.completePixelArray(pixelsMatrix, -1);
+        console.log('pixelsWithBorder');
+        console.table(pixelsWithBorder);
 
         // 7 pkt.
         for (var i = 0; i < len / 4; i++) {
