@@ -95,22 +95,89 @@
          * @returns {Array}
          */
         getNeighbors: function (pixelsArray, x, y) {
+            var point;
             var neighbors = [];
 
             // Top row.
-            neighbors.push(pixelsArray[x - 1][y - 1]);
-            neighbors.push(pixelsArray[x][y - 1]);
-            neighbors.push(pixelsArray[x + 1][y - 1]);
+            // --------
+
+            if (x > 0 && y > 0) {
+                point = pixelsArray[x - 1][y - 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (y > 0) {
+                point = pixelsArray[x][y - 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (x < pixelsArray[0].length - 1 && y > 0) {
+                point = pixelsArray[x + 1][y - 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
 
             // Same level.
-            neighbors.push(pixelsArray[x - 1][y]);
-            // neighbors.push(array[x][y - 1]);
-            neighbors.push(pixelsArray[x + 1][y]);
+            // -----------
+
+            if (x > 0) {
+                point = pixelsArray[x - 1][y];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (y > 0) {
+                point = pixelsArray[x][y];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (x < pixelsArray[0].length - 1) {
+                point = pixelsArray[x + 1][y];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
 
             // Bottom row.
-            neighbors.push(pixelsArray[x - 1][y + 1]);
-            neighbors.push(pixelsArray[x][y + 1]);
-            neighbors.push(pixelsArray[x + 1][y + 1]);
+            // -----------
+
+            if (x > 0 && y < pixelsArray.length - 1) {
+                point = pixelsArray[x - 1][y + 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (y < pixelsArray.length - 1) {
+                point = pixelsArray[x][y + 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
+
+            if (x < pixelsArray[0].length - 1 && y < pixelsArray.length -1) {
+                point = pixelsArray[x + 1][y + 1];
+
+                if (point !== -1) {
+                    neighbors.push(point);
+                }
+            }
 
             return neighbors;
         }

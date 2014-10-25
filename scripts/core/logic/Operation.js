@@ -128,17 +128,23 @@
         var pixelsArray = can.getCopyRedChannelPixels();
 
         var pixelsMatrix = CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
-        console.log('pixelsMatrix');
-        console.table(pixelsMatrix);
+        // console.log('pixelsMatrix');
+        // console.table(pixelsMatrix);
 
         var pixelsWithBorder = CanvasHelper.completePixelArray(pixelsMatrix, -1);
-        console.log('pixelsWithBorder');
-        console.table(pixelsWithBorder);
+        // console.log('pixelsWithBorder');
+        // console.table(pixelsWithBorder);
 
         // 7 pkt.
         for (var i = 0; i < len / 4; i++) {
+            var index = i * 4;
+            var y = parseInt(i / can.settings.width, 10) + 1;
+            var x = (i % can.settings.width) + 1;
+            var ne = CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
+            var avg = Utilities.average.apply(this, ne);
+            var max = Utilities.max.apply(this, ne);
             var color = 0;
-            var val = pixelsChannelsData[(i * 4)];
+            var val = pixelsChannelsData[index];
 
             // 8 pkt.
             if (left[val] === right[val]) {
@@ -159,11 +165,28 @@
 
                     case Operation.FLATTENING.NEIGHBOURHOOD:
                         // Reguła sąsiedztwa
-                        // color = ...
+
+                        if (avg > right[val]) {
+                            color = right[val];
+                        } else if (avg < left[val]) {
+                            color = left[val];
+                        } else {
+                            color = avg;
+                        }
+
                         break;
 
                     case Operation.FLATTENING.CUSTOM:
                         // Reguła dowolna
+
+                        if (max > right[val]) {
+                            color = right[val];
+                        } else if (max < left[val]) {
+                            color = left[val];
+                        } else {
+                            color = max;
+                        }
+
                         break;
                 }
             }
