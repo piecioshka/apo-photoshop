@@ -51,6 +51,8 @@
                 if (activeWindow instanceof PictureWindow) {
                     // Restore picture.
                     activeWindow.buildImage();
+                    // Restore title
+                    activeWindow.updateTitle(activeWindow.getTitle().replace(/\* /, ''));
                 }
             });
 
