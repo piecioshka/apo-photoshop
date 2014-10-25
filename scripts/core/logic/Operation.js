@@ -111,8 +111,8 @@
         // 7 pkt.
         for (var i = 0; i < len / 4; i++) {
             var index = i * 4;
-            var y = parseInt(i / can.settings.width, 10) + 1;
-            var x = (i % can.settings.width) + 1;
+            var y = Math.floor(i / can.settings.width) + 1;
+            var x = (i % can.settings.height) + 1;
             var ne = CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
             var avg = Utilities.average.apply(this, ne);
             var max = Utilities.max.apply(this, ne);
