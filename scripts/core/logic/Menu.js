@@ -93,6 +93,10 @@
             self.emit(Menu.EVENTS.BOX_DUPLICATE);
         }, 'Ctrl-Shift', 'D');
 
+        this.addSubMenuItem(boxMenu, root.locale.get('BOX_LUT'), function () {
+            self.emit(Menu.EVENTS.BOX_LUT);
+        }, 'Ctrl-Shift', 'T');
+
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('BOX'),
             submenu: boxMenu
@@ -148,8 +152,56 @@
             self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE);
         });
 
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLDING'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLDING_RANGES'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_RANGES);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_CONTRAST_REGULATION);
+        });
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_GAMMA_REGULATION);
+        });
+
         var onePointOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_ONE_POINT'));
         onePointOperationsMenuItem.submenu = onePointOperationsMenu;
+
+        // Sąsiedztwa
+        // ----------
+
+        var neighbourhoodOperationsMenu = new this.gui.Menu();
+
+        this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE);
+        });
+
+        var neighbourhoodOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD'));
+        neighbourhoodOperationsMenuItem.submenu = neighbourhoodOperationsMenu;
 
         // ----
 
@@ -187,8 +239,10 @@
     Menu.EVENTS = {
         FILE_OPEN: 'file-open',
         FILE_CLOSE: 'file-close',
+
         BOX_HISTOGRAM: 'box-histogram',
         BOX_DUPLICATE: 'box-duplicate',
+        BOX_LUT: 'box-lut',
 
         OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
         OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
@@ -198,6 +252,15 @@
         OPERATIONS_COLORS_GREEN: 'operation-colors-green',
 
         OPERATIONS_ONE_POINT_NEGATIVE: 'operation-one-point-negative',
+        OPERATIONS_ONE_POINT_THRESHOLDING: 'operation-one-point-thresholding',
+        OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING: 'operation-one-point-inverse-thresholding',
+        OPERATIONS_ONE_POINT_THRESHOLDING_RANGES: 'operation-one-point-thresholding-ranges',
+        OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES: 'operation-one-point-thresholding-with-gray-scales',
+        OPERATIONS_ONE_POINT_STRETCHING: 'operation-one-point-stretching',
+        OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE: 'operation-one-point-reduction-gray-scale',
+        OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'operation-one-point-brightness-regulation',
+        OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'operation-one-point-contrast-regulation',
+        OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'operation-one-point-gamma-regulation',
 
         ABOUT_SAMPLE: 'about-sample'
     };

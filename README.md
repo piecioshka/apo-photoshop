@@ -44,6 +44,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Metoda sąsiedztwa
         - [x] Dodatkowo wymyślić jeden swój sposób
 - [ ] Ćw. 2
+    - [ ] Tablica LUT
     - Operacje jednopunktowe jednoargumentowe oraz dwu – i wieloargumentowe
         - [x] Operacja odwrotności (negacji)
         - [ ] Operacja progowania (binaryzacji)
@@ -55,7 +56,6 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Regulacja jasnością
         - [ ] Regulacja kontrastem
         - [ ] Regulacja korekcją gamma
-        - [ ] Tablica LUT
     - Operacje sąsiedztwa – operacje wygładzania (liniowe, nieliniowe (logiczne, medianowe))
         - [ ] Wygładzanie obrazu
 - [x] Duplikacja aktywnego okna

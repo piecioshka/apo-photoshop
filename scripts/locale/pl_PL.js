@@ -14,6 +14,7 @@
 
         BOX: 'Okno',
         BOX_HISTOGRAM: 'Histogram',
+        BOX_LUT: 'Tablica LUT',
         BOX_DUPLICATE: 'Duplikuj',
 
         OPERATIONS: 'Operacje',
@@ -26,9 +27,21 @@
 
         OPERATIONS_COLORS: 'Kolory',
         OPERATIONS_COLORS_GREEN: 'Zielony',
-        
+
         OPERATIONS_ONE_POINT: 'Jednopunktowe',
         OPERATIONS_ONE_POINT_NEGATIVE: 'Odwrotności (negacja)',
+        OPERATIONS_ONE_POINT_THRESHOLDING: 'Progowanie',
+        OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING: 'Odwrotne progowanie',
+        OPERATIONS_ONE_POINT_THRESHOLDING_RANGES: 'Progowanie przedziałami',
+        OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES: 'Progowanie z zachowaniem przedziałów szarości',
+        OPERATIONS_ONE_POINT_STRETCHING: 'Rozciąganie',
+        OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE: 'Redukcja poziomów szarości',
+        OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'Regulacja jasnością',
+        OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'Regulacja kontrastem',
+        OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'Regulacja korekcją gamma',
+
+        OPERATIONS_NEIGHBOURHOOD: 'Sąsiedztwa',
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
 
         ABOUT: 'O programie',
         ABOUT_SAMPLE: '[Przykład]',
