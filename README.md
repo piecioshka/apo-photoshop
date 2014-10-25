@@ -61,6 +61,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Duplikacja aktywnego okna
 - [ ] Resize okna
 - [x] Przywróć obrazek do pierwotnego stanu
+- [x] Zamknięcie programu
 
 #### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości
 

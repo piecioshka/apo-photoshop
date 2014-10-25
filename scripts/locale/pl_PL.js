@@ -10,7 +10,8 @@
 
         FILE: 'Plik',
         FILE_OPEN: 'Otwórz',
-        FILE_CLOSE: 'Zamknij',
+        FILE_CLOSE: 'Zamknij otwarte okno',
+        CLOSE: 'Zamknij',
 
         EDIT: 'Edycja',
         EDIT_RESTORE: 'Przywróć',

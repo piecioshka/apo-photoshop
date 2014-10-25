@@ -76,6 +76,10 @@
             self.emit(Menu.EVENTS.FILE_CLOSE);
         }, 'Ctrl', 'W');
 
+        this.addSubMenuItem(fileMenu, root.locale.get('CLOSE'), function () {
+            self.emit(Menu.EVENTS.CLOSE);
+        }, 'Ctrl', 'Q');
+
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('FILE'),
             submenu: fileMenu
@@ -254,6 +258,7 @@
     Menu.EVENTS = {
         FILE_OPEN: 'file-open',
         FILE_CLOSE: 'file-close',
+        CLOSE: 'close',
 
         EDIT_BACK: 'edit-back',
         EDIT_RESTORE: 'edit-restore',

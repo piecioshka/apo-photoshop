@@ -44,6 +44,11 @@
                 }
             });
 
+            menu.on(root.Menu.EVENTS.CLOSE, function () {
+                // Close program.
+                root.close();
+            });
+
             menu.on(root.Menu.EVENTS.EDIT_RESTORE, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
