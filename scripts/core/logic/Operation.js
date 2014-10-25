@@ -220,7 +220,7 @@
     };
 
     Operation.prototype.onePointNegative = function () {
-        console.info('Operacje -> Jednopunktowe -> Odwrotność');
+        console.info('Operacje -> Jednopunktowe -> Odwrotność (negacja)');
 
         var workspace = this._getWorkspace();
 

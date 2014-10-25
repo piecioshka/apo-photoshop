@@ -262,6 +262,9 @@
         OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'operation-one-point-contrast-regulation',
         OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'operation-one-point-gamma-regulation',
 
+        OPERATIONS_NEIGHBOURHOOD: 'operation-neighbourhood',
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'operation-neighbourhood',
+
         ABOUT_SAMPLE: 'about-sample'
     };
 

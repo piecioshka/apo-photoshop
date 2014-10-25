@@ -70,6 +70,15 @@
                 }
             });
 
+            menu.on(root.Menu.EVENTS.BOX_LUT, function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support LUT only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    // TODO(piecioshka): LUT
+                }
+            });
+
             // Operations menu.
             // ================
 
@@ -110,6 +119,49 @@
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE, function () {
                 var o = new root.Operation();
                 o.onePointNegative();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_RANGES, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_CONTRAST_REGULATION, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_GAMMA_REGULATION, function () {
+                var o = new root.Operation();
+            });
+
+            // Neighbourhood.
+            // --------------
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_NEIGHBOURHOOD_SMOOTHING, function () {
+                var o = new root.Operation();
             });
 
             // About menu.
