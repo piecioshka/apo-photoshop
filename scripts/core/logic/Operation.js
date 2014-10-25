@@ -110,12 +110,11 @@
 
         // 7 pkt.
         for (var i = 0; i < len / 4; i++) {
+            var ne, avg, max;
+
             var index = i * 4;
             var y = Math.floor(i / can.settings.width) + 1;
             var x = (i % can.settings.height) + 1;
-            var ne = CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
-            var avg = Utilities.average.apply(this, ne);
-            var max = Utilities.max.apply(this, ne);
             var color = 0;
             var val = pixelsChannelsData[index];
 
@@ -139,6 +138,9 @@
                     case Operation.FLATTENING.NEIGHBOURHOOD:
                         // Reguła sąsiedztwa
 
+                        ne = CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
+                        avg = Utilities.average.apply(this, ne);
+
                         if (avg > right[val]) {
                             color = right[val];
                         } else if (avg < left[val]) {
@@ -151,6 +153,9 @@
 
                     case Operation.FLATTENING.CUSTOM:
                         // Reguła dowolna
+
+                        ne = CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
+                        max = Utilities.max.apply(this, ne);
 
                         if (max > right[val]) {
                             color = right[val];

@@ -47,8 +47,8 @@
             menu.on(root.Menu.EVENTS.EDIT_RESTORE, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
-                // We can close only activate window.
-                if (activeWindow instanceof AbstractWindow) {
+                // We can restore only picture window.
+                if (activeWindow instanceof PictureWindow) {
                     // Restore picture.
                     activeWindow.buildImage();
                 }
