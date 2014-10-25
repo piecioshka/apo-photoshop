@@ -139,6 +139,18 @@
         var colorsOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_COLORS'));
         colorsOperationsMenuItem.submenu = colorsOperationsMenu;
 
+        // Jednopunktowe
+        // -------------
+
+        var onePointOperationsMenu = new this.gui.Menu();
+
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE);
+        });
+
+        var onePointOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_ONE_POINT'));
+        onePointOperationsMenuItem.submenu = onePointOperationsMenu;
+
         // ----
 
         this.windowMenu.append(new this.gui.MenuItem({
@@ -178,12 +190,15 @@
         BOX_HISTOGRAM: 'box-histogram',
         BOX_DUPLICATE: 'box-duplicate',
 
-        OPERATIONS_COLORS_GREEN: 'operation-colors-green',
-
         OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD: 'operation-flattening-histogram-medium-method',
         OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD: 'operation-flattening-histogram-random-method',
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'operation-flattening-histogram-neighbourhood-method',
         OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD: 'operation-flattening-histogram-custom-method',
+
+        OPERATIONS_COLORS_GREEN: 'operation-colors-green',
+
+        OPERATIONS_ONE_POINT_NEGATIVE: 'operation-one-point-negative',
+
         ABOUT_SAMPLE: 'about-sample'
     };
 

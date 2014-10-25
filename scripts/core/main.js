@@ -71,12 +71,10 @@
             });
 
             // Operations menu.
-            // ----------------
+            // ================
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_COLORS_GREEN, function () {
-                var o = new root.Operation();
-                o.useOnlyGreenColor();
-            });
+            // Flattening of histogram.
+            // ------------------------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
                 var o = new root.Operation();
@@ -96,6 +94,22 @@
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD, function () {
                 var o = new root.Operation();
                 o.flatteningHistogramCustom();
+            });
+
+            // Colors.
+            // -------
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_COLORS_GREEN, function () {
+                var o = new root.Operation();
+                o.useOnlyGreenColor();
+            });
+
+            // One point.
+            // ----------
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE, function () {
+                var o = new root.Operation();
+                o.onePointNegative();
             });
 
             // About menu.

@@ -22,33 +22,6 @@
         return activeWindow;
     };
 
-    Operation.prototype.useOnlyGreenColor = function () {
-        console.info('Operacje -> Kolory -> Zielony');
-
-        var workspace = this._getWorkspace();
-
-        // When you try do operation for non-picture window.
-        if (!workspace) {
-            return;
-        }
-
-        var can = workspace.canvas;
-        var ctx = can.ctx;
-
-        var pixelsChannels = can.getDataImage();
-        var pixelsChannelsData = pixelsChannels.data;
-        var len = pixelsChannelsData.length;
-
-        for (var i = 0; i < len / 4; i++) {
-            pixelsChannelsData[(i * 4)]         = 0;    // R
-            // pixelsChannelsData[(i * 4) + 1]  = 40;   // G
-            pixelsChannelsData[(i * 4) + 2]     = 0;    // B
-            // pixelsChannelsData[(i * 4) + 3]  = 1;    // A
-        }
-
-        ctx.putImageData(pixelsChannels, 0, 0);
-    };
-
     Operation.prototype._flatteningHistogram = function (method) {
         console.assert(_.isNumber(method), 'Operation#_flatteningHistogram: `method` is not a number');
 
@@ -217,6 +190,60 @@
     Operation.prototype.flatteningHistogramCustom = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda własna');
         this._flatteningHistogram(Operation.FLATTENING.CUSTOM);
+    };
+
+    Operation.prototype.useOnlyGreenColor = function () {
+        console.info('Operacje -> Kolory -> Zielony');
+
+        var workspace = this._getWorkspace();
+
+        // When you try do operation for non-picture window.
+        if (!workspace) {
+            return;
+        }
+
+        var can = workspace.canvas;
+        var ctx = can.ctx;
+
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+
+        for (var i = 0; i < len / 4; i++) {
+            pixelsChannelsData[(i * 4)]         = 0;    // R
+            // pixelsChannelsData[(i * 4) + 1]  = 40;   // G
+            pixelsChannelsData[(i * 4) + 2]     = 0;    // B
+            // pixelsChannelsData[(i * 4) + 3]  = 1;    // A
+        }
+
+        ctx.putImageData(pixelsChannels, 0, 0);
+    };
+
+    Operation.prototype.onePointNegative = function () {
+        console.info('Operacje -> Jednopunktowe -> Odwrotność');
+
+        var workspace = this._getWorkspace();
+
+        // When you try do operation for non-picture window.
+        if (!workspace) {
+            return;
+        }
+
+        var can = workspace.canvas;
+        var ctx = can.ctx;
+
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+
+        for (var i = 0; i < len / 4; i++) {
+            var color = 255 - pixelsChannelsData[(i * 4)];
+
+            // Update each channel (RGB) of pixel. Not modify channel alpha.
+            pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+        }
+
+        ctx.putImageData(pixelsChannels, 0, 0);
     };
 
     Operation.FLATTENING = {

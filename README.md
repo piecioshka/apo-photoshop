@@ -37,15 +37,15 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Słowniki tłumaczeń
 - [x] Drag & drop na oknach
 - [x] Wyświetlanie histogramu
-- [ ] Ćw. 1
+- [x] Ćw. 1
     - Implementacja 3 sposobów wyrównywania histogramu
         - [x] Metoda średnich
         - [x] Metoda losowa
-        - [ ] Metoda sąsiedztwa
-        - [ ] Dodatkowo wymyślić jeden swój sposób
+        - [x] Metoda sąsiedztwa
+        - [x] Dodatkowo wymyślić jeden swój sposób
 - [ ] Ćw. 2
     - Operacje jednopunktowe jednoargumentowe oraz dwu – i wieloargumentowe
-        - [ ] Operacja odwrotności (negacji)
+        - [x] Operacja odwrotności (negacji)
         - [ ] Operacja progowania (binaryzacji)
         - [ ] Odwrotna operacja progowania (binaryzacji)
         - [ ] Operacje progowania przedziałami (binaryzacji).
