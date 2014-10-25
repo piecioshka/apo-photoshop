@@ -26,10 +26,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 ##### Inne pomocne narzędzia
 
-- JSHint - http://www.jshint.com/docs/options/
 - Gulp - http://gulpjs.com/
 - Underscore.js - http://underscorejs.org/
 - MoveMaster.js - https://github.com/piecioshka/MoveMaster.js
+- JSHint - http://www.jshint.com/docs/options/
 
 ## Lista zadań
 
@@ -47,7 +47,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [ ] Tablica LUT
     - Operacje jednopunktowe jednoargumentowe oraz dwu – i wieloargumentowe
         - [x] Operacja odwrotności (negacji)
-        - [ ] Operacja progowania (binaryzacji)
+        - [x] Operacja progowania (binaryzacji)
         - [ ] Odwrotna operacja progowania (binaryzacji)
         - [ ] Operacje progowania przedziałami (binaryzacji).
         - [ ] Operacje progowania z zachowaniem poziomów szarości

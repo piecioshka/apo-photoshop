@@ -246,6 +246,44 @@
         ctx.putImageData(pixelsChannels, 0, 0);
     };
 
+    Operation.prototype.onePointThresholding = function () {
+        console.info('Operacje -> Jednopunktowe -> Progowanie');
+
+        var workspace = this._getWorkspace();
+
+        // When you try do operation for non-picture window.
+        if (!workspace) {
+            return;
+        }
+
+        var can = workspace.canvas;
+        var ctx = can.ctx;
+
+        var pixelsChannels = can.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+        var hold = prompt('Podaj próg');
+
+        // Ignore when user not put anything
+        if (!hold) { return; }
+
+        // Cast to integer.
+        hold = parseInt(hold, 10);
+
+        for (var i = 0; i < len / 4; i++) {
+            var color = pixelsChannelsData[(i * 4)];
+
+            if (color > hold) {
+                color = hold;
+            }
+
+            // Update each channel (RGB) of pixel. Not modify channel alpha.
+            pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+        }
+
+        ctx.putImageData(pixelsChannels, 0, 0);
+    };
+
     Operation.FLATTENING = {
         MEDIUM: 1,
         RANDOM: 2,

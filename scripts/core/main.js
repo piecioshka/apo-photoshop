@@ -123,6 +123,7 @@
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING, function () {
                 var o = new root.Operation();
+                o.onePointThresholding();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING, function () {
