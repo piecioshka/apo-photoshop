@@ -27,6 +27,7 @@
         this.gui.Window.get().menu = this.windowMenu;
 
         this.setupFileMenu();
+        this.setupEditMenu();
         this.setupBoxMenu();
         this.setupOperationsMenu();
         this.setupHelpMenu();
@@ -77,6 +78,20 @@
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('FILE'),
+            submenu: fileMenu
+        }));
+    };
+
+    Menu.prototype.setupEditMenu = function () {
+        var self = this;
+        var fileMenu = new this.gui.Menu();
+
+        this.addSubMenuItem(fileMenu, root.locale.get('EDIT_RESTORE'), function () {
+            self.emit(Menu.EVENTS.EDIT_RESTORE);
+        }, 'Ctrl', 'Z');
+
+        this.windowMenu.append(new this.gui.MenuItem({
+            label: root.locale.get('EDIT'),
             submenu: fileMenu
         }));
     };
@@ -239,6 +254,9 @@
     Menu.EVENTS = {
         FILE_OPEN: 'file-open',
         FILE_CLOSE: 'file-close',
+
+        EDIT_BACK: 'edit-back',
+        EDIT_RESTORE: 'edit-restore',
 
         BOX_HISTOGRAM: 'box-histogram',
         BOX_DUPLICATE: 'box-duplicate',

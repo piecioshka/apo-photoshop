@@ -109,7 +109,7 @@
                 }
             }
 
-            if (y > 0) {
+            if (x < pixelsArray.length && y > 0) {
                 point = pixelsArray[x][y - 1];
 
                 if (point !== -1) {
@@ -117,7 +117,7 @@
                 }
             }
 
-            if (x < pixelsArray[0].length - 1 && y > 0) {
+            if (x < pixelsArray.length - 1 && y > 0) {
                 point = pixelsArray[x + 1][y - 1];
 
                 if (point !== -1) {
@@ -128,7 +128,7 @@
             // Same level.
             // -----------
 
-            if (x > 0) {
+            if (x > 0 && y < pixelsArray[0].length) {
                 point = pixelsArray[x - 1][y];
 
                 if (point !== -1) {
@@ -136,7 +136,7 @@
                 }
             }
 
-            if (y > 0) {
+            if (x < pixelsArray.length && y > 0) {
                 point = pixelsArray[x][y];
 
                 if (point !== -1) {
@@ -144,7 +144,7 @@
                 }
             }
 
-            if (x < pixelsArray[0].length - 1) {
+            if (x < pixelsArray.length - 1 && y < pixelsArray[0].length) {
                 point = pixelsArray[x + 1][y];
 
                 if (point !== -1) {
@@ -155,7 +155,7 @@
             // Bottom row.
             // -----------
 
-            if (x > 0 && y < pixelsArray.length - 1) {
+            if (x > 0 && y < pixelsArray[0].length - 1) {
                 point = pixelsArray[x - 1][y + 1];
 
                 if (point !== -1) {
@@ -163,7 +163,7 @@
                 }
             }
 
-            if (y < pixelsArray.length - 1) {
+            if (x < pixelsArray.length && y < pixelsArray[0].length - 1) {
                 point = pixelsArray[x][y + 1];
 
                 if (point !== -1) {
@@ -171,7 +171,7 @@
                 }
             }
 
-            if (x < pixelsArray[0].length - 1 && y < pixelsArray.length -1) {
+            if (x < pixelsArray.length - 1 && y < pixelsArray[0].length -1) {
                 point = pixelsArray[x + 1][y + 1];
 
                 if (point !== -1) {

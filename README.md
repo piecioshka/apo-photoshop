@@ -60,6 +60,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Wygładzanie obrazu
 - [x] Duplikacja aktywnego okna
 - [ ] Resize okna
+- [x] Przywróć obrazek do pierwotnego stanu
 
 #### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości
 

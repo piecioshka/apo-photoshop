@@ -12,6 +12,9 @@
         FILE_OPEN: 'Otwórz',
         FILE_CLOSE: 'Zamknij',
 
+        EDIT: 'Edycja',
+        EDIT_RESTORE: 'Przywróć',
+
         BOX: 'Okno',
         BOX_HISTOGRAM: 'Histogram',
         BOX_LUT: 'Tablica LUT',

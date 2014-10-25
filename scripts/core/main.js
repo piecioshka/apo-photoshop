@@ -44,6 +44,16 @@
                 }
             });
 
+            menu.on(root.Menu.EVENTS.EDIT_RESTORE, function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // We can close only activate window.
+                if (activeWindow instanceof AbstractWindow) {
+                    // Restore picture.
+                    activeWindow.buildImage();
+                }
+            });
+
             // Box menu.
             // ---------
 
