@@ -179,22 +179,34 @@
 
     Operation.prototype.flatteningHistogramMedium = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+
+        console.time('Flattening Histogram: Medium');
         this._flatteningHistogram(Operation.FLATTENING.MEDIUM);
+        console.timeEnd('Flattening Histogram: Medium');
     };
 
     Operation.prototype.flatteningHistogramRandom = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda losowa');
+
+        console.time('Flattening Histogram: Random');
         this._flatteningHistogram(Operation.FLATTENING.RANDOM);
+        console.timeEnd('Flattening Histogram: Random');
     };
 
     Operation.prototype.flatteningHistogramNeighbourhood = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
+
+        console.time('Flattening Histogram: Neighbourhood');
         this._flatteningHistogram(Operation.FLATTENING.NEIGHBOURHOOD);
+        console.timeEnd('Flattening Histogram: Neighbourhood');
     };
 
     Operation.prototype.flatteningHistogramCustom = function () {
         console.info('Operacje -> Wygładzanie histogram -> Metoda własna');
+
+        console.time('Flattening Histogram: Custom');
         this._flatteningHistogram(Operation.FLATTENING.CUSTOM);
+        console.timeEnd('Flattening Histogram: Custom');
     };
 
     Operation.prototype.useOnlyGreenColor = function () {
@@ -234,6 +246,8 @@
             return;
         }
 
+        console.time('One point: Negative');
+
         var can = workspace.canvas;
         var ctx = can.ctx;
 
@@ -249,9 +263,11 @@
         }
 
         ctx.putImageData(pixelsChannels, 0, 0);
+
+        console.timeEnd('One point: Negative');
     };
 
-    Operation.prototype.onePointThresholding = function () {
+    Operation.prototype.onePointThreshold = function () {
         console.info('Operacje -> Jednopunktowe -> Progowanie');
 
         var workspace = this._getWorkspace();
@@ -260,6 +276,8 @@
         if (!workspace) {
             return;
         }
+
+        console.time('One point: Threshold');
 
         var can = workspace.canvas;
         var ctx = can.ctx;
@@ -287,6 +305,8 @@
         }
 
         ctx.putImageData(pixelsChannels, 0, 0);
+
+        console.timeEnd('One point: Threshold');
     };
 
     Operation.FLATTENING = {

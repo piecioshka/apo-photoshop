@@ -138,20 +138,20 @@
                 o.onePointNegative();
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING, function () {
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD, function () {
                 var o = new root.Operation();
-                o.onePointThresholding();
+                o.onePointThreshold();
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLDING, function () {
-                var o = new root.Operation();
-            });
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_RANGES, function () {
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLD, function () {
                 var o = new root.Operation();
             });
 
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLDING_WITH_GRAY_SCALES, function () {
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_RANGES, function () {
+                var o = new root.Operation();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES, function () {
                 var o = new root.Operation();
             });
 
