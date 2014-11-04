@@ -33,7 +33,6 @@
     };
 
     HistogramWindow.prototype = new AbstractWindow();
-    HistogramWindow.prototype.constructor = HistogramWindow;
 
     HistogramWindow.prototype.initialize = function () {
         this.$window.classList.add('histogram-window');

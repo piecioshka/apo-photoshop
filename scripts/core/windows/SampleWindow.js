@@ -29,7 +29,6 @@
     };
 
     SampleWindow.prototype = new AbstractWindow();
-    SampleWindow.prototype.constructor = SampleWindow;
 
     SampleWindow.prototype.initialize = function () {
         this.$window.classList.add('sample-window');

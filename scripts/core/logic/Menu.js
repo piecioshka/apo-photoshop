@@ -243,8 +243,8 @@
         this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
             var lines = [];
             lines.push(root.locale.get('ABOUT_AUTHORS') + ':\n-------\n');
-            lines.push('Piotr Kowalski <piecioshka@gmail.com> @piecioshka');
-            lines.push('Krzysztof Snopkiewicz <k.snopkiewicz@me.com> @ikris77');
+            lines.push('Piotr Kowalski - piecioshka@gmail.com');
+            lines.push('Krzysztof Snopkiewicz - k.snopkiewicz@me.com');
 
             root.alert(lines.join('\n\n'));
         });

@@ -18,7 +18,7 @@
             // ----------
 
             menu.on(root.Menu.EVENTS.FILE_OPEN, function () {
-                var file = new FileChooser({
+                var file = new root.FileChooser({
                     place: '#app'
                 });
 

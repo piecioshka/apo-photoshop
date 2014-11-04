@@ -30,7 +30,6 @@
     };
 
     PictureWindow.prototype = new AbstractWindow();
-    PictureWindow.prototype.constructor = PictureWindow;
 
     PictureWindow.prototype.initialize = function () {
         this.$window.classList.add('picture-window');
