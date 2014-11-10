@@ -3,6 +3,10 @@
     "main": "index.html",
     "private": true,
 
+    "scripts": {
+        "start": "nodewebkit"
+    },
+
     "window": {
         "title": "APO: Photoshop",
         "width": 1024,
@@ -15,6 +19,7 @@
         "jshint-stylish": "latest",
         "gulp-help": "latest",
         "gulp-shell": "latest",
-        "cjson": "latest"
+        "cjson": "latest",
+        "nodewebkit": "latest"
     }
 }
