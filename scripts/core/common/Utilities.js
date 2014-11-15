@@ -1,3 +1,5 @@
+/*global process */
+
 (function (root) {
     'use strict';
 

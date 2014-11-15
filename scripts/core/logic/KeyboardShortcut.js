@@ -1,3 +1,5 @@
+/*global WeakMap */
+
 (function (root) {
     'use strict';
 

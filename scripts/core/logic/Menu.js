@@ -1,3 +1,5 @@
+/*global require */
+
 (function (root) {
     'use strict';
 
@@ -275,10 +277,10 @@
         OPERATIONS_COLORS_GREEN: 'operation-colors-green',
 
         OPERATIONS_ONE_POINT_NEGATIVE: 'operation-one-point-negative',
-        OPERATIONS_ONE_POINT_THRESHOLD: 'operation-one-point-thresholding',
-        OPERATIONS_ONE_POINT_INVERSE_THRESHOLD: 'operation-one-point-inverse-thresholding',
-        OPERATIONS_ONE_POINT_THRESHOLD_RANGES: 'operation-one-point-thresholding-ranges',
-        OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES: 'operation-one-point-thresholding-with-gray-scales',
+        OPERATIONS_ONE_POINT_THRESHOLD: 'operation-one-point-threshold',
+        OPERATIONS_ONE_POINT_INVERSE_THRESHOLD: 'operation-one-point-inverse-threshold',
+        OPERATIONS_ONE_POINT_THRESHOLD_RANGES: 'operation-one-point-threshold-ranges',
+        OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES: 'operation-one-point-threshold-with-gray-scales',
         OPERATIONS_ONE_POINT_STRETCHING: 'operation-one-point-stretching',
         OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE: 'operation-one-point-reduction-gray-scale',
         OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'operation-one-point-brightness-regulation',
