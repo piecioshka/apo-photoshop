@@ -78,12 +78,14 @@
     HistogramWindow.prototype.buildBarGraph = function () {
         var hist = this.settings.canvas.getHistogram();
         var max = root.Utilities.max.apply(this, hist);
-        hist = this.normalize(hist);
 
+        // Draw bars in histogram.
+        hist = this.normalize(hist);
+        this.paintHistogram(hist);
+
+        // Draw horizontal line as average of histogram.
         var average = this.settings.canvas.getHistogramAverage();
         average = this.normalize([0, average, max])[1];
-
-        this.paintHistogram(hist);
         this.paintHistogramAverage(average);
     };
 
@@ -101,8 +103,9 @@
     };
 
     HistogramWindow.prototype.paintHistogramAverage = function (average) {
+        var level = this.settings.height - average;
         this.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
-        this.canvas.ctx.fillRect(0, this.settings.height - average, this.settings.width, 1);
+        this.canvas.ctx.fillRect(0, level, this.settings.width, 1);
     };
 
     HistogramWindow.EVENTS = {

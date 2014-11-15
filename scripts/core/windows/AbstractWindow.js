@@ -110,7 +110,7 @@
         this.$title.innerText = name;
         this.$title.classList.add('sky-hide');
 
-        // As quickly as render engine could.
+        // As quickly as engine can render.
         root.setTimeout(function () {
             var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth - BUTTONS_MARGIN;
 

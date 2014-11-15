@@ -10,17 +10,31 @@
 
         max: function () {
             var args = Array.prototype.slice.call(arguments);
-            return Math.max.apply(Math, args.filter(function (val) {
-                return !isNaN(val);
-            }));
+
+            // Remove non-numbers elements, ex. all `undefined` values.
+            var numbers = args.filter(function (item) {
+                return !isNaN(item);
+            });
+
+            // Get maximum of numbers list.
+            return Math.max.apply(Math, numbers);
         },
 
         average: function () {
             var args = Array.prototype.slice.call(arguments);
-            var sum = args.reduce(function (mem, item) {
+
+            // Remove non-numbers elements, ex. all `undefined` values.
+            var numbers = args.filter(function (item) {
+                return !isNaN(item);
+            });
+
+            // Calculate summary of all numbers.
+            var sum = numbers.reduce(function (mem, item) {
                 return mem + (item || 0);
             }, 0);
-            return sum / args.length;
+
+            // Calculate arithmetic average: sum of all elements by their count.
+            return sum / numbers.length;
         }
     };
 

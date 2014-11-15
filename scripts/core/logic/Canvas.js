@@ -137,8 +137,7 @@
      * @returns {number}
      */
     Canvas.prototype.getHistogramAverage = function () {
-        var list = this.getHistogram();
-        return Utilities.average.apply(this, list);
+        return Utilities.average.apply(this, this.getHistogram());
     };
 
     // Extend `Canvas` module with events.
