@@ -1,6 +1,6 @@
 {
     "name": "apo-photoshop",
-    "main": "index.html",
+    "main": "app/index.html",
     "private": true,
 
     "scripts": {
