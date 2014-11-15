@@ -122,14 +122,6 @@
                 o.flatteningHistogramCustom();
             });
 
-            // Colors.
-            // -------
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_COLORS_GREEN, function () {
-                var o = new root.Operation();
-                o.useOnlyGreenColor();
-            });
-
             // One point.
             // ----------
 
@@ -180,13 +172,6 @@
 
             menu.on(root.Menu.EVENTS.OPERATIONS_NEIGHBOURHOOD_SMOOTHING, function () {
                 var o = new root.Operation();
-            });
-
-            // About menu.
-            // -----------
-
-            menu.on(root.Menu.EVENTS.ABOUT_SAMPLE, function () {
-                new SampleWindow();
             });
         },
 

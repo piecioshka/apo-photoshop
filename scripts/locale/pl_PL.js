@@ -29,9 +29,6 @@
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'Metoda sąsiedztwa',
         OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD: 'Metoda własna',
 
-        OPERATIONS_COLORS: 'Kolory',
-        OPERATIONS_COLORS_GREEN: 'Zielony',
-
         OPERATIONS_ONE_POINT: 'Jednopunktowe',
         OPERATIONS_ONE_POINT_NEGATIVE: 'Odwrotności (negacja)',
         OPERATIONS_ONE_POINT_THRESHOLD: 'Progowanie',
@@ -48,7 +45,6 @@
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
 
         ABOUT: 'O programie',
-        ABOUT_SAMPLE: '[Przykład]',
         ABOUT_AUTHORS: 'Autorzy'
     };
 

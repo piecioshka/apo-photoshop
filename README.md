@@ -38,26 +38,49 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Drag & drop na oknach
 - [x] Wyświetlanie histogramu
 - [x] Ćw. 1
-    - Implementacja 3 sposobów wyrównywania histogramu
+    - Zadanie 1
         - [x] Metoda średnich
         - [x] Metoda losowa
         - [x] Metoda sąsiedztwa
         - [x] Dodatkowo wymyślić jeden swój sposób
 - [ ] Ćw. 2
-    - [ ] Tablica LUT
-    - Operacje jednopunktowe jednoargumentowe oraz dwu – i wieloargumentowe
+    - Zadanie 1
         - [x] Operacja odwrotności (negacji)
         - [x] Operacja progowania (binaryzacji)
-        - [ ] Odwrotna operacja progowania (binaryzacji)
-        - [ ] Operacje progowania przedziałami (binaryzacji).
-        - [ ] Operacje progowania z zachowaniem poziomów szarości
-        - [ ] Operacja rozciągania
         - [ ] Operacja redukcji poziomów szarości
-        - [ ] Regulacja jasnością
+        - [ ] Operacja rozciągania
         - [ ] Regulacja kontrastem
+        - [ ] Regulacja jasnością
         - [ ] Regulacja korekcją gamma
-    - Operacje sąsiedztwa – operacje wygładzania (liniowe, nieliniowe (logiczne, medianowe))
-        - [ ] Wygładzanie obrazu
+    - Zadanie 2
+        - [ ] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
+        - [ ] Tablica LUT
+    - Zadanie 3
+        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB,...) i logiczne (OR, AND, XOR,...) ).
+- [ ] Ćw. 3
+    - Zadanie 1
+        - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania, wyostrzania liniowego oparte na 4 maskach laplasjanowych, detekcji krawędzi oparte na 3 maskach detekcji krawędzi.
+        - [ ] Uniwersalna operacja liniowa (wygładzanie i wyostrzanie oparte na masce 3x3 o wartościach zadawanych w sposób interakcyjny).
+        *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania (w przypadku operacji wyostrzania)*
+    - Zadanie 2
+        - [ ] Uniwersalna operacja medianowa (otoczenie 3x3, 3x5, 5x5, 7x7 itd.).
+        *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu.*
+    - Zadanie 3
+        - [ ] Uniwersalna operacja logiczna wygładzania (kierunek 0, 1, 2, 3 ).
+        *Uwaga: zastosować opcjonalnie wybrane metody operacji na skrajnych wierszach i kolumnach obrazu.*
+    - Zadanie 4
+        - [ ] Operacje wyostrzania gradientowego (2 maski uniwersalne, 2 maski Robertsa, 2 maski Sobela).
+        *Uwaga: zastosować opcjonalnie wybrane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania*
+- [ ] Ćw. 4
+    - Zadanie 1
+        - [ ] Operacja liniowa sąsiedztwa oparta na masce 5x5 utworzonej na podstawie dwóch masek 3x3 użytych w dwuetapowej (1-szy etap – wygładzanie, 2-gi etap – wyostrzanie) operacji filtracji. Opracowaną aplikację przetestować na wybranych obrazach i porównać wyniki otrzymane przy użyciu maski 5x5 z wynikami uzyskanymi przy użyciu kolejno dwóch masek 3x3. Uwaga: zastosować opcjonalnie 5 znanych z wykładu metod operacji na skrajnych wierszach i kolumnach obrazu oraz 3 znane metody skalowania (proporcjonalna, trójwartościowa, obcinająca).
+    - Zadanie 2
+        - [ ] Korzystając z podanego na wykładzie algorytmu ścieniania zrealizować program przekształcający utworzony obiekt, np. literę (lub 2 litery – np. inicjały wykonawcy) w szkielet (szkielety).
+    - Zadanie 3
+        - [ ] Operacje erozji, dylatacji, otwarcia, zamknięcia dla dwóch przypadków elementu strukturalnego:
+            - [ ] a) romb (czterosąsiedztwo)
+            - [ ] b) kwadrat (ośmiosąsiedztwo)
+
 - [x] Duplikacja aktywnego okna
 - [ ] Resize okna
 - [x] Przywróć obrazek do pierwotnego stanu

@@ -152,18 +152,6 @@
             self.emit(Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD);
         });
 
-        // Kolory
-        // -------
-
-        var colorsOperationsMenu = new this.gui.Menu();
-
-        this.addSubMenuItem(colorsOperationsMenu, root.locale.get('OPERATIONS_COLORS_GREEN'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_COLORS_GREEN);
-        });
-
-        var colorsOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_COLORS'));
-        colorsOperationsMenuItem.submenu = colorsOperationsMenu;
-
         // Jednopunktowe
         // -------------
 
@@ -233,17 +221,13 @@
     };
 
     Menu.prototype.setupHelpMenu = function () {
-        var self = this;
         var helpMenu = new this.gui.Menu();
-
-        this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_SAMPLE'), function () {
-            self.emit(Menu.EVENTS.ABOUT_SAMPLE);
-        }, 'Ctrl-Shift', 'S');
 
         this.addSeparator(helpMenu);
 
         this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
             var lines = [];
+
             lines.push(root.locale.get('ABOUT_AUTHORS') + ':\n-------\n');
             lines.push('Piotr Kowalski - piecioshka@gmail.com');
             lines.push('Krzysztof Snopkiewicz - k.snopkiewicz@me.com');
@@ -288,9 +272,7 @@
         OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'operation-one-point-gamma-regulation',
 
         OPERATIONS_NEIGHBOURHOOD: 'operation-neighbourhood',
-        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'operation-neighbourhood',
-
-        ABOUT_SAMPLE: 'about-sample'
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'operation-neighbourhood'
     };
 
     // Extend `Menu` module with events.
