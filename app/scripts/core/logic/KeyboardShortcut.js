@@ -6,6 +6,7 @@
     var shortcuts = new WeakMap();
 
     var KeyboardShortcut = {
+
         handler: function (evt) {
             var shortcut = [];
 
@@ -41,6 +42,7 @@
             });
             shortcuts[elements] = callback;
         }
+
     };
 
     // Export `KeyboardShortcut`.

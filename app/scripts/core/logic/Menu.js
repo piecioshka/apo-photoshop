@@ -165,24 +165,12 @@
             self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD);
         });
 
-        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_INVERSE_THRESHOLD'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLD);
-        });
-
-        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD_RANGES'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_RANGES);
-        });
-
-        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES);
+        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
+            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE);
         });
 
         this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
             self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING);
-        });
-
-        this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
-            self.emit(Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE);
         });
 
         this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
@@ -262,11 +250,8 @@
 
         OPERATIONS_ONE_POINT_NEGATIVE: 'operation-one-point-negative',
         OPERATIONS_ONE_POINT_THRESHOLD: 'operation-one-point-threshold',
-        OPERATIONS_ONE_POINT_INVERSE_THRESHOLD: 'operation-one-point-inverse-threshold',
-        OPERATIONS_ONE_POINT_THRESHOLD_RANGES: 'operation-one-point-threshold-ranges',
-        OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES: 'operation-one-point-threshold-with-gray-scales',
-        OPERATIONS_ONE_POINT_STRETCHING: 'operation-one-point-stretching',
         OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE: 'operation-one-point-reduction-gray-scale',
+        OPERATIONS_ONE_POINT_STRETCHING: 'operation-one-point-stretching',
         OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'operation-one-point-brightness-regulation',
         OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'operation-one-point-contrast-regulation',
         OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'operation-one-point-gamma-regulation',

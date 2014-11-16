@@ -103,75 +103,57 @@
             // ------------------------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
-                var o = new root.Operation();
-                o.flatteningHistogramMedium();
+                root.OperationFlatteningHistogram.flatteningHistogramMedium();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD, function () {
-                var o = new root.Operation();
-                o.flatteningHistogramRandom();
+                root.OperationFlatteningHistogram.flatteningHistogramRandom();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD, function () {
-                var o = new root.Operation();
-                o.flatteningHistogramNeighbourhood();
+                root.OperationFlatteningHistogram.flatteningHistogramNeighbourhood();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD, function () {
-                var o = new root.Operation();
-                o.flatteningHistogramCustom();
+                root.OperationFlatteningHistogram.flatteningHistogramCustom();
             });
 
             // One point.
             // ----------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE, function () {
-                var o = new root.Operation();
-                o.onePointNegative();
+                root.OperationOnePoint.onePointNegative();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD, function () {
-                var o = new root.Operation();
-                o.onePointThreshold();
-            });
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_INVERSE_THRESHOLD, function () {
-                var o = new root.Operation();
-            });
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_RANGES, function () {
-                var o = new root.Operation();
-            });
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD_WITH_GRAY_SCALES, function () {
-                var o = new root.Operation();
-            });
-
-            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING, function () {
-                var o = new root.Operation();
+                root.OperationOnePoint.onePointThreshold();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE, function () {
-                var o = new root.Operation();
+                root.OperationOnePoint.onePointReductionGrayScale();
+            });
+
+            menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING, function () {
+                root.OperationOnePoint.onePointStretching();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION, function () {
-                var o = new root.Operation();
+                root.OperationOnePoint.onePointBrightnessRegulation();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_CONTRAST_REGULATION, function () {
-                var o = new root.Operation();
+                root.OperationOnePoint.onePointContrastRegulation();
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_GAMMA_REGULATION, function () {
-                var o = new root.Operation();
+                root.OperationOnePoint.onePointGammaRegulation();
             });
 
             // Neighbourhood.
             // --------------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_NEIGHBOURHOOD_SMOOTHING, function () {
-                var o = new root.Operation();
+                
             });
         },
 

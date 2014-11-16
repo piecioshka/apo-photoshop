@@ -2,6 +2,7 @@
     'use strict';
 
     var EventEmitter = {
+
         /**
          * Register listener.
          *
@@ -91,6 +92,7 @@
                 }
             });
         }
+
     };
 
     // Export `EventEmitter`.

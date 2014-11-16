@@ -4,6 +4,7 @@
     var isTIFF = (/.\.tif(f?)/i);
 
     var AssetsLoader = {
+
         loadImage: function (url, name) {
             if (isTIFF.test(name)) {
                 root.alert(root.locale.get('MSG_ERR_UNSUPPORTED'));
@@ -31,6 +32,7 @@
 
             img.setAttribute('src', url);
         }
+
     };
 
     AssetsLoader.EVENTS = {

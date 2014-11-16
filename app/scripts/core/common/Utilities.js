@@ -4,6 +4,7 @@
     'use strict';
 
     var Utilities = {
+
         isDarwin: function () {
             return process.platform === 'darwin';
         },
@@ -36,6 +37,7 @@
             // Calculate arithmetic average: sum of all elements by their count.
             return sum / numbers.length;
         }
+
     };
 
     // Export `Utilities`.
