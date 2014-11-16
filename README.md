@@ -2,8 +2,6 @@
 
 **Temat projektu:** _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje obrazów kolorowych._
 
-Wszystkie wykorzystywane narzędzia są darmowe.
-
 ## Jak uruchomić aplikację?
 
 ### Z użyciem przeglądarki
@@ -15,9 +13,9 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 5. Kopiujemy zawartość projektu `apo-photoshop` to katalogu który powstał po rozpakowaniu `node-webkit`.
 6. Uruchamiamy plik `nw.exe` (Windows) lub `nw` (Linux) lub `node-webkit.app` (Mac).
 
-### Dla programistów (z użyciem konsoli)
+### Z użyciem konsoli (dla programistów)
 
-```bash
+```
 $ git clone https://github.com/piecioshka/apo-photoshop.git
 $ cd apo-photoshop
 $ npm install
@@ -26,21 +24,23 @@ $ npm start
 
 ## Wykorzystywane narzędzia
 
-### Silnik
+#### Silnik
 
 - node.js - http://nodejs.org/
 - node-webkit - https://github.com/rogerwang/node-webkit
 
-### Obróbka obrazów
+#### Obróbka obrazów
 
 - Canvas - http://www.w3.org/TR/2dcontext/
 
-### Inne pomocne narzędzia
+#### Inne pomocne narzędzia
 
 - Gulp - http://gulpjs.com/
 - Underscore.js - http://underscorejs.org/
 - MoveMaster.js - https://github.com/piecioshka/MoveMaster.js
 - JSHint - http://www.jshint.com/docs/options/
+
+Wszystkie wykorzystywane narzędzia są darmowe.
 
 ## Lista zadań
 
