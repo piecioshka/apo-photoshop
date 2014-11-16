@@ -41,6 +41,8 @@
                 // We can close only activate window.
                 if (activeWindow instanceof AbstractWindow) {
                     activeWindow.close();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NO_OPEN_WINDOW'));
                 }
             });
 
@@ -52,12 +54,14 @@
             menu.on(root.Menu.EVENTS.EDIT_RESTORE, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
-                // We can restore only picture window.
+                // Support only for picture window.
                 if (activeWindow instanceof PictureWindow) {
                     // Restore picture.
                     activeWindow.buildImage();
                     // Restore title
                     activeWindow.updateTitle(activeWindow.getTitle().replace(/\* /, ''));
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
                 }
             });
 
@@ -67,32 +71,38 @@
             menu.on(root.Menu.EVENTS.BOX_HISTOGRAM, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
-                // We can create histogram only for picture.
+                // Support only for picture window.
                 if (activeWindow instanceof PictureWindow) {
                     new HistogramWindow({
                         image: activeWindow.settings.image,
                         canvas: activeWindow.canvas
                     });
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
                 }
             });
 
             menu.on(root.Menu.EVENTS.BOX_DUPLICATE, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
-                // Support duplicate picture window.
+                // Support only for picture window.
                 if (activeWindow instanceof PictureWindow) {
                     new PictureWindow({
                         image: activeWindow.settings.image
                     });
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
                 }
             });
 
             menu.on(root.Menu.EVENTS.BOX_LUT, function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
 
-                // Support LUT only for picture window.
+                // Support only for picture window.
                 if (activeWindow instanceof PictureWindow) {
                     // TODO(piecioshka): LUT
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
                 }
             });
 
@@ -103,50 +113,127 @@
             // ------------------------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD, function () {
-                root.OperationFlatteningHistogram.flatteningHistogramMedium();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationFlatteningHistogram.flatteningHistogramMedium();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD, function () {
-                root.OperationFlatteningHistogram.flatteningHistogramRandom();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationFlatteningHistogram.flatteningHistogramRandom();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD, function () {
-                root.OperationFlatteningHistogram.flatteningHistogramNeighbourhood();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationFlatteningHistogram.flatteningHistogramNeighbourhood();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD, function () {
-                root.OperationFlatteningHistogram.flatteningHistogramCustom();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationFlatteningHistogram.flatteningHistogramCustom();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             // One point.
             // ----------
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_NEGATIVE, function () {
-                root.OperationOnePoint.onePointNegative();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointNegative();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_THRESHOLD, function () {
-                root.OperationOnePoint.onePointThreshold();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointThreshold();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE, function () {
-                root.OperationOnePoint.onePointReductionGrayScale();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointReductionGrayScale();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_STRETCHING, function () {
-                root.OperationOnePoint.onePointStretching();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointStretching();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION, function () {
-                root.OperationOnePoint.onePointBrightnessRegulation();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointBrightnessRegulation();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_CONTRAST_REGULATION, function () {
-                root.OperationOnePoint.onePointContrastRegulation();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointContrastRegulation();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             menu.on(root.Menu.EVENTS.OPERATIONS_ONE_POINT_GAMMA_REGULATION, function () {
-                root.OperationOnePoint.onePointGammaRegulation();
+                var activeWindow = root.App.windowManager.getActiveWindow();
+
+                // Support only for picture window.
+                if (activeWindow instanceof PictureWindow) {
+                    root.OperationOnePoint.onePointGammaRegulation();
+                } else {
+                    alert(root.locale.get('MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW'));
+                }
             });
 
             // Neighbourhood.

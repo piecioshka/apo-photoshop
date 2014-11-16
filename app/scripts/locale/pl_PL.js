@@ -7,6 +7,8 @@
         NAME: 'APO: Photoshop',
 
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',
+        MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',
+        MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW: 'Nie aktywowano okna z obrazkiem!',
 
         FILE: 'Plik',
         FILE_OPEN: 'Otwórz',
