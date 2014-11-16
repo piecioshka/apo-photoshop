@@ -12,11 +12,13 @@
         this.createWindow();
         this.createTopBar();
         this.createContent();
+
         this.listenOnActivationEvents();
     };
 
     AbstractWindow.prototype.listenOnActivationEvents = function () {
         var self = this;
+
         this.on(AbstractWindow.EVENTS.ACTIVE_WINDOW, function () {
             self.isActive = true;
             self.$window.classList.add('active');
@@ -26,16 +28,19 @@
             self.isActive = false;
             self.$window.classList.remove('active');
         });
+
+        this.on(AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
+            root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: params.win});
+        });
     };
 
     AbstractWindow.prototype.createWindow = function () {
         var self = this;
         this.$window = doc.createElement('div');
         this.$window.classList.add('abstract-window');
-        this.$window.classList.add('abstract-window');
 
         this.$window.addEventListener('click', function () {
-            self.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW);
+            root.App.windowManager.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: self });
         }, false);
 
         if (root.Utilities.isDarwin()) {
@@ -84,7 +89,7 @@
 
         closeButton.addEventListener('click', function (evt) {
             evt.preventDefault();
-            self.close();
+            self.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
         });
 
         return this.$buttons;
@@ -130,7 +135,7 @@
         var self = this;
         this.$placeHolder.appendChild(this.$window);
 
-        // Warning! Container which is rendered in DOM.
+        // Warning! Container must exists in DOM.
         new root.MoveMaster({
             object: this.$window,
             parent: this.$placeHolder,
@@ -142,22 +147,15 @@
         }, 0);
     };
 
-    AbstractWindow.prototype.remove = function () {
+    AbstractWindow.prototype.removeDOM = function () {
         this.$window.parentNode.removeChild(this.$window);
     };
 
-    AbstractWindow.prototype.close = function () {
-        this.remove();
-        this.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, {
-            window: this
-        });
-    };
-
     AbstractWindow.EVENTS = {
-        INACTIVE_WINDOW: 'inactive',
-        ACTIVE_WINDOW: 'active',
-        CLOSE_WINDOW: 'close',
-        RENDER_WINDOW: 'render'
+        INACTIVE_WINDOW: 'window:inactive',
+        ACTIVE_WINDOW: 'window:active',
+        CLOSE_WINDOW: 'window:close',
+        RENDER_WINDOW: 'window:render'
     };
 
     // Extend `AbstractWindow` module with events.

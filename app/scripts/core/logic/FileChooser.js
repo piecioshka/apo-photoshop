@@ -47,7 +47,7 @@
     };
 
     FileChooser.EVENTS = {
-        SELECT_FILE: 'select'
+        SELECT_FILE: 'file:select'
     };
 
     // Extend `FileChooser` module with events.

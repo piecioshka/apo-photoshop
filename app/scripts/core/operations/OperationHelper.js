@@ -3,17 +3,16 @@
 
     var OperationHelper = {
         getWorkspace: function () {
+            var title;
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             // Support only picture window.
-            if (!(activeWindow instanceof PictureWindow)) {
-                return;
-            }
+            if (activeWindow instanceof PictureWindow) {
+                title = activeWindow.getTitle();
 
-            var title = activeWindow.getTitle();
-
-            if (!(/^\* /).test(title)) {
-                activeWindow.updateTitle('* ' + title);
+                if (!(/^\* /).test(title)) {
+                    activeWindow.updateTitle('* ' + title);
+                }
             }
 
             return activeWindow;

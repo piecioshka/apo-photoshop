@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var PictureWindow = function (params) {
-        console.warn('new PictureWindow', params);
+    var PictureWindow = function PictureWindow(params) {
+        console.info('new PictureWindow', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -69,7 +69,7 @@
     };
 
     PictureWindow.EVENTS = {
-        RENDER_IMAGE: 'render-image'
+        RENDER_IMAGE: 'picture:render'
     };
 
     // Exports `PictureWindow`.

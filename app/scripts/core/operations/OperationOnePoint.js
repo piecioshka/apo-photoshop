@@ -4,7 +4,7 @@
     var OperationOnePoint = {
 
         onePointNegative: function () {
-            console.info('Operacje -> Jednopunktowe -> Odwrotność (negacja)');
+            console.log('Operacje -> Jednopunktowe -> Odwrotność (negacja)');
 
             var workspace = OperationHelper.getWorkspace();
 
@@ -35,7 +35,7 @@
         },
 
         onePointThreshold: function () {
-            console.info('Operacje -> Jednopunktowe -> Progowanie');
+            console.log('Operacje -> Jednopunktowe -> Progowanie');
 
             var workspace = OperationHelper.getWorkspace();
 

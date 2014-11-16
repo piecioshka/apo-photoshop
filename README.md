@@ -96,6 +96,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [ ] Resize okna
 - [x] Przywróć obrazek do pierwotnego stanu
 - [x] Zamknięcie programu
+- [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
 
 #### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości
 

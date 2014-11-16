@@ -159,7 +159,7 @@
         },
     
         flatteningHistogramMedium: function () {
-            console.info('Operacje -> Wygładzanie histogram -> Metoda średnich');
+            console.log('Operacje -> Wygładzanie histogram -> Metoda średnich');
     
             console.time('Flattening Histogram: Medium');
             this._flatteningHistogram(OperationFlatteningHistogram.FLATTENING.MEDIUM);
@@ -167,7 +167,7 @@
         },
     
         flatteningHistogramRandom: function () {
-            console.info('Operacje -> Wygładzanie histogram -> Metoda losowa');
+            console.log('Operacje -> Wygładzanie histogram -> Metoda losowa');
     
             console.time('Flattening Histogram: Random');
             this._flatteningHistogram(OperationFlatteningHistogram.FLATTENING.RANDOM);
@@ -175,7 +175,7 @@
         },
     
         flatteningHistogramNeighbourhood: function () {
-            console.info('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
+            console.log('Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa');
     
             console.time('Flattening Histogram: Neighbourhood');
             this._flatteningHistogram(OperationFlatteningHistogram.FLATTENING.NEIGHBOURHOOD);
@@ -183,7 +183,7 @@
         },
     
         flatteningHistogramCustom: function () {
-            console.info('Operacje -> Wygładzanie histogram -> Metoda własna');
+            console.log('Operacje -> Wygładzanie histogram -> Metoda własna');
     
             console.time('Flattening Histogram: Custom');
             this._flatteningHistogram(OperationFlatteningHistogram.FLATTENING.CUSTOM);

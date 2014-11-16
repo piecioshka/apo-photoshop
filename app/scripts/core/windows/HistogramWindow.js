@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var HistogramWindow = function (params) {
-        console.warn('new HistogramWindow', params);
+    var HistogramWindow = function HistogramWindow(params) {
+        console.info('new HistogramWindow', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -109,7 +109,7 @@
     };
 
     HistogramWindow.EVENTS = {
-        RENDER_HISTOGRAM: 'render-histogram'
+        RENDER_HISTOGRAM: 'histogram:render'
     };
 
     // Exports `HistogramWindow`.

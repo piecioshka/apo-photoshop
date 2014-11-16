@@ -44,7 +44,8 @@
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
 
         ABOUT: 'O programie',
-        ABOUT_AUTHORS: 'Autorzy'
+        ABOUT_AUTHORS: 'Autorzy',
+        ABOUT_HELP: 'Pomoc'
     };
 
 }(this));
