@@ -37,7 +37,7 @@ $ npm start
 
 - Gulp - http://gulpjs.com/
 - Underscore.js - http://underscorejs.org/
-- MoveMaster.js - https://github.com/piecioshka/MoveMaster.js
+- MoveMaster.js - https://github.com/piecioshka/move-master.js
 - JSHint - http://www.jshint.com/docs/options/
 
 Wszystkie wykorzystywane narzędzia są darmowe.
