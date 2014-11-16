@@ -1,10 +1,12 @@
-# APO: Photoshop
+# ![js](/images/wsisiz.png) APO: Photoshop
 
 **Temat projektu:** _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje obrazów kolorowych._
 
 Wszystkie wykorzystywane narzędzia są darmowe.
 
-### Jak uruchomić aplikację?
+## Jak uruchomić aplikację?
+
+### Z użyciem przeglądarki
 
 1. Ściągamy projekt na dysk komputera https://github.com/piecioshka/apo-photoshop/archive/master.zip.
 2. Rozpakowujemy paczkę z projektem `apo-photoshop`.
@@ -13,18 +15,27 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 5. Kopiujemy zawartość projektu `apo-photoshop` to katalogu który powstał po rozpakowaniu `node-webkit`.
 6. Uruchamiamy plik `nw.exe` (Windows) lub `nw` (Linux) lub `node-webkit.app` (Mac).
 
+### Dla programistów (z użyciem konsoli)
+
+```bash
+$ git clone https://github.com/piecioshka/apo-photoshop.git
+$ cd apo-photoshop
+$ npm install
+$ npm start
+```
+
 ## Wykorzystywane narzędzia
 
-##### Silnik
+### Silnik
 
 - node.js - http://nodejs.org/
 - node-webkit - https://github.com/rogerwang/node-webkit
 
-##### Obróbka obrazów
+### Obróbka obrazów
 
 - Canvas - http://www.w3.org/TR/2dcontext/
 
-##### Inne pomocne narzędzia
+### Inne pomocne narzędzia
 
 - Gulp - http://gulpjs.com/
 - Underscore.js - http://underscorejs.org/
@@ -90,4 +101,3 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
 - http://www.cs.huji.ac.il/~yweiss/Colorization/
-
