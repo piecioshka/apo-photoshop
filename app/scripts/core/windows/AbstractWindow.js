@@ -143,10 +143,10 @@
         this.$placeHolder.appendChild(this.$window);
 
         // Warning! Container must exists in DOM.
-        new root.MoveMaster({
+        root.MoveMaster({
             object: this.$window,
             parent: this.$placeHolder,
-            reference: this.$bar
+            hook: this.$bar
         });
 
         setTimeout(function () {
