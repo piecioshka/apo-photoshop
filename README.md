@@ -1,4 +1,6 @@
-# <img src="/images/wsisiz.png" align="center" /> APO: Photoshop
+# APO: Photoshop
+
+![js](/images/wsisiz.gif)
 
 **Temat projektu:** _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje obrazów kolorowych._
 
