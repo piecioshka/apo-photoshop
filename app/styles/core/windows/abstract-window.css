@@ -6,12 +6,10 @@
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
     overflow: hidden;
     z-index: 10;
-    /*opacity: 0.8;*/
 }
 
 .abstract-window.active {
     z-index: 20;
-    /*opacity: 1;*/
 }
 
 .abstract-window .abstract-window-bar {
@@ -24,6 +22,11 @@
     border-top-right-radius: 5px;
     border-bottom: none;
     overflow: hidden;
+    opacity: 0.6;
+}
+
+.abstract-window.active .abstract-window-bar {
+    opacity: 1;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-title {
