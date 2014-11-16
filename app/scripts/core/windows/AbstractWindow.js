@@ -119,7 +119,7 @@
         this.$title.classList.add('sky-hide');
 
         // As quickly as engine can render.
-        root.setTimeout(function () {
+        setTimeout(function () {
             var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth - BUTTONS_MARGIN;
 
             if (diff < self.$title.offsetWidth) {
@@ -162,7 +162,7 @@
     };
 
     // Extend `AbstractWindow` module with events.
-    _.extend(AbstractWindow.prototype, EventEmitter);
+    _.extend(AbstractWindow.prototype, root.EventEmitter);
 
     // Export `AbstractWindow`.
     return (root.AbstractWindow = AbstractWindow);

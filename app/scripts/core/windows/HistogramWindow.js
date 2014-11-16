@@ -32,7 +32,7 @@
         this.initialize();
     };
 
-    HistogramWindow.prototype = new AbstractWindow();
+    HistogramWindow.prototype = new root.AbstractWindow();
 
     HistogramWindow.prototype.initialize = function () {
         this.$window.classList.add('histogram-window');
@@ -56,7 +56,7 @@
         this.canvas.render();
 
         // Listen on window render.
-        this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
+        this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Create bar graph histogram.
             this.buildBarGraph();
             // Trigger event after building histogram.

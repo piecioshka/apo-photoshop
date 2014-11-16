@@ -6,7 +6,7 @@
         onePointNegative: function () {
             console.log('Operacje -> Jednopunktowe -> Odwrotność (negacja)');
 
-            var workspace = OperationHelper.getWorkspace();
+            var workspace = root.OperationHelper.getWorkspace();
 
             // When you try do operation for non-picture window.
             if (!workspace) {
@@ -37,7 +37,7 @@
         onePointThreshold: function () {
             console.log('Operacje -> Jednopunktowe -> Progowanie');
 
-            var workspace = OperationHelper.getWorkspace();
+            var workspace = root.OperationHelper.getWorkspace();
 
             // When you try do operation for non-picture window.
             if (!workspace) {

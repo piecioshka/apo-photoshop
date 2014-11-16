@@ -29,7 +29,7 @@
         this.initialize();
     };
 
-    PictureWindow.prototype = new AbstractWindow();
+    PictureWindow.prototype = new root.AbstractWindow();
 
     PictureWindow.prototype.initialize = function () {
         this.$window.classList.add('picture-window');
@@ -53,7 +53,7 @@
         this.canvas.render();
 
         // Listen on window render.
-        this.on(AbstractWindow.EVENTS.RENDER_WINDOW, function () {
+        this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildImage();
             // Trigger event after building image.

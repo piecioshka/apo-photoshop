@@ -82,15 +82,15 @@
             setDefaultState();
 
             wm.on(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, function (params) {
-                params.win.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW);
+                params.win.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW);
                 wm.inactivateWindowsWithout(params.win);
 
                 var windowType = 'unknown';
 
-                if (params.win instanceof PictureWindow) {
+                if (params.win instanceof root.PictureWindow) {
                     windowType = 'picture';
                     setPictureWindowState();
-                } else if (params.win instanceof HistogramWindow) {
+                } else if (params.win instanceof root.HistogramWindow) {
                     windowType = 'histogram';
                     setHistogramWindowState();
                 }
@@ -103,9 +103,9 @@
 
                 var windowType = 'unknown';
 
-                if (params.win instanceof PictureWindow) {
+                if (params.win instanceof root.PictureWindow) {
                     windowType = 'picture';
-                } else if (params.win instanceof HistogramWindow) {
+                } else if (params.win instanceof root.HistogramWindow) {
                     windowType = 'histogram';
                 }
 

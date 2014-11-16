@@ -7,7 +7,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             // Support only picture window.
-            if (activeWindow instanceof PictureWindow) {
+            if (activeWindow instanceof root.PictureWindow) {
                 title = activeWindow.getTitle();
 
                 if (!(/^\* /).test(title)) {

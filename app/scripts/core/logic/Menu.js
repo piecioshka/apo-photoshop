@@ -106,7 +106,7 @@
             file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
                 // Listen for load image from user.
                 root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
-                    new PictureWindow({
+                    new root.PictureWindow({
                         image: image
                     });
                 });
@@ -120,7 +120,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
-                activeWindow.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: activeWindow });
+                activeWindow.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: activeWindow });
             }
         }, 'Ctrl', 'W');
 
@@ -156,12 +156,11 @@
     Menu.prototype.setupBoxMenu = function () {
         var boxMenu = new this.gui.Menu();
 
-
         this.boxHistogramMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
-                new HistogramWindow({
+                new root.HistogramWindow({
                     image: activeWindow.settings.image,
                     canvas: activeWindow.canvas
                 });
@@ -173,7 +172,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
-                new PictureWindow({
+                new root.PictureWindow({
                     image: activeWindow.settings.image
                 });
             }
@@ -260,7 +259,7 @@
         var neighbourhoodOperationsMenu = new this.gui.Menu();
 
         this.operationsNeighbourhoodSmoothingMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
-
+            // TODO(piecioshka): fill it
         });
 
         var neighbourhoodOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD'));
