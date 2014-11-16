@@ -1,3 +1,5 @@
+/*global require, __dirname, module */
+
 (function () {
     'use strict';
 
@@ -17,7 +19,7 @@
     require('gulp-help')(gulp);
 
     var paths = {
-        scripts: [path.join(__dirname, 'scripts', 'core', '**', '*js')]
+        scripts: [path.join(__dirname, 'app', 'scripts', 'core', '**', '*js')]
     };
 
     gulp.task('lint', 'Validate each *.js file with JSHint.', function () {
@@ -27,7 +29,7 @@
     });
 
     gulp.task('count', 'Count line of code in *.js files', shell.task([
-        'find scripts -name "*.js" | xargs wc -l'
+        'find app/scripts -name "*.js" | xargs wc -l | sort -r'
     ]));
 
     // exports

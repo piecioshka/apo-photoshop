@@ -40,6 +40,7 @@
         this.$window.classList.add('abstract-window');
 
         this.$window.addEventListener('click', function () {
+            // Activate window if is not.
             if (!self.isActive) {
                 root.App.windowManager.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: self });
             }

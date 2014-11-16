@@ -95,7 +95,6 @@
     };
 
     Menu.prototype.setupFileMenu = function () {
-        var self = this;
         var fileMenu = new this.gui.Menu();
 
         this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
@@ -193,7 +192,6 @@
     };
 
     Menu.prototype.setupOperationsMenu = function () {
-        var self = this;
         var operationsMenu = new this.gui.Menu();
 
         // Wygładzanie histogramu
