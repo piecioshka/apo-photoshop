@@ -40,7 +40,9 @@
         this.$window.classList.add('abstract-window');
 
         this.$window.addEventListener('click', function () {
-            root.App.windowManager.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: self });
+            if (!self.isActive) {
+                root.App.windowManager.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: self });
+            }
         }, false);
 
         if (root.Utilities.isDarwin()) {
