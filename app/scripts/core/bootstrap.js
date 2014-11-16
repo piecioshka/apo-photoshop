@@ -36,6 +36,8 @@
             function setPictureWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
 
+                menu.editRestoreMenuItem.enabled = true;
+
                 menu.boxHistogramMenuItem.enabled = true;
                 menu.boxDuplicateMenuItem.enabled = true;
                 menu.boxLutMenuItem.enabled = true;
@@ -58,6 +60,8 @@
 
             function setHistogramWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
+
+                menu.editRestoreMenuItem.enabled = false;
 
                 menu.boxHistogramMenuItem.enabled = false;
                 menu.boxDuplicateMenuItem.enabled = false;

@@ -8,6 +8,18 @@
 <body>
     <div id="app"></div>
 
+    <script type="text/html" id="threshold-tool">
+        <div id="threshold-tool-content">
+            <dl>
+                <dt><label for="threshold-tool-regulation">Regulacja progu:</label></dt>
+                <dd><input id="threshold-tool-regulation" type="range" min="0" max="255" value="255"></dd>
+
+                <dt><span>Próg:</span></dt>
+                <dd><span id="threshold-tool-regulation-value"></span></dd>
+            </dl>
+        </div>
+    </script>
+
     <div id="scripts" class="hide">
         <!-- vendor //-->
         <script src="scripts/vendor/MoveMaster/MoveMaster.js"></script>
@@ -36,9 +48,14 @@
 
         <!-- core/windows //-->
         <script src="scripts/core/windows/AbstractWindow.js"></script>
-        <script src="scripts/core/windows/HistogramWindow.js"></script>
-        <script src="scripts/core/windows/PictureWindow.js"></script>
         <script src="scripts/core/windows/WindowManager.js"></script>
+
+        <!-- core/windows/main //-->
+        <script src="scripts/core/windows/main/HistogramWindow.js"></script>
+        <script src="scripts/core/windows/main/PictureWindow.js"></script>
+
+        <!-- core/windows/tools //-->
+        <script src="scripts/core/windows/tools/ThresholdTool.js"></script>
 
         <!-- core //-->
         <script src="scripts/core/app.js"></script>

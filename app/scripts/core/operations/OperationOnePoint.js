@@ -34,31 +34,18 @@
             console.timeEnd('One point: Negative');
         },
 
-        onePointThreshold: function () {
+        onePointThreshold: function (params) {
             console.log('Operacje -> Jednopunktowe -> Progowanie');
-
-            var workspace = root.OperationHelper.getWorkspace();
-
-            // When you try do operation for non-picture window.
-            if (!workspace) {
-                return;
-            }
 
             console.time('One point: Threshold');
 
-            var can = workspace.canvas;
+            var can = params.workspace;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
-            var hold = prompt('Podaj próg');
-
-            // Ignore when user not put anything
-            if (!hold) { return; }
-
-            // Cast to integer.
-            hold = parseInt(hold, 10);
+            var hold = parseInt(params.value, 10);
 
             for (var i = 0; i < len / 4; i++) {
                 var color = pixelsChannelsData[(i * 4)];

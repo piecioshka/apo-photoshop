@@ -2,5 +2,8 @@
 @import "common/page.css";
 
 @import "windows/abstract-window.css";
-@import "windows/histogram-window.css";
-@import "windows/picture-window.css";
+
+@import "windows/main/histogram-window.css";
+@import "windows/main/picture-window.css";
+
+@import "windows/tools/threshold-tool.css";

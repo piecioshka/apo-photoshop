@@ -106,7 +106,11 @@
 
     AbstractWindow.prototype.setContent = function (item) {
         if (this.$content.firstChild === null) {
-            this.$content.appendChild(item);
+            if (_.isString(item)) {
+                this.$content.innerHTML = item;
+            } else {
+                this.$content.appendChild(item);
+            }
         }
     };
 

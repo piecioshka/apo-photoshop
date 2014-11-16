@@ -59,8 +59,6 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Create bar graph histogram.
             this.buildBarGraph();
-            // Trigger event after building histogram.
-            this.emit(HistogramWindow.EVENTS.RENDER_HISTOGRAM);
         });
 
         // Render window.
@@ -106,10 +104,6 @@
         var level = this.settings.height - average;
         this.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.canvas.ctx.fillRect(0, level, this.settings.width, 1);
-    };
-
-    HistogramWindow.EVENTS = {
-        RENDER_HISTOGRAM: 'histogram:render'
     };
 
     // Exports `HistogramWindow`.

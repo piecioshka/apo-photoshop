@@ -227,7 +227,12 @@
         });
 
         this.operationsOnePointThresholdMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {
-            root.OperationOnePoint.onePointThreshold();
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            new ThresholdTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         this.operationsOnePointReductionGrayScaleMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {

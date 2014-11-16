@@ -98,7 +98,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Zamknięcie programu
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
 
-#### Przydatne materiały odnośnie koloryzacji obrazów w odcieniach szarości
+#### Przydatne materiały
 
 - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
 - http://www.cs.huji.ac.il/~yweiss/Colorization/
+- https://github.com/cmisenas/canny-edge-detection
