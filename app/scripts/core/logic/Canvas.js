@@ -33,7 +33,7 @@
     /**
      * Define place holder as window where <canvas> object will be rendered.
      *
-     * @param {AbstractWindow} win
+     * @param {root.AbstractWindow} win
      */
     Canvas.prototype.setWindow = function (win) {
         this.$placeHolder = win;

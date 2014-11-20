@@ -8,7 +8,7 @@
          *
          * @param {string} name
          * @param {Function} fn
-         * @param {Object} ctx
+         * @param {Object} [ctx]
          */
         on: function on(name, fn, ctx) {
             console.assert(_.isString(name), 'EventEmitter#on: `name` is not a string');
@@ -32,7 +32,7 @@
          *
          * @param {string} name
          * @param {Function} fn
-         * @param {Object} ctx
+         * @param {Object} [ctx]
          */
         once: function (name, fn, ctx) {
             console.assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
