@@ -25,7 +25,7 @@
 
                 menu.operationsOnePointNegativeMenuItem.enabled = false;
                 menu.operationsOnePointThresholdMenuItem.enabled = false;
-                menu.operationsOnePointReductionGrayScaleMenuItem.enabled = false;
+                menu.operationsOnePointPosterizeMenuItem.enabled = false;
                 menu.operationsOnePointStretchingMenuItem.enabled = false;
                 menu.operationsOnePointBrightnessRegulationMenuItem.enabled = false;
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = false;
@@ -49,7 +49,7 @@
 
                 menu.operationsOnePointNegativeMenuItem.enabled = true;
                 menu.operationsOnePointThresholdMenuItem.enabled = true;
-                menu.operationsOnePointReductionGrayScaleMenuItem.enabled = true;
+                menu.operationsOnePointPosterizeMenuItem.enabled = true;
                 menu.operationsOnePointStretchingMenuItem.enabled = true;
                 menu.operationsOnePointBrightnessRegulationMenuItem.enabled = true;
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = true;
@@ -74,7 +74,7 @@
 
                 menu.operationsOnePointNegativeMenuItem.enabled = false;
                 menu.operationsOnePointThresholdMenuItem.enabled = false;
-                menu.operationsOnePointReductionGrayScaleMenuItem.enabled = false;
+                menu.operationsOnePointPosterizeMenuItem.enabled = false;
                 menu.operationsOnePointStretchingMenuItem.enabled = false;
                 menu.operationsOnePointBrightnessRegulationMenuItem.enabled = false;
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = false;

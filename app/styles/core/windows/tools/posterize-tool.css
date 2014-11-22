@@ -1,0 +1,19 @@
+#posterize-tool-content {
+    width: 300px;
+    height: 40px;
+}
+
+#posterize-tool-content dt,
+#posterize-tool-content dd {
+    float: left;
+    margin: 0;
+}
+
+#posterize-tool-content dt {
+    width: 120px;
+}
+
+#posterize-tool-content input[type="range"] {
+    margin: 0;
+    width: 180px;
+}

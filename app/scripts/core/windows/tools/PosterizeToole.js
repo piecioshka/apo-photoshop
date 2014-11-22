@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var ThresholdTool = function ThresholdTool(params) {
-        console.info('new ThresholdTool', params);
+    var PosterizeTool = function PosterizeTool(params) {
+        console.info('new PosterizeTool', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -28,13 +28,13 @@
         this.initialize();
     };
 
-    ThresholdTool.prototype = new AbstractWindow();
+    PosterizeTool.prototype = new AbstractWindow();
 
-    ThresholdTool.prototype.initialize = function () {
-        this.$window.classList.add('threshold-tool');
+    PosterizeTool.prototype.initialize = function () {
+        this.$window.classList.add('posterize-tool');
 
         // Update title of window.
-        this.updateTitle('Progowanie - ' +  this.settings.image.name);
+        this.updateTitle('Redukcja poziomów szarości - ' +  this.settings.image.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -49,43 +49,43 @@
         this.render();
     };
 
-    ThresholdTool.prototype.buildUI = function () {
+    PosterizeTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#threshold-tool').innerHTML;
+        var template = doc.querySelector('#posterize-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.setContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#threshold-tool-regulation');
-            var $value = doc.querySelector('#threshold-tool-regulation-value');
+            var $range = doc.querySelector('#posterize-tool-regulation');
+            var $value = doc.querySelector('#posterize-tool-regulation-value');
 
-            function setupThreshold(hold) {
-                // Put number of threshold.
-                $value.innerText = hold;
+            function setupPosterize(levels) {
+                // Put number of posterize.
+                $value.innerText = levels;
 
                 // Restore image to origin.
                 self.settings.canvas.ctx.drawImage(self.settings.image.image, 0, 0, self.settings.image.width, self.settings.image.height);
 
-                // Apply threshold to image.
-                root.OperationOnePoint.onePointThreshold({
+                // Apply posterize to image.
+                root.OperationOnePoint.onePointPosterize({
                     workspace: self.settings.canvas,
-                    value: hold
+                    value: levels
                 });
             }
 
-            $range.addEventListener('change', function handleChange() {
-                setupThreshold($range.value);
+            $range.addEventListener('change', function () {
+                setupPosterize($range.value);
             });
 
-            setupThreshold(ThresholdTool.DEFAULT_HOLDER);
+            setupPosterize(PosterizeTool.DEFAULT_LEVELS);
         }, 0);
     };
 
-    ThresholdTool.DEFAULT_HOLDER = 128;
+    PosterizeTool.DEFAULT_LEVELS = 128;
 
-    // Exports `ThresholdTool`.
-    return (root.ThresholdTool = ThresholdTool);
+    // Exports `PosterizeTool`.
+    return (root.PosterizeTool = PosterizeTool);
 
 }(this));

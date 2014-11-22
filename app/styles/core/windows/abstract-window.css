@@ -35,11 +35,10 @@
     font-size: 11px;
     color: #383838;
     float: left;
-    -webkit-touch-callout: none;
-    -webkit-user-select: element;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    pointer-events: none;
 }
 
 .abstract-window.macosx .abstract-window-bar .abstract-window-title {

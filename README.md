@@ -58,7 +58,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 1
         - [x] Operacja odwrotności (negacji)
         - [x] Operacja progowania (binaryzacji)
-        - [ ] Operacja redukcji poziomów szarości
+        - [x] Operacja redukcji poziomów szarości
         - [ ] Operacja rozciągania
         - [ ] Regulacja kontrastem
         - [ ] Regulacja jasnością
@@ -97,7 +97,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Przywróć obrazek do pierwotnego stanu
 - [x] Zamknięcie programu
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
-- [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości
+- [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
+- [x] Przesuwać oknem klikając w tytuł okna.
 
 #### Przydatne materiały
 

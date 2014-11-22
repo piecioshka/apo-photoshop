@@ -121,7 +121,7 @@
      *
      * @returns {CanvasPixelArray}
      */
-    Canvas.prototype.getPixelsChannels = function () {
+    Canvas.prototype.getAllChannelsOfPixels = function () {
         return this.getDataImage().data;
     };
 
@@ -131,15 +131,34 @@
      *
      * @returns {Array}
      */
-    Canvas.prototype.getCopyOfRedChannelPixels = function () {
-        var pixels = this.getPixelsChannels();
-        var red = [];
+    Canvas.prototype.getOneChannelOfPixels = function () {
+        var pixelsLongArray = this.getAllChannelsOfPixels();
+        var pixelsArray = [];
 
-        for (var i = 0; i < pixels.length; i += 4) {
-            red[i / 4] = pixels[i];
+        for (var i = 0; i < pixelsLongArray.length; i += 4) {
+            pixelsArray[i / 4] = pixelsLongArray[i];
         }
 
-        return red;
+        return pixelsArray;
+    };
+
+    /**
+     * Returns array with unique pixel (only one) channel.
+     *
+     * @returns {Array}
+     */
+    Canvas.prototype.getUniqueChannels = function () {
+        // Copy to array all channels. References was destroyed.
+        var pixelsArray = this.getOneChannelOfPixels();
+        return _.uniq(pixelsArray).sort(function (a, b) {
+            if (a > b) {
+                return 1;
+            } else if (a < b) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
     };
 
     /**
@@ -154,11 +173,11 @@
         // Set default to 0.
         hist = hist.map(function () { return 0; });
 
-        // Read all levels from first channel (RED).
-        var pixels = this.getCopyOfRedChannelPixels();
+        // Copy to array all channels. References was destroyed.
+        var pixelsArray = this.getOneChannelOfPixels();
 
         // Loop for each pixels.
-        pixels.forEach(function (color) {
+        pixelsArray.forEach(function (color) {
             // Append histogram list.
             hist[color] = (hist[color] || 0) + 1;
         });

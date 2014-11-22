@@ -24,7 +24,7 @@
 
         this.operationsOnePointNegativeMenuItem = null;
         this.operationsOnePointThresholdMenuItem = null;
-        this.operationsOnePointReductionGrayScaleMenuItem = null;
+        this.operationsOnePointPosterizeMenuItem = null;
         this.operationsOnePointStretchingMenuItem = null;
         this.operationsOnePointBrightnessRegulationMenuItem = null;
         this.operationsOnePointContrastRegulationMenuItem = null;
@@ -237,8 +237,13 @@
             });
         });
 
-        this.operationsOnePointReductionGrayScaleMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
-            root.OperationOnePoint.onePointReductionGrayScale();
+        this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            new PosterizeTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         this.operationsOnePointStretchingMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {

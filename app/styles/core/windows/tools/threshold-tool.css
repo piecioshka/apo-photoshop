@@ -1,5 +1,5 @@
 #threshold-tool-content {
-    width: 300px;
+    width: 260px;
     height: 40px;
 }
 
@@ -10,10 +10,10 @@
 }
 
 #threshold-tool-content dt {
-    width: 120px;
+    width: 80px;
 }
 
 #threshold-tool-content input[type="range"] {
-    margin: 4px 0 0 0;
+    margin: 0;
     width: 180px;
 }
