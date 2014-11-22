@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var ThresholdTool = function ThresholdTool(params) {
-        console.info('new ThresholdTool', params);
+    var GammaRegulationTool = function GammaRegulationTool(params) {
+        console.info('new GammaRegulationTool', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -28,13 +28,13 @@
         this.initialize();
     };
 
-    ThresholdTool.prototype = new AbstractWindow();
+    GammaRegulationTool.prototype = new AbstractWindow();
 
-    ThresholdTool.prototype.initialize = function () {
-        this.$window.classList.add('threshold-tool');
+    GammaRegulationTool.prototype.initialize = function () {
+        this.$window.classList.add('gamma-regulation-tool');
 
         // Update title of window.
-        this.updateTitle('Progowanie - ' +  this.settings.image.name);
+        this.updateTitle('Regulacja korekcją gamma - ' +  this.settings.image.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -49,47 +49,47 @@
         this.render();
     };
 
-    ThresholdTool.prototype.buildUI = function () {
+    GammaRegulationTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#threshold-tool').innerHTML;
+        var template = doc.querySelector('#gamma-regulation-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.setContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#threshold-tool-regulation-range');
-            var $value = doc.querySelector('#threshold-tool-regulation-value');
+            var $range = doc.querySelector('#gamma-regulation-tool-regulation-range');
+            var $value = doc.querySelector('#gamma-regulation-tool-regulation-value');
 
-            function setupThreshold(hold) {
+            function setupContrastRegulation(level) {
                 // Restore image to origin.
                 self.settings.canvas.loadGrayScaleImage(self.settings.image.image, self.settings.image.width, self.settings.image.height);
 
-                // Apply threshold to image.
-                root.OperationOnePoint.onePointThreshold({
+                // Apply gamma-regulation to image.
+                root.OperationOnePoint.onePointGammaRegulation({
                     workspace: self.settings.canvas,
-                    value: hold
+                    value: level
                 });
             }
 
             $range.addEventListener('change', function () {
                 $value.value = $range.value;
-                setupThreshold($range.value);
+                setupContrastRegulation($range.value);
             });
 
             $value.addEventListener('keydown', function () {
                 $range.value = $value.value;
-                setupThreshold($range.value);
+                setupContrastRegulation($range.value);
             });
 
-            $value.value = $range.value = ThresholdTool.DEFAULT_HOLDER;
-            setupThreshold(ThresholdTool.DEFAULT_HOLDER);
+            $value.value = $range.value = GammaRegulationTool.DEFAULT_LEVEL;
+            setupContrastRegulation(GammaRegulationTool.DEFAULT_LEVEL);
         }, 0);
     };
 
-    ThresholdTool.DEFAULT_HOLDER = 128;
+    GammaRegulationTool.DEFAULT_LEVEL = 0;
 
-    // Exports `ThresholdTool`.
-    return (root.ThresholdTool = ThresholdTool);
+    // Exports `GammaRegulationTool`.
+    return (root.GammaRegulationTool = GammaRegulationTool);
 
 }(this));

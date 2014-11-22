@@ -231,7 +231,7 @@
         this.operationsOnePointThresholdMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            new ThresholdTool({
+            return new ThresholdTool({
                 image: activeWindow.settings.image,
                 canvas: activeWindow.canvas
             });
@@ -240,7 +240,7 @@
         this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_POSTERIZE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            new PosterizeTool({
+            return new PosterizeTool({
                 image: activeWindow.settings.image,
                 canvas: activeWindow.canvas
             });
@@ -249,7 +249,7 @@
         this.operationsOnePointStretchingMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            new StretchTool({
+            return new StretchTool({
                 image: activeWindow.settings.image,
                 canvas: activeWindow.canvas
             });
@@ -258,18 +258,28 @@
         this.operationsOnePointBrightnessRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            new BrightnessRegulationTool({
+            return new BrightnessRegulationTool({
                 image: activeWindow.settings.image,
                 canvas: activeWindow.canvas
             });
         });
 
         this.operationsOnePointContrastRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {
-            root.OperationOnePoint.onePointContrastRegulation();
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new ContrastRegulationTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         this.operationsOnePointGammaRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION'), function () {
-            root.OperationOnePoint.onePointGammaRegulation();
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new GammaRegulationTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         var onePointOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_ONE_POINT'));

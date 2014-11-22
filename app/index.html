@@ -16,6 +16,22 @@
         </div>
     </script>
 
+    <script type="text/html" id="contrast-regulation-tool">
+        <div id="contrast-regulation-tool-content">
+            <span>Kontrast:</span>
+            <input id="contrast-regulation-tool-regulation-value" type="text" maxlength="3">
+            <input id="contrast-regulation-tool-regulation-range" type="range" min="-50" max="100">
+        </div>
+    </script>
+
+    <script type="text/html" id="gamma-regulation-tool">
+        <div id="gamma-regulation-tool-content">
+            <span>Korekcja Gamma:</span>
+            <input id="gamma-regulation-tool-regulation-value" type="text" maxlength="3">
+            <input id="gamma-regulation-tool-regulation-range" type="range" min="0" max="255">
+        </div>
+    </script>
+
     <script type="text/html" id="posterize-tool">
         <div id="posterize-tool-content">
             <span>Poziomy:</span>
@@ -82,6 +98,8 @@
 
         <!-- core/windows/tools //-->
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
+        <script src="scripts/core/windows/tools/ContrastRegulationTool.js"></script>
+        <script src="scripts/core/windows/tools/GammaRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/StretchTool.js"></script>
         <script src="scripts/core/windows/tools/ThresholdTool.js"></script>

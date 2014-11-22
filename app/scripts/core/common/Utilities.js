@@ -36,6 +36,17 @@
 
             // Calculate arithmetic average: sum of all elements by their count.
             return sum / numbers.length;
+        },
+
+        intToByte: function (i) {
+            // When value is more than 255, should be equal 255.
+            i = (i > 255) ? 255 : i;
+
+            // When value is less than 0, should be equal 0.
+            i = (i < 0) ? 0 : i;
+
+            // If is that numbers return them. Otherwise return modify value.
+            return i;
         }
 
     };

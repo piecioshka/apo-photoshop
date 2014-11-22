@@ -61,9 +61,9 @@
             var $range = doc.querySelector('#brightness-regulation-tool-regulation-range');
             var $value = doc.querySelector('#brightness-regulation-tool-regulation-value');
 
-            function setupPosterize(level) {
+            function setupBrightnessRegulation(level) {
                 // Restore image to origin.
-                self.settings.canvas.ctx.drawImage(self.settings.image.image, 0, 0, self.settings.image.width, self.settings.image.height);
+                self.settings.canvas.loadGrayScaleImage(self.settings.image.image, self.settings.image.width, self.settings.image.height);
 
                 // Apply brightness-regulation to image.
                 root.OperationOnePoint.onePointBrightnessRegulation({
@@ -74,16 +74,16 @@
 
             $range.addEventListener('change', function () {
                 $value.value = $range.value;
-                setupPosterize($range.value);
+                setupBrightnessRegulation($range.value);
             });
 
             $value.addEventListener('keydown', function () {
                 $range.value = $value.value;
-                setupPosterize($range.value);
+                setupBrightnessRegulation($range.value);
             });
 
             $value.value = $range.value = BrightnessRegulationTool.DEFAULT_LEVEL;
-            setupPosterize(BrightnessRegulationTool.DEFAULT_LEVEL);
+            setupBrightnessRegulation(BrightnessRegulationTool.DEFAULT_LEVEL);
         }, 0);
     };
 
