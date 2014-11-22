@@ -8,6 +8,14 @@
 <body>
     <div id="app"></div>
 
+    <script type="text/html" id="brightness-regulation-tool">
+        <div id="brightness-regulation-tool-content">
+            <span>Jasność:</span>
+            <input id="brightness-regulation-tool-regulation-value" type="text" maxlength="3">
+            <input id="brightness-regulation-tool-regulation-range" type="range" min="-150" max="150">
+        </div>
+    </script>
+
     <script type="text/html" id="posterize-tool">
         <div id="posterize-tool-content">
             <span>Poziomy:</span>
@@ -73,6 +81,7 @@
         <script src="scripts/core/windows/main/PictureWindow.js"></script>
 
         <!-- core/windows/tools //-->
+        <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/StretchTool.js"></script>
         <script src="scripts/core/windows/tools/ThresholdTool.js"></script>

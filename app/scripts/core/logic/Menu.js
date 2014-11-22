@@ -256,7 +256,12 @@
         });
 
         this.operationsOnePointBrightnessRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
-            root.OperationOnePoint.onePointBrightnessRegulation();
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            new BrightnessRegulationTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         this.operationsOnePointContrastRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {

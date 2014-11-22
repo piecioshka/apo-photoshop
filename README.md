@@ -60,8 +60,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Operacja progowania (binaryzacji)
         - [x] Operacja redukcji poziomów szarości
         - [x] Operacja rozciągania
+        - [x] Regulacja jasnością
         - [ ] Regulacja kontrastem
-        - [ ] Regulacja jasnością
         - [ ] Regulacja korekcją gamma
     - Zadanie 2
         - [ ] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).

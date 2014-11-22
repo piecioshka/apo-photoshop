@@ -118,8 +118,29 @@
 
         },
 
-        onePointBrightnessRegulation: function () {
+        onePointBrightnessRegulation: function (params) {
+            console.time('One point: BrightnessRegulation');
 
+            var can = params.workspace;
+            var ctx = can.ctx;
+
+            var pixelsChannels = can.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
+            var hold = parseInt(params.value, 10);
+
+            for (var i = 0; i < len / 4; i++) {
+                var color = pixelsChannelsData[(i * 4)];
+
+                color += color * (hold / 100);
+
+                // Update each channel (RGB) of pixel. Not modify channel alpha.
+                pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+            }
+
+            ctx.putImageData(pixelsChannels, 0, 0);
+
+            console.timeEnd('One point: BrightnessRegulation');
         },
 
         onePointContrastRegulation: function () {

@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var PosterizeTool = function PosterizeTool(params) {
-        console.info('new PosterizeTool', params);
+    var BrightnessRegulationTool = function BrightnessRegulationTool(params) {
+        console.info('new BrightnessRegulationTool', params);
 
         this.settings = {
             renderAreaID: '#app',
@@ -28,13 +28,13 @@
         this.initialize();
     };
 
-    PosterizeTool.prototype = new AbstractWindow();
+    BrightnessRegulationTool.prototype = new AbstractWindow();
 
-    PosterizeTool.prototype.initialize = function () {
-        this.$window.classList.add('posterize-tool');
+    BrightnessRegulationTool.prototype.initialize = function () {
+        this.$window.classList.add('brightness-regulation-tool');
 
         // Update title of window.
-        this.updateTitle('Posteryzacja - ' +  this.settings.image.name);
+        this.updateTitle('Regulacja jasnością - ' +  this.settings.image.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -49,26 +49,26 @@
         this.render();
     };
 
-    PosterizeTool.prototype.buildUI = function () {
+    BrightnessRegulationTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#posterize-tool').innerHTML;
+        var template = doc.querySelector('#brightness-regulation-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.setContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#posterize-tool-regulation-range');
-            var $value = doc.querySelector('#posterize-tool-regulation-value');
+            var $range = doc.querySelector('#brightness-regulation-tool-regulation-range');
+            var $value = doc.querySelector('#brightness-regulation-tool-regulation-value');
 
-            function setupPosterize(levels) {
+            function setupPosterize(level) {
                 // Restore image to origin.
                 self.settings.canvas.ctx.drawImage(self.settings.image.image, 0, 0, self.settings.image.width, self.settings.image.height);
 
-                // Apply posterize to image.
-                root.OperationOnePoint.onePointPosterize({
+                // Apply brightness-regulation to image.
+                root.OperationOnePoint.onePointBrightnessRegulation({
                     workspace: self.settings.canvas,
-                    value: levels
+                    value: level
                 });
             }
 
@@ -82,14 +82,14 @@
                 setupPosterize($range.value);
             });
 
-            $value.value = $range.value = PosterizeTool.DEFAULT_LEVEL;
-            setupPosterize(PosterizeTool.DEFAULT_LEVEL);
+            $value.value = $range.value = BrightnessRegulationTool.DEFAULT_LEVEL;
+            setupPosterize(BrightnessRegulationTool.DEFAULT_LEVEL);
         }, 0);
     };
 
-    PosterizeTool.DEFAULT_LEVEL = 128;
+    BrightnessRegulationTool.DEFAULT_LEVEL = 0;
 
-    // Exports `PosterizeTool`.
-    return (root.PosterizeTool = PosterizeTool);
+    // Exports `BrightnessRegulationTool`.
+    return (root.BrightnessRegulationTool = BrightnessRegulationTool);
 
 }(this));
