@@ -97,6 +97,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Przywróć obrazek do pierwotnego stanu
 - [x] Zamknięcie programu
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
+- [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości
 
 #### Przydatne materiały
 

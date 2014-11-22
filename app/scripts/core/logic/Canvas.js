@@ -66,10 +66,45 @@
     };
 
     /**
-     * Append <canvas> object to place holder defined in settings.
+     * Append <canvas> HTML element to place holder defined in settings.
      */
     Canvas.prototype.render = function () {
         this.$placeHolder.setContent(this.$canvas);
+    };
+
+    /**
+     * Load image and convert to gray scale.
+     *
+     * @param {Image} image Original image from user drive
+     * @param {number} width
+     * @param {number} height
+     */
+    Canvas.prototype.loadGrayScaleImage = function (image, width, height) {
+        // Load original image.
+        this.ctx.drawImage(image, 0, 0, width, height);
+        // Convert to gray scale image.
+        this._convertToGrayScale();
+    };
+
+    /**
+     * Use RED channel and copy to rest channels (GREEN, BLUE).
+     * Not modify alpha channel.
+     *
+     * @access private
+     */
+    Canvas.prototype._convertToGrayScale = function () {
+        var pixelsChannels = this.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+
+        for (var i = 0; i < len / 4; i++) {
+            var color = pixelsChannelsData[(i * 4)];
+
+            // Update each channel (RGB) of pixel. Not modify channel alpha.
+            pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+        }
+
+        this.ctx.putImageData(pixelsChannels, 0, 0);
     };
 
     /**
@@ -96,7 +131,7 @@
      *
      * @returns {Array}
      */
-    Canvas.prototype.getCopyRedChannelPixels = function () {
+    Canvas.prototype.getCopyOfRedChannelPixels = function () {
         var pixels = this.getPixelsChannels();
         var red = [];
 
@@ -120,7 +155,7 @@
         hist = hist.map(function () { return 0; });
 
         // Read all levels from first channel (RED).
-        var pixels = this.getCopyRedChannelPixels();
+        var pixels = this.getCopyOfRedChannelPixels();
 
         // Loop for each pixels.
         pixels.forEach(function (color) {

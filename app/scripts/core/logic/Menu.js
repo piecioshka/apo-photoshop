@@ -139,11 +139,13 @@
         var fileMenu = new this.gui.Menu();
 
         this.editRestoreMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('EDIT_RESTORE'), function () {
+            var clearTitle;
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
                 activeWindow.buildImage();
-                activeWindow.updateTitle(activeWindow.getTitle().replace(/\* /, ''));
+                clearTitle = activeWindow.getTitle().replace(/\* /, '');
+                activeWindow.updateTitle(clearTitle);
             }
         }, 'Ctrl', 'Z');
 

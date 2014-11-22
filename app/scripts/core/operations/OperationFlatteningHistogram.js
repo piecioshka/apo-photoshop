@@ -79,7 +79,7 @@
             var len = pixelsChannelsData.length;
 
             // Copy to array. References was destroyed.
-            var pixelsArray = can.getCopyRedChannelPixels();
+            var pixelsArray = can.getCopyOfRedChannelPixels();
 
             var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
             // console.log('pixelsMatrix');
