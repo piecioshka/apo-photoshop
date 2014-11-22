@@ -6,5 +6,6 @@
 @import "windows/main/histogram-window.css";
 @import "windows/main/picture-window.css";
 
-@import "windows/tools/threshold-tool.css";
 @import "windows/tools/posterize-tool.css";
+@import "windows/tools/stretch-tool.css";
+@import "windows/tools/threshold-tool.css";

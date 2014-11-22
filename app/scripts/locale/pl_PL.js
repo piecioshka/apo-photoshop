@@ -34,7 +34,7 @@
         OPERATIONS_ONE_POINT: 'Jednopunktowe',
         OPERATIONS_ONE_POINT_NEGATIVE: 'Odwrotności (negacja)',
         OPERATIONS_ONE_POINT_THRESHOLD: 'Progowanie',
-        OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE: 'Redukcja poziomów szarości',
+        OPERATIONS_ONE_POINT_POSTERIZE: 'Redukcja poziomów szarości',
         OPERATIONS_ONE_POINT_STRETCHING: 'Rozciąganie',
         OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'Regulacja jasnością',
         OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'Regulacja kontrastem',

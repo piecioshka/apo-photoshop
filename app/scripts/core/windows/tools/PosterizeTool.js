@@ -34,7 +34,7 @@
         this.$window.classList.add('posterize-tool');
 
         // Update title of window.
-        this.updateTitle('Redukcja poziomów szarości - ' +  this.settings.image.name);
+        this.updateTitle('Posteryzacja - ' +  this.settings.image.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -58,13 +58,10 @@
         this.setContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#posterize-tool-regulation');
+            var $range = doc.querySelector('#posterize-tool-regulation-range');
             var $value = doc.querySelector('#posterize-tool-regulation-value');
 
             function setupPosterize(levels) {
-                // Put number of posterize.
-                $value.innerText = levels;
-
                 // Restore image to origin.
                 self.settings.canvas.ctx.drawImage(self.settings.image.image, 0, 0, self.settings.image.width, self.settings.image.height);
 
@@ -76,9 +73,16 @@
             }
 
             $range.addEventListener('change', function () {
+                $value.value = $range.value;
                 setupPosterize($range.value);
             });
 
+            $value.addEventListener('keydown', function () {
+                $range.value = $value.value;
+                setupPosterize($range.value);
+            });
+
+            $value.value = $range.value = PosterizeTool.DEFAULT_LEVELS;
             setupPosterize(PosterizeTool.DEFAULT_LEVELS);
         }, 0);
     };

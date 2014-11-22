@@ -58,13 +58,10 @@
         this.setContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#threshold-tool-regulation');
+            var $range = doc.querySelector('#threshold-tool-regulation-range');
             var $value = doc.querySelector('#threshold-tool-regulation-value');
 
             function setupThreshold(hold) {
-                // Put number of threshold.
-                $value.innerText = hold;
-
                 // Restore image to origin.
                 self.settings.canvas.ctx.drawImage(self.settings.image.image, 0, 0, self.settings.image.width, self.settings.image.height);
 
@@ -75,10 +72,17 @@
                 });
             }
 
-            $range.addEventListener('change', function handleChange() {
+            $range.addEventListener('change', function () {
+                $value.value = $range.value;
                 setupThreshold($range.value);
             });
 
+            $value.addEventListener('keydown', function () {
+                $range.value = $value.value;
+                setupThreshold($range.value);
+            });
+
+            $value.value = $range.value = ThresholdTool.DEFAULT_HOLDER;
             setupThreshold(ThresholdTool.DEFAULT_HOLDER);
         }, 0);
     };

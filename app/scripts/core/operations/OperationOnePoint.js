@@ -87,7 +87,34 @@
             console.timeEnd('One point: Posterize');
         },
 
-        onePointStretching: function () {
+        onePointStretching: function (params) {
+            console.time('One point: Stretching');
+
+            var can = params.workspace;
+            var ctx = can.ctx;
+
+            var pixelsChannels = can.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
+            var min = parseInt(params.value.min, 10);
+            var max = parseInt(params.value.max, 10);
+
+            for (var i = 0; i < len / 4; i++) {
+                var color = pixelsChannelsData[(i * 4)];
+
+                if (color <= min || color > max) {
+                    color = 0;
+                } else {
+                    color = Math.round((color - min) * (255 / (max - min)));
+                }
+
+                // Update each channel (RGB) of pixel. Not modify channel alpha.
+                pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+            }
+
+            ctx.putImageData(pixelsChannels, 0, 0);
+
+            console.timeEnd('One point: Stretching');
 
         },
 

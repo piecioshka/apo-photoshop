@@ -237,7 +237,7 @@
             });
         });
 
-        this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_REDUCTION_GRAY_SCALE'), function () {
+        this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_POSTERIZE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             new PosterizeTool({
@@ -247,7 +247,12 @@
         });
 
         this.operationsOnePointStretchingMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
-            root.OperationOnePoint.onePointStretching();
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            new StretchTool({
+                image: activeWindow.settings.image,
+                canvas: activeWindow.canvas
+            });
         });
 
         this.operationsOnePointBrightnessRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {

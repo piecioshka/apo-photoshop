@@ -59,7 +59,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Operacja odwrotności (negacji)
         - [x] Operacja progowania (binaryzacji)
         - [x] Operacja redukcji poziomów szarości
-        - [ ] Operacja rozciągania
+        - [x] Operacja rozciągania
         - [ ] Regulacja kontrastem
         - [ ] Regulacja jasnością
         - [ ] Regulacja korekcją gamma

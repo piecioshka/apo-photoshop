@@ -1,21 +1,21 @@
-#posterize-tool-content {
+#stretch-tool-content {
     width: 300px;
-    height: 40px;
+    height: 70px;
 }
 
-#posterize-tool-content span {
+#stretch-tool-content span {
     display: inline-block;
     width: 60px;
 }
 
-#posterize-tool-content input[type="text"] {
+#stretch-tool-content input[type="text"] {
     display: inline-block;
     width: 20px;
     margin: 0 5px;
     outline: none;
 }
 
-#posterize-tool-content input[type="range"] {
+#stretch-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;

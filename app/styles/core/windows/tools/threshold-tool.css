@@ -1,19 +1,23 @@
 #threshold-tool-content {
-    width: 260px;
+    width: 320px;
     height: 40px;
 }
 
-#threshold-tool-content dt,
-#threshold-tool-content dd {
-    float: left;
-    margin: 0;
+#threshold-tool-content span {
+    display: inline-block;
+    width: 90px;
 }
 
-#threshold-tool-content dt {
-    width: 80px;
+#threshold-tool-content input[type="text"] {
+    display: inline-block;
+    width: 20px;
+    margin: 0 5px;
+    outline: none;
 }
 
 #threshold-tool-content input[type="range"] {
-    margin: 0;
+    display: inline-block;
     width: 180px;
+    margin: 4px 0 0 0;
+    outline: none;
 }
