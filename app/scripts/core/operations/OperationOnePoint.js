@@ -165,30 +165,21 @@
             var can = params.workspace;
             var ctx = can.ctx;
 
+            var uniqueChannels = can.getUniqueChannels();
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
-            var uniqueChannels = can.getUniqueChannels();
-            var min = _.first(uniqueChannels);
-            console.log('min', min);
-            var max = _.last(uniqueChannels);
-            console.log('max', max);
-            var ratio = (max - hold) / (max + hold);
-            console.log('ratio', ratio);
+            var multiplier = (100.0 + hold) / 100.0;
+            var lmax = (uniqueChannels.length - 1);
 
             for (var i = 0; i < len / 4; i++) {
                 var color = pixelsChannelsData[(i * 4)];
 
-                color = color * ratio;
-                /*
-                if (color > 127) {
-                    color = parseInt(color + (Math.abs(127 - color) * hold) % 255, 10)
-                } else {
-                    color = parseInt(color - (Math.abs(127 - color) * hold) % 255, 10);
-                }
-                */
+                var temp = (color / lmax) - 0.5;
+                temp = temp * multiplier + 0.5;
+                color = Math.max(0, Math.min(uniqueChannels.length - 1, temp * lmax));
 
                 // Save protection (0 - 255).
                 color = root.Utilities.intToByte(color);
@@ -208,15 +199,25 @@
             var can = params.workspace;
             var ctx = can.ctx;
 
+            var uniqueChannels = can.getUniqueChannels();
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
+            var upo = new Array(uniqueChannels.length);
+            var lmax = (uniqueChannels.length - 1);
+
+            for (var j = 0; j < uniqueChannels.length; ++j) {
+                var pos = (lmax * Math.pow(j / lmax, 1.0 / hold)) + 0.5;
+                pos = Math.min(Math.max(pos, 0), uniqueChannels.length - 1);
+                upo[j] = pos;
+            }
+
             for (var i = 0; i < len / 4; i++) {
                 var color = pixelsChannelsData[(i * 4)];
 
-                // TODO
+                color = upo[color];
 
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;

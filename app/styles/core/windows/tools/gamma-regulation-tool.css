@@ -1,0 +1,23 @@
+#gamma-regulation-tool-content {
+    width: 350px;
+    height: 40px;
+}
+
+#gamma-regulation-tool-content span {
+    display: inline-block;
+    width: 110px;
+}
+
+#gamma-regulation-tool-content input[type="text"] {
+    display: inline-block;
+    width: 20px;
+    margin: 0 5px;
+    outline: none;
+}
+
+#gamma-regulation-tool-content input[type="range"] {
+    display: inline-block;
+    width: 180px;
+    margin: 4px 0 0 0;
+    outline: none;
+}

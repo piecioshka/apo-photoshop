@@ -87,7 +87,7 @@
         }, 0);
     };
 
-    GammaRegulationTool.DEFAULT_LEVEL = 0;
+    GammaRegulationTool.DEFAULT_LEVEL = 1;
 
     // Exports `GammaRegulationTool`.
     return (root.GammaRegulationTool = GammaRegulationTool);

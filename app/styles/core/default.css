@@ -7,6 +7,8 @@
 @import "windows/main/picture-window.css";
 
 @import "windows/tools/brightness-regulation-tool.css";
+@import "windows/tools/contrast-regulation-tool.css";
+@import "windows/tools/gamma-regulation-tool.css";
 @import "windows/tools/posterize-tool.css";
 @import "windows/tools/stretch-tool.css";
 @import "windows/tools/threshold-tool.css";

@@ -61,8 +61,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Operacja redukcji poziomów szarości
         - [x] Operacja rozciągania
         - [x] Regulacja jasnością
-        - [ ] Regulacja kontrastem
-        - [ ] Regulacja korekcją gamma
+        - [x] Regulacja kontrastem
+        - [x] Regulacja korekcją gamma
     - Zadanie 2
         - [ ] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
         - [ ] Tablica LUT
