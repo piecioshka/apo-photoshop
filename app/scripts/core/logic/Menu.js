@@ -142,7 +142,7 @@
             var clearTitle;
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow !== null) {
+            if (activeWindow instanceof PictureWindow) {
                 activeWindow.buildImage();
                 clearTitle = activeWindow.getTitle().replace(/\* /, '');
                 activeWindow.updateTitle(clearTitle);
@@ -161,7 +161,7 @@
         this.boxHistogramMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow !== null) {
+            if (activeWindow instanceof PictureWindow) {
                 new root.HistogramWindow({
                     image: activeWindow.settings.image,
                     canvas: activeWindow.canvas
@@ -173,7 +173,7 @@
         this.boxDuplicateMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_DUPLICATE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow !== null) {
+            if (activeWindow instanceof PictureWindow) {
                 new root.PictureWindow({
                     image: activeWindow.settings.image
                 });
