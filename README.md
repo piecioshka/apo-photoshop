@@ -67,7 +67,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
         - [ ] Tablica LUT
     - Zadanie 3
-        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB,...) i logiczne (OR, AND, XOR,...) ).
+        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB,...) i logiczne (OR, AND, XOR,...)).
 - [ ] Ćw. 3
     - Zadanie 1
         - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania, wyostrzania liniowego oparte na 4 maskach laplasjanowych, detekcji krawędzi oparte na 3 maskach detekcji krawędzi.
@@ -91,6 +91,20 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Operacje erozji, dylatacji, otwarcia, zamknięcia dla dwóch przypadków elementu strukturalnego:
             - [ ] a) romb (czterosąsiedztwo)
             - [ ] b) kwadrat (ośmiosąsiedztwo)
+- [ ] Ćw. 5
+    - Zadanie 1
+        - [ ] Segmentacja obrazów z wykorzystaniem: progowania, rozrostu obszaru, dołączania, podziału, podziału i dołączania - algorytm i aplikacja.
+    - Zadanie 2
+        - [ ] Segmentacja oparta na opisie tekstury;
+            - [ ] a) obliczanie deskryptorów tekstury (texture descriptors),
+            - [ ] b) obliczanie histogramów różnic poziomów jasności (histograms of gray-level differences),
+            - [ ] c) obliczanie ciągów pikseli o takiej samej wartości (run length statistics) - algorytm i aplikacja.
+    - Zadanie 3
+        - [ ] Segmentacja oparta na opisie tekstury;
+            - [ ] a) obliczanie wartości prawdopodobieństwa pojawienia się pary piksli o zadanych poziomach jasności w odległości d jeden od drugiego (obliczanie macierzy współwystąpień (co-occurence matrix calculation)),
+            - [ ] b) wyznaczenie rozkładu widma potęgowego (power spectrum) - algorytm i aplikacja.
+    - Zadanie 4
+        - [ ] Opis obrazu z wykorzystaniem algorytmu żółwia.
 
 - [x] Duplikacja aktywnego okna
 - [ ] Resize okna
