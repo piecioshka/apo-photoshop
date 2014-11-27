@@ -28,8 +28,8 @@
             .pipe(jshint.reporter(stylish, { verbose: true }));
     });
 
-    gulp.task('count', 'Count line of code in *.js files', shell.task([
-        'find app/scripts -name "*.js" | xargs wc -l | sort -r'
+    gulp.task('count', 'Count LOC each *.js file in app/scripts/core directory.', shell.task([
+        'find app/scripts/core -name "*.js" | xargs wc -l | sort -r'
     ]));
 
     // exports

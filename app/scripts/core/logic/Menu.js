@@ -36,6 +36,7 @@
         this.aboutHelpMenuItem = null;
 
         this.initialize();
+        this.setup();
     }
 
     Menu.prototype.initialize = function () {
@@ -43,7 +44,7 @@
         this.gui = require('nw.gui');
 
         // Create main window menu.
-        this.windowMenu = new this.gui.Menu({ type: 'menubar' });
+        this.windowMenu = new this.gui.Menu({type: 'menubar'});
 
         // If application run under Mac OS must set that option, to fixed main window menu.
         if (root.Utilities.isDarwin()) {
@@ -55,7 +56,9 @@
 
         // Assign main menu to window.
         this.gui.Window.get().menu = this.windowMenu;
+    }
 
+    Menu.prototype.setup = function () {
         this.setupFileMenu();
         this.setupEditMenu();
         this.setupBoxMenu();
