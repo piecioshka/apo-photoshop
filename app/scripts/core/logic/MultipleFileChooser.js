@@ -29,11 +29,16 @@
         this.$input.setAttribute('multiple', 'multiple');
         this.$input.classList.add('hide');
         this.$input.addEventListener('change', function () {
-            var image = self.$input.files[0];
-            self.emit(MultipleFileChooser.EVENTS.SELECT_FILE, {
-                file: image.path,
-                name: image.name
+            var files = [];
+
+            _.each(self.$input.files, function (image) {
+                files.push({
+                    file: image.path,
+                    name: image.name
+                });
             });
+
+            self.emit(MultipleFileChooser.EVENTS.SELECT_FILES, files);
             self.remove();
         });
         this.$input.click();

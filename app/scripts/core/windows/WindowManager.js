@@ -48,7 +48,7 @@
         return _.last(this._windows) || null;
     };
 
-    // Extend `SingleFileChooser` module with events.
+    // Extend `WindowManager` module with events.
     _.extend(WindowManager.prototype, root.EventEmitter);
 
     // Exports `WindowManager`.

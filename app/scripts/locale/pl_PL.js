@@ -12,6 +12,7 @@
 
         FILE: 'Plik',
         FILE_OPEN: 'Otwórz',
+        FILES_OPEN: 'Otwórz sekwencje',
         FILE_CLOSE: 'Zamknij otwarte okno',
         CLOSE: 'Zamknij',
 

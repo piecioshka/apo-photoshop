@@ -8,6 +8,7 @@
         this.windowMenu = null;
 
         this.fileOpenMenuItem = null;
+        this.filesOpenMenuItem = null;
         this.fileCloseMenuItem = null;
         this.closeMenuItem = null;
 
@@ -56,7 +57,7 @@
 
         // Assign main menu to window.
         this.gui.Window.get().menu = this.windowMenu;
-    }
+    };
 
     Menu.prototype.setup = function () {
         this.setupFileMenu();
@@ -118,6 +119,29 @@
                 root.AssetsLoader.loadImage(params.file, params.name);
             });
         }, 'Ctrl', 'O');
+
+        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), function () {
+
+            var file = new root.MultipleFileChooser({
+                place: '#app'
+            });
+
+            file.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, function (params) {
+                console.warn('params', params);
+
+                _.each(params, function (param) {
+                    // Listen for load image from user.
+                    root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
+                        new root.PictureWindow({
+                            image: image
+                        });
+                    });
+
+                    // Loading choose file.
+                    root.AssetsLoader.loadImage(param.file, param.name);
+                });
+            });
+        }, 'Ctrl-Shift', 'O');
 
         this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
