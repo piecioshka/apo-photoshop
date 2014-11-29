@@ -4,7 +4,7 @@
     // Aliases.
     var doc = root.document;
 
-    var FileChooser = function (params) {
+    var MultipleFileChooser = function (params) {
         this.settings = {
             place: null
         };
@@ -16,20 +16,21 @@
         this.initialize();
     };
 
-    FileChooser.prototype.initialize = function () {
+    MultipleFileChooser.prototype.initialize = function () {
         this.createInput();
         this.render();
     };
 
-    FileChooser.prototype.createInput = function () {
+    MultipleFileChooser.prototype.createInput = function () {
         var self = this;
 
         this.$input = doc.createElement('input');
         this.$input.setAttribute('type', 'file');
+        this.$input.setAttribute('multiple', 'multiple');
         this.$input.classList.add('hide');
         this.$input.addEventListener('change', function () {
             var image = self.$input.files[0];
-            self.emit(FileChooser.EVENTS.SELECT_FILE, {
+            self.emit(MultipleFileChooser.EVENTS.SELECT_FILE, {
                 file: image.path,
                 name: image.name
             });
@@ -38,22 +39,22 @@
         this.$input.click();
     };
 
-    FileChooser.prototype.render = function () {
+    MultipleFileChooser.prototype.render = function () {
         this.$placeHolder.appendChild(this.$input);
     };
 
-    FileChooser.prototype.remove = function () {
+    MultipleFileChooser.prototype.remove = function () {
         this.$input.parentNode.removeChild(this.$input);
     };
 
-    FileChooser.EVENTS = {
-        SELECT_FILE: 'file:select'
+    MultipleFileChooser.EVENTS = {
+        SELECT_FILES: 'file:multiply:select'
     };
 
-    // Extend `FileChooser` module with events.
-    _.extend(FileChooser.prototype, root.EventEmitter);
+    // Extend `MultipleFileChooser` module with events.
+    _.extend(MultipleFileChooser.prototype, root.EventEmitter);
 
-    // Export `FileChooser`.
-    return (root.FileChooser = FileChooser);
+    // Export `MultipleFileChooser`.
+    return (root.MultipleFileChooser = MultipleFileChooser);
 
 }(this));

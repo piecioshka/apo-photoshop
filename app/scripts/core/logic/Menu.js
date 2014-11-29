@@ -102,11 +102,11 @@
 
         this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
 
-            var file = new root.FileChooser({
+            var file = new root.SingleFileChooser({
                 place: '#app'
             });
 
-            file.once(root.FileChooser.EVENTS.SELECT_FILE, function (params) {
+            file.once(root.SingleFileChooser.EVENTS.SELECT_FILE, function (params) {
                 // Listen for load image from user.
                 root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
                     new root.PictureWindow({

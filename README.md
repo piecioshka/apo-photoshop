@@ -1,6 +1,16 @@
 # <img src="/images/wsisiz.png" align="top" alt="WSISIZ" /> APO: Photoshop
 
-**Temat projektu:** _Automatyczna konwersja sekwencji obrazów w odcieniach szarości, na sekwencje obrazów kolorowych._
+**Temat projektu:**
+
+```
+Program półautomatycznej konwersji sekwencji obrazów w odcieniach szarości na sekwencję obrazów kolorowych.
+
+Wykorzystanie wygenerowanych sekwencji obrazów:
+ a) własnych
+ b) istniejących
+
+Koła, trójkąty, kwadraty, intensywność szarości na intensywność jasności w HSV.
+```
 
 ## Jak uruchomić aplikację?
 

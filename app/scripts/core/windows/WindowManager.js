@@ -7,7 +7,7 @@
 
     WindowManager.prototype.addWindow = function (win) {
         this._windows.push(win);
-        this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win});
+        this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
     };
 
     WindowManager.prototype.removeWindow = function (windowToRemove) {
@@ -48,7 +48,7 @@
         return _.last(this._windows) || null;
     };
 
-    // Extend `FileChooser` module with events.
+    // Extend `SingleFileChooser` module with events.
     _.extend(WindowManager.prototype, root.EventEmitter);
 
     // Exports `WindowManager`.
