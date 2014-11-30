@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var HistogramWindow = function HistogramWindow(params) {
-        console.info('new HistogramWindow', params);
+        // console.info('new HistogramWindow', params);
 
         this.settings = {
             renderAreaID: '#app',

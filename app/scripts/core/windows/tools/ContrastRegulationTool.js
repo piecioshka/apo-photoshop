@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var ContrastRegulationTool = function ContrastRegulationTool(params) {
-        console.info('new ContrastRegulationTool', params);
+        // console.info('new ContrastRegulationTool', params);
 
         this.settings = {
             renderAreaID: '#app',

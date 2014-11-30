@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var ThresholdTool = function ThresholdTool(params) {
-        console.info('new ThresholdTool', params);
+        // console.info('new ThresholdTool', params);
 
         this.settings = {
             renderAreaID: '#app',

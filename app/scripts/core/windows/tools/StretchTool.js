@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var StretchTool = function StretchTool(params) {
-        console.info('new StretchTool', params);
+        // console.info('new StretchTool', params);
 
         this.settings = {
             renderAreaID: '#app',

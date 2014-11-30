@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var PosterizeTool = function PosterizeTool(params) {
-        console.info('new PosterizeTool', params);
+        // console.info('new PosterizeTool', params);
 
         this.settings = {
             renderAreaID: '#app',

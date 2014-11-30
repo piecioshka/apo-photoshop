@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var BrightnessRegulationTool = function BrightnessRegulationTool(params) {
-        console.info('new BrightnessRegulationTool', params);
+        // console.info('new BrightnessRegulationTool', params);
 
         this.settings = {
             renderAreaID: '#app',

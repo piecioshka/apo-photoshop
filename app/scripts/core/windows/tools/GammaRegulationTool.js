@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var GammaRegulationTool = function GammaRegulationTool(params) {
-        console.info('new GammaRegulationTool', params);
+        // console.info('new GammaRegulationTool', params);
 
         this.settings = {
             renderAreaID: '#app',

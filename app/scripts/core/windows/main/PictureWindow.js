@@ -5,7 +5,7 @@
     var doc = root.document;
 
     var PictureWindow = function PictureWindow(params) {
-        console.info('new PictureWindow', params);
+        // console.info('new PictureWindow', params);
 
         this.settings = {
             renderAreaID: '#app',

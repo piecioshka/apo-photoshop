@@ -99,7 +99,7 @@
                     setHistogramWindowState();
                 }
 
-                console.warn('Window "%s" (%s) is activated!', params.win.getTitle(), windowType);
+                // console.warn('Window "%s" (%s) is activated!', params.win.getTitle(), windowType);
             });
 
             wm.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
@@ -113,7 +113,7 @@
                     windowType = 'histogram';
                 }
 
-                console.warn('Window "%s" (%s) is closed!', params.win.getTitle(), windowType);
+                // console.warn('Window "%s" (%s) is closed!', params.win.getTitle(), windowType);
 
                 // Activate last added window.
                 var lastAddedWindow = wm.getLast();

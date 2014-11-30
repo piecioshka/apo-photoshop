@@ -5,20 +5,19 @@
 
     var AssetsLoader = {
 
-        loadImage: function (url, name) {
+        loadImage: function (url, name, callback) {
             if (isTIFF.test(name)) {
                 root.alert(root.locale.get('MSG_ERR_UNSUPPORTED'));
             } else {
-                this._useImageConstructor(url, name);
+                this._useImageConstructor(url, name, callback);
             }
         },
 
-        _useImageConstructor: function (url, name) {
-            var self = this;
+        _useImageConstructor: function (url, name, callback) {
             var img = new Image();
 
             img.addEventListener('load', function () {
-                self.emit(AssetsLoader.EVENTS.IMAGE_LOADED, {
+                callback({
                     image: img,
                     name: name,
                     width: img.width,
@@ -33,10 +32,6 @@
             img.setAttribute('src', url);
         }
 
-    };
-
-    AssetsLoader.EVENTS = {
-        IMAGE_LOADED: 'image:loaded'
     };
 
     // Extend `AssetsLoader` module with events.

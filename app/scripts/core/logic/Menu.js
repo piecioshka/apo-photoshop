@@ -101,47 +101,41 @@
     Menu.prototype.setupFileMenu = function () {
         var fileMenu = new this.gui.Menu();
 
-        this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
+        // Create internal window with picture (image).
+        function handleLoad(image) {
+            new root.PictureWindow({
+                image: image
+            });
+        }
 
-            var file = new root.SingleFileChooser({
+
+        this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
+            // Load single file.
+            var singleFile = new root.SingleFileChooser({
                 place: '#app'
             });
 
-            file.once(root.SingleFileChooser.EVENTS.SELECT_FILE, function (params) {
-                // Listen for load image from user.
-                root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
-                    new root.PictureWindow({
-                        image: image
-                    });
-                });
-
-                // Loading choose file.
-                root.AssetsLoader.loadImage(params.file, params.name);
+            singleFile.once(root.SingleFileChooser.EVENTS.SELECT_FILE, function (params) {
+                root.AssetsLoader.loadImage(params.file, params.name, handleLoad);
             });
         }, 'Ctrl', 'O');
 
-        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), function () {
 
-            var file = new root.MultipleFileChooser({
+        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), function () {
+            // Load a few images.
+            var multipleFile = new root.MultipleFileChooser({
                 place: '#app'
             });
 
-            file.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, function (params) {
-                console.warn('params', params);
-
+            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, function (params) {
+                // Loop through each of file (images).
                 _.each(params, function (param) {
-                    // Listen for load image from user.
-                    root.AssetsLoader.once(root.AssetsLoader.EVENTS.IMAGE_LOADED, function (image) {
-                        new root.PictureWindow({
-                            image: image
-                        });
-                    });
-
-                    // Loading choose file.
-                    root.AssetsLoader.loadImage(param.file, param.name);
+                    // Load selected file.
+                    root.AssetsLoader.loadImage(param.file, param.name, handleLoad);
                 });
             });
         }, 'Ctrl-Shift', 'O');
+
 
         this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
@@ -151,10 +145,12 @@
             }
         }, 'Ctrl', 'W');
 
+
         this.closeMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('CLOSE'), function () {
             // Close program.
             root.close();
         }, 'Ctrl', 'Q');
+
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('FILE'),
