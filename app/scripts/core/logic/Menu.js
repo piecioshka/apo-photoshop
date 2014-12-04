@@ -38,6 +38,7 @@
 
         this.initialize();
         this.setup();
+        this.render();
     }
 
     Menu.prototype.initialize = function () {
@@ -54,9 +55,6 @@
                 hideWindow: true
             });
         }
-
-        // Assign main menu to window.
-        this.gui.Window.get().menu = this.windowMenu;
     };
 
     Menu.prototype.setup = function () {
@@ -65,6 +63,11 @@
         this.setupBoxMenu();
         this.setupOperationsMenu();
         this.setupHelpMenu();
+    };
+
+    Menu.prototype.render = function () {
+        // Assign main menu to window.
+        this.gui.Window.get().menu = this.windowMenu;
     };
 
     Menu.prototype.addSubMenuItem = function (menu, label, callback, modifiers, key) {
