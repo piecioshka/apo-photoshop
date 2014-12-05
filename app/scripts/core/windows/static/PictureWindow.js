@@ -8,12 +8,11 @@
         // console.info('new PictureWindow', params);
 
         this.settings = {
-            renderAreaID: '#app',
             image: null
         };
         _.extend(this.settings, params);
 
-        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
+        this.$placeHolder = doc.querySelector(root.WindowManager.RENDER_AREA_ID);
         this.$window = null;
         this.$bar = null;
         this.$buttons = null;

@@ -5,6 +5,8 @@
         this._windows = [];
     };
 
+    WindowManager.RENDER_AREA_ID = '#app';
+
     WindowManager.prototype.addWindow = function (win) {
         var st, left, width;
         this._windows.push(win);

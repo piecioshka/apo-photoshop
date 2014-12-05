@@ -8,13 +8,12 @@
         // console.info('new ContrastRegulationTool', params);
 
         this.settings = {
-            renderAreaID: '#app',
             image: null,
             canvas: null
         };
         _.extend(this.settings, params);
 
-        this.$placeHolder = doc.querySelector(this.settings.renderAreaID);
+        this.$placeHolder = doc.querySelector(root.WindowManager.RENDER_AREA_ID);
         this.$window = null;
         this.$bar = null;
         this.$buttons = null;
