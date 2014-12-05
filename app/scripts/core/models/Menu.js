@@ -111,6 +111,11 @@
             });
         }
 
+        function handleLoadMultiple(params) {
+            new root.FilmStockWindow({
+                frames: params
+            });
+        }
 
         this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
             // Load single file.
@@ -130,13 +135,7 @@
                 place: '#app'
             });
 
-            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, function (params) {
-                // Loop through each of file (images).
-                _.each(params, function (param) {
-                    // Load selected file.
-                    root.AssetsLoader.loadImage(param.file, param.name, handleLoad);
-                });
-            });
+            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, handleLoadMultiple);
         }, 'Ctrl-Shift', 'O');
 
 

@@ -1,0 +1,9 @@
+.film-stock-window .abstract-window-content canvas {
+    clear: both;
+    border: 3px solid #1e1e1e;
+    border-bottom: none;
+}
+
+.film-stock-window .abstract-window-content canvas:last-child {
+    border-bottom: 3px solid #1e1e1e;
+}

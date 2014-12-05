@@ -46,11 +46,8 @@
             height: this.settings.image.height
         });
 
-        // Set reference to window, where will be rendered.
-        this.canvas.setWindow(this);
-
         // Create $canvas space.
-        this.canvas.render();
+        this.canvas.render(this);
 
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {

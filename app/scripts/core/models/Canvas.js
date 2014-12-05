@@ -31,15 +31,6 @@
     };
 
     /**
-     * Define place holder as window where <canvas> object will be rendered.
-     *
-     * @param {root.AbstractWindow} win
-     */
-    Canvas.prototype.setWindow = function (win) {
-        this.$placeHolder = win;
-    };
-
-    /**
      * Set height of <canvas> tag.
      *
      * @param {number} [height] Default get size from `this.settings`.
@@ -68,8 +59,8 @@
     /**
      * Append <canvas> HTML element to place holder defined in settings.
      */
-    Canvas.prototype.render = function () {
-        this.$placeHolder.setContent(this.$canvas);
+    Canvas.prototype.render = function (win) {
+        (this.$placeHolder = win).appendContent(this.$canvas);
     };
 
     /**

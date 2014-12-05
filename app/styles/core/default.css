@@ -3,6 +3,7 @@
 
 @import "windows/abstract-window.css";
 
+@import "windows/main/film-stock-window.css";
 @import "windows/main/histogram-window.css";
 @import "windows/main/picture-window.css";
 

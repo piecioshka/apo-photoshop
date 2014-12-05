@@ -55,7 +55,7 @@
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
-        this.setContent(renderedTemplate);
+        this.appendContent(renderedTemplate);
 
         setTimeout(function () {
             var $range1 = doc.querySelector('#stretch-tool-regulation-range-min');

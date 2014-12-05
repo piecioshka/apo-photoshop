@@ -104,13 +104,11 @@
         this.$window.appendChild(this.$content);
     };
 
-    AbstractWindow.prototype.setContent = function (item) {
-        if (this.$content.firstChild === null) {
-            if (_.isString(item)) {
-                this.$content.innerHTML = item;
-            } else {
-                this.$content.appendChild(item);
-            }
+    AbstractWindow.prototype.appendContent = function (item) {
+        if (_.isString(item)) {
+            this.$content.innerHTML += item;
+        } else {
+            this.$content.appendChild(item);
         }
     };
 
