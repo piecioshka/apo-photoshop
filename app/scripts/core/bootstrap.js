@@ -83,37 +83,31 @@
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
             }
 
+            function setFilmStockWindowState() {
+                menu.fileCloseMenuItem.enabled = true;
+            }
+
             setDefaultState();
 
             wm.on(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, function (params) {
                 params.win.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW);
                 wm.inactivateWindowsWithout(params.win);
 
-                var windowType = 'unknown';
-
                 if (params.win instanceof root.PictureWindow) {
-                    windowType = 'picture';
                     setPictureWindowState();
                 } else if (params.win instanceof root.HistogramWindow) {
-                    windowType = 'histogram';
                     setHistogramWindowState();
+                } else if (params.win instanceof root.FilmStockWindow) {
+                    setFilmStockWindowState();
                 }
 
-                // console.warn('Window "%s" (%s) is activated!', params.win.getTitle(), windowType);
+                // console.warn('Window "%s" is activated!', params.win.getTitle());
             });
 
             wm.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
                 wm.removeWindow(params.win);
 
-                var windowType = 'unknown';
-
-                if (params.win instanceof root.PictureWindow) {
-                    windowType = 'picture';
-                } else if (params.win instanceof root.HistogramWindow) {
-                    windowType = 'histogram';
-                }
-
-                // console.warn('Window "%s" (%s) is closed!', params.win.getTitle(), windowType);
+                // console.warn('Window "%s" is closed!', params.win.getTitle());
 
                 // Activate last added window.
                 var lastAddedWindow = wm.getLast();

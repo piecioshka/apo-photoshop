@@ -29,13 +29,15 @@
         this.initialize();
     };
 
+    FilmStockWindow.ID = 1;
+
     FilmStockWindow.prototype = new root.AbstractWindow();
 
     FilmStockWindow.prototype.initialize = function () {
         this.$window.classList.add('film-stock-window');
 
-        // Update title of window.
-        this.updateTitle('Taśma filmowa');
+        // Update title (add unique id of film stocks) of window.
+        this.updateTitle('Taśma filmowa #' + (FilmStockWindow.ID++));
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -53,6 +55,12 @@
     FilmStockWindow.prototype.buildStrip = function () {
         var self = this;
         var frames = [];
+
+        var $strip = doc.createElement('div');
+        $strip.classList.add('strip-axis');
+
+        this.$content.appendChild($strip);
+        this.$content = $strip;
 
         // Loop through each of file (images).
         _.each(this.settings.frames, function (frame) {
@@ -73,12 +81,16 @@
         });
 
         promise.chain(frames).then(function () {
-            console.log('film strip ready');
+            console.log('Film strip is ready', self.settings.frames);
+
+            // Resize width, added last border-right.
+            self._resizeStrip(3);
         });
     };
 
     FilmStockWindow.prototype.addFrame = function (frame) {
-        console.log('add frame', frame);
+        // Append width of frames list (use borders).
+        this._resizeStrip(3 + frame.image.width);
 
         // Create `Canvas` instance.
         var canvas = new root.Canvas({
@@ -89,7 +101,12 @@
         // Create $canvas space.
         canvas.render(this);
 
+        // Put loaded image to canvas form.
         canvas.loadGrayScaleImage(frame.image, frame.width, frame.height);
+    };
+
+    FilmStockWindow.prototype._resizeStrip = function (size) {
+        this.$content.style.width = (parseInt(this.$content.style.width, 10) || 0) + (size) + 'px';
     };
 
     // Exports `FilmStockWindow`.
