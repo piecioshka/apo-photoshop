@@ -7,6 +7,8 @@
     var jshint = require('gulp-jshint');
     var stylish = require('jshint-stylish');
     var shell = require('gulp-shell');
+    var markdownpdf = require('gulp-markdown-pdf');
+    var rename = require("gulp-rename");
 
     // node.js modules
     var path = require('path');
@@ -31,6 +33,13 @@
     gulp.task('count', 'Count LOC each *.js file in app/scripts/core directory.', shell.task([
         'find app/scripts/core -name "*.js" | xargs wc -l | sort -r'
     ]));
+
+    gulp.task('build-help', function () {
+        return gulp.src('README.md')
+            .pipe(markdownpdf())
+            .pipe(rename("docs/help.pdf"))
+            .pipe(gulp.dest('./app/'));
+    });
 
     // exports
     module.exports = gulp;

@@ -13,12 +13,18 @@
         "height": 600
     },
 
+    "webkit": {
+        "plugin": true
+    },
+
     "devDependencies": {
         "gulp": "latest",
         "gulp-jshint": "latest",
         "jshint-stylish": "latest",
         "gulp-help": "latest",
         "gulp-shell": "latest",
+        "gulp-rename": "latest",
+        "gulp-markdown-pdf": "latest",
         "cjson": "latest",
         "nodewebkit": "latest"
     }

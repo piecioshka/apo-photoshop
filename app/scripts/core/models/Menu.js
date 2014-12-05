@@ -349,6 +349,7 @@
     };
 
     Menu.prototype.setupHelpMenu = function () {
+        var self = this;
         var helpMenu = new this.gui.Menu();
 
         this.aboutAuthorsMenuItem = this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
@@ -363,7 +364,9 @@
 
         this.addSeparator(helpMenu);
 
-        this.aboutHelpMenuItem = this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_HELP'));
+        this.aboutHelpMenuItem = this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_HELP'), function () {
+            self.gui.Shell.openItem('./app/docs/help.pdf');
+        });
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('ABOUT'),
