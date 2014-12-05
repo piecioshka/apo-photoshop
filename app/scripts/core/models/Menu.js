@@ -122,7 +122,7 @@
                 place: '#app'
             });
 
-            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, handleLoad);
+            multipleFile.once(root.MultipleFileChooser.EVENTS.LOAD_FILES, handleLoad);
         }, 'Ctrl', 'O');
 
 

@@ -18,9 +18,12 @@
         this.initialize();
     };
 
+    Canvas.INDEX = 1;
+
     Canvas.prototype.initialize = function () {
         // Create <canvas> object.
         this.$canvas = doc.createElement('canvas');
+        this.$canvas.id = 'canvas-' + (Canvas.INDEX++);
 
         // Set dimensions.
         this.setWidth();

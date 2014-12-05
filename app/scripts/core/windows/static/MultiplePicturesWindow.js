@@ -85,6 +85,7 @@
 
         promise.chain(pictures).then(function () {
             console.log('Pictures are ready', self.settings.pictures);
+            self.addClickEvent();
         });
     };
 
@@ -109,7 +110,41 @@
         this.$content.style.height = (parseInt(this.$content.style.height, 10) || 0) + (size) + 'px';
     };
 
+    MultiplePicturesWindow.prototype.addClickEvent = function () {
+        var self = this;
+
+        function clearSelection() {
+            var canvases = _.toArray(self.$content.querySelectorAll('canvas'));
+            _.each(canvases, function (canvas) {
+                canvas.classList.remove('active');
+            });
+        }
+
+        function addSelection(element) {
+            element.classList.add('active');
+        }
+
+        function isCanvas(element) {
+            return element.nodeName.toLowerCase() === 'canvas';
+        }
+
+        this.$content.addEventListener('click', function (evt) {
+            var $element = evt.target;
+
+            if (isCanvas($element)) {
+                clearSelection();
+                addSelection($element);
+
+                self.emit(MultiplePicturesWindow.EVENTS.SELECT_PICTURE, { picture: $element });
+            }
+        });
+    };
+
     MultiplePicturesWindow.MARGIN_BOTTOM = 3;
+
+    MultiplePicturesWindow.EVENTS = {
+        SELECT_PICTURE: 'picture:select'
+    };
 
     // Exports `MultiplePicturesWindow`.
     return (root.MultiplePicturesWindow = MultiplePicturesWindow);

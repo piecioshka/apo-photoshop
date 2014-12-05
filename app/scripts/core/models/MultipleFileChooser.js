@@ -38,7 +38,7 @@
                 });
             });
 
-            self.emit(MultipleFileChooser.EVENTS.SELECT_FILES, files);
+            self.emit(MultipleFileChooser.EVENTS.LOAD_FILES, files);
             self.remove();
         });
         this.$input.click();
@@ -53,7 +53,7 @@
     };
 
     MultipleFileChooser.EVENTS = {
-        SELECT_FILES: 'file:multiply:select'
+        LOAD_FILES: 'load:files'
     };
 
     // Extend `MultipleFileChooser` module with events.
