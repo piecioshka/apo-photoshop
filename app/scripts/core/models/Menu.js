@@ -30,6 +30,9 @@
         this.operationsOnePointContrastRegulationMenuItem = null;
         this.operationsOnePointGammaRegulationMenuItem = null;
 
+        this.operationsOnePointArithmeticMenuItem = null;
+        this.operationsOnePointLogicalMenuItem = null;
+
         this.operationsNeighbourhoodSmoothingMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
@@ -309,6 +312,24 @@
             return new GammaRegulationTool({
                 image: activeWindow.settings.image,
                 canvas: activeWindow.canvas
+            });
+        });
+
+        // ---
+
+        this.operationsOnePointArithmeticMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new ArithmeticalTool({
+
+            });
+        });
+
+        this.operationsOnePointLogicalMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new LogicalTool({
+
             });
         });
 

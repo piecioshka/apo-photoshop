@@ -45,6 +45,17 @@
 
     <!-- windows/tools -->
 
+    <script type="text/html" id="template-arithmetical-tool">
+        <div class="arithmetical-tool-content">
+            <select>
+                <option>ADD</option>
+                <option>SUB</option>
+                <option>MUL</option>
+                <option>DIV</option>
+            </select>
+        </div>
+    </script>
+
     <script type="text/html" id="template-brightness-regulation-tool">
         <div class="brightness-regulation-tool-content">
             <span>Jasność:</span>
@@ -66,6 +77,17 @@
             <span>Korekcja Gamma:</span>
             <input class="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
             <input class="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
+        </div>
+    </script>
+
+    <script type="text/html" id="template-logical-tool">
+        <div class="logical-tool-content">
+            <select>
+                <option>OR</option>
+                <option>AND</option>
+                <option>XOR</option>
+                <option>NOT</option>
+            </select>
         </div>
     </script>
 
@@ -137,9 +159,11 @@
         <script src="scripts/core/windows/static/PictureWindow.js"></script>
 
         <!-- core/windows/tools //-->
+        <script src="scripts/core/windows/tools/ArithmeticalTool.js"></script>
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/ContrastRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/GammaRegulationTool.js"></script>
+        <script src="scripts/core/windows/tools/LogicalTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/StretchTool.js"></script>
         <script src="scripts/core/windows/tools/ThresholdTool.js"></script>

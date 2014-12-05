@@ -40,6 +40,9 @@
         OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'Regulacja kontrastem',
         OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'Regulacja korekcją gamma',
 
+        OPERATIONS_ONE_POINT_ARITHMETIC: 'Arytmetyczne',
+        OPERATIONS_ONE_POINT_LOGICAL: 'Logiczne',
+
         OPERATIONS_NEIGHBOURHOOD: 'Sąsiedztwa',
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
 

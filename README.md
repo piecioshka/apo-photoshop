@@ -77,7 +77,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 2
         - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
     - Zadanie 3
-        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB,...) i logiczne (OR, AND, XOR,...)).
+        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL, DIV) i logiczne (OR, AND, XOR, NOT)).
 - [ ] Ćw. 3
     - Zadanie 1
         - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania, wyostrzania liniowego oparte na 4 maskach laplasjanowych, detekcji krawędzi oparte na 3 maskach detekcji krawędzi.

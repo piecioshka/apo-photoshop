@@ -31,6 +31,9 @@
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = false;
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
+
+                menu.operationsOnePointArithmeticMenuItem.enabled = false;
+                menu.operationsOnePointLogicalMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -85,6 +88,9 @@
 
             function setMultiplePicturesWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
+
+                menu.operationsOnePointArithmeticMenuItem.enabled = true;
+                menu.operationsOnePointLogicalMenuItem.enabled = true;
             }
 
             setDefaultState();
