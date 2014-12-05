@@ -47,6 +47,16 @@
 
             // If is that numbers return them. Otherwise return modify value.
             return i;
+        },
+
+        walkTheDOM: function (node, func) {
+            func(node);
+            node = node.firstChild;
+
+            while (node) {
+                this.walkTheDOM(node, func);
+                node = node.nextSibling;
+            }
         }
 
     };

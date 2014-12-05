@@ -1,21 +1,21 @@
-#posterize-tool-content {
+.posterize-tool-content {
     width: 300px;
     height: 40px;
 }
 
-#posterize-tool-content span {
+.posterize-tool-content span {
     display: inline-block;
     width: 60px;
 }
 
-#posterize-tool-content input[type="text"] {
+.posterize-tool-content input[type="text"] {
     display: inline-block;
     width: 20px;
     margin: 0 5px;
     outline: none;
 }
 
-#posterize-tool-content input[type="range"] {
+.posterize-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;

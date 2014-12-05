@@ -4,3 +4,6 @@
 .sky-hide { position: absolute; left: -9999px; top: -9999px; }
 .left { float: left; }
 .right { float: right; }
+
+/* Colors */
+.bg-white { background: #fff; }

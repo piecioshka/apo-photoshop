@@ -8,57 +8,94 @@
 <body>
     <div id="app"></div>
 
-    <script type="text/html" id="brightness-regulation-tool">
-        <div id="brightness-regulation-tool-content">
+    <!-- windows/static -->
+
+    <script type="text/html" id="template-lut-uop-static">
+        <table class="lut-uop-static-content" cellpadding="0" cellspacing="0" border="1">
+            <thead>
+                <tr>
+                    <% _.each(original, function (item, index) { %>
+                        <% if (item !== undefined) { %>
+                            <th style="background: rgb(<%= index %>, <%= index %>, <%= index %>);">
+                                <% var color = (index < 128) ? 255 : 0; %>
+                                <span style="color: rgb(<%= color %>, <%= color %>, <%= color %>);">#<%= index %></span>
+                            </th>
+                        <% } %>
+                    <% }); %>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-white">
+                    <% _.each(original, function (item) { %>
+                        <% if (item !== undefined) { %>
+                            <td><%= item %></td>
+                        <% } %>
+                    <% }); %>
+                </tr>
+                <tr>
+                    <% _.each(current, function (item) { %>
+                        <% if (item !== undefined) { %>
+                            <td><%= item %></td>
+                        <% } %>
+                    <% }); %>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <!-- windows/tools -->
+
+    <script type="text/html" id="template-brightness-regulation-tool">
+        <div class="brightness-regulation-tool-content">
             <span>Jasność:</span>
-            <input id="brightness-regulation-tool-regulation-value" type="text" maxlength="4">
-            <input id="brightness-regulation-tool-regulation-range" type="range" min="-100" max="200">
+            <input class="brightness-regulation-tool-regulation-value" type="text" maxlength="4">
+            <input class="brightness-regulation-tool-regulation-range" type="range" min="-100" max="200">
         </div>
     </script>
 
-    <script type="text/html" id="contrast-regulation-tool">
-        <div id="contrast-regulation-tool-content">
+    <script type="text/html" id="template-contrast-regulation-tool">
+        <div class="contrast-regulation-tool-content">
             <span>Kontrast:</span>
-            <input id="contrast-regulation-tool-regulation-value" type="text" maxlength="3">
-            <input id="contrast-regulation-tool-regulation-range" type="range" min="-50" max="100">
+            <input class="contrast-regulation-tool-regulation-value" type="text" maxlength="3">
+            <input class="contrast-regulation-tool-regulation-range" type="range" min="-50" max="100">
         </div>
     </script>
 
-    <script type="text/html" id="gamma-regulation-tool">
-        <div id="gamma-regulation-tool-content">
+    <script type="text/html" id="template-gamma-regulation-tool">
+        <div class="gamma-regulation-tool-content">
             <span>Korekcja Gamma:</span>
-            <input id="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
-            <input id="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
+            <input class="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
+            <input class="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
         </div>
     </script>
 
-    <script type="text/html" id="posterize-tool">
-        <div id="posterize-tool-content">
+    <script type="text/html" id="template-posterize-tool">
+        <div class="posterize-tool-content">
             <span>Poziomy:</span>
-            <input id="posterize-tool-regulation-value" type="text" maxlength="3">
-            <input id="posterize-tool-regulation-range" type="range" min="2" max="255">
+            <input class="posterize-tool-regulation-value" type="text" maxlength="3">
+            <input class="posterize-tool-regulation-range" type="range" min="2" max="255">
         </div>
     </script>
 
-    <script type="text/html" id="stretch-tool">
-        <div id="stretch-tool-content">
+    <script type="text/html" id="template-stretch-tool">
+        <div class="stretch-tool-content">
             <span>Początek:</span>
-            <input id="stretch-tool-regulation-value-min" type="text" maxlength="3">
-            <input id="stretch-tool-regulation-range-min" type="range" min="2" max="255">
+            <input class="stretch-tool-regulation-value-min" type="text" maxlength="3">
+            <input class="stretch-tool-regulation-range-min" type="range" min="2" max="255">
 
             <hr />
 
             <span>Koniec:</span>
-            <input id="stretch-tool-regulation-value-max" type="text" maxlength="3">
-            <input id="stretch-tool-regulation-range-max" type="range" min="2" max="255">
+            <input class="stretch-tool-regulation-value-max" type="text" maxlength="3">
+            <input class="stretch-tool-regulation-range-max" type="range" min="2" max="255">
         </div>
     </script>
 
-    <script type="text/html" id="threshold-tool">
-        <div id="threshold-tool-content">
+    <script type="text/html" id="template-threshold-tool">
+        <div class="threshold-tool-content">
             <span>Poziom progu:</span>
-            <input id="threshold-tool-regulation-value" type="text" maxlength="3">
-            <input id="threshold-tool-regulation-range" type="range" min="0" max="255">
+            <input class="threshold-tool-regulation-value" type="text" maxlength="3">
+            <input class="threshold-tool-regulation-range" type="range" min="0" max="255">
         </div>
     </script>
 
@@ -94,10 +131,11 @@
         <script src="scripts/core/windows/AbstractWindow.js"></script>
         <script src="scripts/core/windows/WindowManager.js"></script>
 
-        <!-- core/windows/main //-->
-        <script src="scripts/core/windows/main/HistogramWindow.js"></script>
-        <script src="scripts/core/windows/main/FilmStockWindow.js"></script>
-        <script src="scripts/core/windows/main/PictureWindow.js"></script>
+        <!-- core/windows/static //-->
+        <script src="scripts/core/windows/static/HistogramWindow.js"></script>
+        <script src="scripts/core/windows/static/FilmStockWindow.js"></script>
+        <script src="scripts/core/windows/static/LUTUOPWindow.js"></script>
+        <script src="scripts/core/windows/static/PictureWindow.js"></script>
 
         <!-- core/windows/tools //-->
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>

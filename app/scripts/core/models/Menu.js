@@ -206,8 +206,26 @@
         }, 'Ctrl-Shift', 'D');
 
 
-        this.boxLutMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_LUT'), function () {
-            // TODO(piecioshka): LUT
+        this.boxLutMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_LUT_UOP'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof PictureWindow) {
+                // Save current version.
+                var current = activeWindow.canvas;
+                var c = current.getHistogram();
+
+                var original = new root.Canvas(activeWindow.canvas.settings);
+                original.loadGrayScaleImage(activeWindow.settings.image.image, activeWindow.settings.image.width, activeWindow.settings.image.height);
+                var o = original.getHistogram();
+
+                new root.LUTUOPWindow({
+                    image: activeWindow.settings.image,
+                    canvas: {
+                        current: current,
+                        original: original
+                    }
+                });
+            }
         }, 'Ctrl-Shift', 'T');
 
 

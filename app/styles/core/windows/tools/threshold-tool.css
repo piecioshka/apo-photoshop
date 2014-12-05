@@ -1,21 +1,21 @@
-#threshold-tool-content {
+.threshold-tool-content {
     width: 320px;
     height: 40px;
 }
 
-#threshold-tool-content span {
+.threshold-tool-content span {
     display: inline-block;
     width: 90px;
 }
 
-#threshold-tool-content input[type="text"] {
+.threshold-tool-content input[type="text"] {
     display: inline-block;
     width: 20px;
     margin: 0 5px;
     outline: none;
 }
 
-#threshold-tool-content input[type="range"] {
+.threshold-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;

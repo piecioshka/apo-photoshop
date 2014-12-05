@@ -21,7 +21,7 @@
 
         BOX: 'Okno',
         BOX_HISTOGRAM: 'Histogram',
-        BOX_LUT: 'Tablica LUT',
+        BOX_LUT_UOP: 'Tablica LUT (UOP)',
         BOX_DUPLICATE: 'Duplikuj',
 
         OPERATIONS: 'Operacje',

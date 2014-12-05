@@ -51,15 +51,15 @@
 
     ThresholdTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#threshold-tool').innerHTML;
+        var template = doc.querySelector('#template-threshold-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#threshold-tool-regulation-range');
-            var $value = doc.querySelector('#threshold-tool-regulation-value');
+            var $range = self.$content.querySelector('.threshold-tool-regulation-range');
+            var $value = self.$content.querySelector('.threshold-tool-regulation-value');
 
             function setupThreshold(hold) {
                 // Restore image to origin.

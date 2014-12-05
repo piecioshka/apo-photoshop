@@ -112,6 +112,14 @@
         }
     };
 
+    AbstractWindow.prototype.removeContent = function (item) {
+        root.Utilities.walkTheDOM(this.$content, function (node) {
+            if (node === item) {
+                item.parentNode.removeChild(item);
+            }
+        });
+    };
+
     AbstractWindow.prototype.updateTitle = function (name) {
         var self = this;
         var DOTS_WIDTH = 15;

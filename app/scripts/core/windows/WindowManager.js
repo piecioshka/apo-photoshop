@@ -6,7 +6,19 @@
     };
 
     WindowManager.prototype.addWindow = function (win) {
+        var st, left, width;
         this._windows.push(win);
+
+        var active = this.getActiveWindow();
+
+        if (active !== null) {
+            st = root.getComputedStyle(active.$window, null);
+            left = parseInt(st.getPropertyValue('left'), 10) || 0;
+            width = parseInt(st.getPropertyValue('width'), 10) || 0;
+
+            win.$window.style.left = left + width + 'px';
+        }
+
         this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
     };
 

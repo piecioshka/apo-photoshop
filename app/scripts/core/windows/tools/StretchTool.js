@@ -51,18 +51,18 @@
 
     StretchTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#stretch-tool').innerHTML;
+        var template = doc.querySelector('#template-stretch-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range1 = doc.querySelector('#stretch-tool-regulation-range-min');
-            var $value1 = doc.querySelector('#stretch-tool-regulation-value-min');
+            var $range1 = self.$content.querySelector('.stretch-tool-regulation-range-min');
+            var $value1 = self.$content.querySelector('.stretch-tool-regulation-value-min');
 
-            var $range2 = doc.querySelector('#stretch-tool-regulation-range-max');
-            var $value2 = doc.querySelector('#stretch-tool-regulation-value-max');
+            var $range2 = self.$content.querySelector('.stretch-tool-regulation-range-max');
+            var $value2 = self.$content.querySelector('.stretch-tool-regulation-value-max');
 
             function setupPosterize(min, max) {
                 // Restore image to origin.

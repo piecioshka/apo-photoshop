@@ -1,21 +1,21 @@
-#brightness-regulation-tool-content {
+.brightness-regulation-tool-content {
     width: 300px;
     height: 40px;
 }
 
-#brightness-regulation-tool-content span {
+.brightness-regulation-tool-content span {
     display: inline-block;
     width: 60px;
 }
 
-#brightness-regulation-tool-content input[type="text"] {
+.brightness-regulation-tool-content input[type="text"] {
     display: inline-block;
     width: 20px;
     margin: 0 5px;
     outline: none;
 }
 
-#brightness-regulation-tool-content input[type="range"] {
+.brightness-regulation-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;

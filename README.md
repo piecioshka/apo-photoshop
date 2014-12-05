@@ -143,3 +143,4 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
 - http://www.cs.huji.ac.il/~yweiss/Colorization/
 - https://github.com/cmisenas/canny-edge-detection
+- http://mbs98.republika.pl/projekty/ro/ro.html

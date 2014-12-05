@@ -51,15 +51,15 @@
 
     ContrastRegulationTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#contrast-regulation-tool').innerHTML;
+        var template = doc.querySelector('#template-contrast-regulation-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#contrast-regulation-tool-regulation-range');
-            var $value = doc.querySelector('#contrast-regulation-tool-regulation-value');
+            var $range = self.$content.querySelector('.contrast-regulation-tool-regulation-range');
+            var $value = self.$content.querySelector('.contrast-regulation-tool-regulation-value');
 
             function setupContrastRegulation(level) {
                 // Restore image to origin.

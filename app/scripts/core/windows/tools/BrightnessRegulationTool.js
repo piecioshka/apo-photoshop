@@ -51,15 +51,15 @@
 
     BrightnessRegulationTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#brightness-regulation-tool').innerHTML;
+        var template = doc.querySelector('#template-brightness-regulation-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#brightness-regulation-tool-regulation-range');
-            var $value = doc.querySelector('#brightness-regulation-tool-regulation-value');
+            var $range = self.$content.querySelector('.brightness-regulation-tool-regulation-range');
+            var $value = self.$content.querySelector('.brightness-regulation-tool-regulation-value');
 
             function setupBrightnessRegulation(level) {
                 // Restore image to origin.

@@ -64,6 +64,13 @@
     };
 
     /**
+     * Remove <canvas> tag.
+     */
+    Canvas.prototype.remove = function () {
+        this.$placeHolder.removeContent(this.$canvas);
+    };
+
+    /**
      * Load image and convert to gray scale.
      *
      * @param {Image} image Original image from user drive
@@ -158,11 +165,13 @@
      * @returns {Array}
      */
     Canvas.prototype.getHistogram = function () {
+        var levels = 256;
+
         // Create list of all gray levels.
-        var hist = new Array(256);
+        var hist = new Array(levels);
 
         // Set default to 0.
-        hist = hist.map(function () { return 0; });
+        while (levels--) hist[levels] = 0;
 
         // Copy to array all channels. References was destroyed.
         var pixelsArray = this.getOneChannelOfPixels();

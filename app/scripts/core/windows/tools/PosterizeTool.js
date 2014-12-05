@@ -51,15 +51,15 @@
 
     PosterizeTool.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#posterize-tool').innerHTML;
+        var template = doc.querySelector('#template-posterize-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
 
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $range = doc.querySelector('#posterize-tool-regulation-range');
-            var $value = doc.querySelector('#posterize-tool-regulation-value');
+            var $range = self.$content.querySelector('.posterize-tool-regulation-range');
+            var $value = self.$content.querySelector('.posterize-tool-regulation-value');
 
             function setupPosterize(levels) {
                 // Restore image to origin.

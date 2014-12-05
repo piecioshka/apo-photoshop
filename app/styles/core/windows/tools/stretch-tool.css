@@ -1,21 +1,21 @@
-#stretch-tool-content {
+.stretch-tool-content {
     width: 300px;
     height: 70px;
 }
 
-#stretch-tool-content span {
+.stretch-tool-content span {
     display: inline-block;
     width: 60px;
 }
 
-#stretch-tool-content input[type="text"] {
+.stretch-tool-content input[type="text"] {
     display: inline-block;
     width: 20px;
     margin: 0 5px;
     outline: none;
 }
 
-#stretch-tool-content input[type="range"] {
+.stretch-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;
