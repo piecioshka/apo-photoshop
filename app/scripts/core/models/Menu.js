@@ -7,7 +7,6 @@
         this.gui = null;
         this.windowMenu = null;
 
-        this.fileOpenMenuItem = null;
         this.filesOpenMenuItem = null;
         this.fileCloseMenuItem = null;
         this.closeMenuItem = null;
@@ -104,29 +103,17 @@
     Menu.prototype.setupFileMenu = function () {
         var fileMenu = new this.gui.Menu();
 
-        // Create internal window with picture (image).
-        function handleLoad(image) {
-            new root.PictureWindow({
-                image: image
-            });
+        function handleLoad(params) {
+            if (params.length === 1) {
+                new root.PictureWindow({
+                    image: params[0]
+                });
+            } else {
+                new root.MultiplePicturesWindow({
+                    pictures: params
+                });
+            }
         }
-
-        function handleLoadMultiple(params) {
-            new root.FilmStockWindow({
-                frames: params
-            });
-        }
-
-        this.fileOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_OPEN'), function () {
-            // Load single file.
-            var singleFile = new root.SingleFileChooser({
-                place: '#app'
-            });
-
-            singleFile.once(root.SingleFileChooser.EVENTS.SELECT_FILE, function (params) {
-                root.AssetsLoader.loadImage(params.file, params.name, handleLoad);
-            });
-        }, 'Ctrl', 'O');
 
 
         this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), function () {
@@ -135,8 +122,8 @@
                 place: '#app'
             });
 
-            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, handleLoadMultiple);
-        }, 'Ctrl-Shift', 'O');
+            multipleFile.once(root.MultipleFileChooser.EVENTS.SELECT_FILES, handleLoad);
+        }, 'Ctrl', 'O');
 
 
         this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), function () {
@@ -168,7 +155,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
-                activeWindow.buildImage();
+                activeWindow.paintImage();
                 clearTitle = activeWindow.getTitle().replace(/\* /, '');
                 activeWindow.updateTitle(clearTitle);
             }

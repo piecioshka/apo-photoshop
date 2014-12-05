@@ -11,8 +11,7 @@
         MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW: 'Nie aktywowano okna z obrazkiem!',
 
         FILE: 'Plik',
-        FILE_OPEN: 'Otwórz',
-        FILES_OPEN: 'Otwórz sekwencje',
+        FILES_OPEN: 'Otwórz',
         FILE_CLOSE: 'Zamknij otwarte okno',
         CLOSE: 'Zamknij',
 

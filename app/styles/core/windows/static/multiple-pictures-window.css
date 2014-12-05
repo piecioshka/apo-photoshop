@@ -1,0 +1,24 @@
+.multiple-pictures-window .abstract-window-content {
+    max-height: 300px;
+    overflow: auto;
+    padding: 0;
+}
+
+.multiple-pictures-window .abstract-window-content .strip-axis {
+    padding: 5px;
+    float: left;
+}
+
+.multiple-pictures-window .abstract-window-content .strip-axis canvas {
+    clear: both;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+}
+
+.multiple-pictures-window .abstract-window-content .strip-axis canvas.active {
+    border-color: #000000;
+}
+
+.multiple-pictures-window .abstract-window-content .strip-axis canvas:last-child {
+    margin-bottom: 0;
+}

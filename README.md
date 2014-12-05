@@ -75,8 +75,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Regulacja kontrastem
         - [x] Regulacja korekcją gamma
     - Zadanie 2
-        - [ ] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
-        - [ ] Tablica LUT
+        - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
     - Zadanie 3
         - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB,...) i logiczne (OR, AND, XOR,...)).
 - [ ] Ćw. 3

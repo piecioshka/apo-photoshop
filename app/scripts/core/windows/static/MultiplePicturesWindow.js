@@ -6,12 +6,12 @@
     // Aliases.
     var doc = root.document;
 
-    var FilmStockWindow = function (params) {
-        // console.info('new FilmStockWindow', params);
+    var MultiplePicturesWindow = function (params) {
+        // console.info('new MultiplePicturesWindow', params);
 
         this.settings = {
             renderAreaID: '#app',
-            frames: []
+            pictures: []
         };
         _.extend(this.settings, params);
 
@@ -29,15 +29,15 @@
         this.initialize();
     };
 
-    FilmStockWindow.ID = 1;
+    MultiplePicturesWindow.prototype = new root.AbstractWindow();
 
-    FilmStockWindow.prototype = new root.AbstractWindow();
+    MultiplePicturesWindow.prototype.initialize = function () {
+        this.$window.classList.add('multiple-pictures-window');
 
-    FilmStockWindow.prototype.initialize = function () {
-        this.$window.classList.add('film-stock-window');
-
-        // Update title (add unique id of film stocks) of window.
-        this.updateTitle('Taśma filmowa #' + (FilmStockWindow.ID++));
+        // Update title (add each file name).
+        this.updateTitle('Wiele obrazów: ' + _.map(this.settings.pictures, function (frame) {
+            return frame.name;
+        }).join(', '));
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -52,45 +52,46 @@
         this.render();
     };
 
-    FilmStockWindow.prototype.buildStrip = function () {
-        var self = this;
-        var frames = [];
-
+    MultiplePicturesWindow.prototype.buildStrip = function () {
         var $strip = doc.createElement('div');
         $strip.classList.add('strip-axis');
 
         this.$content.appendChild($strip);
         this.$content = $strip;
 
+        this.loadPictures();
+    };
+
+    MultiplePicturesWindow.prototype.loadPictures = function () {
+        var self = this;
+        var pictures = [];
+
         // Loop through each of file (images).
-        _.each(this.settings.frames, function (frame) {
+        _.each(this.settings.pictures, function (frame) {
 
             var asyncLoad = function () {
                 var p = new promise.Promise();
 
                 // Load selected file.
                 root.AssetsLoader.loadImage(frame.file, frame.name, function (params) {
-                    self.addFrame(params);
+                    self.addPicture(params);
                     p.done();
                 });
 
                 return p;
             };
 
-            frames.push(asyncLoad);
+            pictures.push(asyncLoad);
         });
 
-        promise.chain(frames).then(function () {
-            console.log('Film strip is ready', self.settings.frames);
-
-            // Resize width, added last border-right.
-            self._resizeStrip(3);
+        promise.chain(pictures).then(function () {
+            console.log('Pictures are ready', self.settings.pictures);
         });
     };
 
-    FilmStockWindow.prototype.addFrame = function (frame) {
-        // Append width of frames list (use borders).
-        this._resizeStrip(3 + frame.image.width);
+    MultiplePicturesWindow.prototype.addPicture = function (frame) {
+        // Append width of pictures list (use margin bottom).
+        this._resizeStrip(frame.image.height + MultiplePicturesWindow.MARGIN_BOTTOM);
 
         // Create `Canvas` instance.
         var canvas = new root.Canvas({
@@ -105,11 +106,13 @@
         canvas.loadGrayScaleImage(frame.image, frame.width, frame.height);
     };
 
-    FilmStockWindow.prototype._resizeStrip = function (size) {
-        this.$content.style.width = (parseInt(this.$content.style.width, 10) || 0) + (size) + 'px';
+    MultiplePicturesWindow.prototype._resizeStrip = function (size) {
+        this.$content.style.height = (parseInt(this.$content.style.height, 10) || 0) + (size) + 'px';
     };
 
-    // Exports `FilmStockWindow`.
-    return (root.FilmStockWindow = FilmStockWindow);
+    MultiplePicturesWindow.MARGIN_BOTTOM = 3;
+
+    // Exports `MultiplePicturesWindow`.
+    return (root.MultiplePicturesWindow = MultiplePicturesWindow);
 
 }(this));

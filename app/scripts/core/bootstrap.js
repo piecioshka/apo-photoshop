@@ -83,7 +83,7 @@
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
             }
 
-            function setFilmStockWindowState() {
+            function setMultiplePicturesWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
             }
 
@@ -97,8 +97,8 @@
                     setPictureWindowState();
                 } else if (params.win instanceof root.HistogramWindow) {
                     setHistogramWindowState();
-                } else if (params.win instanceof root.FilmStockWindow) {
-                    setFilmStockWindowState();
+                } else if (params.win instanceof root.MultiplePicturesWindow) {
+                    setMultiplePicturesWindowState();
                 }
 
                 // console.warn('Window "%s" is activated!', params.win.getTitle());

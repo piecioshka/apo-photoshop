@@ -1014,7 +1014,7 @@
       if (aStack[length] === a) return bStack[length] === b;
     }
     // Objects with different constructors are not equivalent, but `Object`s
-    // from different frames are.
+    // from different pictures are.
     var aCtor = a.constructor, bCtor = b.constructor;
     if (
       aCtor !== bCtor &&

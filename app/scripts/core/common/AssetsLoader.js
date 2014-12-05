@@ -5,11 +5,13 @@
 
     var AssetsLoader = {
 
-        loadImage: function (url, name, callback) {
+        loadImage: function (url, name, callback, ctx) {
+            ctx = ctx || this;
+
             if (isTIFF.test(name)) {
                 root.alert(root.locale.get('MSG_ERR_UNSUPPORTED'));
             } else {
-                this._useImageConstructor(url, name, callback);
+                this._useImageConstructor(url, name, callback.bind(ctx));
             }
         },
 

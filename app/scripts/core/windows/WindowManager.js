@@ -16,7 +16,8 @@
             left = parseInt(st.getPropertyValue('left'), 10) || 0;
             width = parseInt(st.getPropertyValue('width'), 10) || 0;
 
-            win.$window.style.left = left + width + 'px';
+            // Open cascade? Disable for now.
+            // win.$window.style.left = left + width + 'px';
         }
 
         this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
