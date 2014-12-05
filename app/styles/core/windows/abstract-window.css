@@ -77,27 +77,27 @@
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons .abstract-window-button.abstract-window-button-close {
-    background: url("../../../images/icons/close-icon.png");
+    background: url("../../../images/icons.png") no-repeat -12px 0;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons .abstract-window-button.abstract-window-button-min {
-    background: url("../../../images/icons/min-icon.png");
+    background: url("../../../images/icons.png") no-repeat -60px 0;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons .abstract-window-button.abstract-window-button-max {
-    background: url("../../../images/icons/max-icon.png");
+    background: url("../../../images/icons.png") no-repeat -36px 0;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons:hover .abstract-window-button.abstract-window-button-close {
-    background: url("../../../images/icons/close-icon-active.png");
+    background: url("../../../images/icons.png") no-repeat 0 0;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons:hover .abstract-window-button.abstract-window-button-min {
-    background: url("../../../images/icons/min-icon-active.png");
+    background: url("../../../images/icons.png") no-repeat -48px 0;
 }
 
 .abstract-window .abstract-window-bar .abstract-window-buttons:hover .abstract-window-button.abstract-window-button-max {
-    background: url("../../../images/icons/max-icon-active.png");
+    background: url("../../../images/icons.png") no-repeat -24px 0;
 }
 
 .abstract-window .abstract-window-content {

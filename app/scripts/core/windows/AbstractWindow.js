@@ -77,13 +77,13 @@
         maxButton.classList.add('abstract-window-button');
         maxButton.classList.add('abstract-window-button-max');
         // Hide unsupported button.
-        // this.$buttons.appendChild(maxButton);
+        this.$buttons.appendChild(maxButton);
 
         var minButton = doc.createElement('a');
         minButton.classList.add('abstract-window-button');
         minButton.classList.add('abstract-window-button-min');
         // Hide unsupported button.
-        // this.$buttons.appendChild(minButton);
+        this.$buttons.appendChild(minButton);
 
         var closeButton = doc.createElement('a');
         closeButton.classList.add('abstract-window-button');
