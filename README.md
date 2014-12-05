@@ -100,8 +100,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Korzystając z podanego na wykładzie algorytmu ścieniania zrealizować program przekształcający utworzony obiekt, np. literę (lub 2 litery – np. inicjały wykonawcy) w szkielet (szkielety).
     - Zadanie 3
         - [ ] Operacje erozji, dylatacji, otwarcia, zamknięcia dla dwóch przypadków elementu strukturalnego:
-            - [ ] a) romb (czterosąsiedztwo)
-            - [ ] b) kwadrat (ośmiosąsiedztwo)
+            - [ ] a) romb (cztero-sąsiedztwo)
+            - [ ] b) kwadrat (ośmio-sąsiedztwo)
 - [ ] Ćw. 5
     - Zadanie 1
         - [ ] Segmentacja obrazów z wykorzystaniem: progowania, rozrostu obszaru, dołączania, podziału, podziału i dołączania - algorytm i aplikacja.
@@ -124,6 +124,19 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
 - [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
 - [x] Przesuwać oknem klikając w tytuł okna.
+
+## Zasada działania projektu
+
+- [x] Wczytanie sekwencji obrazów.
+- [ ] Rozpoznanie obiektów z pierwszego kadru.
+- [ ] Prezentacja wyodrębnionych obiektów w osobnym oknie.
+- [ ] Dobór kolorów z palety HSV dla każdego obiektu.
+- [ ] Zastosowanie koloru do pierwszego kadru.
+- [ ] Algorytm iteracyjny:
+    - [ ] Rozpoznanie obiektów na i-tym kadrze.
+    - [ ] Dopasowanie go do rozpoznanego wcześniej obiektu.
+    - [ ] Zastosowanie tego samego koloru co rozpoznany obiekt.
+- [ ] Po zakończeniu informacja o statusie powodzenia obrazu.
 
 #### Przydatne materiały
 
