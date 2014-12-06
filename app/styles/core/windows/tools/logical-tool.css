@@ -1,14 +1,15 @@
-.logical-tool-content canvas {
+.logical-tool .abstract-window-content canvas {
     display: block;
     float: left;
 }
 
-.logical-tool-content select {
+.logical-tool .abstract-window-content select {
     outline: none;
 }
 
-.logical-tool-content label {
+.logical-tool .abstract-window-content label {
     margin: 10px auto;
-    width: 170px;
     display: block;
+    width: 100%;
+    text-align: center;
 }

@@ -1,14 +1,15 @@
-.arithmetical-tool-content canvas {
+.arithmetical-tool .abstract-window-content canvas {
     display: block;
     float: left;
 }
 
-.arithmetical-tool-content select {
+.arithmetical-tool .abstract-window-content select {
     outline: none;
 }
 
-.arithmetical-tool-content label {
+.arithmetical-tool .abstract-window-content label {
     margin: 10px auto;
-    width: 170px;
     display: block;
+    width: 100%;
+    text-align: center;
 }

@@ -110,3 +110,7 @@
     -webkit-user-select: none;
     font-size: 12px;
 }
+
+.abstract-window .abstract-window-content canvas {
+    background: url('../../../images/bg-transparent.jpg') repeat 0 0;
+}
