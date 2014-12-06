@@ -9,7 +9,6 @@
 
         this.settings = {
             picture: null,
-            canvas: null,
             width: 256,
             height: 144
         };
@@ -21,8 +20,6 @@
         this.$buttons = null;
         this.$title = null;
         this.$content = null;
-
-        // Flag tell that window is active.
         this.isActive = false;
 
         this.canvas = null;
@@ -70,7 +67,7 @@
     };
 
     HistogramWindow.prototype.buildBarGraph = function () {
-        var hist = this.settings.canvas.getHistogram();
+        var hist = this.settings.picture.canvas.getHistogram();
         var max = root.Utilities.max.apply(this, hist);
 
         // Draw bars in histogram.
@@ -78,7 +75,7 @@
         this.paintHistogram(hist);
 
         // Draw horizontal line as average of histogram.
-        var average = this.settings.canvas.getHistogramAverage();
+        var average = this.settings.picture.canvas.getHistogramAverage();
         average = this.normalize([0, average, max])[1];
         this.paintHistogramAverage(average);
     };

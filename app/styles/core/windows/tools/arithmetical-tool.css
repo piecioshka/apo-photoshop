@@ -1,5 +1,10 @@
 .arithmetical-tool-content canvas {
     display: block;
+    float: left;
+}
+
+.arithmetical-tool-content select {
+    outline: none;
 }
 
 .arithmetical-tool-content label {

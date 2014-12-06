@@ -8,8 +8,7 @@
         // console.info('new ThresholdTool', params);
 
         this.settings = {
-            picture: null,
-            canvas: null
+            picture: null
         };
         _.extend(this.settings, params);
 
@@ -19,8 +18,6 @@
         this.$buttons = null;
         this.$title = null;
         this.$content = null;
-
-        // Flag tell that window is active.
         this.isActive = false;
 
         this.setup();
@@ -62,11 +59,11 @@
 
             function setupThreshold(hold) {
                 // Restore image to origin.
-                self.settings.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
+                self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply threshold to image.
                 root.OperationOnePoint.onePointThreshold({
-                    workspace: self.settings.canvas,
+                    workspace: self.settings.picture.canvas,
                     value: hold
                 });
             }

@@ -65,7 +65,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Metoda losowa
         - [x] Metoda sąsiedztwa
         - [x] Dodatkowo wymyślić jeden swój sposób
-- [ ] Ćw. 2
+- [x] Ćw. 2
     - Zadanie 1
         - [x] Operacja odwrotności (negacji)
         - [x] Operacja progowania (binaryzacji)
@@ -77,7 +77,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 2
         - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
     - Zadanie 3
-        - [ ] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL, DIV) i logiczne (OR, AND, XOR, NOT)).
+        - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
 - [ ] Ćw. 3
     - Zadanie 1
         - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania, wyostrzania liniowego oparte na 4 maskach laplasjanowych, detekcji krawędzi oparte na 3 maskach detekcji krawędzi.

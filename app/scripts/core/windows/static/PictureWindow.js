@@ -18,8 +18,6 @@
         this.$buttons = null;
         this.$title = null;
         this.$content = null;
-
-        // Flag tell that window is active.
         this.isActive = false;
 
         this.setup();

@@ -178,8 +178,7 @@
 
             if (activeWindow instanceof PictureWindow) {
                 new root.HistogramWindow({
-                    picture: activeWindow.settings.picture,
-                    canvas: activeWindow.settings.picture.canvas
+                    picture: activeWindow.settings.picture
                 });
             }
         }, 'Ctrl-Shift', 'H');
@@ -264,8 +263,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ThresholdTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 
@@ -273,8 +271,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new PosterizeTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 
@@ -282,8 +279,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new StretchTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 
@@ -291,8 +287,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new BrightnessRegulationTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 
@@ -300,8 +295,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ContrastRegulationTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 
@@ -309,8 +303,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new GammaRegulationTool({
-                picture: activeWindow.settings.picture,
-                canvas: activeWindow.settings.picture.canvas
+                picture: activeWindow.settings.picture
             });
         });
 

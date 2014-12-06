@@ -1,5 +1,10 @@
 .logical-tool-content canvas {
     display: block;
+    float: left;
+}
+
+.logical-tool-content select {
+    outline: none;
 }
 
 .logical-tool-content label {

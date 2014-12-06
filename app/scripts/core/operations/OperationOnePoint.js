@@ -96,6 +96,7 @@
             console.timeEnd('One point: Posterize');
         },
 
+        // Operacje -> Jednopunktowe -> Rozciąganie
         onePointStretching: function (params) {
             console.time('One point: Stretching');
 
@@ -130,6 +131,7 @@
 
         },
 
+        // Operacje -> Jednopunktowe -> Regulacja jasnością
         onePointBrightnessRegulation: function (params) {
             console.time('One point: BrightnessRegulation');
 
@@ -159,18 +161,19 @@
             console.timeEnd('One point: BrightnessRegulation');
         },
 
+        // Operacje -> Jednopunktowe -> Regulacja kontrastem
         onePointContrastRegulation: function (params) {
             console.time('One point: ContrastRegulation');
 
             var can = params.workspace;
             var ctx = can.ctx;
 
-            var uniqueChannels = can.getUniqueChannels();
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
+            var uniqueChannels = can.getUniqueChannels();
             var multiplier = (100.0 + hold) / 100.0;
             var lmax = (uniqueChannels.length - 1);
 
@@ -193,18 +196,19 @@
             console.timeEnd('One point: ContrastRegulation');
         },
 
+        // Operacje -> Jednopunktowe -> Regulacja korekcją gamma
         onePointGammaRegulation: function (params) {
             console.time('One point: GammaRegulation');
 
             var can = params.workspace;
             var ctx = can.ctx;
 
-            var uniqueChannels = can.getUniqueChannels();
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
+            var uniqueChannels = can.getUniqueChannels();
             var upo = new Array(uniqueChannels.length);
             var lmax = (uniqueChannels.length - 1);
 
@@ -228,12 +232,144 @@
             console.timeEnd('One point: GammaRegulation');
         },
 
+        // Operacje -> Jednopunktowe -> Arytmetyczne
         onePointArithmetical: function (params) {
-            console.log('onePointArithmetical', params);
+            console.time('One point: Arithmetical');
+
+            var can = params.workspace;
+            var ctx = can.ctx;
+
+            can.markAsNotActive();
+
+            var pixelsChannels = can.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
+
+            var firstPicture = params.pictures[0].canvas.getAllChannelsOfPixels();
+            var secondPicture = params.pictures[1].canvas.getAllChannelsOfPixels();
+
+            var i, color, first, second;
+
+            switch (params.operation) {
+                case 'add':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = (first + second) / 2;
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+
+                case 'sub':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = Math.abs(first - second);
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+
+                case 'mul':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = (first * second) + first;
+
+                        // Save protection (0 - 255).
+                        color = root.Utilities.intToByte(color);
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+            }
+
+            ctx.putImageData(pixelsChannels, 0, 0);
+
+            console.timeEnd('One point: Arithmetical');
         },
 
+        // Operacje -> Jednopunktowe -> Logiczne
         onePointLogical: function (params) {
-            console.log('onePointLogical', params);
+            console.time('One point: Logical');
+
+            var can = params.workspace;
+            var ctx = can.ctx;
+
+            can.markAsNotActive();
+
+            var pixelsChannels = can.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
+
+            var firstPicture = params.pictures[0].canvas.getAllChannelsOfPixels();
+            var secondPicture = params.pictures[1].canvas.getAllChannelsOfPixels();
+
+            var i, color, first, second;
+
+            switch (params.operation) {
+                case 'or':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = first || second;
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+
+                case 'and':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = first && second;
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+
+                case 'xor':
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+
+                        first = firstPicture[(i * 4)];
+                        second = secondPicture[(i * 4)];
+
+                        color = first ^ second;
+
+                        // Save protection (0 - 255).
+                        color = root.Utilities.intToByte(color);
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
+                    break;
+            }
+
+            ctx.putImageData(pixelsChannels, 0, 0);
+
+            console.timeEnd('One point: Logical');
         }
     };
 

@@ -197,6 +197,48 @@
         return root.Utilities.average.apply(this, this.getHistogram());
     };
 
+    /**
+     * Put cross as a sign, that canvas is not active.
+     */
+    Canvas.prototype.markAsNotActive = function () {
+        var oldLineWidth = this.ctx.lineWidth;
+        var oldFillStyle = this.ctx.fillStyle;
+        var oldStrokeStyle = this.ctx.strokeStyle;
+
+        var w = this.settings.width;
+        var h = this.settings.height;
+
+        // Big red line!
+        this.ctx.lineWidth = 3;
+        this.ctx.strokeStyle = '#999';
+
+        // Full white rectangle
+        this.ctx.fillStyle = '#fff';
+        this.ctx.fillRect(0 , 0, this.settings.width, this.settings.height);
+
+        // Draw cross - left line
+        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
+        // Draw cross - right line
+        this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
+        // Draw cross - top line
+        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, 0); this.ctx.stroke();
+        // Draw cross - bottom line
+        this.ctx.beginPath(); this.ctx.moveTo(0, h); this.ctx.lineTo(w, h); this.ctx.stroke();
+
+        // Draw cross - first cross line
+        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
+        // Draw cross - second cross line
+        this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
+
+        this.ctx.lineWidth = oldLineWidth;
+        this.ctx.strokeStyle = oldStrokeStyle;
+        this.ctx.fillStyle = oldFillStyle;
+    };
+
+    Canvas.prototype.clear = function () {
+        this.ctx.clearRect(0 , 0, this.settings.width, this.settings.height);
+    };
+
     // Extend `Canvas` module with events.
     _.extend(Canvas.prototype, root.EventEmitter);
 

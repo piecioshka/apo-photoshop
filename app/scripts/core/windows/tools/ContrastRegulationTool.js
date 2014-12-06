@@ -8,8 +8,7 @@
         // console.info('new ContrastRegulationTool', params);
 
         this.settings = {
-            picture: null,
-            canvas: null
+            picture: null
         };
         _.extend(this.settings, params);
 
@@ -19,8 +18,6 @@
         this.$buttons = null;
         this.$title = null;
         this.$content = null;
-
-        // Flag tell that window is active.
         this.isActive = false;
 
         this.setup();
@@ -62,11 +59,11 @@
 
             function setupContrastRegulation(level) {
                 // Restore image to origin.
-                self.settings.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
+                self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply contrast-regulation to image.
                 root.OperationOnePoint.onePointContrastRegulation({
-                    workspace: self.settings.canvas,
+                    workspace: self.settings.picture.canvas,
                     value: level
                 });
             }

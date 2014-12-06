@@ -110,7 +110,3 @@
     -webkit-user-select: none;
     font-size: 12px;
 }
-
-.abstract-window .abstract-window-content canvas {
-    background: #ffffff;
-}

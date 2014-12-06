@@ -8,8 +8,7 @@
         // console.info('new LogicalTool', params);
 
         this.settings = {
-            picture: null,
-            canvas: null
+            pictures: null
         };
         _.extend(this.settings, params);
 
@@ -19,8 +18,6 @@
         this.$buttons = null;
         this.$title = null;
         this.$content = null;
-
-        // Flag tell that window is active.
         this.isActive = false;
 
         this.setup();
@@ -57,11 +54,35 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
+            var $select = self.$content.querySelector('select');
+            var $options = $select.querySelectorAll('option');
 
+            var canvas = new root.Canvas({
+                width: self.settings.pictures[0].canvas.$canvas.width,
+                height: self.settings.pictures[0].canvas.$canvas.height
+            });
+
+            canvas.markAsNotActive();
+            canvas.render(self);
+
+            $select.addEventListener('change', function (evt) {
+                var $selected = $options[evt.target.selectedIndex];
+
+                // If select default option do nothing.
+                if (!$selected.value) {
+                    return;
+                }
+
+                canvas.clear();
+
+                root.OperationOnePoint.onePointLogical({
+                    pictures: self.settings.pictures,
+                    workspace: canvas,
+                    operation: $selected.value
+                });
+            });
         }, 0);
     };
-
-    LogicalTool.DEFAULT_LEVEL = 128;
 
     // Exports `LogicalTool`.
     return (root.LogicalTool = LogicalTool);
