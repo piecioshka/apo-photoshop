@@ -45,6 +45,8 @@
 
         OPERATIONS_NEIGHBOURHOOD: 'Sąsiedztwa',
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN: 'Wyostrzanie',
+        OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: 'Detekcja krawędzi',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

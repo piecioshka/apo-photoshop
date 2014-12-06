@@ -58,9 +58,9 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Skróty klawiaturowe
 - [x] Słowniki tłumaczeń
 - [x] Drag & drop na oknach
-- [x] Wyświetlanie histogramu
 - [x] Ćw. 1
     - Zadanie 1
+        - [x] Wyświetlanie histogramu
         - [x] Metoda średnich
         - [x] Metoda losowa
         - [x] Metoda sąsiedztwa
@@ -80,8 +80,12 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
 - [ ] Ćw. 3
     - Zadanie 1
-        - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania, wyostrzania liniowego oparte na 4 maskach laplasjanowych, detekcji krawędzi oparte na 3 maskach detekcji krawędzi.
-        - [ ] Uniwersalna operacja liniowa (wygładzanie i wyostrzanie oparte na masce 3x3 o wartościach zadawanych w sposób interakcyjny).
+        - [ ] a)
+            - [ ] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania.
+            - [ ] Operacje wyostrzania liniowego oparte na 4 maskach laplasjanowych.
+            - [ ] Detekcja krawędzi oparta na 3 maskach detekcji krawędzi.
+        - [ ] b)
+            - [ ] Uniwersalna operacja liniowa (wygładzanie i wyostrzanie oparte na masce 3x3 o wartościach zadawanych w sposób interakcyjny).
         *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania (w przypadku operacji wyostrzania)*
     - Zadanie 2
         - [ ] Uniwersalna operacja medianowa (otoczenie 3x3, 3x5, 5x5, 7x7 itd.).

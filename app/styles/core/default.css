@@ -11,8 +11,11 @@
 @import "windows/tools/arithmetical-tool.css";
 @import "windows/tools/brightness-regulation-tool.css";
 @import "windows/tools/contrast-regulation-tool.css";
+@import "windows/tools/edge-detection-tool.css";
 @import "windows/tools/gamma-regulation-tool.css";
 @import "windows/tools/logical-tool.css";
 @import "windows/tools/posterize-tool.css";
+@import "windows/tools/sharpen-tool.css";
+@import "windows/tools/smoothing-tool.css";
 @import "windows/tools/stretch-tool.css";
 @import "windows/tools/threshold-tool.css";

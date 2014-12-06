@@ -34,6 +34,8 @@
         this.operationsOnePointLogicalMenuItem = null;
 
         this.operationsNeighbourhoodSmoothingMenuItem = null;
+        this.operationsNeighbourhoodSharpenMenuItem = null;
+        this.operationsNeighbourhoodEdgeDetectionMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
         this.aboutHelpMenuItem = null;
@@ -336,7 +338,32 @@
         var neighbourhoodOperationsMenu = new this.gui.Menu();
 
         this.operationsNeighbourhoodSmoothingMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
-            // TODO(piecioshka): fill it
+            // @type {PictureWindow}
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new SmoothingTool({
+                picture: activeWindow.settings.picture
+            });
+        });
+
+
+        this.operationsNeighbourhoodSharpenMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN'), function () {
+            // @type {PictureWindow}
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new SharpenTool({
+                picture: activeWindow.settings.picture
+            });
+        });
+
+
+        this.operationsNeighbourhoodEdgeDetectionMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION'), function () {
+            // @type {PictureWindow}
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new EdgeDetectionTool({
+                picture: activeWindow.settings.picture
+            });
         });
 
         var neighbourhoodOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD'));

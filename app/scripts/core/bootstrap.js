@@ -30,10 +30,13 @@
                 menu.operationsOnePointBrightnessRegulationMenuItem.enabled = false;
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = false;
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
 
                 menu.operationsOnePointArithmeticMenuItem.enabled = false;
                 menu.operationsOnePointLogicalMenuItem.enabled = false;
+
+                menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMenuItem.enabled = false;
+                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -59,6 +62,8 @@
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = true;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = true;
+                menu.operationsNeighbourhoodSharpenMenuItem.enabled = true;
+                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = true;
             }
 
             function setHistogramWindowState() {
@@ -84,6 +89,8 @@
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = false;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMenuItem.enabled = false;
+                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
             function setMultiplePicturesWindowState() {
