@@ -86,15 +86,19 @@ Wszystkie wykorzystywane narzędzia są darmowe.
             - [ ] Detekcja krawędzi oparta na 3 maskach detekcji krawędzi.
         - [ ] b)
             - [ ] Uniwersalna operacja liniowa (wygładzanie i wyostrzanie oparte na masce 3x3 o wartościach zadawanych w sposób interakcyjny).
-        *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania (w przypadku operacji wyostrzania)*
+
+            *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania (w przypadku operacji wyostrzania)*
     - Zadanie 2
         - [ ] Uniwersalna operacja medianowa (otoczenie 3x3, 3x5, 5x5, 7x7 itd.).
+
         *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu.*
     - Zadanie 3
         - [ ] Uniwersalna operacja logiczna wygładzania (kierunek 0, 1, 2, 3 ).
+
         *Uwaga: zastosować opcjonalnie wybrane metody operacji na skrajnych wierszach i kolumnach obrazu.*
     - Zadanie 4
         - [ ] Operacje wyostrzania gradientowego (2 maski uniwersalne, 2 maski Robertsa, 2 maski Sobela).
+        
         *Uwaga: zastosować opcjonalnie wybrane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania*
 - [ ] Ćw. 4
     - Zadanie 1
