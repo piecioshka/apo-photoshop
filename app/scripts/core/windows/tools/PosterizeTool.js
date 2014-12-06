@@ -80,6 +80,9 @@
 
             $value.value = $range.value = PosterizeTool.DEFAULT_LEVEL;
             setupPosterize(PosterizeTool.DEFAULT_LEVEL);
+
+            // Set focus on main dynamic element.
+            $range.focus();
         }, 0);
     };
 

@@ -80,6 +80,9 @@
 
             $value.value = $range.value = BrightnessRegulationTool.DEFAULT_LEVEL;
             setupBrightnessRegulation(BrightnessRegulationTool.DEFAULT_LEVEL);
+
+            // Set focus on main dynamic element.
+            $range.focus();
         }, 0);
     };
 

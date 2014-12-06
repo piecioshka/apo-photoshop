@@ -80,6 +80,9 @@
 
             $value.value = $range.value = ContrastRegulationTool.DEFAULT_LEVEL;
             setupContrastRegulation(ContrastRegulationTool.DEFAULT_LEVEL);
+
+            // Set focus on main dynamic element.
+            $range.focus();
         }, 0);
     };
 

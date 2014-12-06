@@ -80,6 +80,9 @@
 
             $value.value = $range.value = GammaRegulationTool.DEFAULT_LEVEL;
             setupContrastRegulation(GammaRegulationTool.DEFAULT_LEVEL);
+
+            // Set focus on main dynamic element.
+            $range.focus();
         }, 0);
     };
 

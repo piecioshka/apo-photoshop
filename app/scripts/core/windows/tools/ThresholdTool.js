@@ -80,6 +80,9 @@
 
             $value.value = $range.value = ThresholdTool.DEFAULT_HOLDER;
             setupThreshold(ThresholdTool.DEFAULT_HOLDER);
+
+            // Set focus on main dynamic element.
+            $range.focus();
         }, 0);
     };
 
