@@ -108,43 +108,37 @@
     Menu.prototype.setupFileMenu = function () {
         var fileMenu = new this.gui.Menu();
 
-        function handleLoad(params) {
-            if (params.length === 1) {
-                new root.PictureWindow({
-                    picture: params[0]
-                });
-            } else {
-                new root.MultiplePicturesWindow({
-                    pictures: params
-                });
-            }
-        }
-
-
-        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), function () {
+        function openFilHandler() {
             // Load a few images.
             var multipleFile = new root.MultipleFileChooser({
                 place: '#app'
             });
 
-            multipleFile.once(root.MultipleFileChooser.EVENTS.LOAD_FILES, handleLoad);
-        }, 'Ctrl', 'O');
+            multipleFile.once(root.MultipleFileChooser.EVENTS.LOAD_FILES, function (params) {
+                if (params.length === 1) {
+                    new root.PictureWindow({
+                        picture: params[0]
+                    });
+                } else {
+                    new root.MultiplePicturesWindow({
+                        pictures: params
+                    });
+                }
+            });
+        }
 
-
-        this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), function () {
+        function windowCloseHandler() {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
                 activeWindow.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: activeWindow });
             }
-        }, 'Ctrl', 'W');
+        }
 
 
-        this.closeMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('CLOSE'), function () {
-            // Close program.
-            root.close();
-        }, 'Ctrl', 'Q');
-
+        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), openFilHandler, 'Ctrl', 'O');
+        this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), windowCloseHandler, 'Ctrl', 'W');
+        this.closeMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('CLOSE'), root.close.bind(root), 'Ctrl', 'Q');
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('FILE'),
