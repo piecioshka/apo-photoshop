@@ -112,6 +112,5 @@
 }
 
 .abstract-window .abstract-window-content canvas {
-    float: left;
     background: #ffffff;
 }

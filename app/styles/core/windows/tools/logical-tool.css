@@ -1,0 +1,9 @@
+.logical-tool-content canvas {
+    display: block;
+}
+
+.logical-tool-content label {
+    margin: 10px auto;
+    width: 170px;
+    display: block;
+}

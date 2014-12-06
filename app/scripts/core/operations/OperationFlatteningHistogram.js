@@ -13,7 +13,7 @@
                 return;
             }
 
-            var can = workspace.canvas;
+            var can = workspace.settings.picture.canvas;
             var ctx = can.ctx;
 
             // Stage 1 - Convert old level to new levels.

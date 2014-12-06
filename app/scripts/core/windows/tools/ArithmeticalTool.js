@@ -5,10 +5,10 @@
     var doc = root.document;
 
     var ArithmeticalTool = function ArithmeticalTool(params) {
-        // console.info('new ArithmeticalTool', params);
+        console.info('new ArithmeticalTool', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: null
         };
         _.extend(this.settings, params);

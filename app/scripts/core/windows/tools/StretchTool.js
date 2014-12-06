@@ -8,7 +8,7 @@
         // console.info('new StretchTool', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: null
         };
         _.extend(this.settings, params);
@@ -33,7 +33,7 @@
         this.$window.classList.add('stretch-tool');
 
         // Update title of window.
-        this.updateTitle('Rozciąganie - ' +  this.settings.image.name);
+        this.updateTitle('Rozciąganie - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -65,7 +65,7 @@
 
             function setupPosterize(min, max) {
                 // Restore image to origin.
-                self.settings.canvas.loadGrayScaleImage(self.settings.image.image, self.settings.image.width, self.settings.image.height);
+                self.settings.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply stretch to image.
                 root.OperationOnePoint.onePointStretching({

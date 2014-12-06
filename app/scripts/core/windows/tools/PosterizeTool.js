@@ -8,7 +8,7 @@
         // console.info('new PosterizeTool', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: null
         };
         _.extend(this.settings, params);
@@ -33,7 +33,7 @@
         this.$window.classList.add('posterize-tool');
 
         // Update title of window.
-        this.updateTitle('Posteryzacja - ' +  this.settings.image.name);
+        this.updateTitle('Posteryzacja - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -62,7 +62,7 @@
 
             function setupPosterize(levels) {
                 // Restore image to origin.
-                self.settings.canvas.loadGrayScaleImage(self.settings.image.image, self.settings.image.width, self.settings.image.height);
+                self.settings.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply posterize to image.
                 root.OperationOnePoint.onePointPosterize({

@@ -63,47 +63,48 @@
 
     MultiplePicturesWindow.prototype.loadPictures = function () {
         var self = this;
-        var pictures = [];
+        var picturesLoaders = [];
 
         // Loop through each of file (images).
-        _.each(this.settings.pictures, function (frame) {
+        _.each(this.settings.pictures, function (frame, index) {
 
             var asyncLoad = function () {
                 var p = new promise.Promise();
 
                 // Load selected file.
                 root.AssetsLoader.loadImage(frame.file, frame.name, function (params) {
-                    self.addPicture(params);
+                    self.addPicture(params, index);
                     p.done();
                 });
 
                 return p;
             };
 
-            pictures.push(asyncLoad);
+            picturesLoaders.push(asyncLoad);
         });
 
-        promise.chain(pictures).then(function () {
-            console.log('Pictures are ready', self.settings.pictures);
-            self.addClickEvent();
+        promise.chain(picturesLoaders).then(function () {
+            // self.addClickEvent();
         });
     };
 
-    MultiplePicturesWindow.prototype.addPicture = function (frame) {
+    MultiplePicturesWindow.prototype.addPicture = function (picture, index) {
         // Append width of pictures list (use margin bottom).
-        this._resizeStrip(frame.image.height + MultiplePicturesWindow.MARGIN_BOTTOM);
+        this._resizeStrip(picture.img.height + MultiplePicturesWindow.MARGIN_BOTTOM);
 
         // Create `Canvas` instance.
         var canvas = new root.Canvas({
-            width: frame.image.width,
-            height: frame.image.height
+            width: picture.img.width,
+            height: picture.img.height
         });
 
         // Create $canvas space.
         canvas.render(this);
 
         // Put loaded image to canvas form.
-        canvas.loadGrayScaleImage(frame.image, frame.width, frame.height);
+        canvas.loadGrayScaleImage(picture.img, picture.width, picture.height);
+
+        this.settings.pictures[index].canvas = canvas;
     };
 
     MultiplePicturesWindow.prototype._resizeStrip = function (size) {
@@ -138,6 +139,10 @@
                 self.emit(MultiplePicturesWindow.EVENTS.SELECT_PICTURE, { picture: $element });
             }
         });
+    };
+
+    MultiplePicturesWindow.prototype.getPictures = function () {
+        return this.settings.pictures;
     };
 
     MultiplePicturesWindow.MARGIN_BOTTOM = 3;

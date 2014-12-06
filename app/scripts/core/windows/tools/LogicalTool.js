@@ -8,7 +8,7 @@
         // console.info('new LogicalTool', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: null
         };
         _.extend(this.settings, params);

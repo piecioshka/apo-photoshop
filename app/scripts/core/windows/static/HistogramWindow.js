@@ -8,7 +8,7 @@
         // console.info('new HistogramWindow', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: null,
             width: 256,
             height: 144
@@ -37,7 +37,7 @@
         this.$window.classList.add('histogram-window');
 
         // Update title of window.
-        this.updateTitle('Histogram - ' + this.settings.image.name);
+        this.updateTitle('Histogram - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

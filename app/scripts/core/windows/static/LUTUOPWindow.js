@@ -8,7 +8,7 @@
         // console.info('new LUTUOPWindow', params);
 
         this.settings = {
-            image: null,
+            picture: null,
             canvas: {
                 original: null,
                 current: null
@@ -36,7 +36,7 @@
         this.$window.classList.add('lut-uop-window');
 
         // Update title of window.
-        this.updateTitle('LUT (UOP) - ' + this.settings.image.name);
+        this.updateTitle('LUT (UOP) - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

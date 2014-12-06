@@ -5,33 +5,32 @@
 
     var AssetsLoader = {
 
-        loadImage: function (url, name, callback, ctx) {
+        loadImage: function (file, name, callback, ctx) {
             ctx = ctx || this;
 
             if (isTIFF.test(name)) {
                 root.alert(root.locale.get('MSG_ERR_UNSUPPORTED'));
             } else {
-                this._useImageConstructor(url, name, callback.bind(ctx));
+                this._useImageConstructor(file, name, callback.bind(ctx));
             }
         },
 
-        _useImageConstructor: function (url, name, callback) {
+        _useImageConstructor: function (file, name, callback) {
             var img = new Image();
 
             img.addEventListener('load', function () {
                 callback({
-                    image: img,
-                    name: name,
+                    img: img,
                     width: img.width,
                     height: img.height
                 });
             });
 
             img.addEventListener('error', function () {
-                throw new Error('AssetsLoader#_useImageConstructor: Problem with loading image: ' + url);
+                throw new Error('AssetsLoader#_useImageConstructor: Problem with loading image: ' + file);
             });
 
-            img.setAttribute('src', url);
+            img.setAttribute('src', file);
         }
 
     };

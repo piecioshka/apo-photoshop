@@ -8,118 +8,130 @@
 <body>
     <div id="app"></div>
 
-    <!-- windows/static -->
+    <div class="sky-hide">
 
-    <script type="text/html" id="template-lut-uop-static">
-        <table class="lut-uop-static-content" cellpadding="0" cellspacing="0" border="1">
-            <thead>
-                <tr>
-                    <% _.each(original, function (item, index) { %>
-                        <% if (item !== undefined) { %>
-                            <th style="background: rgb(<%= index %>, <%= index %>, <%= index %>);">
-                                <% var color = (index < 128) ? 255 : 0; %>
-                                <span style="color: rgb(<%= color %>, <%= color %>, <%= color %>);">#<%= index %></span>
-                            </th>
-                        <% } %>
-                    <% }); %>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="bg-white">
-                    <% _.each(original, function (item) { %>
-                        <% if (item !== undefined) { %>
-                            <td><%= item %></td>
-                        <% } %>
-                    <% }); %>
-                </tr>
-                <tr>
-                    <% _.each(current, function (item) { %>
-                        <% if (item !== undefined) { %>
-                            <td><%= item %></td>
-                        <% } %>
-                    <% }); %>
-                </tr>
-            </tbody>
-        </table>
-    </script>
+        <!-- windows/static -->
 
-    <!-- windows/tools -->
+        <script type="text/html" id="template-lut-uop-static">
+            <table class="lut-uop-static-content" cellpadding="0" cellspacing="0" border="1">
+                <thead>
+                    <tr>
+                        <% _.each(original, function (item, index) { %>
+                            <% if (item !== undefined) { %>
+                                <th style="background: rgb(<%= index %>, <%= index %>, <%= index %>);">
+                                    <% var color = (index < 128) ? 255 : 0; %>
+                                    <span style="color: rgb(<%= color %>, <%= color %>, <%= color %>);">#<%= index %></span>
+                                </th>
+                            <% } %>
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white">
+                        <% _.each(original, function (item) { %>
+                            <% if (item !== undefined) { %>
+                                <td><%= item %></td>
+                            <% } %>
+                        <% }); %>
+                    </tr>
+                    <tr>
+                        <% _.each(current, function (item) { %>
+                            <% if (item !== undefined) { %>
+                                <td><%= item %></td>
+                            <% } %>
+                        <% }); %>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
 
-    <script type="text/html" id="template-arithmetical-tool">
-        <div class="arithmetical-tool-content">
-            <select>
-                <option>ADD</option>
-                <option>SUB</option>
-                <option>MUL</option>
-                <option>DIV</option>
-            </select>
-        </div>
-    </script>
+        <!-- windows/tools -->
 
-    <script type="text/html" id="template-brightness-regulation-tool">
-        <div class="brightness-regulation-tool-content">
-            <span>Jasność:</span>
-            <input class="brightness-regulation-tool-regulation-value" type="text" maxlength="4">
-            <input class="brightness-regulation-tool-regulation-range" type="range" min="-100" max="200">
-        </div>
-    </script>
+        <script type="text/html" id="template-arithmetical-tool">
+            <div class="arithmetical-tool-content">
+                <canvas></canvas>
 
-    <script type="text/html" id="template-contrast-regulation-tool">
-        <div class="contrast-regulation-tool-content">
-            <span>Kontrast:</span>
-            <input class="contrast-regulation-tool-regulation-value" type="text" maxlength="3">
-            <input class="contrast-regulation-tool-regulation-range" type="range" min="-50" max="100">
-        </div>
-    </script>
+                <label>Wybierz operację:
+                    <select>
+                        <option>ADD</option>
+                        <option>SUB</option>
+                        <option>MUL</option>
+                        <option>DIV</option>
+                    </select>
+                </label>
+            </div>
+        </script>
 
-    <script type="text/html" id="template-gamma-regulation-tool">
-        <div class="gamma-regulation-tool-content">
-            <span>Korekcja Gamma:</span>
-            <input class="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
-            <input class="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
-        </div>
-    </script>
+        <script type="text/html" id="template-brightness-regulation-tool">
+            <div class="brightness-regulation-tool-content">
+                <span>Jasność:</span>
+                <input class="brightness-regulation-tool-regulation-value" type="text" maxlength="4">
+                <input class="brightness-regulation-tool-regulation-range" type="range" min="-100" max="200">
+            </div>
+        </script>
 
-    <script type="text/html" id="template-logical-tool">
-        <div class="logical-tool-content">
-            <select>
-                <option>OR</option>
-                <option>AND</option>
-                <option>XOR</option>
-                <option>NOT</option>
-            </select>
-        </div>
-    </script>
+        <script type="text/html" id="template-contrast-regulation-tool">
+            <div class="contrast-regulation-tool-content">
+                <span>Kontrast:</span>
+                <input class="contrast-regulation-tool-regulation-value" type="text" maxlength="3">
+                <input class="contrast-regulation-tool-regulation-range" type="range" min="-50" max="100">
+            </div>
+        </script>
 
-    <script type="text/html" id="template-posterize-tool">
-        <div class="posterize-tool-content">
-            <span>Poziomy:</span>
-            <input class="posterize-tool-regulation-value" type="text" maxlength="3">
-            <input class="posterize-tool-regulation-range" type="range" min="2" max="255">
-        </div>
-    </script>
+        <script type="text/html" id="template-gamma-regulation-tool">
+            <div class="gamma-regulation-tool-content">
+                <span>Korekcja Gamma:</span>
+                <input class="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
+                <input class="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
+            </div>
+        </script>
 
-    <script type="text/html" id="template-stretch-tool">
-        <div class="stretch-tool-content">
-            <span>Początek:</span>
-            <input class="stretch-tool-regulation-value-min" type="text" maxlength="3">
-            <input class="stretch-tool-regulation-range-min" type="range" min="2" max="255">
+        <script type="text/html" id="template-logical-tool">
+            <div class="logical-tool-content">
+                <canvas></canvas>
 
-            <hr />
+                <label>Wybierz operację:
+                    <select>
+                        <option>OR</option>
+                        <option>AND</option>
+                        <option>XOR</option>
+                        <option>NOT</option>
+                    </select>
+                </label>
+            </div>
+        </script>
 
-            <span>Koniec:</span>
-            <input class="stretch-tool-regulation-value-max" type="text" maxlength="3">
-            <input class="stretch-tool-regulation-range-max" type="range" min="2" max="255">
-        </div>
-    </script>
+        <script type="text/html" id="template-posterize-tool">
+            <div class="posterize-tool-content">
+                <span>Poziomy:</span>
+                <input class="posterize-tool-regulation-value" type="text" maxlength="3">
+                <input class="posterize-tool-regulation-range" type="range" min="2" max="255">
+            </div>
+        </script>
 
-    <script type="text/html" id="template-threshold-tool">
-        <div class="threshold-tool-content">
-            <span>Poziom progu:</span>
-            <input class="threshold-tool-regulation-value" type="text" maxlength="3">
-            <input class="threshold-tool-regulation-range" type="range" min="0" max="255">
-        </div>
-    </script>
+        <script type="text/html" id="template-stretch-tool">
+            <div class="stretch-tool-content">
+                <span>Początek:</span>
+                <input class="stretch-tool-regulation-value-min" type="text" maxlength="3">
+                <input class="stretch-tool-regulation-range-min" type="range" min="2" max="255">
+
+                <hr />
+
+                <span>Koniec:</span>
+                <input class="stretch-tool-regulation-value-max" type="text" maxlength="3">
+                <input class="stretch-tool-regulation-range-max" type="range" min="2" max="255">
+            </div>
+        </script>
+
+        <script type="text/html" id="template-threshold-tool">
+            <div class="threshold-tool-content">
+                <span>Poziom progu:</span>
+                <input class="threshold-tool-regulation-value" type="text" maxlength="3">
+                <input class="threshold-tool-regulation-range" type="range" min="0" max="255">
+            </div>
+        </script>
+
+    </div>
 
     <div id="scripts" class="hide">
         <!-- vendor //-->

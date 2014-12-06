@@ -109,7 +109,7 @@
         function handleLoad(params) {
             if (params.length === 1) {
                 new root.PictureWindow({
-                    image: params[0]
+                    picture: params[0]
                 });
             } else {
                 new root.MultiplePicturesWindow({
@@ -178,8 +178,8 @@
 
             if (activeWindow instanceof PictureWindow) {
                 new root.HistogramWindow({
-                    image: activeWindow.settings.image,
-                    canvas: activeWindow.canvas
+                    picture: activeWindow.settings.picture,
+                    canvas: activeWindow.settings.picture.canvas
                 });
             }
         }, 'Ctrl-Shift', 'H');
@@ -190,7 +190,7 @@
 
             if (activeWindow instanceof PictureWindow) {
                 new root.PictureWindow({
-                    image: activeWindow.settings.image
+                    picture: activeWindow.settings.picture
                 });
             }
         }, 'Ctrl-Shift', 'D');
@@ -201,15 +201,14 @@
 
             if (activeWindow instanceof PictureWindow) {
                 // Save current version.
-                var current = activeWindow.canvas;
-                var c = current.getHistogram();
+                var current = activeWindow.settings.picture.canvas;
 
-                var original = new root.Canvas(activeWindow.canvas.settings);
-                original.loadGrayScaleImage(activeWindow.settings.image.image, activeWindow.settings.image.width, activeWindow.settings.image.height);
-                var o = original.getHistogram();
+                // Restore to original version.
+                var original = new root.Canvas(activeWindow.settings.picture.canvas.settings);
+                original.loadGrayScaleImage(activeWindow.settings.picture.img, activeWindow.settings.picture.width, activeWindow.settings.picture.height);
 
                 new root.LUTUOPWindow({
-                    image: activeWindow.settings.image,
+                    picture: activeWindow.settings.picture,
                     canvas: {
                         current: current,
                         original: original
@@ -265,8 +264,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ThresholdTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
@@ -274,8 +273,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new PosterizeTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
@@ -283,8 +282,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new StretchTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
@@ -292,8 +291,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new BrightnessRegulationTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
@@ -301,8 +300,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ContrastRegulationTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
@@ -310,26 +309,28 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new GammaRegulationTool({
-                image: activeWindow.settings.image,
-                canvas: activeWindow.canvas
+                picture: activeWindow.settings.picture,
+                canvas: activeWindow.settings.picture.canvas
             });
         });
 
         // ---
 
         this.operationsOnePointArithmeticMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
+            // @type {MultiplePicturesWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ArithmeticalTool({
-
+                pictures: activeWindow.getPictures()
             });
         });
 
         this.operationsOnePointLogicalMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
+            // @type {MultiplePicturesWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new LogicalTool({
-
+                pictures: activeWindow.getPictures()
             });
         });
 

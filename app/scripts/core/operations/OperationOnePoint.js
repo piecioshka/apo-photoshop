@@ -14,7 +14,7 @@
 
             console.time('One point: Negative');
 
-            var can = workspace.canvas;
+            var can = workspace.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -226,6 +226,14 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: GammaRegulation');
+        },
+
+        onePointArithmetical: function (params) {
+            console.log('onePointArithmetical', params);
+        },
+
+        onePointLogical: function (params) {
+            console.log('onePointLogical', params);
         }
     };
 

@@ -1,0 +1,9 @@
+.arithmetical-tool-content canvas {
+    display: block;
+}
+
+.arithmetical-tool-content label {
+    margin: 10px auto;
+    width: 170px;
+    display: block;
+}
