@@ -1,4 +1,4 @@
-# <img src="/images/wsisiz.png" align="top" alt="WSISIZ" /> APO: Photoshop
+# <img src="/pictures/wsisiz.png" align="top" alt="WSISIZ" /> APO: Photoshop
 
 **Temat projektu:**
 
