@@ -31,7 +31,7 @@
         OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD: 'Metoda sąsiedztwa',
         OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD: 'Metoda własna',
 
-        OPERATIONS_ONE_POINT: 'Jednopunktowe',
+        OPERATIONS_ONE_POINT: 'Operacje jednopunktowe',
         OPERATIONS_ONE_POINT_NEGATIVE: 'Odwrotności (negacja)',
         OPERATIONS_ONE_POINT_THRESHOLD: 'Progowanie',
         OPERATIONS_ONE_POINT_POSTERIZE: 'Redukcja poziomów szarości',
@@ -43,8 +43,8 @@
         OPERATIONS_ONE_POINT_ARITHMETIC: 'Arytmetyczne',
         OPERATIONS_ONE_POINT_LOGICAL: 'Logiczne',
 
-        OPERATIONS_NEIGHBOURHOOD: 'Sąsiedztwa',
-        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Wygładzanie',
+        OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Filtracja liniowa (wygładzanie)',
         OPERATIONS_NEIGHBOURHOOD_SHARPEN: 'Wyostrzanie',
         OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: 'Detekcja krawędzi',
 

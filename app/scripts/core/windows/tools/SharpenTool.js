@@ -58,8 +58,6 @@
         }, 0);
     };
 
-    SharpenTool.DEFAULT_LEVEL = 0;
-
     // Exports `SharpenTool`.
     return (root.SharpenTool = SharpenTool);
 

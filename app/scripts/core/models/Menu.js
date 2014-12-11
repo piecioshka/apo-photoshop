@@ -231,19 +231,19 @@
         histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
-            root.OperationFlatteningHistogram.flatteningHistogramMedium();
+            root.OperationsFlatteningHistogram.flatteningHistogramMedium();
         });
 
         this.operationsFlatteningHistogramRandomMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
-            root.OperationFlatteningHistogram.flatteningHistogramRandom();
+            root.OperationsFlatteningHistogram.flatteningHistogramRandom();
         });
 
         this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
-            root.OperationFlatteningHistogram.flatteningHistogramNeighbourhood();
+            root.OperationsFlatteningHistogram.flatteningHistogramNeighbourhood();
         });
 
         this.operationsFlatteningHistogramCustomMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
-            root.OperationFlatteningHistogram.flatteningHistogramCustom();
+            root.OperationsFlatteningHistogram.flatteningHistogramCustom();
         });
 
         // Jednopunktowe
@@ -252,7 +252,7 @@
         var onePointOperationsMenu = new this.gui.Menu();
 
         this.operationsOnePointNegativeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
-            root.OperationOnePoint.onePointNegative();
+            root.OperationsOnePoint.onePointNegative();
         });
 
         this.operationsOnePointThresholdMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {

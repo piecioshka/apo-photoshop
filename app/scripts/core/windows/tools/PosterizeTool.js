@@ -62,7 +62,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply posterize to image.
-                root.OperationOnePoint.onePointPosterize({
+                root.OperationsOnePoint.onePointPosterize({
                     workspace: self.settings.picture.canvas,
                     value: levels
                 });

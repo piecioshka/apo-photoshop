@@ -62,7 +62,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply contrast-regulation to image.
-                root.OperationOnePoint.onePointContrastRegulation({
+                root.OperationsOnePoint.onePointContrastRegulation({
                     workspace: self.settings.picture.canvas,
                     value: level
                 });

@@ -62,7 +62,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply gamma-regulation to image.
-                root.OperationOnePoint.onePointGammaRegulation({
+                root.OperationsOnePoint.onePointGammaRegulation({
                     workspace: self.settings.picture.canvas,
                     value: level
                 });

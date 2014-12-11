@@ -1,11 +1,11 @@
 (function (root) {
     'use strict';
 
-    var OperationOnePoint = {
+    var OperationsOnePoint = {
 
         // Operacje -> Jednopunktowe -> Odwrotność (negacja)
         onePointNegative: function () {
-            var workspace = root.OperationHelper.getWorkspace();
+            var workspace = root.OperationsHelper.getWorkspace();
 
             // When you try do operation for non-picture window.
             if (!workspace) {
@@ -373,7 +373,7 @@
         }
     };
 
-    // Exports `OperationOnePoint`.
-    return (root.OperationOnePoint = OperationOnePoint);
+    // Exports `OperationsOnePoint`.
+    return (root.OperationsOnePoint = OperationsOnePoint);
 
 }(this));

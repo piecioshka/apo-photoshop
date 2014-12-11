@@ -110,7 +110,47 @@
         </script>
 
         <script type="text/html" id="template-smoothing-tool">
+            <div class="smoothing-tool-options">
+                <fieldset>
+                    <legend>Filtracja dolnoprzepustowa</legend>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-0">Maska 1/9</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-1">Maska 1/10</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-2">Maska 1/16</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-3">Maska 1/8</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd">Maska własna</label>
+                </fieldset>
 
+                <fieldset>
+                    <legend>Filtracja górnoprzepustowa</legend>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-0">Maska 1</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-1">Maska 2</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-2">Maska 3</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-3">Maska 4</label>
+                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg">Maska własna</label>
+                </fieldset>
+            </div>
+            <div class="smoothing-tool-preview">
+                <fieldset>
+                    <legend>Maska</legend>
+                    <table>
+                        <tr>
+                            <td><input id="smoothing-tool-preview-1" type="text"></td>
+                            <td><input id="smoothing-tool-preview-2" type="text"></td>
+                            <td><input id="smoothing-tool-preview-3" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input id="smoothing-tool-preview-4" type="text"></td>
+                            <td><input id="smoothing-tool-preview-5" type="text"></td>
+                            <td><input id="smoothing-tool-preview-6" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td><input id="smoothing-tool-preview-7" type="text"></td>
+                            <td><input id="smoothing-tool-preview-8" type="text"></td>
+                            <td><input id="smoothing-tool-preview-9" type="text"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
         </script>
 
 
@@ -161,9 +201,10 @@
         <script src="scripts/core/models/MultipleFileChooser.js"></script>
 
         <!-- core/operations //-->
-        <script src="scripts/core/operations/OperationFlatteningHistogram.js"></script>
-        <script src="scripts/core/operations/OperationHelper.js"></script>
-        <script src="scripts/core/operations/OperationOnePoint.js"></script>
+        <script src="scripts/core/operations/OperationsFlatteningHistogram.js"></script>
+        <script src="scripts/core/operations/OperationsHelper.js"></script>
+        <script src="scripts/core/operations/OperationsNeighbourhood.js"></script>
+        <script src="scripts/core/operations/OperationsOnePoint.js"></script>
 
         <!-- core/windows //-->
         <script src="scripts/core/windows/AbstractWindow.js"></script>

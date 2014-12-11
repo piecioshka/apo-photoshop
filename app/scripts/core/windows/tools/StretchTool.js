@@ -65,7 +65,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply stretch to image.
-                root.OperationOnePoint.onePointStretching({
+                root.OperationsOnePoint.onePointStretching({
                     workspace: self.settings.picture.canvas,
                     value: {
                         min: min,

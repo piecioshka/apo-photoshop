@@ -62,7 +62,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply threshold to image.
-                root.OperationOnePoint.onePointThreshold({
+                root.OperationsOnePoint.onePointThreshold({
                     workspace: self.settings.picture.canvas,
                     value: hold
                 });

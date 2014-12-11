@@ -1,7 +1,7 @@
 (function (root) {
     'use strict';
 
-    var OperationHelper = {
+    var OperationsHelper = {
         getWorkspace: function () {
             var title;
             var activeWindow = root.App.windowManager.getActiveWindow();
@@ -19,7 +19,7 @@
         }
     };
 
-    // Exports `OperationHelper`.
-    return (root.OperationHelper = OperationHelper);
+    // Exports `OperationsHelper`.
+    return (root.OperationsHelper = OperationsHelper);
 
 }(this));

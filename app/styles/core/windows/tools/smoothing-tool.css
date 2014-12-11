@@ -1,0 +1,29 @@
+.smoothing-tool-options {
+    float: left;
+}
+
+.smoothing-tool-options h4 {
+    margin: 0;
+}
+
+.smoothing-tool-options label {
+    display: block;
+}
+
+.smoothing-tool-options fieldset:first-child {
+    margin: 0 0 10px 0;
+}
+
+.smoothing-tool-preview {
+    float: left;
+    margin: 80px 10px 0 10px;
+}
+
+.smoothing-tool-preview input[type="text"] {
+    width: 25px;
+    text-align: center;
+}
+
+.smoothing-tool canvas {
+    float: left;
+}

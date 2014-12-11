@@ -54,11 +54,81 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
+            var $radios = self.$content.querySelectorAll('input[type="radio"]');
+            var $preview = self.$content.querySelector('.smoothing-tool-preview');
 
+            var canvas = new root.Canvas({
+                width: self.settings.picture.canvas.$canvas.width,
+                height: self.settings.picture.canvas.$canvas.height
+            });
+
+            canvas.markAsNotActive();
+            canvas.render(self);
+
+            function handleChange(evt) {
+                canvas.clear();
+
+                var v = evt.target.value;
+                var isMask = (/-/).test(v);
+
+                root.OperationsNeighbourhood.smoothing({
+                    pictures: self.settings.pictures,
+                    workspace: canvas,
+                    mask: []
+                });
+            }
+
+            _.each($radios, function ($radio) {
+                $radio.addEventListener('change', handleChange);
+            });
         }, 0);
     };
 
-    SmoothingTool.DEFAULT_LEVEL = 0;
+    SmoothingTool.MASK_FD = [
+        [
+            [1, 1, 1],
+            [1, 1, 1],
+            [1, 1, 1]
+        ],
+        [
+            [1, 1, 1],
+            [1, 2, 1],
+            [1, 1, 1]
+        ],
+        [
+            [1, 2, 1],
+            [2, 4, 2],
+            [1, 2, 1]
+        ],
+        [
+            [1, 1, 1],
+            [1, 0, 1],
+            [1, 1, 1]
+        ]
+    ];
+
+    SmoothingTool.MASK_FG = [
+        [
+            [-1, -2, -1],
+            [ 0,  0,  0],
+            [ 1,  2,  1]
+        ],
+        [
+            [ 1, -2,  1],
+            [-2,  5, -2],
+            [ 1, -2,  1]
+        ],
+        [
+            [-1, -1, -1],
+            [-1,  9, -1],
+            [-1, -1, -1]
+        ],
+        [
+            [ 0, -1,  0],
+            [-1,  5, -1],
+            [ 0, -1,  0]
+        ]
+    ];
 
     // Exports `SmoothingTool`.
     return (root.SmoothingTool = SmoothingTool);

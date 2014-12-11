@@ -62,7 +62,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply brightness-regulation to image.
-                root.OperationOnePoint.onePointBrightnessRegulation({
+                root.OperationsOnePoint.onePointBrightnessRegulation({
                     workspace: self.settings.picture.canvas,
                     value: level
                 });

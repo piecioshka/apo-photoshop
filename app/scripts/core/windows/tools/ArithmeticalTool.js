@@ -75,7 +75,7 @@
 
                 canvas.clear();
 
-                root.OperationOnePoint.onePointArithmetical({
+                root.OperationsOnePoint.onePointArithmetical({
                     pictures: self.settings.pictures,
                     workspace: canvas,
                     operation: $selected.value

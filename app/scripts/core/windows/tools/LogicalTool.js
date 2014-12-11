@@ -75,7 +75,7 @@
 
                 canvas.clear();
 
-                root.OperationOnePoint.onePointLogical({
+                root.OperationsOnePoint.onePointLogical({
                     pictures: self.settings.pictures,
                     workspace: canvas,
                     operation: $selected.value
