@@ -62,9 +62,63 @@
             console.timeEnd('Neighbourhood: Smoothing');
         },
 
-        sharpen: function () {
+        sharpen: function (params) {
             console.time('Neighbourhood: Sharpen');
-            // ...
+
+            // @type {Object}
+            var dims = params.dims;
+            // @type {Object}
+            var pic = params.picture;
+            // @type {Canvas}
+            var workspace = params.workspace;
+
+            // Loading passed image to new Canvas.
+            workspace.loadGrayScaleImage(pic.img, pic.width, pic.height);
+
+            var can = workspace;
+            var ctx = can.ctx;
+
+            var pixelsChannels = can.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+
+            // Copy to array all channels. References was destroyed.
+            var pixelsArray = can.getOneChannelOfPixels();
+
+            // Convert list of pixels to matrix. Quicker calculation.
+            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+
+            var i = 0;
+
+            _.each(pixelsMatrix, function (row, y) {
+                _.each(row, function (color, x) {
+                    var ne = root.CanvasHelper.getNeighbors(pixelsMatrix, x, y);
+
+                    // Sorting for calculate median.
+                    ne = ne.sort(root.Utilities.sortNumbers);
+
+                    // Calculate middle value.
+                    var mid = (ne.length - 1) / 2;
+
+                    // Update color.
+                    if (ne.length % 2 === 1) {
+                        color = ne[mid];
+                    } else {
+                        color = Math.round((ne[Math.ceil(mid)] + ne[Math.floor(mid)]) / 2);
+                    }
+
+                    // Save protection (0 - 255).
+                    color = root.Utilities.intToByte(color);
+
+                    // Update each channel (RGB) of pixel. Not modify channel alpha.
+                    pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                    i++;
+                });
+            });
+
+            // Update <canvas>
+            ctx.putImageData(pixelsChannels, 0, 0);
+
             console.timeEnd('Neighbourhood: Sharpen');
         }
     };

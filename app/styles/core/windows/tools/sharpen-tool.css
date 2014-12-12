@@ -1,0 +1,30 @@
+.sharpen-tool-options {
+    width: 250px;
+}
+
+.sharpen-tool canvas,
+.sharpen-tool-options {
+    display: block;
+    margin: 0 auto;
+}
+
+.sharpen-tool-options label {
+    line-height: 30px;
+    display: block;
+}
+
+.sharpen-tool-horizontal-text {
+    width: 30px;
+}
+
+.sharpen-tool-vertical-text {
+    width: 30px;
+}
+
+.sharpen-tool-options input[type="text"] {
+    text-align: center;
+}
+
+.sharpen-tool-options input[type="range"] {
+    width: 180px;
+}

@@ -152,15 +152,7 @@
     Canvas.prototype.getUniqueChannels = function () {
         // Copy to array all channels. References was destroyed.
         var pixelsArray = this.getOneChannelOfPixels();
-        return _.uniq(pixelsArray).sort(function (a, b) {
-            if (a > b) {
-                return 1;
-            } else if (a < b) {
-                return -1;
-            } else {
-                return 0;
-            }
-        });
+        return _.uniq(pixelsArray).sort(root.Utilities.sortNumbers);
     };
 
     /**

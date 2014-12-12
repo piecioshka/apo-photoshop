@@ -54,8 +54,8 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $fdRadios = self.$content.querySelector('.fd-masks').querySelectorAll('input[type="radio"]');
-            var $fgRadios = self.$content.querySelector('.fg-masks').querySelectorAll('input[type="radio"]');
+            var $fdRadios = self.$content.querySelectorAll('.fd-masks input[type="radio"]');
+            var $fgRadios = self.$content.querySelectorAll('.fg-masks input[type="radio"]');
             var $preview = self.$content.querySelector('.smoothing-tool-preview');
             var $textes = $preview.querySelectorAll('input[type="text"]');
             var $submit = $preview.querySelector('input[type="submit"]');

@@ -45,7 +45,7 @@
 
         OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Filtracja liniowa (wygładzanie)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN: 'Wyostrzanie',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN: 'Filtracja medianowa (wyostrzanie)',
         OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: 'Detekcja krawędzi',
 
         ABOUT: 'O programie',

@@ -54,9 +54,50 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
+            var $horizontalText = self.$content.querySelector('.sharpen-tool-horizontal-text');
+            var $horizontalRange = self.$content.querySelector('.sharpen-tool-horizontal-range');
+            var $verticalText = self.$content.querySelector('.sharpen-tool-vertical-text');
+            var $verticalRange = self.$content.querySelector('.sharpen-tool-vertical-range');
 
+            var canvas = new root.Canvas({
+                width: self.settings.picture.canvas.$canvas.width,
+                height: self.settings.picture.canvas.$canvas.height
+            });
+
+            canvas.markAsNotActive();
+            canvas.render(self);
+
+            function update() {
+                root.OperationsNeighbourhood.sharpen({
+                    picture: self.settings.picture,
+                    workspace: canvas,
+                    dims: {
+                        x: $horizontalText.value,
+                        y: $verticalText.value
+                    }
+                });
+            }
+
+            $horizontalRange.addEventListener('change', function () {
+                $horizontalText.value = $horizontalRange.value;
+                update();
+            });
+
+            $verticalRange.addEventListener('change', function () {
+                $verticalText.value = $verticalRange.value;
+                update();
+            });
+
+            // Set defaults options.
+            $horizontalRange.value = $horizontalText.value = SharpenTool.DEFAULT_HORIZONTAL;
+            $verticalRange.value = $verticalText.value = SharpenTool.DEFAULT_VERTICAL;
+
+            update();
         }, 0);
     };
+
+    SharpenTool.DEFAULT_HORIZONTAL = 3;
+    SharpenTool.DEFAULT_VERTICAL = 3;
 
     // Exports `SharpenTool`.
     return (root.SharpenTool = SharpenTool);
