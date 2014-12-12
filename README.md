@@ -80,10 +80,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
 - [ ] Ćw. 3
     - Zadanie 1
-        - [ ] a)
+        - [x] a)
             - [x] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania.
             - [x] Operacje wyostrzania liniowego oparte na 4 maskach laplasjanowych.
-            - [ ] Detekcja krawędzi oparta na 3 maskach detekcji krawędzi.
+            - [x] Detekcja krawędzi oparta na 3 maskach detekcji krawędzi.
         - [ ] b)
             - [ ] Uniwersalna operacja liniowa (wygładzanie i wyostrzanie oparte na masce 3x3 o wartościach zadawanych w sposób interakcyjny).<br />
             *Uwaga: zastosować opcjonalnie znane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania (w przypadku operacji wyostrzania).*
