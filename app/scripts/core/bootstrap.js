@@ -1,13 +1,13 @@
 (function (root) {
     'use strict';
 
-    // Set title of application.
-    root.document.title = root.locale.get('NAME');
-
     var Bootstrap = {
         setup: function () {
             var menu = root.App.menu = new root.Menu();
             var wm = root.App.windowManager = new root.WindowManager();
+
+            // Set title of application.
+            root.document.title = root.Locale.get('NAME');
 
             function setDefaultState() {
                 menu.fileCloseMenuItem.enabled = false;

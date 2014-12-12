@@ -1,9 +1,9 @@
 (function (root) {
     'use strict';
 
-    var locale = (root.locale = root.locale || {});
+    var Locale = (root.Locale = root.Locale || {});
 
-    locale.pl_PL = {
+    Locale.pl_PL = {
         NAME: 'APO: Photoshop',
 
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',

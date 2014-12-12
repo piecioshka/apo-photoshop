@@ -9,7 +9,7 @@
             ctx = ctx || this;
 
             if (isTIFF.test(name)) {
-                root.alert(root.locale.get('MSG_ERR_UNSUPPORTED'));
+                root.alert(root.Locale.get('MSG_ERR_UNSUPPORTED'));
             } else {
                 this._useImageConstructor(file, name, callback.bind(ctx));
             }

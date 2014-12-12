@@ -30,7 +30,7 @@
         this.$window.classList.add('sharpen-tool');
 
         // Update title of window.
-        this.updateTitle(root.locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN') + ' - ' +  this.settings.picture.name);
+        this.updateTitle(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN') + ' - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
