@@ -97,85 +97,65 @@
         getNeighbors: function (pixelsArray, x, y) {
             var point;
             var neighbors = [];
+            var max = pixelsArray[0].length - 1;
+
+            function tryAdd(point) {
+                if (point && point !== -1) {
+                    neighbors.push(point);
+                }
+            }
 
             // Top row.
             // --------
 
-            if (x > 0 && y > 0) {
-                point = pixelsArray[y - 1][x - 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+            if (y > 0) {
+                if (x > 0) {
+                    point = pixelsArray[y - 1][x - 1];
+                    tryAdd(point);
                 }
-            }
 
-            if (x < pixelsArray.length && y > 0) {
                 point = pixelsArray[y - 1][x];
+                tryAdd(point);
 
-                if (point !== -1) {
-                    neighbors.push(point);
-                }
-            }
-
-            if (x < pixelsArray.length - 1 && y > 0) {
-                point = pixelsArray[y - 1][x + 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+                if (x < max) {
+                    point = pixelsArray[y - 1][x + 1];
+                    tryAdd(point);
                 }
             }
 
             // Same level.
             // -----------
 
-            if (x > 0 && y < pixelsArray[0].length) {
-                point = pixelsArray[y][x - 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+            if (y >= 0 && y <= max) {
+                if (x > 0) {
+                    point = pixelsArray[y][x - 1];
+                    tryAdd(point);
                 }
-            }
 
-            if (x < pixelsArray.length && y > 0) {
                 point = pixelsArray[y][x];
+                tryAdd(point);
 
-                if (point !== -1) {
-                    neighbors.push(point);
-                }
-            }
-
-            if (x < pixelsArray.length - 1 && y < pixelsArray[0].length) {
-                point = pixelsArray[y][x + 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+                if (x < max) {
+                    point = pixelsArray[y][x + 1];
+                    tryAdd(point);
                 }
             }
 
             // Bottom row.
             // -----------
 
-            if (x > 0 && y < pixelsArray[0].length - 1) {
-                point = pixelsArray[y + 1][x - 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+            if (y < max) {
+                if (x > 0) {
+                    point = pixelsArray[y + 1][x - 1];
+                    tryAdd(point);
                 }
-            }
 
-            if (x < pixelsArray.length && y < pixelsArray[0].length - 1) {
                 point = pixelsArray[y + 1][x];
+                tryAdd(point);
 
-                if (point !== -1) {
-                    neighbors.push(point);
-                }
-            }
-
-            if (x < pixelsArray.length - 1 && y < pixelsArray[0].length -1) {
-                point = pixelsArray[y + 1][x + 1];
-
-                if (point !== -1) {
-                    neighbors.push(point);
+                if (x < max) {
+                    point = pixelsArray[y + 1][x + 1];
+                    tryAdd(point);
                 }
             }
 

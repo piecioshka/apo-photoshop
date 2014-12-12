@@ -107,17 +107,13 @@
 
         <script type="text/html" id="template-sharpen-tool">
             <div class="sharpen-tool-options">
-                <label>
-                    X:
-                    <input class="sharpen-tool-horizontal-text" type="text"/>
-                    <input class="sharpen-tool-horizontal-range" type="range" min="3" max="100">
-                </label>
-
-                <label>
-                    Y:
-                    <input class="sharpen-tool-vertical-text" type="text"/>
-                    <input class="sharpen-tool-vertical-range" type="range" min="3" max="100">
-                </label>
+                <label>Filtracja:</label>
+                <select>
+                    <option value="">--wybierz--</option>
+                    <option value="med">Medianowa</option>
+                    <option value="min">Minimalna</option>
+                    <option value="max">Maksymalny</option>
+                </select>
             </div>
         </script>
 

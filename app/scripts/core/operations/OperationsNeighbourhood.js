@@ -65,8 +65,8 @@
         sharpen: function (params) {
             console.time('Neighbourhood: Sharpen');
 
-            // @type {Object}
-            var dims = params.dims;
+            // @type {string}
+            var type = params.type;
             // @type {Object}
             var pic = params.picture;
             // @type {Canvas}
@@ -96,14 +96,26 @@
                     // Sorting for calculate median.
                     ne = ne.sort(root.Utilities.sortNumbers);
 
-                    // Calculate middle value.
-                    var mid = (ne.length - 1) / 2;
+                    switch (type) {
+                        case 'med':
+                            // Calculate middle value.
+                            var mid = (ne.length - 1) / 2;
 
-                    // Update color.
-                    if (ne.length % 2 === 1) {
-                        color = ne[mid];
-                    } else {
-                        color = Math.round((ne[Math.ceil(mid)] + ne[Math.floor(mid)]) / 2);
+                            // Update color.
+                            if (ne.length % 2 === 1) {
+                                color = ne[mid];
+                            } else {
+                                color = Math.round((ne[Math.ceil(mid)] + ne[Math.floor(mid)]) / 2);
+                            }
+                            break;
+
+                        case 'min':
+                            color = ne[0];
+                            break;
+
+                        case 'max':
+                            color = ne[ne.length - 1];
+                            break;
                     }
 
                     // Save protection (0 - 255).
