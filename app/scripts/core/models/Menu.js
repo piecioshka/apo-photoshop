@@ -3,6 +3,9 @@
 (function (root) {
     'use strict';
 
+    var path = require('path');
+    var gui = require('nw.gui');
+
     function Menu() {
         this.gui = null;
         this.windowMenu = null;
@@ -47,10 +50,10 @@
 
     Menu.prototype.initialize = function () {
         // Set reference to node-webkit gui interface.
-        this.gui = require('nw.gui');
+        this.gui = gui
 
         // Create main window menu.
-        this.windowMenu = new this.gui.Menu({type: 'menubar'});
+        this.windowMenu = new this.gui.Menu({ type: 'menubar' });
 
         // If application run under Mac OS must set that option, to fixed main window menu.
         if (root.Utilities.isDarwin()) {
@@ -74,7 +77,7 @@
         this.gui.Window.get().menu = this.windowMenu;
     };
 
-    Menu.prototype.addSubMenuItem = function (menu, label, callback, modifiers, key) {
+    Menu.prototype.addSubMenuItem = function (label, callback, modifiers, key) {
         if (_.isString(modifiers) && _.isString(key)) {
             root.KeyboardShortcut.add(modifiers + '-' + key, callback);
         }
@@ -90,8 +93,6 @@
             subMenu.on('click', callback);
         }
 
-        menu.append(subMenu);
-
         return subMenu;
     };
 
@@ -104,6 +105,8 @@
 
         return separator;
     };
+
+    // Setup methods.
 
     Menu.prototype.setupFileMenu = function () {
         var fileMenu = new this.gui.Menu();
@@ -135,10 +138,14 @@
             }
         }
 
+        this.filesOpenMenuItem = this.addSubMenuItem(root.locale.get('FILES_OPEN'), openFilHandler, 'Ctrl', 'O');
+        fileMenu.append(this.filesOpenMenuItem);
 
-        this.filesOpenMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILES_OPEN'), openFilHandler, 'Ctrl', 'O');
-        this.fileCloseMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('FILE_CLOSE'), windowCloseHandler, 'Ctrl', 'W');
-        this.closeMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('CLOSE'), root.close.bind(root), 'Ctrl', 'Q');
+        this.fileCloseMenuItem = this.addSubMenuItem(root.locale.get('FILE_CLOSE'), windowCloseHandler, 'Ctrl', 'W');
+        fileMenu.append(this.fileCloseMenuItem);
+
+        this.closeMenuItem = this.addSubMenuItem(root.locale.get('CLOSE'), root.close.bind(root), 'Ctrl', 'Q');
+        fileMenu.append(this.closeMenuItem);
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('FILE'),
@@ -149,7 +156,7 @@
     Menu.prototype.setupEditMenu = function () {
         var fileMenu = new this.gui.Menu();
 
-        this.editRestoreMenuItem = this.addSubMenuItem(fileMenu, root.locale.get('EDIT_RESTORE'), function () {
+        this.editRestoreMenuItem = this.addSubMenuItem(root.locale.get('EDIT_RESTORE'), function () {
             var clearTitle;
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -159,6 +166,7 @@
                 activeWindow.updateTitle(clearTitle);
             }
         }, 'Ctrl', 'Z');
+        fileMenu.append(this.editRestoreMenuItem);
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('EDIT'),
@@ -169,7 +177,7 @@
     Menu.prototype.setupBoxMenu = function () {
         var boxMenu = new this.gui.Menu();
 
-        this.boxHistogramMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_HISTOGRAM'), function () {
+        this.boxHistogramMenuItem = this.addSubMenuItem(root.locale.get('BOX_HISTOGRAM'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
@@ -178,9 +186,9 @@
                 });
             }
         }, 'Ctrl-Shift', 'H');
+        boxMenu.append(this.boxHistogramMenuItem);
 
-
-        this.boxDuplicateMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_DUPLICATE'), function () {
+        this.boxDuplicateMenuItem = this.addSubMenuItem(root.locale.get('BOX_DUPLICATE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
@@ -189,9 +197,9 @@
                 });
             }
         }, 'Ctrl-Shift', 'D');
+        boxMenu.append(this.boxDuplicateMenuItem);
 
-
-        this.boxLutMenuItem = this.addSubMenuItem(boxMenu, root.locale.get('BOX_LUT_UOP'), function () {
+        this.boxLutMenuItem = this.addSubMenuItem(root.locale.get('BOX_LUT_UOP'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
@@ -211,7 +219,7 @@
                 });
             }
         }, 'Ctrl-Shift', 'T');
-
+        boxMenu.append(this.boxLutMenuItem);
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('BOX'),
@@ -220,92 +228,103 @@
     };
 
     Menu.prototype.setupOperationsMenu = function () {
-        var operationsMenu = new this.gui.Menu();
+        var operationItem = new this.gui.MenuItem({
+            label: root.locale.get('OPERATIONS')
+        });
 
         // Wygładzanie histogramu
         // ----------------------
 
         var flatteningHistogramOperationsMenu = new this.gui.Menu();
 
-        var histogramOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM'));
-        histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
-
-        this.operationsFlatteningHistogramMediumMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
+        this.operationsFlatteningHistogramMediumMethodMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
             root.OperationsFlatteningHistogram.flatteningHistogramMedium();
         });
+        flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramMediumMethodMenuItem);
 
-        this.operationsFlatteningHistogramRandomMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
+        this.operationsFlatteningHistogramRandomMethodMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
             root.OperationsFlatteningHistogram.flatteningHistogramRandom();
         });
+        flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramRandomMethodMenuItem);
 
-        this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
+        this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
             root.OperationsFlatteningHistogram.flatteningHistogramNeighbourhood();
         });
+        flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem);
 
-        this.operationsFlatteningHistogramCustomMethodMenuItem = this.addSubMenuItem(flatteningHistogramOperationsMenu, root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
+        this.operationsFlatteningHistogramCustomMethodMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
             root.OperationsFlatteningHistogram.flatteningHistogramCustom();
         });
+        flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramCustomMethodMenuItem);
+
+        var histogramOperationsMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_FLATTENING_HISTOGRAM'));
+        histogramOperationsMenuItem.submenu = flatteningHistogramOperationsMenu;
 
         // Jednopunktowe
         // -------------
 
         var onePointOperationsMenu = new this.gui.Menu();
 
-        this.operationsOnePointNegativeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
+        this.operationsOnePointNegativeMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
             root.OperationsOnePoint.onePointNegative();
         });
+        onePointOperationsMenu.append(this.operationsOnePointNegativeMenuItem);
 
-        this.operationsOnePointThresholdMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {
+        this.operationsOnePointThresholdMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ThresholdTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointThresholdMenuItem);
 
-        this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_POSTERIZE'), function () {
+        this.operationsOnePointPosterizeMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_POSTERIZE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new PosterizeTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointPosterizeMenuItem);
 
-        this.operationsOnePointStretchingMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
+        this.operationsOnePointStretchingMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new StretchTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointStretchingMenuItem);
 
-        this.operationsOnePointBrightnessRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
+        this.operationsOnePointBrightnessRegulationMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new BrightnessRegulationTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointBrightnessRegulationMenuItem);
 
-        this.operationsOnePointContrastRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {
+        this.operationsOnePointContrastRegulationMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ContrastRegulationTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointContrastRegulationMenuItem);
 
-        this.operationsOnePointGammaRegulationMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION'), function () {
+        this.operationsOnePointGammaRegulationMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new GammaRegulationTool({
                 picture: activeWindow.settings.picture
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointGammaRegulationMenuItem);
 
-        // ---
-
-        this.operationsOnePointArithmeticMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
+        this.operationsOnePointArithmeticMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
             // @type {MultiplePicturesWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -313,8 +332,9 @@
                 pictures: activeWindow.getPictures()
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointArithmeticMenuItem);
 
-        this.operationsOnePointLogicalMenuItem = this.addSubMenuItem(onePointOperationsMenu, root.locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
+        this.operationsOnePointLogicalMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
             // @type {MultiplePicturesWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -322,8 +342,9 @@
                 pictures: activeWindow.getPictures()
             });
         });
+        onePointOperationsMenu.append(this.operationsOnePointLogicalMenuItem);
 
-        var onePointOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_ONE_POINT'));
+        var onePointOperationsMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_ONE_POINT'));
         onePointOperationsMenuItem.submenu = onePointOperationsMenu;
 
         // Sąsiedztwa
@@ -331,7 +352,7 @@
 
         var neighbourhoodOperationsMenu = new this.gui.Menu();
 
-        this.operationsNeighbourhoodSmoothingMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
+        this.operationsNeighbourhoodSmoothingMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
             // @type {PictureWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -339,9 +360,9 @@
                 picture: activeWindow.settings.picture
             });
         });
+        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSmoothingMenuItem);
 
-
-        this.operationsNeighbourhoodSharpenMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN'), function () {
+        this.operationsNeighbourhoodSharpenMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN'), function () {
             // @type {PictureWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -349,9 +370,9 @@
                 picture: activeWindow.settings.picture
             });
         });
+        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMenuItem);
 
-
-        this.operationsNeighbourhoodEdgeDetectionMenuItem = this.addSubMenuItem(neighbourhoodOperationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION'), function () {
+        this.operationsNeighbourhoodEdgeDetectionMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION'), function () {
             // @type {PictureWindow}
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -359,37 +380,43 @@
                 picture: activeWindow.settings.picture
             });
         });
+        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodEdgeDetectionMenuItem);
 
-        var neighbourhoodOperationsMenuItem = this.addSubMenuItem(operationsMenu, root.locale.get('OPERATIONS_NEIGHBOURHOOD'));
+        var neighbourhoodOperationsMenuItem = this.addSubMenuItem(root.locale.get('OPERATIONS_NEIGHBOURHOOD'));
         neighbourhoodOperationsMenuItem.submenu = neighbourhoodOperationsMenu;
 
         // ----
 
-        this.windowMenu.append(new this.gui.MenuItem({
-            label: root.locale.get('OPERATIONS'),
-            submenu: operationsMenu
-        }));
+        var operationsMenu = new this.gui.Menu();
+        operationsMenu.append(histogramOperationsMenuItem);
+        operationsMenu.append(onePointOperationsMenuItem);
+        operationsMenu.append(neighbourhoodOperationsMenuItem);
+
+        operationItem.submenu = operationsMenu;
+
+        this.windowMenu.append(operationItem);
     };
 
     Menu.prototype.setupHelpMenu = function () {
         var self = this;
         var helpMenu = new this.gui.Menu();
 
-        this.aboutAuthorsMenuItem = this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_AUTHORS'), function () {
-            var lines = [];
-
-            lines.push(root.locale.get('ABOUT_AUTHORS') + ':\n');
-            lines.push('Piotr Kowalski - piecioshka@gmail.com');
-            lines.push('Krzysztof Snopkiewicz - k.snopkiewicz@me.com');
-
+        this.aboutAuthorsMenuItem = this.addSubMenuItem(root.locale.get('ABOUT_AUTHORS'), function () {
+            var lines = [
+                root.locale.get('ABOUT_AUTHORS') + ':\n',
+                'Piotr Kowalski - piecioshka@gmail.com',
+                'Krzysztof Snopkiewicz - k.snopkiewicz@me.com'
+            ];
             root.alert(lines.join('\n'));
         });
+        helpMenu.append(this.aboutAuthorsMenuItem);
 
         this.addSeparator(helpMenu);
 
-        this.aboutHelpMenuItem = this.addSubMenuItem(helpMenu, root.locale.get('ABOUT_HELP'), function () {
-            self.gui.Shell.openItem('./app/docs/help.pdf');
+        this.aboutHelpMenuItem = this.addSubMenuItem(root.locale.get('ABOUT_HELP'), function () {
+            self.gui.Shell.openItem(path.join('app', 'docs', 'help.pdf'));
         });
+        helpMenu.append(this.aboutHelpMenuItem);
 
         this.windowMenu.append(new this.gui.MenuItem({
             label: root.locale.get('ABOUT'),
