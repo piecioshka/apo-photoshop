@@ -99,7 +99,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [ ] Ćw. 4
     - Zadanie 1
         - [ ] Operacja liniowa sąsiedztwa oparta na masce 5x5 utworzonej na podstawie dwóch masek 3x3 użytych w dwuetapowej (1-szy etap – wygładzanie, 2-gi etap – wyostrzanie) operacji filtracji.<br />
-        Opracowaną aplikację przetestować na wybranych obrazach i porównać wyniki otrzymane przy użyciu maski 5x5 z wynikami uzyskanymi przy użyciu kolejno dwóch masek 3x3. Uwaga: zastosować opcjonalnie 5 znanych z wykładu metod operacji na skrajnych wierszach i kolumnach obrazu oraz 3 znane metody skalowania (proporcjonalna, trójwartościowa, obcinająca).
+        Opracowaną aplikację przetestować na wybranych obrazach i porównać wyniki otrzymane przy użyciu maski 5x5 z wynikami uzyskanymi przy użyciu kolejno dwóch masek 3x3.<br />
+        *Uwaga: zastosować opcjonalnie 5 znanych z wykładu metod operacji na skrajnych wierszach i kolumnach obrazu oraz 3 znane metody skalowania (proporcjonalna, trójwartościowa, obcinająca).*
     - Zadanie 2
         - [ ] Korzystając z podanego na wykładzie algorytmu ścieniania zrealizować program przekształcający utworzony obiekt, np. literę (lub 2 litery – np. inicjały wykonawcy) w szkielet (szkielety).
     - Zadanie 3
@@ -148,3 +149,4 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - http://www.cs.huji.ac.il/~yweiss/Colorization/
 - https://github.com/cmisenas/canny-edge-detection
 - http://mbs98.republika.pl/projekty/ro/ro.html
+- http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html
