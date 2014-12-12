@@ -97,7 +97,7 @@
         getNeighbors: function (pixelsArray, x, y) {
             var point;
             var neighbors = [];
-            var max = pixelsArray[0].length - 1;
+            var max = pixelsArray.length - 1;
 
             function tryAdd(point) {
                 if (point && point !== -1) {

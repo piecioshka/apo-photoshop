@@ -73,6 +73,8 @@
                     return;
                 }
 
+                canvas.clear();
+
                 root.OperationsNeighbourhood.sharpen({
                     picture: self.settings.picture,
                     workspace: canvas,
