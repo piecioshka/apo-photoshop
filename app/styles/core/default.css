@@ -1,4 +1,5 @@
 @import "common/global.css";
+@import "common/form.css";
 @import "common/page.css";
 
 @import "windows/abstract-window.css";

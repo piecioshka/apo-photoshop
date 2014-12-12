@@ -22,6 +22,11 @@
 .smoothing-tool-preview input[type="text"] {
     width: 25px;
     text-align: center;
+    border: none;
+}
+.smoothing-tool-preview input[type="submit"] {
+    display: block;
+    margin: 10px auto 0;
 }
 
 .smoothing-tool canvas {

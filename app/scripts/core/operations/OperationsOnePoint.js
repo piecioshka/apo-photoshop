@@ -34,6 +34,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Negative');
@@ -61,6 +62,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Threshold');
@@ -91,6 +93,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Posterize');
@@ -125,6 +128,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Stretching');
@@ -156,6 +160,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: BrightnessRegulation');
@@ -191,6 +196,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: ContrastRegulation');
@@ -227,6 +233,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: GammaRegulation');
@@ -297,6 +304,7 @@
                     break;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Arithmetical');
@@ -367,6 +375,7 @@
                     break;
             }
 
+            // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
             console.timeEnd('One point: Logical');

@@ -102,7 +102,7 @@
             // --------
 
             if (x > 0 && y > 0) {
-                point = pixelsArray[x - 1][y - 1];
+                point = pixelsArray[y - 1][x - 1];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -110,7 +110,7 @@
             }
 
             if (x < pixelsArray.length && y > 0) {
-                point = pixelsArray[x][y - 1];
+                point = pixelsArray[y - 1][x];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -118,7 +118,7 @@
             }
 
             if (x < pixelsArray.length - 1 && y > 0) {
-                point = pixelsArray[x + 1][y - 1];
+                point = pixelsArray[y - 1][x + 1];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -129,7 +129,7 @@
             // -----------
 
             if (x > 0 && y < pixelsArray[0].length) {
-                point = pixelsArray[x - 1][y];
+                point = pixelsArray[y][x - 1];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -137,7 +137,7 @@
             }
 
             if (x < pixelsArray.length && y > 0) {
-                point = pixelsArray[x][y];
+                point = pixelsArray[y][x];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -145,7 +145,7 @@
             }
 
             if (x < pixelsArray.length - 1 && y < pixelsArray[0].length) {
-                point = pixelsArray[x + 1][y];
+                point = pixelsArray[y][x + 1];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -156,7 +156,7 @@
             // -----------
 
             if (x > 0 && y < pixelsArray[0].length - 1) {
-                point = pixelsArray[x - 1][y + 1];
+                point = pixelsArray[y + 1][x - 1];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -164,7 +164,7 @@
             }
 
             if (x < pixelsArray.length && y < pixelsArray[0].length - 1) {
-                point = pixelsArray[x][y + 1];
+                point = pixelsArray[y + 1][x];
 
                 if (point !== -1) {
                     neighbors.push(point);
@@ -172,7 +172,7 @@
             }
 
             if (x < pixelsArray.length - 1 && y < pixelsArray[0].length -1) {
-                point = pixelsArray[x + 1][y + 1];
+                point = pixelsArray[y + 1][x + 1];
 
                 if (point !== -1) {
                     neighbors.push(point);

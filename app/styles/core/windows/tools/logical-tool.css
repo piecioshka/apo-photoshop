@@ -3,10 +3,6 @@
     float: left;
 }
 
-.logical-tool .abstract-window-content select {
-    outline: none;
-}
-
 .logical-tool .abstract-window-content label {
     margin: 10px auto;
     display: block;

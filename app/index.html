@@ -111,7 +111,7 @@
 
         <script type="text/html" id="template-smoothing-tool">
             <div class="smoothing-tool-options">
-                <fieldset>
+                <fieldset class="fd-masks">
                     <legend>Filtracja dolnoprzepustowa</legend>
                     <label><input name="smoothing-tool-filter-type" type="radio" value="fd-0">Maska 1/9</label>
                     <label><input name="smoothing-tool-filter-type" type="radio" value="fd-1">Maska 1/10</label>
@@ -120,7 +120,7 @@
                     <label><input name="smoothing-tool-filter-type" type="radio" value="fd">Maska własna</label>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="fg-masks">
                     <legend>Filtracja górnoprzepustowa</legend>
                     <label><input name="smoothing-tool-filter-type" type="radio" value="fg-0">Maska 1</label>
                     <label><input name="smoothing-tool-filter-type" type="radio" value="fg-1">Maska 2</label>
@@ -149,6 +149,7 @@
                             <td><input id="smoothing-tool-preview-9" type="text"></td>
                         </tr>
                     </table>
+                    <input type="submit" value="Zaktualizuj">
                 </fieldset>
             </div>
         </script>

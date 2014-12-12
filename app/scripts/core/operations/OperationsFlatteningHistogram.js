@@ -103,7 +103,7 @@
                 if (left[val] === right[val]) {
                     color = left[val];
 
-                    // 9 pkt.
+                // 9 pkt.
                 } else {
                     switch (method) {
                         case OperationsFlatteningHistogram.FLATTENING.MEDIUM:

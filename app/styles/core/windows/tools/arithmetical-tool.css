@@ -3,10 +3,6 @@
     float: left;
 }
 
-.arithmetical-tool .abstract-window-content select {
-    outline: none;
-}
-
 .arithmetical-tool .abstract-window-content label {
     margin: 10px auto;
     display: block;

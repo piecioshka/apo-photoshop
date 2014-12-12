@@ -54,8 +54,26 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $radios = self.$content.querySelectorAll('input[type="radio"]');
+            var $fdRadios = self.$content.querySelector('.fd-masks').querySelectorAll('input[type="radio"]');
+            var $fgRadios = self.$content.querySelector('.fg-masks').querySelectorAll('input[type="radio"]');
             var $preview = self.$content.querySelector('.smoothing-tool-preview');
+            var $textes = $preview.querySelectorAll('input[type="text"]');
+            var $submit = $preview.querySelector('input[type="submit"]');
+
+            function disable(status) {
+                _.each($textes, function ($text) {
+                    $text.disabled = !!status;
+                    $text.classList[status ? 'add' : 'remove']('disabled');
+                });
+                $submit.disabled = !!status;
+                $submit.classList[status ? 'add' : 'remove']('disabled');
+            }
+
+            function put(mask) {
+                _.each($textes, function ($text, index) {
+                    $text.value = mask[index];
+                });
+            }
 
             var canvas = new root.Canvas({
                 width: self.settings.picture.canvas.$canvas.width,
@@ -65,69 +83,95 @@
             canvas.markAsNotActive();
             canvas.render(self);
 
-            function handleChange(evt) {
+            function handleChosenMask(evt, listOfMasks) {
                 canvas.clear();
 
                 var v = evt.target.value;
+                var id = v.replace(/[^0-9]/g, '');
                 var isMask = (/-/).test(v);
+                var mask = listOfMasks[id];
+
+                // If we choose any mask, disable inputs.
+                if (isMask) {
+                    disable(true);
+                    put(mask);
+
+                    root.OperationsNeighbourhood.smoothing({
+                        picture: self.settings.picture,
+                        workspace: canvas,
+                        mask: mask
+                    });
+                } else {
+                    disable(false);
+                }
+            }
+
+            function handleCustomMask() {
+                var mask = [];
+
+                _.each($textes, function ($text) {
+                    mask.push(parseInt($text.value, 10));
+                });
 
                 root.OperationsNeighbourhood.smoothing({
-                    pictures: self.settings.pictures,
+                    picture: self.settings.picture,
                     workspace: canvas,
-                    mask: []
+                    mask: mask
                 });
             }
 
-            _.each($radios, function ($radio) {
-                $radio.addEventListener('change', handleChange);
+            _.each($fdRadios, function ($radio) {
+                $radio.addEventListener('change', function (evt) {
+                    handleChosenMask(evt, SmoothingTool.MASK_FD);
+                });
+            });
+
+            _.each($fgRadios, function ($radio) {
+                $radio.addEventListener('change', function (evt) {
+                    handleChosenMask(evt, SmoothingTool.MASK_FG);
+                });
+            });
+
+            $submit.addEventListener('click', function () {
+                handleCustomMask();
             });
         }, 0);
     };
 
     SmoothingTool.MASK_FD = [
-        [
-            [1, 1, 1],
-            [1, 1, 1],
-            [1, 1, 1]
-        ],
-        [
-            [1, 1, 1],
-            [1, 2, 1],
-            [1, 1, 1]
-        ],
-        [
-            [1, 2, 1],
-            [2, 4, 2],
-            [1, 2, 1]
-        ],
-        [
-            [1, 1, 1],
-            [1, 0, 1],
-            [1, 1, 1]
-        ]
+        [1, 1, 1,
+         1, 1, 1,
+         1, 1, 1],
+
+        [1, 1, 1,
+         1, 2, 1,
+         1, 1, 1],
+
+        [1, 2, 1,
+         2, 4, 2,
+         1, 2, 1],
+
+        [1, 1, 1,
+         1, 0, 1,
+         1, 1, 1]
     ];
 
     SmoothingTool.MASK_FG = [
-        [
-            [-1, -2, -1],
-            [ 0,  0,  0],
-            [ 1,  2,  1]
-        ],
-        [
-            [ 1, -2,  1],
-            [-2,  5, -2],
-            [ 1, -2,  1]
-        ],
-        [
-            [-1, -1, -1],
-            [-1,  9, -1],
-            [-1, -1, -1]
-        ],
-        [
-            [ 0, -1,  0],
-            [-1,  5, -1],
-            [ 0, -1,  0]
-        ]
+        [-1, -2, -1,
+          0,  0,  0,
+          1,  2,  1],
+
+        [ 1, -2,  1,
+         -2,  5, -2,
+          1, -2,  1],
+
+        [-1, -1, -1,
+         -1,  9, -1,
+         -1, -1, -1],
+
+        [ 0, -1,  0,
+         -1,  5, -1,
+          0, -1,  0]
     ];
 
     // Exports `SmoothingTool`.

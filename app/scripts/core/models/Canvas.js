@@ -105,6 +105,7 @@
             pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
         }
 
+        // Update <canvas>
         this.ctx.putImageData(pixelsChannels, 0, 0);
     };
 

@@ -12,12 +12,10 @@
     display: inline-block;
     width: 20px;
     margin: 0 5px;
-    outline: none;
 }
 
 .contrast-regulation-tool-content input[type="range"] {
     display: inline-block;
     width: 180px;
     margin: 4px 0 0 0;
-    outline: none;
 }
