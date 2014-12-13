@@ -76,6 +76,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Regulacja korekcją gamma
     - Zadanie 2
         - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
+        - [ ] Lista kanałów szarości do modyfikacji
     - Zadanie 3
         - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
 - [ ] Ćw. 3
@@ -123,12 +124,27 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Opis obrazu z wykorzystaniem algorytmu żółwia.
 
 - [x] Duplikacja aktywnego okna
-- [ ] Resize okna
 - [x] Przywróć obrazek do pierwotnego stanu
 - [x] Zamknięcie programu
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
 - [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
 - [x] Przesuwać oknem klikając w tytuł okna.
+- [ ] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
+- [ ] Zamknięcie okien kiedy zamkniemy obraz.
+- [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka)
+- [ ] Problemy:
+    - [ ] Resize okna
+    - [ ] Pomoc na Windowsie nie działa
+    - [ ] Histogram tylko dla ostatniego obrazka
+    - [ ] Operacje tylko dla ost. obrazka
+    - [ ] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów
+    - [ ] Wygładzanie: maska 1 (źle)
+    - [ ] Filtracja liniowa - na sztywno elementy, aby przesuwanie okna z opcjami po za okno programu nie łamało
+    - [ ] Do zaliczenia: (ptak morf, i ptak morf bin)
+        - [ ] Z 4 ćw. zadania (morfologiczne)
+        - [ ] Algorytm żółwia
+- [ ] Histogram obok obrazka
+- [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień
 
 ## Zasada działania projektu
 
