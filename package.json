@@ -1,6 +1,7 @@
 {
     "name": "apo-photoshop",
     "main": "app/index.html",
+    "version": "0.0.1",
     "private": true,
 
     "scripts": {
@@ -26,6 +27,8 @@
         "gulp-rename": "latest",
         "gulp-markdown-pdf": "latest",
         "cjson": "latest",
-        "nodewebkit": "latest"
+        "nodewebkit": "latest",
+        "node-webkit-builder": "latest",
+        "del": "latest"
     }
 }
