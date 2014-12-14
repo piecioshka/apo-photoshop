@@ -183,14 +183,8 @@
         }
 
         function saveFileHandler() {
-            var saveFile = new root.FileSaveHelper();
-
-            saveFile.once(root.AbstractFileHelper.EVENTS.SAVE_FILE, function (params) {
-                var activeWindow = root.App.windowManager.getActiveWindow();
-                var $canvas = activeWindow.settings.picture.canvas.$canvas;
-                saveFile.saveCanvas(params[0].file, $canvas);
-                activeWindow.updateTitle(params[0].name);
-            });
+            var activeWindow = root.App.windowManager.getActiveWindow();
+            activeWindow.saveAsPicture();
         }
 
         function windowCloseHandler() {
@@ -208,7 +202,7 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.fileSaveMenuItem = this.addMenuItem(root.Locale.get('FILES_SAVE_AS'), saveFileHandler, 'Ctrl', 'S');
+        this.fileSaveMenuItem = this.addMenuItem(root.Locale.get('FILE_SAVE_AS'), saveFileHandler, 'Ctrl', 'S');
         fileMenu.append(this.fileSaveMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------

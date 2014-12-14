@@ -47,6 +47,7 @@ $ npm start
 
 - Gulp - http://gulpjs.com/
 - Underscore.js - http://underscorejs.org/
+- Underscore.assert.js - https://github.com/piecioshka/underscore.assert.js
 - MoveMaster.js - https://github.com/piecioshka/move-master.js
 - promise.js - https://github.com/stackp/promisejs
 - JSHint - http://www.jshint.com/docs/options/
@@ -142,7 +143,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Histogram tylko dla ostatniego obrazka.
 - [x] Operacje tylko dla ostatniego obrazka.
 - [x] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
-- [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka).
+- [x] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka).
 - [ ] Resize okna.
 - [ ] Pomoc na Windowsie nie działa.
 - [ ] Lista kanałów szarości do modyfikacji (UOP).

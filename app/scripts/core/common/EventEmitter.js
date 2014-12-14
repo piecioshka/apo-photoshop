@@ -1,8 +1,6 @@
 (function (root) {
     'use strict';
 
-    var assert = require('assert');
-
     var EventEmitter = {
 
         /**
@@ -13,8 +11,8 @@
          * @param {Object} [ctx]
          */
         on: function on(name, fn, ctx) {
-            assert(_.isString(name), 'EventEmitter#on: `name` is not a string');
-            assert(_.isFunction(fn), 'EventEmitter#on: `fn` is not a function');
+            _.assert(_.isString(name), 'EventEmitter#on: `name` is not a string');
+            _.assert(_.isFunction(fn), 'EventEmitter#on: `fn` is not a function');
 
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
@@ -37,8 +35,8 @@
          * @param {Object} [ctx]
          */
         once: function (name, fn, ctx) {
-            assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
-            assert(_.isFunction(fn), 'EventEmitter#once: `fn` is not a function');
+            _.assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
+            _.assert(_.isFunction(fn), 'EventEmitter#once: `fn` is not a function');
             ctx = ctx || this;
 
             var self = this;
@@ -56,7 +54,7 @@
          * @param {Function} [fn]
          */
         off: function (name, fn) {
-            assert(_.isString(name), 'EventEmitter#off: `name` is not a string');
+            _.assert(_.isString(name), 'EventEmitter#off: `name` is not a string');
 
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
@@ -82,7 +80,7 @@
          * @param {Object} [params]
          */
         emit: function emit(name, params) {
-            assert(_.isString(name), 'EventEmitter#emit: `name` is not a string');
+            _.assert(_.isString(name), 'EventEmitter#emit: `name` is not a string');
 
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];

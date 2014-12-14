@@ -25,6 +25,8 @@
             width: 256,
             height: 144
         };
+
+        this.isModified = false;
         
         this.setup();
         this.initialize();
@@ -47,6 +49,12 @@
             this.setRigidWidth();
         }, this);
 
+        this.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
+            if (this.isModified && confirm(root.Locale.get('FILE_SAVE_AS_CONFIRM'))) {
+                this.saveAsPicture();
+            }
+        }, this);
+
         // Listen when picture will be modify by operation.
         this.on(root.PictureWindow.EVENTS.PICTURE_MODIFY, function () {
             this._updateHistogram();
@@ -56,15 +64,26 @@
         this.render();
     };
 
+    PictureWindow.prototype.saveAsPicture = function () {
+        var saveFile = new root.FileSaveHelper();
+        saveFile.once(root.AbstractFileHelper.EVENTS.SAVE_FILE, function (params) {
+            var $canvas = this.settings.picture.canvas.$canvas;
+            saveFile.saveCanvas(params[0].file, $canvas);
+            this.updateTitle(params[0].name);
+        }, this);
+    };
+
     PictureWindow.prototype.setPrimaryState = function () {
         var pic = this.settings.picture;
         pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
         this.setPrimaryTitle();
+        this.isModified = false;
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
     PictureWindow.prototype.setModifiedState = function () {
         this.setModifiedTitle();
+        this.isModified = true;
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 

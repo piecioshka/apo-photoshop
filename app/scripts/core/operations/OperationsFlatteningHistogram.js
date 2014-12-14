@@ -1,12 +1,10 @@
 (function (root) {
     'use strict';
 
-    var assert = require('assert');
-    
     var OperationsFlatteningHistogram = {
 
         _flatteningHistogram: function (contextWindow, method) {
-            assert(_.isNumber(method), 'OperationsFlatteningHistogram#_flatteningHistogram: `method` is not a number');
+            _.assert(_.isNumber(method), 'OperationsFlatteningHistogram#_flatteningHistogram: `method` is not a number');
 
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;

@@ -1,8 +1,6 @@
 (function (root) {
     'use strict';
 
-    var assert = require('assert');
-
     var CanvasHelper = {
 
         /**
@@ -76,7 +74,7 @@
          * @returns {Array}
          */
         toPixelMatrix: function (list, width) {
-            assert(list.length % width === 0, 'CanvasHelper#toPixelMatrix: `passed` width is not divide a list without tail.');
+            _.assert(list.length % width === 0, 'CanvasHelper#toPixelMatrix: `passed` width is not divide a list without tail.');
 
             var matrix = [];
 
