@@ -31,7 +31,7 @@
         this.$window.classList.add('gamma-regulation-tool');
 
         // Update title of window.
-        this.updateTitle('Regulacja korekcją gamma - ' +  this.settings.picture.name);
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION') + ' - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

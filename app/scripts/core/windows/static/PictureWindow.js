@@ -60,6 +60,20 @@
         this.render();
     };
 
+    PictureWindow.prototype.restore = function () {
+        this.paintImage();
+        this.updateTitle(this.getTitle().replace(/\* /, ''));
+        this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+    };
+
+    PictureWindow.prototype.modified = function () {
+        var title = this.getTitle();
+        if (!(/\* /).test(title)) {
+            this.updateTitle('* ' + title);
+        }
+        this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+    };
+
     PictureWindow.prototype._loadPicture = function () {
         root.AssetsLoader.loadImage(this.settings.picture.file, this.settings.picture.name, function (image) {
             _.extend(this.settings.picture, image);

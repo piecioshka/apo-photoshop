@@ -31,7 +31,7 @@
         this.$window.classList.add('contrast-regulation-tool');
 
         // Update title of window.
-        this.updateTitle('Regulacja kontrastem - ' +  this.settings.picture.name);
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION') + ' - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

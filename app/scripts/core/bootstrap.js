@@ -88,6 +88,8 @@
                     setPictureWindowState();
                 } else if (params.win instanceof root.MultiplePicturesWindow) {
                     setMultiplePicturesWindowState();
+                } else {
+                    setDefaultState();
                 }
 
                 // console.warn('Window "%s" is activated!', params.win.getTitle());

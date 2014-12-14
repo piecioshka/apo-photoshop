@@ -132,7 +132,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [ ] Uwagi zgłoszone na ost. zajęciach:
     - [x] Histogram obok obrazka
     - [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
-    - [ ] Zamknięcie okien kiedy zamkniemy obraz.
+    - [ ] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
     - [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka)
     - [ ] Resize okna
     - [ ] Pomoc na Windowsie nie działa

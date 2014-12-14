@@ -28,8 +28,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Progowanie
@@ -55,8 +55,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Redukcja poziomów szarości
@@ -85,8 +85,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Rozciąganie
@@ -119,8 +119,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja jasnością
@@ -149,8 +149,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja kontrastem
@@ -184,8 +184,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja korekcją gamma
@@ -220,8 +220,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Arytmetyczne
@@ -290,8 +290,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         // Operacje -> Jednopunktowe -> Logiczne
@@ -360,8 +360,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         }
     };
 

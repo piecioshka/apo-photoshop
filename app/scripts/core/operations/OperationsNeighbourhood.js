@@ -48,8 +48,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         },
 
         sharpen: function (contextWindow, params) {
@@ -110,8 +110,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            // Update histogram.
-            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+            // Inform picture window that is modified.
+            contextWindow.modified();
         }
     };
 

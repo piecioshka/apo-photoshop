@@ -31,7 +31,7 @@
         this.$window.classList.add('arithmetical-tool');
 
         // Update title of window.
-        this.updateTitle('Operacje arytmetyczne');
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'));
 
         // Append window list.
         root.App.windowManager.addWindow(this);

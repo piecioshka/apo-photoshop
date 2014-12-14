@@ -31,7 +31,7 @@
         this.$window.classList.add('logical-tool');
 
         // Update title of window.
-        this.updateTitle('Operacje logiczne');
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_LOGICAL'));
 
         // Append window list.
         root.App.windowManager.addWindow(this);

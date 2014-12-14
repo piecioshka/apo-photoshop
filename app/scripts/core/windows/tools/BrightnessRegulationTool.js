@@ -31,7 +31,7 @@
         this.$window.classList.add('brightness-regulation-tool');
 
         // Update title of window.
-        this.updateTitle('Regulacja jasnością - ' +  this.settings.picture.name);
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION') + ' - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

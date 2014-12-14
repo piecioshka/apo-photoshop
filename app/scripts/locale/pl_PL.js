@@ -19,7 +19,6 @@
         EDIT_RESTORE: 'Przywróć do oryginału',
 
         BOX: 'Okno',
-        BOX_HISTOGRAM: 'Histogram',
         BOX_LUT_UOP: 'Tablica LUT (UOP)',
         BOX_DUPLICATE: 'Duplikuj',
 
@@ -33,22 +32,22 @@
 
         OPERATIONS_ONE_POINT: 'Operacje jednopunktowe',
         OPERATIONS_ONE_POINT_NEGATIVE: 'Odwrotności (negacja)',
-        OPERATIONS_ONE_POINT_THRESHOLD: 'Progowanie',
-        OPERATIONS_ONE_POINT_POSTERIZE: 'Redukcja poziomów szarości',
-        OPERATIONS_ONE_POINT_STRETCHING: 'Rozciąganie',
-        OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: 'Regulacja jasnością',
-        OPERATIONS_ONE_POINT_CONTRAST_REGULATION: 'Regulacja kontrastem',
-        OPERATIONS_ONE_POINT_GAMMA_REGULATION: 'Regulacja korekcją gamma',
+        OPERATIONS_ONE_POINT_THRESHOLD: '(W) Progowanie',
+        OPERATIONS_ONE_POINT_POSTERIZE: '(W) Redukcja poziomów szarości',
+        OPERATIONS_ONE_POINT_STRETCHING: '(W) Rozciąganie',
+        OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION: '(W) Regulacja jasnością',
+        OPERATIONS_ONE_POINT_CONTRAST_REGULATION: '(W) Regulacja kontrastem',
+        OPERATIONS_ONE_POINT_GAMMA_REGULATION: '(W) Regulacja korekcją gamma',
 
-        OPERATIONS_ONE_POINT_ARITHMETIC: 'Arytmetyczne',
-        OPERATIONS_ONE_POINT_LOGICAL: 'Logiczne',
+        OPERATIONS_ONE_POINT_ARITHMETIC: '(W) Arytmetyczne',
+        OPERATIONS_ONE_POINT_LOGICAL: '(W) Logiczne',
 
         OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
-        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Filtracja liniowa (wygładzanie)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
-        OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: 'Detekcja krawędzi',
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: '(W) Filtracja liniowa (wygładz.)',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa (wyostrz.)',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna (wyostrz.)',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna (wyostrz.)',
+        OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: '(W) Detekcja krawędzi',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

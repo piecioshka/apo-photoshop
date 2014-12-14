@@ -34,7 +34,7 @@
         this.$window.classList.add('lut-uop-window');
 
         // Update title of window.
-        this.updateTitle('LUT (UOP) - ' + this.settings.picture.name);
+        this.updateTitle(root.Locale.get('BOX_LUT_UOP') + ' - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

@@ -31,7 +31,7 @@
         this.$window.classList.add('threshold-tool');
 
         // Update title of window.
-        this.updateTitle('Progowanie - ' +  this.settings.picture.name);
+        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_THRESHOLD') + ' - ' +  this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

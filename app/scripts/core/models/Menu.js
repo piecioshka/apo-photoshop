@@ -180,12 +180,7 @@
 
         this.editRestoreMenuItem = this.addMenuItem(root.Locale.get('EDIT_RESTORE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
-
-            if (activeWindow instanceof PictureWindow) {
-                activeWindow.paintImage();
-                activeWindow.updateTitle(activeWindow.getTitle().replace(/\* /, ''));
-                activeWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
-            }
+            activeWindow.restore();
         }, 'Ctrl', 'Z');
         fileMenu.append(this.editRestoreMenuItem);
 
