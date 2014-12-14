@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var GammaRegulationTool = function GammaRegulationTool(params) {
+    var GammaRegulationTool = function GammaRegulationTool(contextWindow, params) {
         // console.info('new GammaRegulationTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -62,8 +63,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply gamma-regulation to image.
-                root.OperationsOnePoint.onePointGammaRegulation({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointGammaRegulation(self.contextWindow, {
                     value: level
                 });
             }

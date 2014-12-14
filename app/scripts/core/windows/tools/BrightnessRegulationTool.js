@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var BrightnessRegulationTool = function BrightnessRegulationTool(params) {
+    var BrightnessRegulationTool = function BrightnessRegulationTool(contextWindow, params) {
         // console.info('new BrightnessRegulationTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -62,8 +63,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply brightness-regulation to image.
-                root.OperationsOnePoint.onePointBrightnessRegulation({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointBrightnessRegulation(self.contextWindow, {
                     value: level
                 });
             }

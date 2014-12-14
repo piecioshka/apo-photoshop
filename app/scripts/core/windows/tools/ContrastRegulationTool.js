@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var ContrastRegulationTool = function ContrastRegulationTool(params) {
+    var ContrastRegulationTool = function ContrastRegulationTool(contextWindow, params) {
         // console.info('new ContrastRegulationTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -62,8 +63,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply contrast-regulation to image.
-                root.OperationsOnePoint.onePointContrastRegulation({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointContrastRegulation(self.contextWindow, {
                     value: level
                 });
             }

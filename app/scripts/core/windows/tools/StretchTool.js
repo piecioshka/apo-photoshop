@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var StretchTool = function StretchTool(params) {
+    var StretchTool = function StretchTool(contextWindow, params) {
         // console.info('new StretchTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -65,8 +66,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply stretch to image.
-                root.OperationsOnePoint.onePointStretching({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointStretching(self.contextWindow, {
                     value: {
                         min: min,
                         max: max

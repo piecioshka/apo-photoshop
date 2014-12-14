@@ -171,6 +171,12 @@
         RENDER_WINDOW: 'window:render'
     };
 
+    AbstractWindow.prototype.setRigidWidth = function () {
+        var st = root.getComputedStyle(this.$window, null);
+        var width = parseInt(st.getPropertyValue('width'), 10) || 0;
+        this.$window.style.width = width + 'px';
+    };
+
     // Extend `AbstractWindow` module with events.
     _.extend(AbstractWindow.prototype, root.EventEmitter);
 

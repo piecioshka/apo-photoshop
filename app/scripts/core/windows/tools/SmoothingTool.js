@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var SmoothingTool = function SmoothingTool(params) {
+    var SmoothingTool = function SmoothingTool(contextWindow, params) {
         // console.info('new SmoothingTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -75,17 +76,7 @@
                 });
             }
 
-            var canvas = new root.Canvas({
-                width: self.settings.picture.canvas.$canvas.width,
-                height: self.settings.picture.canvas.$canvas.height
-            });
-
-            canvas.markAsNotActive();
-            canvas.render(self);
-
             function handleChosenMask(evt, listOfMasks) {
-                canvas.clear();
-
                 var v = evt.target.value;
                 var id = v.replace(/[^0-9]/g, '');
                 var isMask = (/-/).test(v);
@@ -96,9 +87,7 @@
                     disable(true);
                     put(mask);
 
-                    root.OperationsNeighbourhood.smoothing({
-                        picture: self.settings.picture,
-                        workspace: canvas,
+                    root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask
                     });
                 } else {
@@ -113,9 +102,7 @@
                     mask.push(parseInt($text.value, 10));
                 });
 
-                root.OperationsNeighbourhood.smoothing({
-                    picture: self.settings.picture,
-                    workspace: canvas,
+                root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                     mask: mask
                 });
             }

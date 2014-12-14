@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var LogicalTool = function LogicalTool(params) {
+    var LogicalTool = function LogicalTool(contextWindow, params) {
         // console.info('new LogicalTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             pictures: null
         };
@@ -75,7 +76,7 @@
 
                 canvas.clear();
 
-                root.OperationsOnePoint.onePointLogical({
+                root.OperationsOnePoint.onePointLogical(self.contextWindow, {
                     pictures: self.settings.pictures,
                     workspace: canvas,
                     operation: $selected.value

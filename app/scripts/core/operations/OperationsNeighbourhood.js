@@ -2,20 +2,9 @@
     'use strict';
 
     var OperationsNeighbourhood = {
-        smoothing: function (params) {
-            console.time('Neighbourhood: Smoothing');
-
-            // @type {Array}
+        smoothing: function (contextWindow, params) {
             var mask = params.mask;
-            // @type {Object}
-            var pic = params.picture;
-            // @type {Canvas}
-            var workspace = params.workspace;
-
-            // Loading passed image to new Canvas.
-            workspace.loadGrayScaleImage(pic.img, pic.width, pic.height);
-
-            var can = workspace;
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -59,23 +48,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('Neighbourhood: Smoothing');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
-        sharpen: function (params) {
-            console.time('Neighbourhood: Sharpen');
-
-            // @type {string}
+        sharpen: function (contextWindow, params) {
             var type = params.type;
-            // @type {Object}
-            var pic = params.picture;
-            // @type {Canvas}
-            var workspace = params.workspace;
-
-            // Loading passed image to new Canvas.
-            workspace.loadGrayScaleImage(pic.img, pic.width, pic.height);
-
-            var can = workspace;
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -131,7 +110,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('Neighbourhood: Sharpen');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         }
     };
 

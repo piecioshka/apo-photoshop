@@ -4,17 +4,8 @@
     var OperationsOnePoint = {
 
         // Operacje -> Jednopunktowe -> Odwrotność (negacja)
-        onePointNegative: function () {
-            var workspace = root.OperationsHelper.getWorkspace();
-
-            // When you try do operation for non-picture window.
-            if (!workspace) {
-                return;
-            }
-
-            console.time('One point: Negative');
-
-            var can = workspace.settings.picture.canvas;
+        onePointNegative: function (contextWindow) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -37,14 +28,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Negative');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Progowanie
-        onePointThreshold: function (params) {
-            console.time('One point: Threshold');
-
-            var can = params.workspace;
+        onePointThreshold: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -65,14 +55,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Threshold');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Redukcja poziomów szarości
-        onePointPosterize: function (params) {
-            console.time('One point: Posterize');
-
-            var can = params.workspace;
+        onePointPosterize: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -96,14 +85,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Posterize');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Rozciąganie
-        onePointStretching: function (params) {
-            console.time('One point: Stretching');
-
-            var can = params.workspace;
+        onePointStretching: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -131,15 +119,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Stretching');
-
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Regulacja jasnością
-        onePointBrightnessRegulation: function (params) {
-            console.time('One point: BrightnessRegulation');
-
-            var can = params.workspace;
+        onePointBrightnessRegulation: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -163,14 +149,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: BrightnessRegulation');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Regulacja kontrastem
-        onePointContrastRegulation: function (params) {
-            console.time('One point: ContrastRegulation');
-
-            var can = params.workspace;
+        onePointContrastRegulation: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -199,14 +184,13 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: ContrastRegulation');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Regulacja korekcją gamma
-        onePointGammaRegulation: function (params) {
-            console.time('One point: GammaRegulation');
-
-            var can = params.workspace;
+        onePointGammaRegulation: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -236,13 +220,12 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: GammaRegulation');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Arytmetyczne
-        onePointArithmetical: function (params) {
-            console.time('One point: Arithmetical');
-
+        onePointArithmetical: function (contextWindow, params) {
             var can = params.workspace;
             var ctx = can.ctx;
 
@@ -307,13 +290,12 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Arithmetical');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Jednopunktowe -> Logiczne
-        onePointLogical: function (params) {
-            console.time('One point: Logical');
-
+        onePointLogical: function (contextWindow, params) {
             var can = params.workspace;
             var ctx = can.ctx;
 
@@ -378,7 +360,8 @@
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
 
-            console.timeEnd('One point: Logical');
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         }
     };
 

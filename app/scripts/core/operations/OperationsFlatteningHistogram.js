@@ -3,17 +3,10 @@
     
     var OperationsFlatteningHistogram = {
 
-        _flatteningHistogram: function (method) {
+        _flatteningHistogram: function (contextWindow, method) {
             console.assert(_.isNumber(method), 'OperationsFlatteningHistogram#_flatteningHistogram: `method` is not a number');
 
-            var workspace = root.OperationsHelper.getWorkspace();
-
-            // When you try do operation for non-picture window.
-            if (!workspace) {
-                return;
-            }
-
-            var can = workspace.settings.picture.canvas;
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             // Stage 1 - Convert old level to new levels.
@@ -156,34 +149,29 @@
 
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
+
+            // Update histogram.
+            contextWindow.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
         },
 
         // Operacje -> Wygładzanie histogram -> Metoda średnich
-        flatteningHistogramMedium: function () {
-            console.time('Flattening Histogram: Medium');
-            this._flatteningHistogram(OperationsFlatteningHistogram.FLATTENING.MEDIUM);
-            console.timeEnd('Flattening Histogram: Medium');
+        flatteningHistogramMedium: function (contextWindow) {
+            this._flatteningHistogram(contextWindow, OperationsFlatteningHistogram.FLATTENING.MEDIUM);
         },
 
         // Operacje -> Wygładzanie histogram -> Metoda losowa
-        flatteningHistogramRandom: function () {
-            console.time('Flattening Histogram: Random');
-            this._flatteningHistogram(OperationsFlatteningHistogram.FLATTENING.RANDOM);
-            console.timeEnd('Flattening Histogram: Random');
+        flatteningHistogramRandom: function (contextWindow) {
+            this._flatteningHistogram(contextWindow, OperationsFlatteningHistogram.FLATTENING.RANDOM);
         },
 
         // Operacje -> Wygładzanie histogram -> Metoda sąsiedztwa
-        flatteningHistogramNeighbourhood: function () {
-            console.time('Flattening Histogram: Neighbourhood');
-            this._flatteningHistogram(OperationsFlatteningHistogram.FLATTENING.NEIGHBOURHOOD);
-            console.timeEnd('Flattening Histogram: Neighbourhood');
+        flatteningHistogramNeighbourhood: function (contextWindow) {
+            this._flatteningHistogram(contextWindow, OperationsFlatteningHistogram.FLATTENING.NEIGHBOURHOOD);
         },
 
         // Operacje -> Wygładzanie histogram -> Metoda własna
-        flatteningHistogramCustom: function () {
-            console.time('Flattening Histogram: Custom');
-            this._flatteningHistogram(OperationsFlatteningHistogram.FLATTENING.CUSTOM);
-            console.timeEnd('Flattening Histogram: Custom');
+        flatteningHistogramCustom: function (contextWindow) {
+            this._flatteningHistogram(contextWindow, OperationsFlatteningHistogram.FLATTENING.CUSTOM);
         }
     };
 

@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var EdgeDetectionTool = function EdgeDetectionTool(params) {
+    var EdgeDetectionTool = function EdgeDetectionTool(contextWindow, params) {
         // console.info('new EdgeDetectionTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };

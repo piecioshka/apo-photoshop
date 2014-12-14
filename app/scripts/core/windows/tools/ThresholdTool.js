@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var ThresholdTool = function ThresholdTool(params) {
+    var ThresholdTool = function ThresholdTool(contextWindow, params) {
         // console.info('new ThresholdTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -62,8 +63,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply threshold to image.
-                root.OperationsOnePoint.onePointThreshold({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointThreshold(self.contextWindow, {
                     value: hold
                 });
             }

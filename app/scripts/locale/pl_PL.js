@@ -16,7 +16,7 @@
         CLOSE: 'Zamknij',
 
         EDIT: 'Edycja',
-        EDIT_RESTORE: 'Przywróć',
+        EDIT_RESTORE: 'Przywróć do oryginału',
 
         BOX: 'Okno',
         BOX_HISTOGRAM: 'Histogram',
@@ -45,7 +45,9 @@
 
         OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: 'Filtracja liniowa (wygładzanie)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN: 'Wyostrzanie (medianowa, minimalna, maksymalna)',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
         OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: 'Detekcja krawędzi',
 
         ABOUT: 'O programie',

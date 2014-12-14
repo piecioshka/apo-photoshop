@@ -129,10 +129,11 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
 - [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
 - [x] Przesuwać oknem klikając w tytuł okna.
-- [ ] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
-- [ ] Zamknięcie okien kiedy zamkniemy obraz.
-- [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka)
-- [ ] Problemy:
+- [ ] Uwagi zgłoszone na ost. zajęciach:
+    - [x] Histogram obok obrazka
+    - [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
+    - [ ] Zamknięcie okien kiedy zamkniemy obraz.
+    - [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka)
     - [ ] Resize okna
     - [ ] Pomoc na Windowsie nie działa
     - [ ] Histogram tylko dla ostatniego obrazka
@@ -144,8 +145,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [ ] Z 4 ćw. zadania (morfologiczne)
         - [ ] Algorytm żółwia
     - [ ] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
-- [ ] Histogram obok obrazka
-- [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień
+    - [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień
 
 ## Zasada działania projektu
 

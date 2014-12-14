@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var PosterizeTool = function PosterizeTool(params) {
+    var PosterizeTool = function PosterizeTool(contextWindow, params) {
         // console.info('new PosterizeTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null
         };
@@ -62,8 +63,7 @@
                 self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
 
                 // Apply posterize to image.
-                root.OperationsOnePoint.onePointPosterize({
-                    workspace: self.settings.picture.canvas,
+                root.OperationsOnePoint.onePointPosterize(self.contextWindow, {
                     value: levels
                 });
             }

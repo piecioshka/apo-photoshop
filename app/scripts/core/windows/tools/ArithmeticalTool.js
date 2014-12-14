@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var ArithmeticalTool = function ArithmeticalTool(params) {
+    var ArithmeticalTool = function ArithmeticalTool(contextWindow, params) {
         // console.info('new ArithmeticalTool', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             pictures: null
         };
@@ -75,7 +76,7 @@
 
                 canvas.clear();
 
-                root.OperationsOnePoint.onePointArithmetical({
+                root.OperationsOnePoint.onePointArithmetical(self.contextWindow, {
                     pictures: self.settings.pictures,
                     workspace: canvas,
                     operation: $selected.value

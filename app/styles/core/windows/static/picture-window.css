@@ -1,3 +1,13 @@
 .picture-window canvas {
     float: left;
 }
+
+.picture-window .canvas-histogram {
+    background: #ffffff;
+    margin: 0 0 0 10px;
+}
+
+.picture-window .canvas-histogram:before {
+    content: 'Histogram';
+    display: block;
+}

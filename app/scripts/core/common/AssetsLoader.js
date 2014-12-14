@@ -1,18 +1,15 @@
 (function (root) {
     'use strict';
 
-    var isTIFF = (/.\.tif(f?)/i);
-
     var AssetsLoader = {
+        UNSUPPORTED_EXTENSIONS: [
+            /.\.tif(f?)/i
+        ],
 
         loadImage: function (file, name, callback, ctx) {
             ctx = ctx || this;
 
-            if (isTIFF.test(name)) {
-                root.alert(root.Locale.get('MSG_ERR_UNSUPPORTED'));
-            } else {
-                this._useImageConstructor(file, name, callback.bind(ctx));
-            }
+            this._useImageConstructor(file, name, callback.bind(ctx));
         },
 
         _useImageConstructor: function (file, name, callback) {

@@ -14,7 +14,6 @@
 
                 menu.editRestoreMenuItem.enabled = false;
 
-                menu.boxHistogramMenuItem.enabled = false;
                 menu.boxDuplicateMenuItem.enabled = false;
                 menu.boxLutMenuItem.enabled = false;
 
@@ -35,7 +34,7 @@
                 menu.operationsOnePointLogicalMenuItem.enabled = false;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
@@ -44,7 +43,6 @@
 
                 menu.editRestoreMenuItem.enabled = true;
 
-                menu.boxHistogramMenuItem.enabled = true;
                 menu.boxDuplicateMenuItem.enabled = true;
                 menu.boxLutMenuItem.enabled = true;
 
@@ -65,35 +63,8 @@
                 menu.operationsOnePointLogicalMenuItem.enabled = false;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = true;
-                menu.operationsNeighbourhoodSharpenMenuItem.enabled = true;
+                menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = true;
-            }
-
-            function setHistogramWindowState() {
-                menu.fileCloseMenuItem.enabled = true;
-
-                menu.editRestoreMenuItem.enabled = false;
-
-                menu.boxHistogramMenuItem.enabled = false;
-                menu.boxDuplicateMenuItem.enabled = false;
-                menu.boxLutMenuItem.enabled = false;
-
-                menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
-                menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = false;
-                menu.operationsFlatteningHistogramNeighboudhoodMethodMenuItem.enabled = false;
-                menu.operationsFlatteningHistogramCustomMethodMenuItem.enabled = false;
-
-                menu.operationsOnePointNegativeMenuItem.enabled = false;
-                menu.operationsOnePointThresholdMenuItem.enabled = false;
-                menu.operationsOnePointPosterizeMenuItem.enabled = false;
-                menu.operationsOnePointStretchingMenuItem.enabled = false;
-                menu.operationsOnePointBrightnessRegulationMenuItem.enabled = false;
-                menu.operationsOnePointContrastRegulationMenuItem.enabled = false;
-                menu.operationsOnePointGammaRegulationMenuItem.enabled = false;
-
-                menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMenuItem.enabled = false;
-                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
             function setMultiplePicturesWindowState() {
@@ -103,7 +74,7 @@
                 menu.operationsOnePointLogicalMenuItem.enabled = true;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
@@ -115,8 +86,6 @@
 
                 if (params.win instanceof root.PictureWindow) {
                     setPictureWindowState();
-                } else if (params.win instanceof root.HistogramWindow) {
-                    setHistogramWindowState();
                 } else if (params.win instanceof root.MultiplePicturesWindow) {
                     setMultiplePicturesWindowState();
                 }
