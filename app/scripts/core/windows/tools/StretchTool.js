@@ -63,7 +63,7 @@
 
             function setupPosterize(min, max) {
                 // Restore image to origin.
-                self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
+                self.contextWindow.setPrimaryState();
 
                 // Apply stretch to image.
                 root.OperationsOnePoint.onePointStretching(self.contextWindow, {

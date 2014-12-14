@@ -60,7 +60,7 @@
 
             function setupContrastRegulation(level) {
                 // Restore image to origin.
-                self.settings.picture.canvas.loadGrayScaleImage(self.settings.picture.img, self.settings.picture.width, self.settings.picture.height);
+                self.contextWindow.setPrimaryState();
 
                 // Apply gamma-regulation to image.
                 root.OperationsOnePoint.onePointGammaRegulation(self.contextWindow, {

@@ -55,7 +55,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 ## Lista zadań
 
-*Zadanie zlecone przez prowadzącego:*
+**Zadanie zlecone przez prowadzącego:**
 
 - [x] Ćw. 1
     - Zadanie 1
@@ -75,7 +75,6 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Regulacja korekcją gamma
     - Zadanie 2
         - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
-        - [ ] Lista kanałów szarości do modyfikacji
     - Zadanie 3
         - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
 - [ ] Ćw. 3
@@ -122,38 +121,39 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 4
         - [ ] Opis obrazu z wykorzystaniem algorytmu żółwia.
 
-*Zadania zlecone przez developerów:*
+**Zadania zlecone przez developerów:**
 
-- [x] Skróty klawiaturowe
-- [x] Słowniki tłumaczeń
-- [x] Drag & drop na oknach
-- [x] Duplikacja aktywnego okna
-- [x] Przywróć obrazek do pierwotnego stanu
-- [x] Zamknięcie programu
-- [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno
-- [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości
-- [x] Przesuwać oknem klikając w tytuł okna
+- [x] Skróty klawiaturowe.
+- [x] Słowniki tłumaczeń.
+- [x] Drag & drop na oknach.
+- [x] Duplikacja aktywnego okna.
+- [x] Przywróć obrazek do pierwotnego stanu.
+- [x] Zamknięcie programu.
+- [x] Aktywacja właściwych elementów w menu kiedy aktywne jest odpowiednie okno.
+- [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
+- [x] Przesuwać oknem klikając w tytuł okna.
 
-*Uwagi zgłoszone na ost. zajęciach:*
+**Uwagi zgłoszone na ost. zajęciach:**
 
-- [x] Histogram obok obrazka
-- [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację
-- [x] Filtracja liniowa - na sztywno elementy, aby przesuwanie okna z opcjami po za okno programu nie łamało
-- [ ] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach)
-- [x] Histogram tylko dla ostatniego obrazka
-- [x] Operacje tylko dla ostatniego obrazka
-- [ ] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane
-- [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka)
-- [ ] Resize okna
-- [ ] Pomoc na Windowsie nie działa
-- [ ] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów
-- [ ] Wygładzanie: maska 1 (źle)
-- [ ] Do zaliczenia: (ptak morf, i ptak morf bin)
-    - [ ] Z 4 ćw. zadania (morfologiczne)
-    - [ ] Algorytm żółwia
-- [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień
+- [x] Histogram obok obrazka.
+- [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
+- [x] Filtracja liniowa - na sztywno elementy, aby przesuwanie okna z opcjami po za okno programu nie łamało.
+- [ ] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
+- [x] Histogram tylko dla ostatniego obrazka.
+- [x] Operacje tylko dla ostatniego obrazka.
+- [ ] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
+- [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka).
+- [ ] Resize okna.
+- [ ] Pomoc na Windowsie nie działa.
+- [ ] Lista kanałów szarości do modyfikacji (UOP).
+- [ ] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów.
+- [ ] Wygładzanie: maska 1 (źle).
+- [ ] Do zaliczenia (ptak morf, i ptak morf bin):
+    - [ ] Z 4 ćw. zadania (morfologiczne).
+    - [ ] Algorytm żółwia.
+- [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień.
 
-*Zadania potrzebne do zrealizowania projektu grupowego:*
+**Zadania potrzebne do zrealizowania projektu grupowego:**
 
 - [x] Wczytanie sekwencji obrazów.
 - [ ] Rozpoznanie obiektów z pierwszego kadru.

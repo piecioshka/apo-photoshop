@@ -1,5 +1,3 @@
-/*global promise */
-
 (function (root) {
     'use strict';
 
@@ -56,34 +54,9 @@
         this.$content.appendChild($strip);
         this.$content = $strip;
 
-        this.loadPictures();
-    };
-
-    MultiplePicturesWindow.prototype.loadPictures = function () {
-        var self = this;
-        var picturesLoaders = [];
-
-        // Loop through each of file (images).
-        _.each(this.settings.pictures, function (frame, index) {
-
-            var asyncLoad = function () {
-                var p = new promise.Promise();
-
-                // Load selected file.
-                root.AssetsLoader.loadImage(frame.file, frame.name, function (params) {
-                    self.addPicture(params, index);
-                    p.done();
-                });
-
-                return p;
-            };
-
-            picturesLoaders.push(asyncLoad);
-        });
-
-        promise.chain(picturesLoaders).then(function () {
-            // self.addClickEvent();
-        });
+        _.each(this.settings.pictures, function (picture, index) {
+            this.addPicture(picture, index);
+        }, this);
     };
 
     MultiplePicturesWindow.prototype.addPicture = function (picture, index) {

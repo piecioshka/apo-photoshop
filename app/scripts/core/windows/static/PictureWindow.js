@@ -41,11 +41,8 @@
 
         // Listen when window will be rendered.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
-            this._loadPicture();
-        }, this);
-
-        // Listen when picture will be loaded and rendered.
-        this.on(root.PictureWindow.EVENTS.PICTURE_READY, function () {
+            this._buildImage();
+            this._paintImage();
             this._buildBarGraph();
             this._updateHistogram();
             this.setRigidWidth();
@@ -61,7 +58,7 @@
     };
 
     PictureWindow.prototype.setPrimaryState = function () {
-        this.paintImage();
+        this._paintImage();
         this.updateTitle(this.getTitle().replace(/\* /, ''));
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
@@ -74,17 +71,6 @@
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
-    PictureWindow.prototype._loadPicture = function () {
-        root.AssetsLoader.loadImage(this.settings.picture.file, this.settings.picture.name, function (image) {
-            _.extend(this.settings.picture, image);
-
-            this._buildImage();
-            this.paintImage();
-
-            this.emit(root.PictureWindow.EVENTS.PICTURE_READY);
-        }, this);
-    };
-
     PictureWindow.prototype._buildImage = function () {
         this.settings.picture.canvas = new root.Canvas({
             width: this.settings.picture.width,
@@ -95,7 +81,7 @@
         this.settings.picture.canvas.render(this);
     };
 
-    PictureWindow.prototype.paintImage = function () {
+    PictureWindow.prototype._paintImage = function () {
         this.settings.picture.canvas.loadGrayScaleImage(this.settings.picture.img, this.settings.picture.width, this.settings.picture.height);
     };
 
@@ -152,7 +138,6 @@
     };
 
     PictureWindow.EVENTS = {
-        PICTURE_READY: 'picture:ready',
         PICTURE_MODIFY: 'picture:modify'
     };
 
