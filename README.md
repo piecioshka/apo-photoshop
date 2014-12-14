@@ -143,6 +143,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [ ] Do zaliczenia: (ptak morf, i ptak morf bin)
         - [ ] Z 4 ćw. zadania (morfologiczne)
         - [ ] Algorytm żółwia
+    - [ ] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
 - [ ] Histogram obok obrazka
 - [ ] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień
 
@@ -150,6 +151,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - [x] Wczytanie sekwencji obrazów.
 - [ ] Rozpoznanie obiektów z pierwszego kadru.
+    - [ ] (Progowanie przedziałami) wytniemy obrazek w zadanym odcieniu szarości.
 - [ ] Prezentacja wyodrębnionych obiektów w osobnym oknie.
 - [ ] Dobór kolorów z palety HSV dla każdego obiektu.
 - [ ] Zastosowanie koloru do pierwszego kadru.
