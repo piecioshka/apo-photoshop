@@ -10,7 +10,7 @@
         },
 
         max: function () {
-            var args = Array.prototype.slice.call(arguments);
+            var args = _.toArray(arguments);
 
             // Remove non-numbers elements, ex. all `undefined` values.
             var numbers = args.filter(function (item) {
@@ -22,7 +22,7 @@
         },
 
         average: function () {
-            var args = Array.prototype.slice.call(arguments);
+            var args = _.toArray(arguments);
 
             // Remove non-numbers elements, ex. all `undefined` values.
             var numbers = args.filter(function (item) {

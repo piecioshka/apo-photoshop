@@ -37,6 +37,8 @@
 
         this.operationsNeighbourhoodSmoothingMenuItem = null;
         this.operationsNeighbourhoodSharpenMediumMenuItem = null;
+        this.operationsNeighbourhoodSharpenMinimalMenuItem = null;
+        this.operationsNeighbourhoodSharpenMaximalMenuItem = null;
         this.operationsNeighbourhoodEdgeDetectionMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
@@ -476,25 +478,25 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.operationsNeighbourhoodSharpenMediumMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL'), function () {
+        this.operationsNeighbourhoodSharpenMinimalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             root.OperationsNeighbourhood.sharpen(activeWindow, {
                 type: 'min'
             });
         });
-        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMediumMenuItem);
+        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMinimalMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.operationsNeighbourhoodSharpenMediumMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL'), function () {
+        this.operationsNeighbourhoodSharpenMaximalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             root.OperationsNeighbourhood.sharpen(activeWindow, {
                 type: 'max'
             });
         });
-        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMediumMenuItem);
+        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMaximalMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 

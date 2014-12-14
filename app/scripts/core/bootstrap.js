@@ -36,6 +36,8 @@
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
@@ -66,6 +68,8 @@
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;
+                menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = true;
+                menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = true;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = true;
             }
 
@@ -78,6 +82,8 @@
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = false;
+                menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
                 menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
