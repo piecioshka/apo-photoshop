@@ -173,7 +173,8 @@
 
     AbstractWindow.prototype.setRigidWidth = function () {
         var st = root.getComputedStyle(this.$window, null);
-        var width = parseInt(st.getPropertyValue('width'), 10) || 0;
+        var width = parseFloat(st.getPropertyValue('width')) || 0;
+        width = Math.ceil(width);
         this.$window.style.width = width + 'px';
     };
 

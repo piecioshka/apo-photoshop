@@ -198,7 +198,7 @@
 
             if (activeWindow instanceof PictureWindow) {
                 new root.PictureWindow({
-                    picture: activeWindow.settings.picture
+                    picture: _.clone(activeWindow.settings.picture)
                 });
             }
         }, 'Ctrl-Shift', 'D');
