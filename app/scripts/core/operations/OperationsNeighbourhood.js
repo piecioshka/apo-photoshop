@@ -49,7 +49,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         sharpen: function (contextWindow, params) {
@@ -111,7 +111,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         }
     };
 

@@ -29,7 +29,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Progowanie
@@ -56,7 +56,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Redukcja poziomów szarości
@@ -86,7 +86,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Rozciąganie
@@ -120,7 +120,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja jasnością
@@ -150,7 +150,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja kontrastem
@@ -185,7 +185,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja korekcją gamma
@@ -221,7 +221,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Arytmetyczne
@@ -291,7 +291,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         },
 
         // Operacje -> Jednopunktowe -> Logiczne
@@ -361,7 +361,7 @@
             ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
-            contextWindow.modified();
+            contextWindow.setModifiedState();
         }
     };
 

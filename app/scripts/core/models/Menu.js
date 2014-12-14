@@ -180,7 +180,7 @@
 
         this.editRestoreMenuItem = this.addMenuItem(root.Locale.get('EDIT_RESTORE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
-            activeWindow.restore();
+            activeWindow.setPrimaryState();
         }, 'Ctrl', 'Z');
         fileMenu.append(this.editRestoreMenuItem);
 

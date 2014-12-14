@@ -60,13 +60,13 @@
         this.render();
     };
 
-    PictureWindow.prototype.restore = function () {
+    PictureWindow.prototype.setPrimaryState = function () {
         this.paintImage();
         this.updateTitle(this.getTitle().replace(/\* /, ''));
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
-    PictureWindow.prototype.modified = function () {
+    PictureWindow.prototype.setModifiedState = function () {
         var title = this.getTitle();
         if (!(/\* /).test(title)) {
             this.updateTitle('* ' + title);
