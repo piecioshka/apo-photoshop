@@ -21,7 +21,7 @@
         this.$content = null;
         this.isActive = false;
 
-        this.setup();
+        this.setup(contextWindow);
         this.initialize();
     };
 

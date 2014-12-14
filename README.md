@@ -141,7 +141,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
 - [x] Histogram tylko dla ostatniego obrazka.
 - [x] Operacje tylko dla ostatniego obrazka.
-- [ ] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
+- [x] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
 - [ ] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka).
 - [ ] Resize okna.
 - [ ] Pomoc na Windowsie nie działa.

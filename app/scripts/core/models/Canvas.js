@@ -18,12 +18,10 @@
         this.initialize();
     };
 
-    Canvas.INDEX = 1;
-
     Canvas.prototype.initialize = function () {
         // Create <canvas> object.
         this.$canvas = doc.createElement('canvas');
-        this.$canvas.id = 'canvas-' + (Canvas.INDEX++);
+        this.$canvas.id = _.uniqueId('canvas-');
 
         // Set dimensions.
         this.setWidth();
@@ -194,6 +192,7 @@
      * Put cross as a sign, that canvas is not active.
      */
     Canvas.prototype.markAsNotActive = function () {
+        // Store current values of styles.
         var oldLineWidth = this.ctx.lineWidth;
         var oldFillStyle = this.ctx.fillStyle;
         var oldStrokeStyle = this.ctx.strokeStyle;
@@ -201,7 +200,6 @@
         var w = this.settings.width;
         var h = this.settings.height;
 
-        // Big red line!
         this.ctx.lineWidth = 3;
         this.ctx.strokeStyle = '#999';
 
@@ -209,13 +207,13 @@
         this.ctx.fillStyle = '#fff';
         this.ctx.fillRect(0 , 0, this.settings.width, this.settings.height);
 
-        // Draw cross - left line
+        // Border left
         this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
-        // Draw cross - right line
+        // Border right
         this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
-        // Draw cross - top line
+        // Border top
         this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, 0); this.ctx.stroke();
-        // Draw cross - bottom line
+        // Border bottom
         this.ctx.beginPath(); this.ctx.moveTo(0, h); this.ctx.lineTo(w, h); this.ctx.stroke();
 
         // Draw cross - first cross line
@@ -223,13 +221,14 @@
         // Draw cross - second cross line
         this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
 
+        // Restore style, before paint this dummy.
         this.ctx.lineWidth = oldLineWidth;
         this.ctx.strokeStyle = oldStrokeStyle;
         this.ctx.fillStyle = oldFillStyle;
     };
 
     /**
-     * Put full white rectangular which reset <canvas>.
+     * Put full white rectangular on <canvas> which `reset it`.
      */
     Canvas.prototype.clear = function () {
         this.ctx.clearRect(0 , 0, this.settings.width, this.settings.height);

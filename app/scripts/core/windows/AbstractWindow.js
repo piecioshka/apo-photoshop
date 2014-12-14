@@ -8,15 +8,15 @@
         return this;
     };
 
-    AbstractWindow.prototype.setup = function () {
+    AbstractWindow.prototype.setup = function (contextWindow) {
         this.createWindow();
         this.createTopBar();
         this.createContent();
 
-        this.listenOnActivationEvents();
+        this.listenOnActivationEvents(contextWindow);
     };
 
-    AbstractWindow.prototype.listenOnActivationEvents = function () {
+    AbstractWindow.prototype.listenOnActivationEvents = function (contextWindow) {
         var self = this;
 
         this.on(AbstractWindow.EVENTS.ACTIVE_WINDOW, function () {
@@ -29,9 +29,15 @@
             self.$window.classList.remove('active');
         });
 
-        this.on(AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
+        this.once(AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
             root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: params.win});
         });
+
+        if (contextWindow instanceof AbstractWindow) {
+            contextWindow.on(AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
+                self.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
+            });
+        }
     };
 
     AbstractWindow.prototype.createWindow = function () {
