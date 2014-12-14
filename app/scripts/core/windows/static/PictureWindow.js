@@ -59,16 +59,24 @@
     PictureWindow.prototype.setPrimaryState = function () {
         var pic = this.settings.picture;
         pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
-        this.updateTitle(this.getTitle().replace(/\* /, ''));
+        this.setPrimaryTitle();
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
     PictureWindow.prototype.setModifiedState = function () {
+        this.setModifiedTitle();
+        this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
+    };
+
+    PictureWindow.prototype.setPrimaryTitle = function () {
+        this.updateTitle(this.getTitle().replace(/\* /, ''));
+    };
+
+    PictureWindow.prototype.setModifiedTitle = function () {
         var title = this.getTitle();
         if (!(/\* /).test(title)) {
             this.updateTitle('* ' + title);
         }
-        this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
     PictureWindow.prototype._normalize = function (pixels) {

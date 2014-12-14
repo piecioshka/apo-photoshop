@@ -10,6 +10,7 @@
         this.windowMenu = null;
 
         this.filesOpenMenuItem = null;
+        this.fileSaveMenuItem = null;
         this.fileCloseMenuItem = null;
         this.closeMenuItem = null;
 
@@ -104,7 +105,6 @@
     // Setup methods.
 
     MenuBuilder.prototype.setupFileMenu = function () {
-        var self = this;
         var fileMenu = new gui.Menu();
 
         function validateParams(params) {
@@ -160,11 +160,9 @@
         }
 
         function openFilHandler() {
-            var multipleFile = new root.MultipleFileChooser({
-                place: '#app'
-            });
+            var multipleFile = new root.FileOpenHelper();
 
-            multipleFile.once(root.MultipleFileChooser.EVENTS.LOAD_FILES, function (params) {
+            multipleFile.once(root.AbstractFileHelper.EVENTS.LOAD_FILES, function (params) {
                 if (!validateParams(params)) {
                     root.alert(root.Locale.get('MSG_ERR_UNSUPPORTED'));
                     return;
@@ -184,6 +182,17 @@
             });
         }
 
+        function saveFileHandler() {
+            var saveFile = new root.FileSaveHelper();
+
+            saveFile.once(root.AbstractFileHelper.EVENTS.SAVE_FILE, function (params) {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                var $canvas = activeWindow.settings.picture.canvas.$canvas;
+                saveFile.saveCanvas(params[0].file, $canvas);
+                activeWindow.updateTitle(params[0].name);
+            });
+        }
+
         function windowCloseHandler() {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
@@ -196,6 +205,11 @@
 
         this.filesOpenMenuItem = this.addMenuItem(root.Locale.get('FILES_OPEN'), openFilHandler, 'Ctrl', 'O');
         fileMenu.append(this.filesOpenMenuItem);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.fileSaveMenuItem = this.addMenuItem(root.Locale.get('FILES_SAVE_AS'), saveFileHandler, 'Ctrl', 'S');
+        fileMenu.append(this.fileSaveMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 

@@ -12,6 +12,7 @@
 
         FILE: 'Plik',
         FILES_OPEN: 'Otwórz',
+        FILES_SAVE_AS: 'Zapisz jako',
         FILE_CLOSE: 'Zamknij otwarte okno',
         CLOSE: 'Zamknij',
 

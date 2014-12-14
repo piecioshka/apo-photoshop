@@ -1,6 +1,8 @@
 (function (root) {
     'use strict';
 
+    var assert = require('assert');
+
     var WindowManager = function () {
         this._windows = [];
     };
@@ -51,9 +53,7 @@
             return win.isActive;
         });
 
-        if (activeWindows.length > 1) {
-            throw new Error('WindowManager#getActiveWindow: is more than one active windows');
-        }
+        assert(activeWindows.length <= 1, 'WindowManager#getActiveWindow: is more than one active windows');
 
         // Returns (first from list) active window is exists or returns `null`.
         return activeWindows[0] || null;

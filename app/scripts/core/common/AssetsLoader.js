@@ -7,7 +7,7 @@
         ],
 
         loadImage: function (file, name, callback, ctx) {
-            console.warn('AssetsLoader.loadImage: %s', name);
+            // console.warn('AssetsLoader.loadImage: %s', name);
             this._useImageConstructor(file, name, callback.bind(ctx || this));
         },
 

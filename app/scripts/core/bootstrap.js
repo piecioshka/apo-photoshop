@@ -10,6 +10,7 @@
             root.document.title = root.Locale.get('NAME');
 
             function setDefaultState() {
+                menu.fileSaveMenuItem.enabled = false;
                 menu.fileCloseMenuItem.enabled = false;
 
                 menu.editRestoreMenuItem.enabled = false;
@@ -39,6 +40,7 @@
             }
 
             function setPictureWindowState() {
+                menu.fileSaveMenuItem.enabled = true;
                 menu.fileCloseMenuItem.enabled = true;
 
                 menu.editRestoreMenuItem.enabled = true;
@@ -68,6 +70,7 @@
             }
 
             function setMultiplePicturesWindowState() {
+                menu.fileSaveMenuItem.enabled = false;
                 menu.fileCloseMenuItem.enabled = true;
 
                 menu.operationsOnePointArithmeticMenuItem.enabled = true;
