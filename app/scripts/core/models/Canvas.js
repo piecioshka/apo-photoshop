@@ -228,8 +228,23 @@
         this.ctx.fillStyle = oldFillStyle;
     };
 
+    /**
+     * Put full white rectangular which reset <canvas>.
+     */
     Canvas.prototype.clear = function () {
         this.ctx.clearRect(0 , 0, this.settings.width, this.settings.height);
+    };
+
+    /**
+     * Returns a copy of current instance of Canvas object.
+     *
+     * @returns {Window.Canvas}
+     */
+    Canvas.prototype.copy = function () {
+        var canvas = new root.Canvas(this.settings);
+        canvas.$canvas.classList.add('canvas-picture');
+        canvas.loadGrayScaleImage(this.$canvas, this.settings.width, this.settings.height);
+        return canvas;
     };
 
     // Extend `Canvas` module with events.

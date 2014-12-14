@@ -104,6 +104,7 @@
     // Setup methods.
 
     MenuBuilder.prototype.setupFileMenu = function () {
+        var self = this;
         var fileMenu = new gui.Menu();
 
         function validateParams(params) {
@@ -126,25 +127,33 @@
             return true;
         }
 
+        function buildCanvasFromImage(image) {
+            var canvas = new root.Canvas({
+                width: image.width,
+                height: image.height
+            });
+            canvas.$canvas.classList.add('canvas-picture');
+            canvas.loadGrayScaleImage(image.img, image.width, image.height);
+            return canvas;
+        }
+
         function loadImages(params, callback) {
             var picturesLoaders = [];
 
             // Loop through each of file (images).
             _.each(params, function (image, index) {
-
-                var asyncLoad = function () {
+                picturesLoaders.push(function () {
                     var p = new root.promise.Promise();
 
                     // Load selected file.
                     root.AssetsLoader.loadImage(image.file, image.name, function (file) {
+                        params[index].canvas = buildCanvasFromImage(file);
                         _.extend(params[index], file);
                         p.done();
                     });
 
                     return p;
-                };
-
-                picturesLoaders.push(asyncLoad);
+                });
             });
 
             root.promise.chain(picturesLoaders).then(callback);
@@ -226,6 +235,7 @@
     };
 
     MenuBuilder.prototype.setupBoxMenu = function () {
+        var self = this;
         var boxMenu = new gui.Menu();
 
         // -------------------------------------------------------------------------------------------------------------
@@ -234,8 +244,14 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
+
+                var original = activeWindow.settings.picture;
+                var copy = _.clone(activeWindow.settings.picture);
+
+                copy.canvas = original.canvas.copy();
+
                 new root.PictureWindow({
-                    picture: _.clone(activeWindow.settings.picture)
+                    picture: copy
                 });
             }
         }, 'Ctrl-Shift', 'D');
@@ -525,10 +541,10 @@
         }));
     };
 
-    // Extend `Menu` module with events.
+    // Extend `MenuBuilder` module with events.
     _.extend(MenuBuilder.prototype, root.EventEmitter);
 
-    // Export `Menu`.
-    return (root.Menu = MenuBuilder);
+    // Export `MenuBuilder`.
+    return (root.MenuBuilder = MenuBuilder);
 
 }(this));

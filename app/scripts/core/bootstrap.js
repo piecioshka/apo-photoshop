@@ -3,7 +3,7 @@
 
     var Bootstrap = {
         setup: function () {
-            var menu = root.App.menu = new root.Menu();
+            var menu = root.App.menu = new root.MenuBuilder();
             var wm = root.App.windowManager = new root.WindowManager();
 
             // Set title of application.

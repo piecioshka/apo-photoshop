@@ -138,7 +138,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Histogram obok obrazka.
 - [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
 - [x] Filtracja liniowa - na sztywno elementy, aby przesuwanie okna z opcjami po za okno programu nie łamało.
-- [ ] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
+- [x] Duplikacja aktualnej wersji obrazka (po ewentualnych modyfikacjach).
 - [x] Histogram tylko dla ostatniego obrazka.
 - [x] Operacje tylko dla ostatniego obrazka.
 - [ ] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
