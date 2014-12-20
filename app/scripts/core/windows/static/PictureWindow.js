@@ -23,7 +23,9 @@
         this.histogram = {
             canvas: undefined,
             width: 256,
-            height: 144
+            height: 144,
+            // Array of numbers of colors.
+            list: []
         };
 
         this.isModified = false;
@@ -44,6 +46,7 @@
         // Listen when window will be rendered.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             this.settings.picture.canvas.render(this);
+            this.histogram.list = this.settings.picture.canvas.getHistogram();
             this._buildBarGraph();
             this._updateHistogram();
             this._renderHistogramInformation();
@@ -81,12 +84,14 @@
         pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
         this.setPrimaryTitle();
         this.isModified = false;
+        this.histogram.list = this.settings.picture.canvas.getHistogram();
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
     PictureWindow.prototype.setModifiedState = function () {
         this.setModifiedTitle();
         this.isModified = true;
+        this.histogram.list = this.settings.picture.canvas.getHistogram();
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
@@ -121,8 +126,6 @@
         var histHeight = this.histogram.height;
         var pictureWidth = this.settings.picture.width;
         var ctx = this.histogram.canvas.ctx;
-        var hist = this.settings.picture.canvas.getHistogram();
-        var histNormalize = this._normalize(hist);
 
         // Create color label.
         var $color = doc.createElement('span');
@@ -142,13 +145,13 @@
         this.$content.appendChild($levels);
 
         function mouseMoveHandler(evt) {
+            var hist = self.histogram.list;
+            var histNormalize = self._normalize(hist);
+
             var x = evt.offsetX;
             var w = 1;
             var h = histNormalize[x] * histHeight / 100;
             var y = histHeight - h;
-
-            $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
-            $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNormalize[x] + '</b>)';
 
             // Refresh histogram.
             self._updateHistogram();
@@ -160,6 +163,12 @@
             // Put vertical bar - appender (green).
             ctx.fillStyle = 'rgb(0, 255, 0)';
             ctx.fillRect(x, 0, w, y);
+
+            // Firstly update <canvas>, next update text labels.
+            setTimeout(function () {
+                $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
+                $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNormalize[x] + '</b>)';
+            }, 0);
         }
 
         // Add event for move cursor above <canvas>
@@ -177,7 +186,7 @@
     };
 
     PictureWindow.prototype._updateHistogram = function () {
-        var hist = this.settings.picture.canvas.getHistogram();
+        var hist = this.histogram.list;
         var histNorm = this._normalize(hist);
 
         // Draw bars in histogram.
