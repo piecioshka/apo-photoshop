@@ -46,6 +46,7 @@
             this.settings.picture.canvas.render(this);
             this._buildBarGraph();
             this._updateHistogram();
+            this._renderHistogramInformation();
             this.setRigidWidth();
         }, this);
 
@@ -73,6 +74,8 @@
         }, this);
     };
 
+    // -----------------------------------------------------------------------------------------------------------------
+
     PictureWindow.prototype.setPrimaryState = function () {
         var pic = this.settings.picture;
         pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
@@ -87,6 +90,8 @@
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
+    // -----------------------------------------------------------------------------------------------------------------
+
     PictureWindow.prototype.setPrimaryTitle = function () {
         this.updateTitle(this.getTitle().replace(/\* /, ''));
     };
@@ -98,12 +103,67 @@
         }
     };
 
+    // -----------------------------------------------------------------------------------------------------------------
+
     PictureWindow.prototype._normalize = function (pixels) {
         var max = root.Utilities.max.apply(this, pixels);
+        var height = this.histogram.height;
 
         return pixels.map(function (item) {
-            return item * this.histogram.height / max;
-        }, this);
+            return parseInt(item / max * height, 10);
+        });
+    };
+
+    PictureWindow.prototype._renderHistogramInformation = function () {
+        var self = this;
+        var margin = 18;
+
+        var histHeight = this.histogram.height;
+        var pictureWidth = this.settings.picture.width;
+        var ctx = this.histogram.canvas.ctx;
+        var hist = this.settings.picture.canvas.getHistogram();
+        var histNormalize = this._normalize(hist);
+
+        // Create color label.
+        var $color = doc.createElement('span');
+        $color.classList.add('hist-info-color');
+        $color.innerHTML = 'Kolor: <b>-</b>';
+
+        // Create numbers label.
+        var $levels = doc.createElement('span');
+        $levels.classList.add('hist-info-numbers');
+        $levels.innerHTML = 'Liczba: <b>-</b>';
+
+        // Set left margin to labels.
+        $levels.style.left = $color.style.left = pictureWidth + margin + 'px';
+
+        // Add labels to container.
+        this.$content.appendChild($color);
+        this.$content.appendChild($levels);
+
+        function mouseMoveHandler(evt) {
+            var x = evt.offsetX;
+            var w = 1;
+            var h = histNormalize[x] * histHeight / 100;
+            var y = histHeight - h;
+
+            $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
+            $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNormalize[x] + '</b>)';
+
+            // Refresh histogram.
+            self._updateHistogram();
+
+            // Put vertical bar - appender (blue).
+            ctx.fillStyle = 'rgb(0, 0, 255)';
+            ctx.fillRect(x, y, w, h);
+
+            // Put vertical bar - appender (green).
+            ctx.fillStyle = 'rgb(0, 255, 0)';
+            ctx.fillRect(x, 0, w, y);
+        }
+
+        // Add event for move cursor above <canvas>
+        this.histogram.canvas.$canvas.addEventListener('mousemove', mouseMoveHandler);
     };
 
     PictureWindow.prototype._buildBarGraph = function () {

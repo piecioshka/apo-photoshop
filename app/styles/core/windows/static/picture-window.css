@@ -7,7 +7,19 @@
     margin: 0 0 0 10px;
 }
 
-.picture-window .canvas-histogram:before {
-    content: 'Histogram';
-    display: block;
+.picture-window .hist-info-color {
+    position: absolute;
+    top: 180px;
+}
+
+.picture-window .hist-info-color > i {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border: 0.09em solid #000;
+}
+
+.picture-window .hist-info-numbers {
+    position: absolute;
+    top: 200px;
 }
