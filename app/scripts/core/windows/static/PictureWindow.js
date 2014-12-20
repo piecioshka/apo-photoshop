@@ -178,34 +178,36 @@
 
     PictureWindow.prototype._updateHistogram = function () {
         var hist = this.settings.picture.canvas.getHistogram();
-        hist = this._normalize(hist);
+        var histNorm = this._normalize(hist);
 
         // Draw bars in histogram.
-        this._paintHistogram(hist);
+        this._paintHistogram(histNorm);
 
         // Draw horizontal line as average of histogram.
         var average = this.settings.picture.canvas.getHistogramAverage();
         var max = root.Utilities.max.apply(this, hist);
-        average = this._normalize([0, average, max])[1];
-        this._paintHistogramAverage(average);
+        var averageNorm = this._normalize([0, average, max])[1];
+        this._paintHistogramAverage(averageNorm);
     };
 
     PictureWindow.prototype._paintHistogram = function (normalizeHist) {
+        var height = this.histogram.height;
         this.histogram.canvas.clear();
-        this.histogram.canvas.ctx.fillStyle = 'rgb(0, 0, 0)';
+        var ctx = this.histogram.canvas.ctx;
+        ctx.fillStyle = 'rgb(0, 0, 0)';
 
         normalizeHist.forEach(function (size, index) {
             var w = 1;
-            var h = size * this.histogram.height / 100;
+            var h = size * height / 100;
             var x = index * w;
-            var y = this.histogram.height - h;
+            var y = (height - 1) - h;
 
-            this.histogram.canvas.ctx.fillRect(x, y, w, h);
+            ctx.fillRect(x, y, w, h);
         }, this);
     };
 
     PictureWindow.prototype._paintHistogramAverage = function (average) {
-        var level = this.histogram.height - average;
+        var level = (this.histogram.height - 1) - average;
         this.histogram.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
         this.histogram.canvas.ctx.fillRect(0, level, this.histogram.width, 1);
     };
