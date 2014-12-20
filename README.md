@@ -152,7 +152,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [ ] Do zaliczenia (ptak morf, i ptak morf bin):
     - [ ] Z 4 ćw. zadania (morfologiczne).
     - [ ] Algorytm żółwia.
-- [x] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień.
+- [x] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień (oraz dodać paletę kolorów).
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 

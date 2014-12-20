@@ -121,11 +121,15 @@
 
     PictureWindow.prototype._renderHistogramInformation = function () {
         var self = this;
-        var margin = 18;
+        var margin = 16;
 
         var histHeight = this.histogram.height;
         var pictureWidth = this.settings.picture.width;
         var ctx = this.histogram.canvas.ctx;
+
+        // Create palette label.
+        var $palette = doc.createElement('span');
+        $palette.classList.add('hist-info-palette');
 
         // Create color label.
         var $color = doc.createElement('span');
@@ -138,9 +142,10 @@
         $levels.innerHTML = 'Liczba: <b>-</b>';
 
         // Set left margin to labels.
-        $levels.style.left = $color.style.left = pictureWidth + margin + 'px';
+        $palette.style.left = $levels.style.left = $color.style.left = pictureWidth + margin + 'px';
 
         // Add labels to container.
+        this.$content.appendChild($palette);
         this.$content.appendChild($color);
         this.$content.appendChild($levels);
 
@@ -209,7 +214,7 @@
             var w = 1;
             var h = size * height / 100;
             var x = index * w;
-            var y = (height - 1) - h;
+            var y = height - h;
 
             ctx.fillRect(x, y, w, h);
         }, this);
