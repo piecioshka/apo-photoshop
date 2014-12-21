@@ -51,19 +51,31 @@
                     <tr>
                         <% _.each(pixels, function (item, index) { %>
                             <% if (item !== undefined) { %>
-                                <th style="background: rgb(<%= index %>, <%= index %>, <%= index %>);">
-                                    <% var color = (index < 128) ? 255 : 0; %>
-                                    <span style="color: rgb(<%= color %>, <%= color %>, <%= color %>);">#<%= index %></span>
+                                <th>
+                                    <span>[<%= item %>]</span>
                                 </th>
                             <% } %>
                         <% }); %>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <% _.each(pixels, function (item, index) { %>
+                            <% if (item !== undefined) { %>
+                                <% var color = (index < 128) ? 255 : 0; %>
+                                <td style="background: rgb(<%= index %>, <%= index %>, <%= index %>); color: rgb(<%= color %>, <%= color %>, <%= color %>);">
+                                    <span>#<%= index %></span>
+                                </td>
+                            <% } %>
+                        <% }); %>
+                    </tr>
                     <tr class="bg-white">
                         <% _.each(pixels, function (item, index) { %>
                             <% if (item !== undefined) { %>
-                                <td><input value="<%= index %>" type="number" min="0" max="255"></td>
+                                <% var color = (index < 128) ? 255 : 0; %>
+                                <td style="background: rgb(<%= index %>, <%= index %>, <%= index %>); color: rgb(<%= color %>, <%= color %>, <%= color %>);">
+                                    #<input value="<%= index %>" type="number" min="0" max="255">
+                                </td>
                             <% } %>
                         <% }); %>
                     </tr>

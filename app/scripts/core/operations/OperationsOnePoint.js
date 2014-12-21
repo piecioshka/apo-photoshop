@@ -376,9 +376,8 @@
             for (var i = 0; i < len / 4; i++) {
                 var color = pixelsChannelsData[(i * 4)];
 
-                if (color === params.start) {
-                    color = params.end;
-                }
+                // When current color is color from start position, change it to ending color.
+                color = params.colors[color];
 
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;

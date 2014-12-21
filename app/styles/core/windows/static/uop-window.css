@@ -10,19 +10,25 @@
 }
 
 .uop-window table.uop-static-content thead {
-    border-bottom: 3px solid;
+    border-bottom: 1px solid #ba9d37;
 }
 
 .uop-window table.uop-static-content thead th,
 .uop-window table.uop-static-content tbody td {
     overflow: hidden;
-    width: 50px;
+    width: 42px;
     height: 20px;
     line-height: 20px;
-    text-align: center;
+    padding: 0 0 0 8px;
+}
+
+.uop-window table.uop-static-content tbody td {
+    text-align: left;
 }
 
 .uop-window table.uop-static-content tbody td input {
-    text-align: center;
-    width: 42px;
+    width: 32px;
+    border: none;
+    background: transparent;
+    color: inherit;
 }

@@ -10,7 +10,7 @@
 }
 
 .lut-window table.lut-static-content thead {
-    border-bottom: 3px solid;
+    border-bottom: 1px solid #ba9d37;
 }
 
 .lut-window table.lut-static-content thead th,

@@ -48,9 +48,7 @@
 
     UOPWindow.prototype.buildTable = function () {
         var self = this;
-
         var pixels = this.settings.picture.canvas.getCountingColorList();
-        console.log('pixels', pixels);
 
         _.each(pixels, function (item, index) {
             if (pixels[index] === 0) {
@@ -69,17 +67,26 @@
         requestAnimationFrame(function () {
             var $inputs = self.$content.querySelectorAll('input[type="number"]');
 
-            _.each($inputs, function ($input, index) {
-                $input.addEventListener('change', function () {
-                    var end = parseInt($input.value, 10);
+            function getColors() {
+                return _.map($inputs, function ($input) {
+                    return parseInt($input.value, 10);
+                });
+            }
 
-                    console.log({ start: index, end: end});
+            _.each($inputs, function ($input) {
+                $input.addEventListener('change', function () {
+                    var color = $input.value;
+                    var negativeColor = 255 - $input.value;
+                    var colors = getColors();
 
                     root.OperationsOnePoint.onePointUOP(self.contextWindow, {
-                        start: index,
-                        end: end,
+                        colors: colors,
                         copy: self.settings.picture
                     });
+
+                    // Update color of changed table cell.
+                    $input.parentNode.style.background = 'rgb(' + color + ', ' + color + ', ' + color + ')';
+                    $input.parentNode.style.color = 'rgb(' + negativeColor + ', ' + negativeColor + ', ' + negativeColor + ')';
                 });
             });
         });
