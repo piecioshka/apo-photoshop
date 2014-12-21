@@ -144,15 +144,15 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Operacje tylko dla ostatniego obrazka.
 - [x] Zamknięcie otwartych okien z opcjami kiedy zamkniemy obraz na którym te operacje są uruchamiane.
 - [x] Zapisanie obrazu (zapytać przy zamknięciu zmodyfikowanego obrazka).
-- [ ] Resize okna.
-- [ ] Pomoc na Windowsie nie działa.
+- [x] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień (oraz dodać paletę kolorów).
 - [ ] Lista kanałów szarości do modyfikacji (UOP).
 - [ ] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów.
 - [ ] Wygładzanie: maska 1 (źle).
 - [ ] Do zaliczenia (ptak morf, i ptak morf bin):
     - [ ] Z 4 ćw. zadania (morfologiczne).
     - [ ] Algorytm żółwia.
-- [x] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień (oraz dodać paletę kolorów).
+- [ ] Pomoc na Windowsie nie działa.
+- [ ] Resize okna.
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 

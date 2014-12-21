@@ -12,7 +12,7 @@
 
         FILE: 'Plik',
         FILES_OPEN: 'Otwórz',
-        FILE_SAVE_AS: 'Zapisz jako',
+        FILE_SAVE_AS: 'Zapisz jako...',
         FILE_SAVE_AS_CONFIRM: 'Plik został zmodyfikowany. Czy chcesz zapisać zmiany?',
         FILE_CLOSE: 'Zamknij otwarte okno',
         CLOSE: 'Zamknij',
