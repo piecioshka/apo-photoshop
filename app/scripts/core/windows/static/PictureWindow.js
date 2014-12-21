@@ -186,10 +186,10 @@
             ctx.fillRect(x, 0, w, y);
 
             // Firstly update <canvas>, next update text labels.
-            setTimeout(function () {
+            requestAnimationFrame(function () {
                 $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
                 $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNorm[x] + '</b>)';
-            }, 0);
+            });
         }
 
         // Add event for move cursor above <canvas>

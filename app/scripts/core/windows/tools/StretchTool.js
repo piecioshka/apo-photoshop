@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var $range1 = self.$content.querySelector('.stretch-tool-regulation-range-min');
             var $value1 = self.$content.querySelector('.stretch-tool-regulation-value-min');
 
@@ -97,7 +97,7 @@
             $value1.value = $range1.value = StretchTool.DEFAULT_MIN;
             $value2.value = $range2.value = StretchTool.DEFAULT_MAX;
             setupPosterize(StretchTool.DEFAULT_MIN, StretchTool.DEFAULT_MAX);
-        }, 0);
+        });
     };
 
     StretchTool.DEFAULT_MIN = 0;

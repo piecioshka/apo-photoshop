@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var $select = self.$content.querySelector('select');
             var $options = $select.querySelectorAll('option');
 
@@ -82,7 +82,7 @@
                     operation: $selected.value
                 });
             });
-        }, 0);
+        });
     };
 
     // Exports `ArithmeticalTool`.

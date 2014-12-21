@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var $range = self.$content.querySelector('.gamma-regulation-tool-regulation-range');
             var $value = self.$content.querySelector('.gamma-regulation-tool-regulation-value');
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        }, 0);
+        });
     };
 
     GammaRegulationTool.DEFAULT_LEVEL = 1;

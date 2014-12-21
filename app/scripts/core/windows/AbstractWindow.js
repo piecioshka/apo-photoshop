@@ -135,7 +135,7 @@
         this.$title.classList.add('sky-hide');
 
         // As quickly as engine can render.
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth - BUTTONS_MARGIN;
 
             if (diff < self.$title.offsetWidth) {
@@ -143,7 +143,7 @@
             }
 
             self.$title.classList.remove('sky-hide');
-        }, 0);
+        });
     };
 
     AbstractWindow.prototype.getTitle = function () {
@@ -161,20 +161,13 @@
             hook: this.$bar
         });
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             self.emit(AbstractWindow.EVENTS.RENDER_WINDOW);
-        }, 0);
+        });
     };
 
     AbstractWindow.prototype.removeDOM = function () {
         this.$window.parentNode.removeChild(this.$window);
-    };
-
-    AbstractWindow.EVENTS = {
-        INACTIVE_WINDOW: 'window:inactive',
-        ACTIVE_WINDOW: 'window:active',
-        CLOSE_WINDOW: 'window:close',
-        RENDER_WINDOW: 'window:render'
     };
 
     AbstractWindow.prototype.setRigidWidth = function () {
@@ -182,6 +175,13 @@
         var width = parseFloat(st.getPropertyValue('width')) || 0;
         width = Math.ceil(width);
         this.$window.style.width = width + 'px';
+    };
+
+    AbstractWindow.EVENTS = {
+        INACTIVE_WINDOW: 'window:inactive',
+        ACTIVE_WINDOW: 'window:active',
+        CLOSE_WINDOW: 'window:close',
+        RENDER_WINDOW: 'window:render'
     };
 
     // Extend `AbstractWindow` module with events.

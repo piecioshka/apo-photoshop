@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var $range = self.$content.querySelector('.posterize-tool-regulation-range');
             var $value = self.$content.querySelector('.posterize-tool-regulation-value');
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        }, 0);
+        });
     };
 
     PosterizeTool.DEFAULT_LEVEL = 128;

@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             self.setRigidWidth();
 
             var $fdRadios = self.$content.querySelectorAll('.fd-masks input[type="radio"]');
@@ -124,7 +124,7 @@
             $submit.addEventListener('click', function () {
                 handleCustomMask();
             });
-        }, 0);
+        });
     };
 
     SmoothingTool.MASK_FD = [

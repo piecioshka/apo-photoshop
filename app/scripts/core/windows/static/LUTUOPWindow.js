@@ -68,10 +68,6 @@
         });
 
         this.appendContent(renderedTemplate);
-
-        setTimeout(function () {
-
-        }, 0);
     };
 
     // Exports `LUTUOPWindow`.

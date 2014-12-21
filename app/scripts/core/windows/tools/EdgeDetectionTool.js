@@ -54,9 +54,9 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
 
-        }, 0);
+        });
     };
 
     EdgeDetectionTool.DEFAULT_LEVEL = 0;

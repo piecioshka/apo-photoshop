@@ -54,7 +54,7 @@
 
         this.appendContent(renderedTemplate);
 
-        setTimeout(function () {
+        requestAnimationFrame(function () {
             var $range = self.$content.querySelector('.threshold-tool-regulation-range');
             var $value = self.$content.querySelector('.threshold-tool-regulation-value');
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        }, 0);
+        });
     };
 
     ThresholdTool.DEFAULT_HOLDER = 128;
