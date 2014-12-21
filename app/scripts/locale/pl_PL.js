@@ -21,8 +21,9 @@
         EDIT_RESTORE: 'Przywróć do oryginału',
 
         BOX: 'Okno',
-        BOX_LUT_UOP: 'Tablica LUT (UOP)',
         BOX_DUPLICATE: 'Duplikuj',
+        BOX_LUT: 'Tablica LUT',
+        BOX_UOP: 'UOP',
 
         OPERATIONS: 'Operacje',
 

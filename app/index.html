@@ -12,8 +12,8 @@
 
         <!-- windows/static -->
 
-        <script type="text/html" id="template-lut-uop-static">
-            <table class="lut-uop-static-content" cellpadding="0" cellspacing="0" border="1">
+        <script type="text/html" id="template-lut-static">
+            <table class="lut-static-content" cellpadding="0" cellspacing="0" border="1">
                 <thead>
                     <tr>
                         <% _.each(original, function (item, index) { %>
@@ -27,17 +27,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white">
+                    <tr>
                         <% _.each(original, function (item) { %>
                             <% if (item !== undefined) { %>
                                 <td><%= item %></td>
                             <% } %>
                         <% }); %>
                     </tr>
-                    <tr>
+                    <tr class="bg-white">
                         <% _.each(current, function (item) { %>
                             <% if (item !== undefined) { %>
                                 <td><%= item %></td>
+                            <% } %>
+                        <% }); %>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+
+        <script type="text/html" id="template-uop-static">
+            <table class="uop-static-content" cellpadding="0" cellspacing="0" border="1">
+                <thead>
+                    <tr>
+                        <% _.each(pixels, function (item, index) { %>
+                            <% if (item !== undefined) { %>
+                                <th style="background: rgb(<%= index %>, <%= index %>, <%= index %>);">
+                                    <% var color = (index < 128) ? 255 : 0; %>
+                                    <span style="color: rgb(<%= color %>, <%= color %>, <%= color %>);">#<%= index %></span>
+                                </th>
+                            <% } %>
+                        <% }); %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white">
+                        <% _.each(pixels, function (item, index) { %>
+                            <% if (item !== undefined) { %>
+                                <td><input value="<%= index %>" type="number" min="0" max="255"></td>
                             <% } %>
                         <% }); %>
                     </tr>
@@ -220,9 +246,10 @@
         <script src="scripts/core/windows/WindowManager.js"></script>
 
         <!-- core/windows/static //-->
-        <script src="scripts/core/windows/static/LUTUOPWindow.js"></script>
+        <script src="scripts/core/windows/static/LUTWindow.js"></script>
         <script src="scripts/core/windows/static/MultiplePicturesWindow.js"></script>
         <script src="scripts/core/windows/static/PictureWindow.js"></script>
+        <script src="scripts/core/windows/static/UOPWindow.js"></script>
 
         <!-- core/windows/tools //-->
         <script src="scripts/core/windows/tools/ArithmeticalTool.js"></script>

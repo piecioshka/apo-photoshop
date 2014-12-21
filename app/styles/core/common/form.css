@@ -32,6 +32,10 @@ input[type="range"] {
     outline: none;
 }
 
+input[type="number"] {
+    outline: none;
+}
+
 select {
     outline: none;
 }

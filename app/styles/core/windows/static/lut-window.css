@@ -1,20 +1,20 @@
-.lut-uop-window .abstract-window-content {
+.lut-window .abstract-window-content {
     max-width: 700px;
     overflow: auto;
 }
 
-.lut-uop-window table.lut-uop-static-content {
+.lut-window table.lut-static-content {
     border-collapse: collapse;
     table-layout: fixed;
     width: 100%;
 }
 
-.lut-uop-window table.lut-uop-static-content thead {
+.lut-window table.lut-static-content thead {
     border-bottom: 3px solid;
 }
 
-.lut-uop-window table.lut-uop-static-content thead th,
-.lut-uop-window table.lut-uop-static-content tbody td {
+.lut-window table.lut-static-content thead th,
+.lut-window table.lut-static-content tbody td {
     overflow: hidden;
     width: 50px;
     height: 20px;

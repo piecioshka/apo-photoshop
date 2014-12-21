@@ -4,9 +4,10 @@
     // Aliases.
     var doc = root.document;
 
-    var LUTUOPWindow = function LUTUOPWindow(params) {
-        // console.info('new LUTUOPWindow', params);
+    var LUTWindow = function LUTWindow(contextWindow, params) {
+        // console.info('new LUTWindow', params);
 
+        this.contextWindow = contextWindow;
         this.settings = {
             picture: null,
             canvas: {
@@ -24,17 +25,17 @@
         this.$content = null;
         this.isActive = false;
 
-        this.setup();
+        this.setup(contextWindow);
         this.initialize();
     };
 
-    LUTUOPWindow.prototype = new root.AbstractWindow();
+    LUTWindow.prototype = new root.AbstractWindow();
 
-    LUTUOPWindow.prototype.initialize = function () {
-        this.$window.classList.add('lut-uop-window');
+    LUTWindow.prototype.initialize = function () {
+        this.$window.classList.add('lut-window');
 
         // Update title of window.
-        this.updateTitle(root.Locale.get('BOX_LUT_UOP') + ' - ' + this.settings.picture.name);
+        this.updateTitle(root.Locale.get('BOX_LUT') + ' - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -49,7 +50,7 @@
         this.render();
     };
 
-    LUTUOPWindow.prototype.buildTable = function () {
+    LUTWindow.prototype.buildTable = function () {
         var origHist = this.settings.canvas.original.getCountingColorList();
         var currHist = this.settings.canvas.current.getCountingColorList();
 
@@ -60,7 +61,7 @@
             }
         });
 
-        var template = doc.querySelector('#template-lut-uop-static').innerHTML;
+        var template = doc.querySelector('#template-lut-static').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled({
             original: origHist,
@@ -70,7 +71,7 @@
         this.appendContent(renderedTemplate);
     };
 
-    // Exports `LUTUOPWindow`.
-    return (root.LUTUOPWindow = LUTUOPWindow);
+    // Exports `LUTWindow`.
+    return (root.LUTWindow = LUTWindow);
 
 }(this));

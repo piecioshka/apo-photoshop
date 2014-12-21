@@ -1,0 +1,28 @@
+.uop-window .abstract-window-content {
+    max-width: 700px;
+    overflow: auto;
+}
+
+.uop-window table.uop-static-content {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.uop-window table.uop-static-content thead {
+    border-bottom: 3px solid;
+}
+
+.uop-window table.uop-static-content thead th,
+.uop-window table.uop-static-content tbody td {
+    overflow: hidden;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.uop-window table.uop-static-content tbody td input {
+    text-align: center;
+    width: 42px;
+}

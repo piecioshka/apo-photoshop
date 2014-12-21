@@ -245,7 +245,6 @@
     };
 
     MenuBuilder.prototype.setupBoxMenu = function () {
-        var self = this;
         var boxMenu = new gui.Menu();
 
         // -------------------------------------------------------------------------------------------------------------
@@ -254,7 +253,6 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
-
                 var original = activeWindow.settings.picture;
                 var copy = _.clone(activeWindow.settings.picture);
 
@@ -269,7 +267,11 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_LUT_UOP'), function () {
+        this.addSeparator(boxMenu);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_LUT'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
@@ -280,7 +282,7 @@
                 var original = new root.Canvas(activeWindow.settings.picture.canvas.settings);
                 original.loadGrayScaleImage(activeWindow.settings.picture.img, activeWindow.settings.picture.width, activeWindow.settings.picture.height);
 
-                new root.LUTUOPWindow({
+                new root.LUTWindow(activeWindow, {
                     picture: activeWindow.settings.picture,
                     canvas: {
                         current: current,
@@ -289,6 +291,24 @@
                 });
             }
         }, 'Ctrl-Shift', 'T');
+        boxMenu.append(this.boxLutMenuItem);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_UOP'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof PictureWindow) {
+                var original = activeWindow.settings.picture;
+                var copy = _.clone(activeWindow.settings.picture);
+
+                copy.canvas = original.canvas.copy();
+
+                new root.UOPWindow(activeWindow, {
+                    picture: copy
+                });
+            }
+        }, 'Ctrl-Shift', 'U');
         boxMenu.append(this.boxLutMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
@@ -535,14 +555,14 @@
                 '- Krzysztof Snopkiewicz - k.snopkiewicz@me.com'
             ];
             root.alert(lines.join('\n'));
-        });
+        }, 'Ctrl-Shift', 'A');
         helpMenu.append(this.aboutAuthorsMenuItem);
 
         this.addSeparator(helpMenu);
 
         this.aboutHelpMenuItem = this.addMenuItem(root.Locale.get('ABOUT_HELP'), function () {
             gui.Shell.openItem(path.join('app', 'docs', 'help.pdf'));
-        });
+        }, 'Ctrl-Shift', 'P');
         helpMenu.append(this.aboutHelpMenuItem);
 
         this.windowMenu.append(new gui.MenuItem({

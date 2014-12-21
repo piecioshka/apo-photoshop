@@ -362,6 +362,35 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
+        },
+
+        // Okno -> UOP
+        onePointUOP: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
+            var canCopy = params.copy.canvas;
+
+            var pixelsChannels = canCopy.getDataImage();
+            var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
+
+            for (var i = 0; i < len / 4; i++) {
+                var color = pixelsChannelsData[(i * 4)];
+
+                if (color === params.start) {
+                    color = params.end;
+                }
+
+                // Update each channel (RGB) of pixel. Not modify channel alpha.
+                pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+            }
+
+            // Update <canvas>
+            can.ctx.putImageData(pixelsChannels, 0, 0);
+            // Update working copy of <canvas>
+            // canCopy.ctx.putImageData(pixelsChannels, 0, 0);
+
+            // Inform picture window that is modified.
+            contextWindow.setModifiedState();
         }
     };
 
