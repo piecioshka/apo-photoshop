@@ -1,8 +1,13 @@
 describe('Utilities', function () {
     'use strict';
 
-    xit('isDarwin', function () {
-
+    it('isDarwin', function () {
+        window.process = { platform: 'darwin'};
+        expect(Utilities.isDarwin()).toBeTruthy();
+        window.process = { platform: 'win'};
+        expect(Utilities.isDarwin()).toBeFalsy();
+        window.process = { platform: 'linux'};
+        expect(Utilities.isDarwin()).toBeFalsy();
     });
 
     it('max', function () {
@@ -29,8 +34,25 @@ describe('Utilities', function () {
         expect(Utilities.intToByte(1000)).toEqual(255);
     });
 
-    xit('walkTheDOM', function () {
+    it('walkTheDOM', function () {
+        var list = document.createElement('ul');
+        var item = document.createElement('li');
+        list.appendChild(item);
+        list.appendChild(item);
+        list.appendChild(item);
 
+        Utilities.walkTheDOM(list, function (elm) {
+            var nodeName = elm.nodeName.toLowerCase();
+            if (nodeName === 'ul') {
+                expect(elm).toEqual(list);
+            } else if (nodeName === 'li') {
+                expect(elm).toEqual(item);
+            }
+        });
+
+        Utilities.walkTheDOM(item, function (elm) {
+            expect(elm).toEqual(item);
+        });
     });
 
     it('sortNumbers', function () {
