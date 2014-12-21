@@ -50,8 +50,8 @@
     };
 
     LUTUOPWindow.prototype.buildTable = function () {
-        var origHist = this.settings.canvas.original.getHistogram();
-        var currHist = this.settings.canvas.current.getHistogram();
+        var origHist = this.settings.canvas.original.getCountingColorList();
+        var currHist = this.settings.canvas.current.getCountingColorList();
 
         _.each(currHist, function (item, index) {
             if (origHist[index] === 0 && currHist[index] === 0) {

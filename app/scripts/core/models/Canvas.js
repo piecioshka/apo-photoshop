@@ -158,7 +158,7 @@
      *
      * @returns {Array}
      */
-    Canvas.prototype.getHistogram = function () {
+    Canvas.prototype.getCountingColorList = function () {
         var levels = 256;
 
         // Create list of all gray levels.
@@ -177,15 +177,6 @@
         });
 
         return hist;
-    };
-
-    /**
-     * Return average value from histogram.
-     *
-     * @returns {number}
-     */
-    Canvas.prototype.getHistogramAverage = function () {
-        return root.Utilities.average.apply(this, this.getHistogram());
     };
 
     /**

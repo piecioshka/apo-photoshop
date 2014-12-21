@@ -1,6 +1,27 @@
-"use strict";
-
 describe('CanvasHelper', function () {
+    'use strict';
+
+    it('completePixelList', function () {
+        expect(CanvasHelper.completePixelList([1, 2, 3, 4], 2, 2, 2)).toEqual([
+            2, 2, 2, 2,
+            2, 1, 2, 2,
+            2, 3, 4, 2,
+            2, 2, 2, 2
+        ]);
+    });
+
+    it('completePixelArray', function () {
+        expect(CanvasHelper.completePixelArray([[1, 2, 3, 4]], 2)).toEqual([
+            [2, 2, 2, 2, 2, 2],
+            [2, 1, 2, 3, 4, 2],
+            [2, 2, 2, 2, 2, 2]
+        ]);
+    });
+
+    it('toPixelMatrix', function () {
+        expect(CanvasHelper.toPixelMatrix([1, 2, 3, 4], 2)).toEqual([[1, 2], [3, 4]]);
+    });
+
     describe('getNeighbors', function () {
         var a;
 

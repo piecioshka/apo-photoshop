@@ -23,9 +23,10 @@
         this.histogram = {
             canvas: undefined,
             width: 256,
-            height: 144,
+            height: 150,
             // Array of numbers of colors.
-            list: []
+            list: [],
+            average: 0
         };
 
         this.isModified = false;
@@ -46,7 +47,8 @@
         // Listen when window will be rendered.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             this.settings.picture.canvas.render(this);
-            this.histogram.list = this.settings.picture.canvas.getHistogram();
+            this.histogram.list = this.settings.picture.canvas.getCountingColorList();
+            this.histogram.average = ~~root.Utilities.average.apply(this, this.histogram.list);
             this._buildBarGraph();
             this._updateHistogram();
             this._renderHistogramInformation();
@@ -84,14 +86,16 @@
         pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
         this.setPrimaryTitle();
         this.isModified = false;
-        this.histogram.list = this.settings.picture.canvas.getHistogram();
+        this.histogram.list = this.settings.picture.canvas.getCountingColorList();
+        this.histogram.average = ~~root.Utilities.average.apply(this, this.histogram.list);
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
     PictureWindow.prototype.setModifiedState = function () {
         this.setModifiedTitle();
         this.isModified = true;
-        this.histogram.list = this.settings.picture.canvas.getHistogram();
+        this.histogram.list = this.settings.picture.canvas.getCountingColorList();
+        this.histogram.average = ~~root.Utilities.average.apply(this, this.histogram.list);
         this.emit(root.PictureWindow.EVENTS.PICTURE_MODIFY);
     };
 
@@ -110,19 +114,26 @@
 
     // -----------------------------------------------------------------------------------------------------------------
 
-    PictureWindow.prototype._normalize = function (pixels) {
+    PictureWindow.prototype._returnsNormalizedHistogram = function () {
+        var pixels = this.histogram.list;
         var max = root.Utilities.max.apply(this, pixels);
-        var height = this.histogram.height;
+        var histHeight = this.histogram.height;
 
         return pixels.map(function (item) {
-            return parseInt(item / max * height, 10);
+            return parseInt(item / max * histHeight, 10);
         });
+    };
+
+    PictureWindow.prototype._calculateAverageOfNormalizedHistogram = function () {
+        var histNorm = this._returnsNormalizedHistogram();
+        return ~~root.Utilities.average.apply(this, histNorm);
     };
 
     PictureWindow.prototype._renderHistogramInformation = function () {
         var self = this;
         var margin = 16;
 
+        var hist = self.histogram.list;
         var histHeight = this.histogram.height;
         var pictureWidth = this.settings.picture.width;
         var ctx = this.histogram.canvas.ctx;
@@ -141,21 +152,26 @@
         $levels.classList.add('hist-info-numbers');
         $levels.innerHTML = 'Liczba: <b>-</b>';
 
+        // Create average label.
+        var $average = doc.createElement('span');
+        $average.classList.add('hist-info-average');
+        $average.innerHTML = 'Średnia: <b>' + this.histogram.average + '</b> (norm: <b>' + this._calculateAverageOfNormalizedHistogram() + '</b>)</b>';
+
         // Set left margin to labels.
-        $palette.style.left = $levels.style.left = $color.style.left = pictureWidth + margin + 'px';
+        $palette.style.left = $levels.style.left = $color.style.left = $average.style.left = pictureWidth + margin + 'px';
 
         // Add labels to container.
         this.$content.appendChild($palette);
         this.$content.appendChild($color);
         this.$content.appendChild($levels);
+        this.$content.appendChild($average);
 
         function mouseMoveHandler(evt) {
-            var hist = self.histogram.list;
-            var histNormalize = self._normalize(hist);
+            var histNorm = self._returnsNormalizedHistogram();
 
             var x = evt.offsetX;
             var w = 1;
-            var h = histNormalize[x] * histHeight / 100;
+            var h = histNorm[x] * histHeight / 100;
             var y = histHeight - h;
 
             // Refresh histogram.
@@ -172,7 +188,7 @@
             // Firstly update <canvas>, next update text labels.
             setTimeout(function () {
                 $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
-                $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNormalize[x] + '</b>)';
+                $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNorm[x] + '</b>)';
             }, 0);
         }
 
@@ -191,39 +207,34 @@
     };
 
     PictureWindow.prototype._updateHistogram = function () {
-        var hist = this.histogram.list;
-        var histNorm = this._normalize(hist);
-
-        // Draw bars in histogram.
-        this._paintHistogram(histNorm);
-
-        // Draw horizontal line as average of histogram.
-        var average = this.settings.picture.canvas.getHistogramAverage();
-        var max = root.Utilities.max.apply(this, hist);
-        var averageNorm = this._normalize([0, average, max])[1];
-        this._paintHistogramAverage(averageNorm);
+        this._paintHistogram();
+        this._paintHistogramAverage();
     };
 
-    PictureWindow.prototype._paintHistogram = function (normalizeHist) {
-        var height = this.histogram.height;
+    PictureWindow.prototype._paintHistogram = function () {
         this.histogram.canvas.clear();
+
+        var histNorm = this._returnsNormalizedHistogram();
+        var histHeight = this.histogram.height;
         var ctx = this.histogram.canvas.ctx;
+
         ctx.fillStyle = 'rgb(0, 0, 0)';
 
-        normalizeHist.forEach(function (size, index) {
+        histNorm.forEach(function (size, index) {
             var w = 1;
-            var h = size * height / 100;
+            var h = size * histHeight / 100;
             var x = index * w;
-            var y = height - h;
+            var y = histHeight - h;
 
             ctx.fillRect(x, y, w, h);
         }, this);
     };
 
-    PictureWindow.prototype._paintHistogramAverage = function (average) {
-        var level = (this.histogram.height - 1) - average;
+    PictureWindow.prototype._paintHistogramAverage = function () {
+        var histHeight = this.histogram.height;
+        var averageNorm = (histHeight - 1) - this._calculateAverageOfNormalizedHistogram();
         this.histogram.canvas.ctx.fillStyle = 'rgb(255, 0, 0)';
-        this.histogram.canvas.ctx.fillRect(0, level, this.histogram.width, 1);
+        this.histogram.canvas.ctx.fillRect(0, averageNorm, this.histogram.width, 1);
     };
 
     PictureWindow.EVENTS = {

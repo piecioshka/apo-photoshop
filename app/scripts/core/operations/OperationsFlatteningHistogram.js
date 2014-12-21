@@ -12,8 +12,8 @@
             // Stage 1 - Convert old level to new levels.
             // ------------------------------------------
 
-            var h = can.getHistogram();
-            var havg = can.getHistogramAverage();
+            var h = can.getCountingColorList();
+            var havg = ~~root.Utilities.average.apply(this, h);
             var hint = 0;
 
             var left = [];
@@ -113,7 +113,7 @@
                             // Reguła sąsiedztwa
 
                             ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x, y);
-                            avg = root.Utilities.average.apply(this, ne);
+                            avg = ~~root.Utilities.average.apply(this, ne);
 
                             if (avg > right[val]) {
                                 color = right[val];

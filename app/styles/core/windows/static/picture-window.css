@@ -1,3 +1,7 @@
+.picture-window .abstract-window-content {
+    min-height: 240px;
+}
+
 .picture-window canvas {
     float: left;
 }
@@ -24,4 +28,10 @@
 .picture-window .hist-info-numbers {
     position: absolute;
     top: 230px;
+}
+
+
+.picture-window .hist-info-average {
+    position: absolute;
+    top: 250px;
 }
