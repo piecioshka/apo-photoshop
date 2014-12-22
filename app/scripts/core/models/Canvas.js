@@ -182,7 +182,7 @@
     /**
      * Put cross as a sign, that canvas is not active.
      */
-    Canvas.prototype.markAsNotActive = function () {
+    Canvas.prototype.markAsNotActive = function (color, background) {
         // Store current values of styles.
         var oldLineWidth = this.ctx.lineWidth;
         var oldFillStyle = this.ctx.fillStyle;
@@ -192,10 +192,10 @@
         var h = this.settings.height;
 
         this.ctx.lineWidth = 3;
-        this.ctx.strokeStyle = '#999';
+        this.ctx.strokeStyle = color || '#999';
 
         // Full white rectangle
-        this.ctx.fillStyle = '#fff';
+        this.ctx.fillStyle = background || '#fff';
         this.ctx.fillRect(0 , 0, this.settings.width, this.settings.height);
 
         // Border left

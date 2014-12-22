@@ -1,11 +1,23 @@
-.arithmetical-tool .abstract-window-content canvas {
-    display: block;
-    float: left;
+.arithmetical-tool .abstract-window-content dl {
+    margin: 0;
 }
 
-.arithmetical-tool .abstract-window-content label {
-    margin: 10px auto;
+.arithmetical-tool .abstract-window-content dl dt {
+    clear: both;
+    float: left;
+    text-align: left;
+    width: 160px;
+    margin: 0 0 5px 0;
+}
+
+.arithmetical-tool .abstract-window-content dl dd {
+    float: left;
+    margin: 0 0 5px 0;
+}
+
+.arithmetical-tool .abstract-window-content canvas {
+    background: #fff;
+    clear: both;
     display: block;
-    width: 100%;
-    text-align: center;
+    margin: 0 auto;
 }

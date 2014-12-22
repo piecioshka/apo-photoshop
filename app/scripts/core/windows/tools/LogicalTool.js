@@ -4,14 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var LogicalTool = function LogicalTool(contextWindow, params) {
-        // console.info('new LogicalTool', params);
-
-        this.contextWindow = contextWindow;
-        this.settings = {
-            pictures: null
-        };
-        _.extend(this.settings, params);
+    var LogicalTool = function LogicalTool() {
+        // console.info('new LogicalTool');
 
         this.$placeHolder = doc.querySelector(root.WindowManager.RENDER_AREA_ID);
         this.$window = null;
@@ -21,7 +15,7 @@
         this.$content = null;
         this.isActive = false;
 
-        this.setup(contextWindow);
+        this.setup();
         this.initialize();
     };
 
@@ -48,6 +42,7 @@
 
     LogicalTool.prototype.buildUI = function () {
         var self = this;
+        var wm = root.App.windowManager;
         var template = doc.querySelector('#template-logical-tool').innerHTML;
         var compiled = _.template(template);
         var renderedTemplate = compiled();
@@ -55,31 +50,62 @@
         this.appendContent(renderedTemplate);
 
         requestAnimationFrame(function () {
-            var $select = self.$content.querySelector('select');
-            var $options = $select.querySelectorAll('option');
+            var $selectOperation = self.$content.querySelector('select.logical-tool-operations');
+            var $selectFirst = self.$content.querySelector('select.logical-tool-first');
+            var $selectSecond = self.$content.querySelector('select.logical-tool-second');
 
-            var canvas = new root.Canvas({
-                width: self.settings.pictures[0].canvas.$canvas.width,
-                height: self.settings.pictures[0].canvas.$canvas.height
-            });
+            function buildOption(val, text) {
+                var opt = doc.createElement('option');
+                opt.value = val;
+                opt.innerText = text;
+                return opt;
+            }
 
-            canvas.markAsNotActive();
+            function buildWindowSelects() {
+                var picturesWindows = wm.getPictureWindows();
+
+                $selectFirst.innerHTML = $selectSecond.innerHTML = '';
+
+                $selectFirst.appendChild(buildOption(undefined, '---'));
+                $selectSecond.appendChild(buildOption(undefined, '---'));
+
+                _.each(picturesWindows, function (win) {
+                    $selectFirst.appendChild(buildOption(win.id, win.getTitle()));
+                    $selectSecond.appendChild(buildOption(win.id, win.getTitle()));
+                });
+            }
+
+            buildWindowSelects();
+
+            var canvas = new root.Canvas();
+            canvas.$canvas.classList.add('hide');
             canvas.render(self);
 
-            $select.addEventListener('change', function (evt) {
-                var $selected = $options[evt.target.selectedIndex];
+            $selectOperation.addEventListener('change', function (evt) {
+                var $selected = this.children[evt.target.selectedIndex];
 
                 // If select default option do nothing.
                 if (!$selected.value) {
                     return;
                 }
 
-                canvas.clear();
+                // buildWindowSelects();
 
-                root.OperationsOnePoint.onePointLogical(self.contextWindow, {
-                    pictures: self.settings.pictures,
+                var firstWindow = wm.getWindowsById($selectFirst.value);
+                var secondWindow = wm.getWindowsById($selectSecond.value);
+
+                var firstPicture = firstWindow.settings.picture;
+                var secondPicture = secondWindow.settings.picture;
+
+                canvas.$canvas.classList.remove('hide');
+                canvas.setWidth(Math.max(firstPicture.width, secondPicture.width));
+                canvas.setHeight(Math.max(firstPicture.height, secondPicture.height));
+
+                root.OperationsOnePoint.onePointLogical({
                     workspace: canvas,
-                    operation: $selected.value
+                    operation: $selected.value,
+                    firstPicture: firstPicture,
+                    secondPicture: secondPicture
                 });
             });
         });

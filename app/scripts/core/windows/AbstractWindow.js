@@ -9,6 +9,8 @@
     };
 
     AbstractWindow.prototype.setup = function (contextWindow) {
+        this.id = _.uniqueId('window-');
+
         this.createWindow();
         this.createTopBar();
         this.createContent();

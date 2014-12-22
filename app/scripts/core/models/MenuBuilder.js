@@ -18,6 +18,7 @@
 
         this.boxDuplicateMenuItem = null;
         this.boxLutMenuItem = null;
+        this.boxUOPMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
         this.operationsFlatteningHistogramRandomMethodMenuItem = null;
@@ -295,7 +296,7 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_UOP'), function () {
+        this.boxUOPMenuItem = this.addMenuItem(root.Locale.get('BOX_UOP'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof PictureWindow) {
@@ -309,7 +310,7 @@
                 });
             }
         }, 'Ctrl-Shift', 'U');
-        boxMenu.append(this.boxLutMenuItem);
+        boxMenu.append(this.boxUOPMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
@@ -444,23 +445,14 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsOnePointArithmeticMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
-            // @type {MultiplePicturesWindow}
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            return new ArithmeticalTool(activeWindow, {
-                pictures: activeWindow.getPictures()
-            });
+            return new ArithmeticalTool();
         });
         onePointOperationsMenu.append(this.operationsOnePointArithmeticMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsOnePointLogicalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            return new LogicalTool(activeWindow, {
-                pictures: activeWindow.getPictures()
-            });
+            return new LogicalTool();
         });
         onePointOperationsMenu.append(this.operationsOnePointLogicalMenuItem);
 

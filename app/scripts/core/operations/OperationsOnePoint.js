@@ -225,18 +225,17 @@
         },
 
         // Operacje -> Jednopunktowe -> Arytmetyczne
-        onePointArithmetical: function (contextWindow, params) {
+        onePointArithmetical: function (params) {
             var can = params.workspace;
-            var ctx = can.ctx;
 
-            can.markAsNotActive();
+            can.markAsNotActive('#f00'); return;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
 
-            var firstPicture = params.pictures[0].canvas.getAllChannelsOfPixels();
-            var secondPicture = params.pictures[1].canvas.getAllChannelsOfPixels();
+            var firstPicturePixels = params.firstPicture.canvas.getAllChannelsOfPixels();
+            var secondPicturePixels = params.secondPicture.canvas.getAllChannelsOfPixels();
 
             var i, color, first, second;
 
@@ -245,10 +244,11 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = (first + second) / 2;
+                        color = 100;
 
                         // Update each channel (RGB) of pixel. Not modify channel alpha.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
@@ -259,10 +259,11 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = Math.abs(first - second);
+                        color = 150;
 
                         // Update each channel (RGB) of pixel. Not modify channel alpha.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
@@ -273,10 +274,11 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = (first * second) + first;
+                        color = 200;
 
                         // Save protection (0 - 255).
                         color = root.Utilities.intToByte(color);
@@ -288,25 +290,21 @@
             }
 
             // Update <canvas>
-            ctx.putImageData(pixelsChannels, 0, 0);
-
-            // Inform picture window that is modified.
-            contextWindow.setModifiedState();
+            can.ctx.putImageData(pixelsChannels, 0, 0);
         },
 
         // Operacje -> Jednopunktowe -> Logiczne
-        onePointLogical: function (contextWindow, params) {
+        onePointLogical: function (params) {
             var can = params.workspace;
-            var ctx = can.ctx;
 
-            can.markAsNotActive();
+            can.markAsNotActive('#0f0'); return;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
 
-            var firstPicture = params.pictures[0].canvas.getAllChannelsOfPixels();
-            var secondPicture = params.pictures[1].canvas.getAllChannelsOfPixels();
+            var firstPicturePixels = params.firstPicture.canvas.getAllChannelsOfPixels();
+            var secondPicturePixels = params.secondPicture.canvas.getAllChannelsOfPixels();
 
             var i, color, first, second;
 
@@ -315,8 +313,8 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = first || second;
 
@@ -329,8 +327,8 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = first && second;
 
@@ -343,8 +341,8 @@
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
 
-                        first = firstPicture[(i * 4)];
-                        second = secondPicture[(i * 4)];
+                        first = firstPicturePixels[(i * 4)];
+                        second = secondPicturePixels[(i * 4)];
 
                         color = first ^ second;
 
@@ -358,10 +356,7 @@
             }
 
             // Update <canvas>
-            ctx.putImageData(pixelsChannels, 0, 0);
-
-            // Inform picture window that is modified.
-            contextWindow.setModifiedState();
+            can.ctx.putImageData(pixelsChannels, 0, 0);
         },
 
         // Okno -> UOP
@@ -385,8 +380,6 @@
 
             // Update <canvas>
             can.ctx.putImageData(pixelsChannels, 0, 0);
-            // Update working copy of <canvas>
-            // canCopy.ctx.putImageData(pixelsChannels, 0, 0);
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();

@@ -61,6 +61,16 @@
         return _.last(this._windows) || null;
     };
 
+    WindowManager.prototype.getPictureWindows = function () {
+        return _.filter(this._windows, function (win) {
+            return win instanceof root.PictureWindow;
+        });
+    };
+
+    WindowManager.prototype.getWindowsById = function (id) {
+        return _.find(this._windows, { id: id });
+    };
+
     // Extend `WindowManager` module with events.
     _.extend(WindowManager.prototype, root.EventEmitter);
 

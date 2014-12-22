@@ -86,14 +86,27 @@
         <!-- windows/tools -->
 
         <script type="text/html" id="template-arithmetical-tool">
-            <label>Wybierz operację:
-                <select>
-                    <option>--</option>
-                    <option value="add">Dodawanie (ADD)</option>
-                    <option value="sub">Odejmowanie (SUB)</option>
-                    <option value="mul">Mnożenie (MUL)</option>
-                </select>
-            </label>
+            <dl>
+                <dt>Wybierz <strong>pierwszy</strong> obraz:</dt>
+                <dd>
+                    <select class="arithmetical-tool-first"></select>
+                </dd>
+
+                <dt>Wybierz <strong>drugi</strong> obraz:</dt>
+                <dd>
+                    <select class="arithmetical-tool-second"></select>
+                </dd>
+
+                <dt>Wybierz operację:</dt>
+                <dd>
+                    <select class="arithmetical-tool-operations">
+                        <option>---</option>
+                        <option value="add">Dodawanie (ADD)</option>
+                        <option value="sub">Odejmowanie (SUB)</option>
+                        <option value="mul">Mnożenie (MUL)</option>
+                    </select>
+                </dd>
+            </dl>
         </script>
 
         <script type="text/html" id="template-brightness-regulation-tool">
@@ -125,14 +138,27 @@
         </script>
 
         <script type="text/html" id="template-logical-tool">
-            <label>Wybierz operację:
-                <select>
-                    <option>--</option>
-                    <option value="or">OR</option>
-                    <option value="and">AND</option>
-                    <option value="xor">XOR</option>
-                </select>
-            </label>
+            <dl>
+                <dt>Wybierz <strong>pierwszy</strong> obraz:</dt>
+                <dd>
+                    <select class="logical-tool-first"></select>
+                </dd>
+
+                <dt>Wybierz <strong>drugi</strong> obraz:</dt>
+                <dd>
+                    <select class="logical-tool-second"></select>
+                </dd>
+
+                <dt>Wybierz operację:</dt>
+                <dd>
+                    <select class="logical-tool-operations">
+                        <option>---</option>
+                        <option value="or">OR</option>
+                        <option value="and">AND</option>
+                        <option value="xor">XOR</option>
+                    </select>
+                </dd>
+            </dl>
         </script>
 
         <script type="text/html" id="template-posterize-tool">

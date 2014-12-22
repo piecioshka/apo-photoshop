@@ -1,9 +1,9 @@
 @charset "utf-8";
 
-.hide { display: none; }
+.hide { display: none !important; }
 .sky-hide { position: absolute; left: -9999px; top: -9999px; }
-.left { float: left; }
-.right { float: right; }
+.left { float: left !important; }
+.right { float: right !important; }
 
 /* Colors */
 .bg-white { background: #fff; }

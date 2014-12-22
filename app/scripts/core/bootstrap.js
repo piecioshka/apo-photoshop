@@ -17,6 +17,7 @@
 
                 menu.boxDuplicateMenuItem.enabled = false;
                 menu.boxLutMenuItem.enabled = false;
+                menu.boxUOPMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = false;
@@ -49,6 +50,7 @@
 
                 menu.boxDuplicateMenuItem.enabled = true;
                 menu.boxLutMenuItem.enabled = true;
+                menu.boxUOPMenuItem.enabled = true;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = true;
@@ -63,8 +65,8 @@
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = true;
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = true;
 
-                menu.operationsOnePointArithmeticMenuItem.enabled = false;
-                menu.operationsOnePointLogicalMenuItem.enabled = false;
+                menu.operationsOnePointArithmeticMenuItem.enabled = true;
+                menu.operationsOnePointLogicalMenuItem.enabled = true;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;
@@ -74,17 +76,9 @@
             }
 
             function setMultiplePicturesWindowState() {
-                menu.fileSaveMenuItem.enabled = false;
                 menu.fileCloseMenuItem.enabled = true;
 
-                menu.operationsOnePointArithmeticMenuItem.enabled = true;
-                menu.operationsOnePointLogicalMenuItem.enabled = true;
-
-                menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = false;
-                menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
-                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
+                // TODO(piecioshka): dodać button, który uruchomi projekt
             }
 
             setDefaultState();
