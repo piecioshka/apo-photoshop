@@ -32,8 +32,7 @@
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = false;
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = false;
 
-                menu.operationsOnePointArithmeticMenuItem.enabled = false;
-                menu.operationsOnePointLogicalMenuItem.enabled = false;
+                menu.operationsOnePointArithmeticalLogicalMenuItem.enabled = false;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
@@ -65,8 +64,7 @@
                 menu.operationsOnePointContrastRegulationMenuItem.enabled = true;
                 menu.operationsOnePointGammaRegulationMenuItem.enabled = true;
 
-                menu.operationsOnePointArithmeticMenuItem.enabled = true;
-                menu.operationsOnePointLogicalMenuItem.enabled = true;
+                menu.operationsOnePointArithmeticalLogicalMenuItem.enabled = true;
 
                 menu.operationsNeighbourhoodSmoothingMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;

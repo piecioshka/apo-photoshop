@@ -224,9 +224,9 @@
             contextWindow.setModifiedState();
         },
 
-        // Operacje -> Jednopunktowe -> Arytmetyczne
-        onePointArithmetical: function (params) {
-            var can = params.workspace;
+        // Operacje -> Jednopunktowe -> Arytmetyczne i Logiczne
+        onePointArithmeticalLogical: function (contextWindow, params) {
+            var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
@@ -289,27 +289,6 @@
                         pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
-            }
-
-            // Update <canvas>
-            ctx.putImageData(pixelsChannels, 0, 0);
-        },
-
-        // Operacje -> Jednopunktowe -> Logiczne
-        onePointLogical: function (params) {
-            var can = params.workspace;
-            var ctx = can.ctx;
-
-            var pixelsChannels = can.getDataImage();
-            var pixelsChannelsData = pixelsChannels.data;
-            var len = pixelsChannelsData.length;
-
-            var firstPicturePixels = params.firstPicture.canvas.getAllChannelsOfPixels();
-            var secondPicturePixels = params.secondPicture.canvas.getAllChannelsOfPixels();
-
-            var i, color, first, second;
-
-            switch (params.operation) {
                 case 'or':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
@@ -364,6 +343,9 @@
 
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
+
+            // Inform picture window that is modified.
+            contextWindow.setModifiedState();
         },
 
         // Okno -> UOP

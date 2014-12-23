@@ -1,8 +1,8 @@
-.logical-tool .abstract-window-content dl {
+.arithmetical-logical-tool .abstract-window-content dl {
     margin: 0;
 }
 
-.logical-tool .abstract-window-content dl dt {
+.arithmetical-logical-tool .abstract-window-content dl dt {
     clear: both;
     float: left;
     text-align: left;
@@ -10,12 +10,12 @@
     margin: 0 0 5px 0;
 }
 
-.logical-tool .abstract-window-content dl dd {
+.arithmetical-logical-tool .abstract-window-content dl dd {
     float: left;
     margin: 0 0 5px 0;
 }
 
-.logical-tool .abstract-window-content canvas {
+.arithmetical-logical-tool .abstract-window-content canvas {
     background: #fff;
     clear: both;
     display: block;

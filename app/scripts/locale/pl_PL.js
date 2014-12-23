@@ -6,6 +6,8 @@
     Locale.pl_PL = {
         NAME: 'APO: Photoshop',
 
+        MSG_UNKNOWN: '- brak nazwy -',
+
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',
         MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',
         MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW: 'Nie aktywowano okna z obrazkiem!',
@@ -42,8 +44,7 @@
         OPERATIONS_ONE_POINT_CONTRAST_REGULATION: '(W) Regulacja kontrastem',
         OPERATIONS_ONE_POINT_GAMMA_REGULATION: '(W) Regulacja korekcją gamma',
 
-        OPERATIONS_ONE_POINT_ARITHMETIC: '(W) Arytmetyczne',
-        OPERATIONS_ONE_POINT_LOGICAL: '(W) Logiczne',
+        OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL: '(W) Arytmetyczne i Logiczne',
 
         OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
         OPERATIONS_NEIGHBOURHOOD_SMOOTHING: '(W) Filtracja liniowa (wygładz.)',

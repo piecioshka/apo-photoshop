@@ -73,8 +73,7 @@
     PictureWindow.prototype.saveAsPicture = function () {
         var saveFile = new root.FileSaveHelper();
         saveFile.once(root.AbstractFileHelper.EVENTS.SAVE_FILE, function (params) {
-            var $canvas = this.settings.picture.canvas.$canvas;
-            saveFile.saveCanvas(params[0].file, $canvas);
+            saveFile.saveCanvas(params[0].file, this.settings.picture.canvas);
             this.updateTitle(params[0].name);
         }, this);
     };

@@ -42,9 +42,8 @@
         this.$input.click();
     };
 
-    FileSaveHelper.prototype.saveCanvas = function (name, value) {
-        var img = new Buffer(value.toDataURL('image/png').split(',')[1], 'base64');
-        fs.writeFileSync(name, img);
+    FileSaveHelper.prototype.saveCanvas = function (name, canvas) {
+        fs.writeFileSync(name, canvas.toImage());
     };
 
     // Exports `FileSaveHelper`.

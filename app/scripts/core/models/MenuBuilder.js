@@ -33,8 +33,7 @@
         this.operationsOnePointContrastRegulationMenuItem = null;
         this.operationsOnePointGammaRegulationMenuItem = null;
 
-        this.operationsOnePointArithmeticMenuItem = null;
-        this.operationsOnePointLogicalMenuItem = null;
+        this.operationsOnePointArithmeticalLogicalMenuItem = null;
 
         this.operationsNeighbourhoodSmoothingMenuItem = null;
         this.operationsNeighbourhoodSharpenMediumMenuItem = null;
@@ -208,7 +207,7 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.fileSaveMenuItem = this.addMenuItem(root.Locale.get('FILE_SAVE_AS'), saveFileHandler, 'Ctrl', 'S');
+        this.fileSaveMenuItem = this.addMenuItem(root.Locale.get('FILE_SAVE_AS'), saveFileHandler, 'Ctrl-Shift', 'S');
         fileMenu.append(this.fileSaveMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
@@ -447,17 +446,10 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.operationsOnePointArithmeticMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETIC'), function () {
-            return new ArithmeticalTool();
+        this.operationsOnePointArithmeticalLogicalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL'), function () {
+            return new ArithmeticalLogicalTool();
         });
-        onePointOperationsMenu.append(this.operationsOnePointArithmeticMenuItem);
-
-        // -------------------------------------------------------------------------------------------------------------
-
-        this.operationsOnePointLogicalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_LOGICAL'), function () {
-            return new LogicalTool();
-        });
-        onePointOperationsMenu.append(this.operationsOnePointLogicalMenuItem);
+        onePointOperationsMenu.append(this.operationsOnePointArithmeticalLogicalMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 

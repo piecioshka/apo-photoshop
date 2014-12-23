@@ -230,6 +230,15 @@
         return canvas;
     };
 
+    /**
+     * Convert <canvas> to image with *.png extension.
+     *
+     * @returns {Buffer}
+     */
+    Canvas.prototype.toImage = function () {
+        return new Buffer(this.$canvas.toDataURL('image/png').split(',')[1], 'base64');
+    };
+
     // Extend `Canvas` module with events.
     _.extend(Canvas.prototype, root.EventEmitter);
 

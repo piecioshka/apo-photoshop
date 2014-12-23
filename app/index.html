@@ -85,25 +85,32 @@
 
         <!-- windows/tools -->
 
-        <script type="text/html" id="template-arithmetical-tool">
+        <script type="text/html" id="template-arithmetical-logical-tool">
             <dl>
                 <dt>Wybierz <strong>pierwszy</strong> obraz:</dt>
                 <dd>
-                    <select class="arithmetical-tool-first"></select>
+                    <select class="arithmetical-logical-tool-first"></select>
                 </dd>
 
                 <dt>Wybierz <strong>drugi</strong> obraz:</dt>
                 <dd>
-                    <select class="arithmetical-tool-second"></select>
+                    <select class="arithmetical-logical-tool-second"></select>
                 </dd>
 
                 <dt>Wybierz operację:</dt>
                 <dd>
-                    <select class="arithmetical-tool-operations" disabled="disabled">
+                    <select class="arithmetical-logical-tool-operations" disabled="disabled">
                         <option>---</option>
-                        <option value="add">Dodawanie (ADD)</option>
-                        <option value="sub">Odejmowanie (SUB)</option>
-                        <option value="mul">Mnożenie (MUL)</option>
+                        <optgroup label="Arytmetyczne">
+                            <option value="add">Dodawanie (ADD)</option>
+                            <option value="sub">Odejmowanie (SUB)</option>
+                            <option value="mul">Mnożenie (MUL)</option>
+                        </optgroup>
+                        <optgroup label="Logiczne">
+                            <option value="or">OR</option>
+                            <option value="and">AND</option>
+                            <option value="xor">XOR</option>
+                        </optgroup>
                     </select>
                 </dd>
             </dl>
@@ -135,30 +142,6 @@
                 <input class="gamma-regulation-tool-regulation-value" type="text" maxlength="2">
                 <input class="gamma-regulation-tool-regulation-range" type="range" min="1" max="50">
             </div>
-        </script>
-
-        <script type="text/html" id="template-logical-tool">
-            <dl>
-                <dt>Wybierz <strong>pierwszy</strong> obraz:</dt>
-                <dd>
-                    <select class="logical-tool-first"></select>
-                </dd>
-
-                <dt>Wybierz <strong>drugi</strong> obraz:</dt>
-                <dd>
-                    <select class="logical-tool-second"></select>
-                </dd>
-
-                <dt>Wybierz operację:</dt>
-                <dd>
-                    <select class="logical-tool-operations" disabled="disabled">
-                        <option>---</option>
-                        <option value="or">OR</option>
-                        <option value="and">AND</option>
-                        <option value="xor">XOR</option>
-                    </select>
-                </dd>
-            </dl>
         </script>
 
         <script type="text/html" id="template-posterize-tool">
@@ -290,12 +273,11 @@
         <script src="scripts/core/windows/static/UOPWindow.js"></script>
 
         <!-- core/windows/tools //-->
-        <script src="scripts/core/windows/tools/ArithmeticalTool.js"></script>
+        <script src="scripts/core/windows/tools/ArithmeticalLogicalTool.js"></script>
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/ContrastRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/EdgeDetectionTool.js"></script>
         <script src="scripts/core/windows/tools/GammaRegulationTool.js"></script>
-        <script src="scripts/core/windows/tools/LogicalTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/SmoothingTool.js"></script>
         <script src="scripts/core/windows/tools/StretchTool.js"></script>

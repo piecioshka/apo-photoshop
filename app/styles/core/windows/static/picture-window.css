@@ -9,6 +9,7 @@
 .picture-window .canvas-histogram {
     background: #ffffff;
     margin: 0 0 0 10px;
+    float: left;
 }
 
 .picture-window .hist-info-palette {
