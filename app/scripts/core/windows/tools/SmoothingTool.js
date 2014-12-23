@@ -68,6 +68,7 @@
                     $text.disabled = !!status;
                     $text.classList[status ? 'add' : 'remove']('disabled');
                 });
+
                 $submit.disabled = !!status;
                 $submit.classList[status ? 'add' : 'remove']('disabled');
             }
@@ -89,6 +90,8 @@
                     disable(true);
                     put(mask);
 
+                    self.contextWindow.setPrimaryState();
+
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask
                     });
@@ -103,6 +106,8 @@
                 _.each($textes, function ($text) {
                     mask.push(parseInt($text.value, 10));
                 });
+
+                self.contextWindow.setPrimaryState();
 
                 root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                     mask: mask

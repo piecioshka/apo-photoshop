@@ -235,7 +235,10 @@
 
         this.editRestoreMenuItem = this.addMenuItem(root.Locale.get('EDIT_RESTORE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
-            activeWindow.setPrimaryState();
+
+            if (activeWindow instanceof root.PictureWindow) {
+                activeWindow.setPrimaryState();
+            }
         }, 'Ctrl', 'Z');
         fileMenu.append(this.editRestoreMenuItem);
 
@@ -255,7 +258,7 @@
         this.boxDuplicateMenuItem = this.addMenuItem(root.Locale.get('BOX_DUPLICATE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow instanceof PictureWindow) {
+            if (activeWindow instanceof root.PictureWindow) {
                 var original = activeWindow.settings.picture;
                 var copy = _.clone(activeWindow.settings.picture);
 
@@ -277,7 +280,7 @@
         this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_LUT'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow instanceof PictureWindow) {
+            if (activeWindow instanceof root.PictureWindow) {
                 // Save current version.
                 var current = activeWindow.settings.picture.canvas;
 
@@ -301,7 +304,7 @@
         this.boxUOPMenuItem = this.addMenuItem(root.Locale.get('BOX_UOP'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            if (activeWindow instanceof PictureWindow) {
+            if (activeWindow instanceof root.PictureWindow) {
                 var original = activeWindow.settings.picture;
                 var copy = _.clone(activeWindow.settings.picture);
 
