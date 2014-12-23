@@ -132,10 +132,6 @@
             </div>
         </script>
 
-        <script type="text/html" id="template-edge-detection-tool">
-
-        </script>
-
         <script type="text/html" id="template-gamma-regulation-tool">
             <div class="gamma-regulation-tool-content">
                 <span>Korekcja Gamma:</span>
@@ -166,45 +162,73 @@
 
         <script type="text/html" id="template-smoothing-tool">
             <div class="smoothing-tool-options">
-                <fieldset class="fd-masks">
-                    <legend>Filtracja dolnoprzepustowa</legend>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-0">Maska 1/9</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-1">Maska 1/10</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-2">Maska 1/16</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd-3">Maska 1/8</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fd">Maska własna</label>
-                </fieldset>
+                <label>
+                    Wybierz:
+                    <select>
+                        <option value="-">Maska własna</option>
 
-                <fieldset class="fg-masks">
-                    <legend>Filtracja górnoprzepustowa</legend>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-0">Maska 1</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-1">Maska 2 (Det. kraw.)</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-2">Maska 3 (Det. kraw.)</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg-3">Maska 4 (Det. kraw.)</label>
-                    <label><input name="smoothing-tool-filter-type" type="radio" value="fg">Maska własna</label>
-                </fieldset>
+                        <optgroup label="Filtracja dolnoprzepustowa">
+                            <option value="fd-0">Maska 1/8</option>
+                            <option value="fd-1">Maska 1/9</option>
+                            <option value="fd-2">Maska 1/10</option>
+                            <option value="fd-3">Maska 1/16</option>
+                        </optgroup>
+
+                        <optgroup label="Filtracja górnoprzepustowa">
+                            <option value="fg-0">Maska 1</option>
+                            <option value="fg-1">Maska 2</option>
+                            <option value="fg-2">Maska 3</option>
+                            <option value="fg-3">Maska 4</option>
+                            <option value="fg-4">Maska 5</option>
+                        </optgroup>
+
+                        <optgroup label="Detekcja krawędzi">
+                            <option value="dk-0">Maska 1</option>
+                            <option value="dk-1">Maska 2</option>
+                            <option value="dk-2">Maska 3</option>
+                        </optgroup>
+                    </select>
+                </label>
             </div>
+
+            <hr/>
+
             <div class="smoothing-tool-preview">
                 <fieldset>
                     <legend>Maska</legend>
                     <table>
                         <tr>
-                            <td><input id="smoothing-tool-preview-1" type="text"></td>
-                            <td><input id="smoothing-tool-preview-2" type="text"></td>
-                            <td><input id="smoothing-tool-preview-3" type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
                         </tr>
                         <tr>
-                            <td><input id="smoothing-tool-preview-4" type="text"></td>
-                            <td><input id="smoothing-tool-preview-5" type="text"></td>
-                            <td><input id="smoothing-tool-preview-6" type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
                         </tr>
                         <tr>
-                            <td><input id="smoothing-tool-preview-7" type="text"></td>
-                            <td><input id="smoothing-tool-preview-8" type="text"></td>
-                            <td><input id="smoothing-tool-preview-9" type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
+                            <td><input type="text"></td>
                         </tr>
                     </table>
-                    <input type="submit" value="Zaktualizuj">
+                </fieldset>
+                <input type="submit" value="Zaktualizuj">
+            </div>
+
+            <div class="smoothing-tool-scale">
+                <fieldset>
+                    <legend>Metody skalowania</legend>
+                    <label>
+                        <input type="radio" name="smoothing-tool-scale">Proporcjonalna
+                    </label>
+                    <label>
+                        <input type="radio" name="smoothing-tool-scale">Trójwartościowa
+                    </label>
+                    <label>
+                        <input type="radio" name="smoothing-tool-scale">Obcinająca
+                    </label>
                 </fieldset>
             </div>
         </script>
@@ -276,7 +300,6 @@
         <script src="scripts/core/windows/tools/ArithmeticalLogicalTool.js"></script>
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/ContrastRegulationTool.js"></script>
-        <script src="scripts/core/windows/tools/EdgeDetectionTool.js"></script>
         <script src="scripts/core/windows/tools/GammaRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/SmoothingTool.js"></script>

@@ -47,11 +47,10 @@
         OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL: '(W) Arytmetyczne i Logiczne',
 
         OPERATIONS_NEIGHBOURHOOD: 'Operacje sąsiedztwa',
-        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: '(W) Filtracja liniowa (wygładz.)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa (wyostrz.)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna (wyostrz.)',
-        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna (wyostrz.)',
-        OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION: '(W) Detekcja krawędzi',
+        OPERATIONS_NEIGHBOURHOOD_SMOOTHING: '(W) Filtracja liniowa',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna',
+        OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

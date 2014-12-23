@@ -57,8 +57,7 @@
         requestAnimationFrame(function () {
             self.setRigidWidth();
 
-            var $fdRadios = self.$content.querySelectorAll('.fd-masks input[type="radio"]');
-            var $fgRadios = self.$content.querySelectorAll('.fg-masks input[type="radio"]');
+            var $select = self.$content.querySelector('.smoothing-tool-options select');
             var $preview = self.$content.querySelector('.smoothing-tool-preview');
             var $textes = $preview.querySelectorAll('input[type="text"]');
             var $submit = $preview.querySelector('input[type="submit"]');
@@ -79,21 +78,32 @@
                 });
             }
 
-            function handleChosenMask(evt, listOfMasks) {
-                var v = evt.target.value;
-                var id = v.replace(/[^0-9]/g, '');
-                var isMask = (/-/).test(v);
-                var mask = listOfMasks[id];
+            function fetch() {
+                var mask = [];
 
-                // If we choose any mask, disable inputs.
-                if (isMask) {
+                _.each($textes, function ($text) {
+                    mask.push(parseInt($text.value, 10));
+                });
+
+                return mask;
+            }
+
+            function handleChosenMask(evt) {
+                var type, mask;
+                var v = evt.target.value;
+
+                self.contextWindow.setPrimaryState();
+
+                if (v !== '-') {
+                    type = v.replace(/[0-9\-]/g, '');
+                    mask = SmoothingTool['MASK_' + type.toUpperCase()][v.replace(/[^0-9]/g, '')];
+
                     disable(true);
                     put(mask);
 
-                    self.contextWindow.setPrimaryState();
-
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
-                        mask: mask
+                        mask: mask,
+                        type: type
                     });
                 } else {
                     disable(false);
@@ -101,71 +111,44 @@
             }
 
             function handleCustomMask() {
-                var mask = [];
-
-                _.each($textes, function ($text) {
-                    mask.push(parseInt($text.value, 10));
-                });
+                var type = $select.value.replace(/[0-9\-]/g, '');
+                var mask = fetch();
 
                 self.contextWindow.setPrimaryState();
 
                 root.OperationsNeighbourhood.smoothing(self.contextWindow, {
-                    mask: mask
+                    mask: mask,
+                    type: type
                 });
             }
 
-            _.each($fdRadios, function ($radio) {
-                $radio.addEventListener('change', function (evt) {
-                    handleChosenMask(evt, SmoothingTool.MASK_FD);
-                });
-            });
-
-            _.each($fgRadios, function ($radio) {
-                $radio.addEventListener('change', function (evt) {
-                    handleChosenMask(evt, SmoothingTool.MASK_FG);
-                });
-            });
-
-            $submit.addEventListener('click', function () {
-                handleCustomMask();
-            });
+            $select.addEventListener('change', handleChosenMask);
+            $submit.addEventListener('click', handleCustomMask);
         });
     };
 
     SmoothingTool.MASK_FD = [
-        [1, 1, 1,
-         1, 1, 1,
-         1, 1, 1],
-
-        [1, 1, 1,
-         1, 2, 1,
-         1, 1, 1],
-
-        [1, 2, 1,
-         2, 4, 2,
-         1, 2, 1],
-
-        [1, 1, 1,
-         1, 0, 1,
-         1, 1, 1]
+        // Wygładzanie
+        [ 1,  1,  1,  1,  0,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  1,  1,  1,  1,  1],
+        [ 1,  1,  1,  1,  2,  1,  1,  1,  1],
+        [ 1,  2,  1,  2,  4,  2,  1,  2,  1]
     ];
 
     SmoothingTool.MASK_FG = [
-        [-1, -2, -1,
-          0,  0,  0,
-          1,  2,  1],
+        // Wyostrzanie
+        [-1, -2, -1,  0,  0,  0,  1,  2,  1],
+        [ 1, -2,  1, -2,  5, -2,  1, -2,  1],
+        [-1, -1, -1, -1,  9, -1, -1, -1, -1],
+        [ 0, -1,  0, -1,  5, -1,  0, -1,  0],
+        [-2,  1, -2,  1,  5,  1, -2,  1, -2]
+    ];
 
-        [ 1, -2,  1,
-         -2,  5, -2,
-          1, -2,  1],
-
-        [-1, -1, -1,
-         -1,  9, -1,
-         -1, -1, -1],
-
-        [ 0, -1,  0,
-         -1,  5, -1,
-          0, -1,  0]
+    SmoothingTool.MASK_DK = [
+        // Detekcja krawędzi
+        [ 0,  1,  0,  1, -4,  1,  0,  1,  0],
+        [-1, -1, -1, -1,  8, -1, -1, -1, -1],
+        [ 1, -2,  1, -2,  4, -2,  1, -2,  1]
     ];
 
     // Exports `SmoothingTool`.

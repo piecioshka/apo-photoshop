@@ -39,7 +39,6 @@
         this.operationsNeighbourhoodSharpenMediumMenuItem = null;
         this.operationsNeighbourhoodSharpenMinimalMenuItem = null;
         this.operationsNeighbourhoodSharpenMaximalMenuItem = null;
-        this.operationsNeighbourhoodEdgeDetectionMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
         this.aboutHelpMenuItem = null;
@@ -509,16 +508,6 @@
         neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMaximalMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
-
-        this.operationsNeighbourhoodEdgeDetectionMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_EDGE_DETECTION'), function () {
-            // @type {PictureWindow}
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            return new EdgeDetectionTool(activeWindow, {
-                picture: activeWindow.settings.picture
-            });
-        });
-        neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodEdgeDetectionMenuItem);
 
         var neighbourhoodOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD'));
         neighbourhoodOperationsMenuItem.submenu = neighbourhoodOperationsMenu;

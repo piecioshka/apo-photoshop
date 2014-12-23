@@ -3,9 +3,12 @@
 
     var OperationsNeighbourhood = {
         smoothing: function (contextWindow, params) {
-            var mask = params.mask;
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
+            var mask = params.mask;
+            var type = params.type;
+
+            console.log('params', params);
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
@@ -21,8 +24,11 @@
 
             var i = 0;
 
+            // TODO(piecioshka): przerobić na for po wszystkich pikselach
             _.each(pixelsMatrix, function (row, y) {
                 _.each(row, function (color, x) {
+                    // console.log(x, y);
+
                     var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1);
 
                     var temp = 0;

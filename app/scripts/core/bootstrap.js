@@ -38,7 +38,6 @@
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
-                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -70,7 +69,6 @@
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = true;
-                menu.operationsNeighbourhoodEdgeDetectionMenuItem.enabled = true;
             }
 
             function setMultiplePicturesWindowState() {
