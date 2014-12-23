@@ -2,7 +2,7 @@
     min-height: 240px;
 }
 
-.picture-window canvas {
+.picture-window .canvas-picture {
     float: left;
 }
 

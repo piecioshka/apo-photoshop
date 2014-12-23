@@ -187,7 +187,10 @@
 
         function saveFileHandler() {
             var activeWindow = root.App.windowManager.getActiveWindow();
-            activeWindow.saveAsPicture();
+
+            if (activeWindow instanceof root.PictureWindow) {
+                activeWindow.saveAsPicture();
+            }
         }
 
         function windowCloseHandler() {

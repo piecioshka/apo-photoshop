@@ -50,9 +50,9 @@
         this.appendContent(renderedTemplate);
 
         requestAnimationFrame(function () {
-            var $selectOperation = self.$content.querySelector('select.logical-tool-operations');
             var $selectFirst = self.$content.querySelector('select.logical-tool-first');
             var $selectSecond = self.$content.querySelector('select.logical-tool-second');
+            var $selectOperation = self.$content.querySelector('select.logical-tool-operations');
 
             function buildOption(val, text) {
                 var opt = doc.createElement('option');
@@ -66,13 +66,21 @@
 
                 $selectFirst.innerHTML = $selectSecond.innerHTML = '';
 
-                $selectFirst.appendChild(buildOption(undefined, '---'));
-                $selectSecond.appendChild(buildOption(undefined, '---'));
+                $selectFirst.appendChild(buildOption('', '---'));
+                $selectSecond.appendChild(buildOption('', '---'));
 
                 _.each(picturesWindows, function (win) {
                     $selectFirst.appendChild(buildOption(win.id, win.getTitle()));
                     $selectSecond.appendChild(buildOption(win.id, win.getTitle()));
                 });
+            }
+
+            function getFirstSelectValue() {
+                return $selectFirst.value;
+            }
+
+            function getSecondSelectValue() {
+                return $selectSecond.value;
             }
 
             buildWindowSelects();
@@ -81,15 +89,25 @@
             canvas.$canvas.classList.add('hide');
             canvas.render(self);
 
+            $selectFirst.addEventListener('change', function () {
+                $selectOperation.children[0].selected = 'selected';
+                $selectOperation.disabled = (getFirstSelectValue() && getSecondSelectValue()) ? '' : 'disabled';
+                canvas.markAsNotActive();
+            });
+
+            $selectSecond.addEventListener('change', function () {
+                $selectOperation.children[0].selected = 'selected';
+                $selectOperation.disabled = (getFirstSelectValue() && getSecondSelectValue()) ? '' : 'disabled';
+                canvas.markAsNotActive();
+            });
+
             $selectOperation.addEventListener('change', function (evt) {
                 var $selected = this.children[evt.target.selectedIndex];
 
                 // If select default option do nothing.
-                if (!$selected.value) {
+                if (!$selected.value || !getFirstSelectValue() || !getSecondSelectValue()) {
                     return;
                 }
-
-                // buildWindowSelects();
 
                 var firstWindow = wm.getWindowsById($selectFirst.value);
                 var secondWindow = wm.getWindowsById($selectSecond.value);
@@ -97,9 +115,9 @@
                 var firstPicture = firstWindow.settings.picture;
                 var secondPicture = secondWindow.settings.picture;
 
-                canvas.$canvas.classList.remove('hide');
                 canvas.setWidth(Math.max(firstPicture.width, secondPicture.width));
                 canvas.setHeight(Math.max(firstPicture.height, secondPicture.height));
+                canvas.$canvas.classList.remove('hide');
 
                 root.OperationsOnePoint.onePointLogical({
                     workspace: canvas,

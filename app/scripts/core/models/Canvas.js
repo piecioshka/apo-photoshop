@@ -182,21 +182,17 @@
     /**
      * Put cross as a sign, that canvas is not active.
      */
-    Canvas.prototype.markAsNotActive = function (color, background) {
-        // Store current values of styles.
-        var oldLineWidth = this.ctx.lineWidth;
-        var oldFillStyle = this.ctx.fillStyle;
-        var oldStrokeStyle = this.ctx.strokeStyle;
-
+    Canvas.prototype.markAsNotActive = function () {
         var w = this.settings.width;
         var h = this.settings.height;
 
-        this.ctx.lineWidth = 3;
-        this.ctx.strokeStyle = color || '#999';
+        this.ctx.strokeStyle = '#4e4e4e';
 
         // Full white rectangle
-        this.ctx.fillStyle = background || '#fff';
+        this.ctx.fillStyle = '#eee';
         this.ctx.fillRect(0 , 0, this.settings.width, this.settings.height);
+
+        this.ctx.lineWidth = 2;
 
         // Border left
         this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
@@ -207,15 +203,12 @@
         // Border bottom
         this.ctx.beginPath(); this.ctx.moveTo(0, h); this.ctx.lineTo(w, h); this.ctx.stroke();
 
+        this.ctx.lineWidth = 1;
+
         // Draw cross - first cross line
         this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
         // Draw cross - second cross line
         this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
-
-        // Restore style, before paint this dummy.
-        this.ctx.lineWidth = oldLineWidth;
-        this.ctx.strokeStyle = oldStrokeStyle;
-        this.ctx.fillStyle = oldFillStyle;
     };
 
     /**

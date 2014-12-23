@@ -227,8 +227,7 @@
         // Operacje -> Jednopunktowe -> Arytmetyczne
         onePointArithmetical: function (params) {
             var can = params.workspace;
-
-            can.markAsNotActive('#f00'); return;
+            var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
@@ -243,61 +242,63 @@
                 case 'add':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
                         color = (first + second) / 2;
-                        color = 100;
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
 
                 case 'sub':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
                         color = Math.abs(first - second);
-                        color = 150;
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
 
                 case 'mul':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
                         color = (first * second) + first;
-                        color = 200;
 
                         // Save protection (0 - 255).
                         color = root.Utilities.intToByte(color);
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
             }
 
             // Update <canvas>
-            can.ctx.putImageData(pixelsChannels, 0, 0);
+            ctx.putImageData(pixelsChannels, 0, 0);
         },
 
         // Operacje -> Jednopunktowe -> Logiczne
         onePointLogical: function (params) {
             var can = params.workspace;
-
-            can.markAsNotActive('#0f0'); return;
+            var ctx = can.ctx;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
@@ -312,35 +313,38 @@
                 case 'or':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
                         color = first || second;
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
 
                 case 'and':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
                         color = first && second;
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
 
                 case 'xor':
                     for (i = 0; i < len / 4; i++) {
                         color = pixelsChannelsData[(i * 4)];
-
                         first = firstPicturePixels[(i * 4)];
                         second = secondPicturePixels[(i * 4)];
 
@@ -349,14 +353,17 @@
                         // Save protection (0 - 255).
                         color = root.Utilities.intToByte(color);
 
-                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        // Update each channel (RGB) of pixel.
                         pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                        // Alpha channel sets to opaque.
+                        pixelsChannelsData[(i * 4) + 3] = 255;
                     }
                     break;
             }
 
             // Update <canvas>
-            can.ctx.putImageData(pixelsChannels, 0, 0);
+            ctx.putImageData(pixelsChannels, 0, 0);
         },
 
         // Okno -> UOP

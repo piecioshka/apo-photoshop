@@ -28,7 +28,3 @@
     display: block;
     margin: 10px auto 0;
 }
-
-.smoothing-tool canvas {
-    float: left;
-}
