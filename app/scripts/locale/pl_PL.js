@@ -7,6 +7,7 @@
         NAME: 'APO: Photoshop',
 
         MSG_UNKNOWN: '- brak nazwy -',
+        MSG_WAITING: 'Proszę czekać...',
 
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',
         MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',
@@ -53,6 +54,7 @@
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
 
         OPERATIONS_MORPHOLOGICAL: 'Operacje morfologiczne',
+        OPERATIONS_TURTLE: 'Algorytm Żółwia',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

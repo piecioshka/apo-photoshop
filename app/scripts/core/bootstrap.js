@@ -9,6 +9,8 @@
             // Set title of application.
             root.document.title = root.Locale.get('NAME');
 
+            root.Status.init();
+
             function setDefaultState() {
                 menu.fileSaveMenuItem.enabled = false;
                 menu.fileCloseMenuItem.enabled = false;
@@ -40,6 +42,7 @@
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
 
                 menu.morphologicalOperationsMenuItem.enabled = false;
+                menu.turtleOperationsMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -73,6 +76,7 @@
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = true;
 
                 menu.morphologicalOperationsMenuItem.enabled = true;
+                menu.turtleOperationsMenuItem.enabled = true;
             }
 
             function setMultiplePicturesWindowState() {

@@ -239,6 +239,73 @@
         return new Buffer(this.$canvas.toDataURL('image/png').split(',')[1], 'base64');
     };
 
+    /**
+     * Returns pixel RGBa by XY position.
+     *
+     * @param {number} x
+     * @param {number} y
+     * @returns {{r: *, g: *, b: *, a: *}}
+     */
+    Canvas.prototype.getPixel = function (x, y) {
+        _.assert(_.isNumber(x));
+        _.assert(_.isNumber(y));
+
+        var pixelsChannels = this.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var width = this.settings.width;
+        var height = this.settings.height;
+        var i = root.CanvasHelper.convertXYToPositionIndex(width, height, x, y);
+        var r = pixelsChannelsData[(i * 4)];
+        var g = pixelsChannelsData[(i * 4) + 1];
+        var b = pixelsChannelsData[(i * 4) + 2];
+        var a = pixelsChannelsData[(i * 4) + 3];
+        return { r: r, g: g, b: b, a: a };
+    };
+
+    Canvas.prototype.setPixel = function (x, y, color) {
+        _.assert(_.isNumber(x));
+        _.assert(_.isNumber(y));
+        _.assert(_.isArray(color));
+
+        var pixelsChannels = this.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var width = this.settings.width;
+        var height = this.settings.height;
+        var i = root.CanvasHelper.convertXYToPositionIndex(width, height, x, y);
+
+        pixelsChannelsData[(i * 4)] = color[0];
+        pixelsChannelsData[(i * 4) + 1] = color[1];
+        pixelsChannelsData[(i * 4) + 2] = color[2];
+
+        if (color[3]) {
+            pixelsChannelsData[(i * 4) + 3] = color[3];
+        }
+
+        this.ctx.putImageData(pixelsChannels, 0, 0);
+    };
+
+    /**
+     * Loop through each pixel on image. Put `X` and `Y` as params.
+     *
+     * @param {Function} handler
+     */
+    Canvas.prototype.each = function (handler) {
+        _.assert(_.isFunction(handler));
+
+        var pixelsChannels = this.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
+        var width = this.settings.width;
+        var height = this.settings.height;
+
+        var i, dimensions;
+
+        for (i = 0; i < len / 4; i++) {
+            dimensions = root.CanvasHelper.convertPositionIndexToXY(width, height, i);
+            handler(dimensions.x, dimensions.y);
+        }
+    };
+
     // Extend `Canvas` module with events.
     _.extend(Canvas.prototype, root.EventEmitter);
 

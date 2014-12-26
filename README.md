@@ -78,7 +78,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
         - [x] Uniwersalna operacja punktowa jednoargumentowa (oparta na tablicy LUT z możliwością zadawania parametrów w sposób interakcyjny (np. poprzez modyfikację postaci graficznej Uniwersalnego Operatora Punktowego)).
     - Zadanie 3
         - [x] Typowe operacje punktowe dwu i wieloargumentowe (arytmetyczne (ADD, SUB, MUL) i logiczne (OR, AND, XOR)).
-- [ ] Ćw. 3
+- [-] Ćw. 3
     - Zadanie 1
         - [x] a)
             - [x] Operacje wygładzania liniowego oparte na 4 typowych maskach wygładzania.
@@ -96,7 +96,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 4
         - [ ] Operacje wyostrzania gradientowego (2 maski uniwersalne, 2 maski Robertsa, 2 maski Sobela).<br />
         *Uwaga: zastosować opcjonalnie wybrane metody operacji na skrajnych wierszach i kolumnach obrazu oraz 3 metody skalowania.*
-- [ ] Ćw. 4
+- [-] Ćw. 4
     - Zadanie 1
         - [ ] Operacja liniowa sąsiedztwa oparta na masce 5x5 utworzonej na podstawie dwóch masek 3x3 użytych w dwuetapowej (1-szy etap – wygładzanie, 2-gi etap – wyostrzanie) operacji filtracji.<br />
         Opracowaną aplikację przetestować na wybranych obrazach i porównać wyniki otrzymane przy użyciu maski 5x5 z wynikami uzyskanymi przy użyciu kolejno dwóch masek 3x3.<br />
@@ -104,10 +104,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - Zadanie 2
         - [ ] Korzystając z podanego na wykładzie algorytmu ścieniania zrealizować program przekształcający utworzony obiekt, np. literę (lub 2 litery – np. inicjały wykonawcy) w szkielet (szkielety).
     - Zadanie 3
-        - [ ] Operacje erozji, dylatacji, otwarcia, zamknięcia dla dwóch przypadków elementu strukturalnego:
-            - [ ] a) romb (cztero-sąsiedztwo)
-            - [ ] b) kwadrat (ośmio-sąsiedztwo)
-- [ ] Ćw. 5
+        - [x] Operacje erozji, dylatacji, otwarcia, zamknięcia dla dwóch przypadków elementu strukturalnego:
+            - [x] a) romb (cztero-sąsiedztwo)
+            - [x] b) kwadrat (ośmio-sąsiedztwo)
+- [-] Ćw. 5
     - Zadanie 1
         - [ ] Segmentacja obrazów z wykorzystaniem: progowania, rozrostu obszaru, dołączania, podziału, podziału i dołączania - algorytm i aplikacja.
     - Zadanie 2
@@ -120,7 +120,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
             - [ ] a) obliczanie wartości prawdopodobieństwa pojawienia się pary piksli o zadanych poziomach jasności w odległości d jeden od drugiego (obliczanie macierzy współwystąpień (co-occurence matrix calculation)),
             - [ ] b) wyznaczenie rozkładu widma potęgowego (power spectrum) - algorytm i aplikacja.
     - Zadanie 4
-        - [ ] Opis obrazu z wykorzystaniem algorytmu żółwia.
+        - [x] Opis obrazu z wykorzystaniem algorytmu żółwia.
 
 **Zadania zlecone przez developerów:**
 
@@ -148,9 +148,9 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Lista kanałów szarości do modyfikacji (UOP).
 - [x] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów.
 - [x] Wygładzanie: maska 1 (źle).
-- [ ] Do zaliczenia (ptak morf, i ptak morf bin):
+- [x] Do zaliczenia (ptak morf, i ptak morf bin):
     - [x] Z ćw. 4 - zadania (morfologiczne).
-    - [ ] Z ćw. 5 - algorytm żółwia.
+    - [x] Z ćw. 5 - algorytm żółwia.
 - [ ] Pomoc na Windowsie nie działa.
 - [ ] Resize okna.
 
@@ -170,8 +170,11 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 #### Przydatne materiały
 
-- http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
-- http://www.cs.huji.ac.il/~yweiss/Colorization/
-- https://github.com/cmisenas/canny-edge-detection
-- http://mbs98.republika.pl/projekty/ro/ro.html
-- http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html
+- Online
+    - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
+    - http://www.cs.huji.ac.il/~yweiss/Colorization/
+    - https://github.com/cmisenas/canny-edge-detection
+    - http://mbs98.republika.pl/projekty/ro/ro.html
+    - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html
+- Książki
+    - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, 2000

@@ -180,10 +180,21 @@
         },
 
         convertPositionIndexToXY: function (width, height, i) {
+            _.assert(_.isNumber(width));
+            _.assert(_.isNumber(height));
+            _.assert(_.isNumber(i));
             return {
                 x: i % width,
                 y: parseInt(i / width, 10)
             };
+        },
+
+        convertXYToPositionIndex: function (width, height, x, y) {
+            _.assert(_.isNumber(width));
+            _.assert(_.isNumber(height));
+            _.assert(_.isNumber(x));
+            _.assert(_.isNumber(y));
+            return width * y + x;
         }
 
     };

@@ -3,6 +3,8 @@
 
     var OperationsNeighbourhood = {
         smoothing: function (contextWindow, params) {
+            root.Status.wait();
+
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var mask = params.mask;
@@ -91,9 +93,13 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
+
+            root.Status.idle();
         },
 
         sharpen: function (contextWindow, params) {
+            root.Status.wait();
+
             var type = params.type;
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
@@ -153,6 +159,8 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
+
+            root.Status.idle();
         }
     };
 

@@ -41,6 +41,7 @@
         this.operationsNeighbourhoodSharpenMaximalMenuItem = null;
 
         this.morphologicalOperationsMenuItem = null;
+        this.turtleOperationsMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
         this.aboutHelpMenuItem = null;
@@ -525,6 +526,17 @@
             });
         });
 
+        // Algorytm Żółwia
+        // ---------------
+
+        this.turtleOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_TURTLE'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof root.PictureWindow) {
+                root.TurtleAlgorithm(activeWindow);
+            }
+        }, 'Ctrl', 'L');
+
         // ----
 
         var operationsMenu = new gui.Menu();
@@ -532,6 +544,7 @@
         operationsMenu.append(onePointOperationsMenuItem);
         operationsMenu.append(neighbourhoodOperationsMenuItem);
         operationsMenu.append(this.morphologicalOperationsMenuItem);
+        operationsMenu.append(this.turtleOperationsMenuItem);
 
         operationItem.submenu = operationsMenu;
 

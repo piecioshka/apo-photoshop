@@ -83,10 +83,12 @@ describe('CanvasHelper', function () {
     });
 
     it('convertPositionIndexToXY', function () {
-        // 1, 1, 1, 1, 1, 1,
-        // 2, 2, 2, 2, 2, 2,
-        // 3, 3, 3, 3, 3, 3,
-        // 4, 4, 4, 4, 4, 4
+        // ----------------> x
+        // | 1, 1, 1, 1, 1, 1,
+        // | 2, 2, 2, 2, 2, 2,
+        // | 3, 3, 3, 3, 3, 3,
+        // | 4, 4, 4, 4, 4, 4
+        // y
 
         expect(CanvasHelper.convertPositionIndexToXY(6, 2, 0)).toEqual({ x: 0, y: 0 });
         expect(CanvasHelper.convertPositionIndexToXY(6, 2, 1)).toEqual({ x: 1, y: 0 });
@@ -112,5 +114,27 @@ describe('CanvasHelper', function () {
         expect(CanvasHelper.convertPositionIndexToXY(6, 2, 21)).toEqual({ x: 3, y: 3 });
         expect(CanvasHelper.convertPositionIndexToXY(6, 2, 22)).toEqual({ x: 4, y: 3 });
         expect(CanvasHelper.convertPositionIndexToXY(6, 2, 23)).toEqual({ x: 5, y: 3 });
+    });
+
+    it('convertXYToPositionIndex', function () {
+        // ---------> x
+        // | 1, 1, 1,
+        // | 2, 2, 2,
+        // | 3, 3, 3,
+        // | 4, 4, 4,
+        // y
+
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 0, 0)).toEqual(0);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 1, 0)).toEqual(1);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 2, 0)).toEqual(2);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 0, 1)).toEqual(3);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 1, 1)).toEqual(4);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 2, 1)).toEqual(5);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 0, 2)).toEqual(6);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 1, 2)).toEqual(7);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 2, 2)).toEqual(8);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 0, 3)).toEqual(9);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 1, 3)).toEqual(10);
+        expect(CanvasHelper.convertXYToPositionIndex(3, 4, 2, 3)).toEqual(11);
     });
 });

@@ -3,9 +3,13 @@
 
     var OperationsMorphological = {
         erode: function (contextWindow, params) {
+            root.Status.wait();
+
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var figure = params.figure;
+            var width = can.settings.width;
+            var height = can.settings.height;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
@@ -15,7 +19,7 @@
             var pixelsArray = can.getOneChannelOfPixels();
 
             // Convert list of pixels to matrix for quicker calculation.
-            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, width);
 
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, -1);
@@ -24,7 +28,7 @@
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
-                dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
+                dimensions = root.CanvasHelper.convertPositionIndexToXY(width, height, i);
 
                 x = dimensions.x;
                 y = dimensions.y;
@@ -42,12 +46,18 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
+
+            root.Status.idle();
         },
 
         dilate: function (contextWindow, params) {
+            root.Status.wait();
+
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var figure = params.figure;
+            var width = can.settings.width;
+            var height = can.settings.height;
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
@@ -57,7 +67,7 @@
             var pixelsArray = can.getOneChannelOfPixels();
 
             // Convert list of pixels to matrix for quicker calculation.
-            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, width);
 
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, -1);
@@ -66,7 +76,7 @@
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
-                dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
+                dimensions = root.CanvasHelper.convertPositionIndexToXY(width, height, i);
 
                 x = dimensions.x;
                 y = dimensions.y;
@@ -84,6 +94,8 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
+
+            root.Status.idle();
         },
 
         open: function () {
