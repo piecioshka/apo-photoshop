@@ -4,8 +4,8 @@
     // Aliases.
     var doc = root.document;
 
-    var LUTWindow = function LUTWindow(contextWindow, params) {
-        // console.info('new LUTWindow', params);
+    var LookUpTableWindow = function LookUpTableWindow(contextWindow, params) {
+        // console.info('new LookUpTableWindow', params);
 
         this.contextWindow = contextWindow;
         this.settings = {
@@ -29,13 +29,13 @@
         this.initialize();
     };
 
-    LUTWindow.prototype = new root.AbstractWindow();
+    LookUpTableWindow.prototype = new root.AbstractWindow();
 
-    LUTWindow.prototype.initialize = function () {
+    LookUpTableWindow.prototype.initialize = function () {
         this.$window.classList.add('lut-window');
 
         // Update title of window.
-        this.updateTitle(root.Locale.get('BOX_LUT') + ' - ' + this.settings.picture.name);
+        this.updateTitle(root.Locale.get('TOOLS_LUT') + ' - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -50,7 +50,7 @@
         this.render();
     };
 
-    LUTWindow.prototype.buildTable = function () {
+    LookUpTableWindow.prototype.buildTable = function () {
         var origHist = this.settings.canvas.original.getCountingColorList();
         var currHist = this.settings.canvas.current.getCountingColorList();
 
@@ -71,7 +71,7 @@
         this.appendContent(renderedTemplate);
     };
 
-    // Exports `LUTWindow`.
-    return (root.LUTWindow = LUTWindow);
+    // Exports `LookUpTableWindow`.
+    return (root.LookUpTableWindow = LookUpTableWindow);
 
 }(this));

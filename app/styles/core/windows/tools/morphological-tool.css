@@ -1,0 +1,12 @@
+.morphological-tool-content {
+}
+
+.morphological-tool-content fieldset {
+    width: 150px;
+    height: 100px;
+}
+
+.morphological-tool-content ul {
+    list-style: none;
+    padding: 0;
+}

@@ -16,9 +16,9 @@
 
         this.editRestoreMenuItem = null;
 
-        this.boxDuplicateMenuItem = null;
-        this.boxLutMenuItem = null;
-        this.boxUOPMenuItem = null;
+        this.toolsDuplicateMenuItem = null;
+        this.toolsLutMenuItem = null;
+        this.toolsUOPMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
         this.operationsFlatteningHistogramRandomMethodMenuItem = null;
@@ -39,6 +39,8 @@
         this.operationsNeighbourhoodSharpenMediumMenuItem = null;
         this.operationsNeighbourhoodSharpenMinimalMenuItem = null;
         this.operationsNeighbourhoodSharpenMaximalMenuItem = null;
+
+        this.morphologicalOperationsMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
         this.aboutHelpMenuItem = null;
@@ -250,11 +252,11 @@
     };
 
     MenuBuilder.prototype.setupBoxMenu = function () {
-        var boxMenu = new gui.Menu();
+        var toolsMenu = new gui.Menu();
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.boxDuplicateMenuItem = this.addMenuItem(root.Locale.get('BOX_DUPLICATE'), function () {
+        this.toolsDuplicateMenuItem = this.addMenuItem(root.Locale.get('TOOLS_DUPLICATE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
@@ -268,15 +270,15 @@
                 });
             }
         }, 'Ctrl-Shift', 'D');
-        boxMenu.append(this.boxDuplicateMenuItem);
+        toolsMenu.append(this.toolsDuplicateMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.addSeparator(boxMenu);
+        this.addSeparator(toolsMenu);
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.boxLutMenuItem = this.addMenuItem(root.Locale.get('BOX_LUT'), function () {
+        this.toolsLutMenuItem = this.addMenuItem(root.Locale.get('TOOLS_LUT'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
@@ -287,7 +289,7 @@
                 var original = new root.Canvas(activeWindow.settings.picture.canvas.settings);
                 original.loadGrayScaleImage(activeWindow.settings.picture.img, activeWindow.settings.picture.width, activeWindow.settings.picture.height);
 
-                new root.LUTWindow(activeWindow, {
+                new root.LookUpTableWindow(activeWindow, {
                     picture: activeWindow.settings.picture,
                     canvas: {
                         current: current,
@@ -296,11 +298,11 @@
                 });
             }
         }, 'Ctrl-Shift', 'T');
-        boxMenu.append(this.boxLutMenuItem);
+        toolsMenu.append(this.toolsLutMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.boxUOPMenuItem = this.addMenuItem(root.Locale.get('BOX_UOP'), function () {
+        this.toolsUOPMenuItem = this.addMenuItem(root.Locale.get('TOOLS_UOP'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
@@ -314,13 +316,13 @@
                 });
             }
         }, 'Ctrl-Shift', 'U');
-        boxMenu.append(this.boxUOPMenuItem);
+        toolsMenu.append(this.toolsUOPMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
         this.windowMenu.append(new gui.MenuItem({
-            label: root.Locale.get('BOX'),
-            submenu: boxMenu
+            label: root.Locale.get('TOOLS'),
+            submenu: toolsMenu
         }));
     };
 
@@ -512,12 +514,24 @@
         var neighbourhoodOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD'));
         neighbourhoodOperationsMenuItem.submenu = neighbourhoodOperationsMenu;
 
+        // Morfologiczne
+        // -------------
+
+        this.morphologicalOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_MORPHOLOGICAL'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            return new MorphologicalTool(activeWindow, {
+                picture: activeWindow.settings.picture
+            });
+        });
+
         // ----
 
         var operationsMenu = new gui.Menu();
         operationsMenu.append(histogramOperationsMenuItem);
         operationsMenu.append(onePointOperationsMenuItem);
         operationsMenu.append(neighbourhoodOperationsMenuItem);
+        operationsMenu.append(this.morphologicalOperationsMenuItem);
 
         operationItem.submenu = operationsMenu;
 

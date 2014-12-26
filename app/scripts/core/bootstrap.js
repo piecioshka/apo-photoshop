@@ -15,9 +15,9 @@
 
                 menu.editRestoreMenuItem.enabled = false;
 
-                menu.boxDuplicateMenuItem.enabled = false;
-                menu.boxLutMenuItem.enabled = false;
-                menu.boxUOPMenuItem.enabled = false;
+                menu.toolsDuplicateMenuItem.enabled = false;
+                menu.toolsLutMenuItem.enabled = false;
+                menu.toolsUOPMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = false;
@@ -38,6 +38,8 @@
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = false;
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = false;
+
+                menu.morphologicalOperationsMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -46,9 +48,9 @@
 
                 menu.editRestoreMenuItem.enabled = true;
 
-                menu.boxDuplicateMenuItem.enabled = true;
-                menu.boxLutMenuItem.enabled = true;
-                menu.boxUOPMenuItem.enabled = true;
+                menu.toolsDuplicateMenuItem.enabled = true;
+                menu.toolsLutMenuItem.enabled = true;
+                menu.toolsUOPMenuItem.enabled = true;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = true;
@@ -69,6 +71,8 @@
                 menu.operationsNeighbourhoodSharpenMediumMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMinimalMenuItem.enabled = true;
                 menu.operationsNeighbourhoodSharpenMaximalMenuItem.enabled = true;
+
+                menu.morphologicalOperationsMenuItem.enabled = true;
             }
 
             function setMultiplePicturesWindowState() {

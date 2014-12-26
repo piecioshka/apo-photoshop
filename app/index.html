@@ -140,6 +140,25 @@
             </div>
         </script>
 
+        <script type="text/html" id="template-morphological-tool">
+            <div class="morphological-tool-content">
+                <fieldset class="left">
+                    <ul>
+                        <li><label><input type="radio" name="morphological-tool-type" value="erode"> Erozja</label></li>
+                        <li><label><input type="radio" name="morphological-tool-type" value="dilate"> Dylatacja</label></li>
+                        <li><label><input type="radio" name="morphological-tool-type" value="open"> Otwarcie</label></li>
+                        <li><label><input type="radio" name="morphological-tool-type" value="close"> Zamknięcie</label></li>
+                    </ul>
+                </fieldset>
+                <fieldset class="right">
+                    <ul>
+                        <li><label><input type="radio" name="morphological-tool-figure" value="diamond"> Romb (4-spójny)</label></li>
+                        <li><label><input type="radio" name="morphological-tool-figure" value="square"> Kwadrat (8-spójny)</label></li>
+                    </ul>
+                </fieldset>
+            </div>
+        </script>
+
         <script type="text/html" id="template-posterize-tool">
             <div class="posterize-tool-content">
                 <span>Poziomy:</span>
@@ -289,6 +308,7 @@
 
         <!-- core/operations //-->
         <script src="scripts/core/operations/OperationsFlatteningHistogram.js"></script>
+        <script src="scripts/core/operations/OperationsMorphological.js"></script>
         <script src="scripts/core/operations/OperationsNeighbourhood.js"></script>
         <script src="scripts/core/operations/OperationsOnePoint.js"></script>
 
@@ -297,7 +317,7 @@
         <script src="scripts/core/windows/WindowManager.js"></script>
 
         <!-- core/windows/static //-->
-        <script src="scripts/core/windows/static/LUTWindow.js"></script>
+        <script src="scripts/core/windows/static/LookUpTableWindow.js"></script>
         <script src="scripts/core/windows/static/MultiplePicturesWindow.js"></script>
         <script src="scripts/core/windows/static/PictureWindow.js"></script>
         <script src="scripts/core/windows/static/UOPWindow.js"></script>
@@ -307,6 +327,7 @@
         <script src="scripts/core/windows/tools/BrightnessRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/ContrastRegulationTool.js"></script>
         <script src="scripts/core/windows/tools/GammaRegulationTool.js"></script>
+        <script src="scripts/core/windows/tools/MorphologicalTool.js"></script>
         <script src="scripts/core/windows/tools/PosterizeTool.js"></script>
         <script src="scripts/core/windows/tools/SmoothingTool.js"></script>
         <script src="scripts/core/windows/tools/StretchTool.js"></script>

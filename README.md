@@ -149,8 +149,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów.
 - [x] Wygładzanie: maska 1 (źle).
 - [ ] Do zaliczenia (ptak morf, i ptak morf bin):
-    - [ ] Z 4 ćw. zadania (morfologiczne).
-    - [ ] Algorytm żółwia.
+    - [x] Z ćw. 4 - zadania (morfologiczne).
+    - [ ] Z ćw. 5 - algorytm żółwia.
 - [ ] Pomoc na Windowsie nie działa.
 - [ ] Resize okna.
 

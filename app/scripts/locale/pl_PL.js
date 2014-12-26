@@ -22,10 +22,10 @@
         EDIT: 'Edycja',
         EDIT_RESTORE: 'Przywróć do oryginału',
 
-        BOX: 'Okno',
-        BOX_DUPLICATE: 'Duplikuj',
-        BOX_LUT: 'Tablica LUT',
-        BOX_UOP: 'UOP',
+        TOOLS: 'Narzędzia',
+        TOOLS_DUPLICATE: 'Duplikuj',
+        TOOLS_LUT: 'Look-up Table',
+        TOOLS_UOP: 'Uniwersalna operacja punktowa',
 
         OPERATIONS: 'Operacje',
 
@@ -51,6 +51,8 @@
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM: 'Filtracja medianowa',
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna',
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
+
+        OPERATIONS_MORPHOLOGICAL: 'Operacje morfologiczne',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

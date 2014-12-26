@@ -4,7 +4,7 @@
 
 @import "windows/abstract-window.css";
 
-@import "windows/static/lut-window.css";
+@import "windows/static/look-up-table-window.css";
 @import "windows/static/multiple-pictures-window.css";
 @import "windows/static/picture-window.css";
 @import "windows/static/uop-window.css";
@@ -13,6 +13,7 @@
 @import "windows/tools/brightness-regulation-tool.css";
 @import "windows/tools/contrast-regulation-tool.css";
 @import "windows/tools/gamma-regulation-tool.css";
+@import "windows/tools/morphological-tool.css";
 @import "windows/tools/posterize-tool.css";
 @import "windows/tools/sharpen-tool.css";
 @import "windows/tools/smoothing-tool.css";

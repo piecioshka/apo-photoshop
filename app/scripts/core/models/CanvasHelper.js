@@ -92,12 +92,15 @@
          * @param {Array} pixelsArray
          * @param {number} x
          * @param {number} y
+         * @param {string} [figure='square'] ('square' | 'diamond')
          * @returns {Array}
          */
-        getNeighbors: function (pixelsArray, x, y) {
+        getNeighbors: function (pixelsArray, x, y, figure) {
             var point;
             var neighbors = [];
             var max = pixelsArray.length - 1;
+
+            figure = figure || 'square';
 
             function tryAdd(point) {
                 if (_.isNumber(point) && point !== -1) {
@@ -105,19 +108,29 @@
                 }
             }
 
+            function isSquare() {
+                return (figure === 'square');
+            }
+
+            function isDiamond() {
+                return (figure === 'diamond');
+            }
+
             // Top row.
             // --------
 
             if (y > 0) {
-                if (x > 0) {
+                if (x > 0 && isSquare()) {
                     point = pixelsArray[y - 1][x - 1];
                     tryAdd(point);
                 }
 
-                point = pixelsArray[y - 1][x];
-                tryAdd(point);
+                if (isSquare() || isDiamond()) {
+                    point = pixelsArray[y - 1][x];
+                    tryAdd(point);
+                }
 
-                if (x < max) {
+                if (x < max && isSquare()) {
                     point = pixelsArray[y - 1][x + 1];
                     tryAdd(point);
                 }
@@ -127,15 +140,17 @@
             // -----------
 
             if (y >= 0 && y <= max) {
-                if (x > 0) {
+                if (x > 0 && (isSquare() || isDiamond())) {
                     point = pixelsArray[y][x - 1];
                     tryAdd(point);
                 }
 
-                point = pixelsArray[y][x];
-                tryAdd(point);
+                if (isSquare() || isDiamond()) {
+                    point = pixelsArray[y][x];
+                    tryAdd(point);
+                }
 
-                if (x < max) {
+                if (x < max && (isSquare() || isDiamond())) {
                     point = pixelsArray[y][x + 1];
                     tryAdd(point);
                 }
@@ -145,15 +160,17 @@
             // -----------
 
             if (y < max) {
-                if (x > 0) {
+                if (x > 0 && isSquare()) {
                     point = pixelsArray[y + 1][x - 1];
                     tryAdd(point);
                 }
 
-                point = pixelsArray[y + 1][x];
-                tryAdd(point);
+                if (isSquare() || isDiamond()) {
+                    point = pixelsArray[y + 1][x];
+                    tryAdd(point);
+                }
 
-                if (x < max) {
+                if (x < max && isSquare()) {
                     point = pixelsArray[y + 1][x + 1];
                     tryAdd(point);
                 }

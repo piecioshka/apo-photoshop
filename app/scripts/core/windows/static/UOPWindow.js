@@ -31,7 +31,7 @@
         this.$window.classList.add('uop-window');
 
         // Update title of window.
-        this.updateTitle(root.Locale.get('BOX_UOP') + ' - ' + this.settings.picture.name);
+        this.updateTitle(root.Locale.get('TOOLS_UOP') + ' - ' + this.settings.picture.name);
 
         // Append window list.
         root.App.windowManager.addWindow(this);

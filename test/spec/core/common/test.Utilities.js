@@ -64,4 +64,11 @@ describe('Utilities', function () {
         expect([3, 1, 2].sort(Utilities.sortNumbers)).toEqual(result);
         expect([1, 2, 2, 1].sort(Utilities.sortNumbers)).toEqual([1, 1, 2, 2]);
     });
+
+    it('sum', function () {
+        expect(Utilities.sum([])).toEqual(0);
+        expect(Utilities.sum([1])).toEqual(1);
+        expect(Utilities.sum([1, 2, 3])).toEqual(6);
+        expect(Utilities.sum([1000, 100, 10, 1])).toEqual(1111);
+    });
 });

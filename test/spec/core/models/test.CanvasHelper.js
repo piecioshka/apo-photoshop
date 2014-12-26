@@ -34,57 +34,51 @@ describe('CanvasHelper', function () {
         });
 
         it('should work properly at first column', function () {
-            expect(CanvasHelper.getNeighbors(a, 0, 0)).toEqual([
-                1, 2,
-                4, 5
-            ]);
-
-            expect(CanvasHelper.getNeighbors(a, 0, 1)).toEqual([
-                1, 2,
-                4, 5,
-                7, 8
-            ]);
-
-            expect(CanvasHelper.getNeighbors(a, 0, 2)).toEqual([
-                4, 5,
-                7, 8
-            ]);
+            expect(CanvasHelper.getNeighbors(a, 0, 0)).toEqual([1, 2, 4, 5]);
+            expect(CanvasHelper.getNeighbors(a, 0, 1)).toEqual([1, 2, 4, 5, 7, 8]);
+            expect(CanvasHelper.getNeighbors(a, 0, 2)).toEqual([4, 5, 7, 8]);
         });
 
         it('should work properly at second column', function () {
-            expect(CanvasHelper.getNeighbors(a, 1, 0)).toEqual([
-                1, 2, 3,
-                4, 5, 6
-            ]);
-
-            expect(CanvasHelper.getNeighbors(a, 1, 1)).toEqual([
-                1, 2, 3,
-                4, 5, 6,
-                7, 8, 9
-            ]);
-
-            expect(CanvasHelper.getNeighbors(a, 1, 2)).toEqual([
-                4, 5, 6,
-                7, 8, 9
-            ]);
+            expect(CanvasHelper.getNeighbors(a, 1, 0)).toEqual([1, 2, 3, 4, 5, 6]);
+            expect(CanvasHelper.getNeighbors(a, 1, 1)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 1, 2)).toEqual([4, 5, 6, 7, 8, 9]);
         });
 
         it('should work properly at third column', function () {
-            expect(CanvasHelper.getNeighbors(a, 2, 0)).toEqual([
-                2, 3,
-                5, 6
-            ]);
+            expect(CanvasHelper.getNeighbors(a, 2, 0)).toEqual([2, 3, 5, 6]);
+            expect(CanvasHelper.getNeighbors(a, 2, 1)).toEqual([2, 3, 5, 6, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 2, 2)).toEqual([5, 6, 8, 9]);
+        });
 
-            expect(CanvasHelper.getNeighbors(a, 2, 1)).toEqual([
-                2, 3,
-                5, 6,
-                8, 9
-            ]);
+        it('should work properly when change figure to square', function () {
+            expect(CanvasHelper.getNeighbors(a, 0, 0, 'square')).toEqual([1, 2, 4, 5]);
+            expect(CanvasHelper.getNeighbors(a, 0, 1, 'square')).toEqual([1, 2, 4, 5, 7, 8]);
+            expect(CanvasHelper.getNeighbors(a, 0, 2, 'square')).toEqual([4, 5, 7, 8]);
+            expect(CanvasHelper.getNeighbors(a, 1, 0, 'square')).toEqual([1, 2, 3, 4, 5, 6]);
+            expect(CanvasHelper.getNeighbors(a, 1, 1, 'square')).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 1, 2, 'square')).toEqual([4, 5, 6, 7, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 2, 0, 'square')).toEqual([2, 3, 5, 6]);
+            expect(CanvasHelper.getNeighbors(a, 2, 1, 'square')).toEqual([2, 3, 5, 6, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 2, 2, 'square')).toEqual([5, 6, 8, 9]);
+        });
 
-            expect(CanvasHelper.getNeighbors(a, 2, 2)).toEqual([
-                5, 6,
-                8, 9
-            ]);
+        it('should work properly when change figure to diamond', function () {
+            expect(CanvasHelper.getNeighbors(a, 0, 0, 'diamond')).toEqual([1, 2, 4]);
+            expect(CanvasHelper.getNeighbors(a, 0, 1, 'diamond')).toEqual([1, 4, 5, 7]);
+            expect(CanvasHelper.getNeighbors(a, 0, 2, 'diamond')).toEqual([4, 7, 8]);
+            expect(CanvasHelper.getNeighbors(a, 1, 0, 'diamond')).toEqual([1, 2, 3, 5]);
+            expect(CanvasHelper.getNeighbors(a, 1, 1, 'diamond')).toEqual([2, 4, 5, 6, 8]);
+            expect(CanvasHelper.getNeighbors(a, 1, 2, 'diamond')).toEqual([5, 7, 8, 9]);
+            expect(CanvasHelper.getNeighbors(a, 2, 0, 'diamond')).toEqual([2, 3, 6]);
+            expect(CanvasHelper.getNeighbors(a, 2, 1, 'diamond')).toEqual([3, 5, 6, 9]);
+            expect(CanvasHelper.getNeighbors(a, 2, 2, 'diamond')).toEqual([6, 8, 9]);
+        });
+
+        it('should work properly when change figure to not diamond and not square', function () {
+            expect(CanvasHelper.getNeighbors(a, 2, 0, 'xxx')).toEqual([]);
+            expect(CanvasHelper.getNeighbors(a, 2, 1, 'xxx')).toEqual([]);
+            expect(CanvasHelper.getNeighbors(a, 2, 2, 'xxx')).toEqual([]);
         });
     });
 
