@@ -112,7 +112,6 @@
 
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask,
-                        type: type,
                         scale: scale
                     });
                 } else {
@@ -126,7 +125,6 @@
                     $text.value = $text.value || 0;
                 });
 
-                var type = $select.value.replace(/[0-9\-]/g, '');
                 var mask = fetch();
                 var scale = getScale();
 
@@ -136,7 +134,6 @@
 
                 root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                     mask: mask,
-                    type: type,
                     scale: scale
                 });
             }

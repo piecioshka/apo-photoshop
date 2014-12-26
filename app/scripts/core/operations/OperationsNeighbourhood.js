@@ -7,27 +7,21 @@
             var ctx = can.ctx;
             var mask = params.mask;
             var sum = root.Utilities.sum(mask) || 1;
-            var type = params.type;
             var scale = params.scale;
 
-            console.log('params', params);
-
+            var uniquePixelsChannels = can.getUniqueChannels().sort(root.Utilities.sortNumbers);
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
 
-            // Add border to matrix of pixels.
-            // var pixelsWithBorder = root.CanvasHelper.completePixelList(_.toArray(pixelsChannelsData), can.settings.width, can.settings.height, 0);
-
+            // Get only first channel per each pixel from image.
             var pixelsArray = can.getOneChannelOfPixels();
-            // console.log('pixelsArray', pixelsArray);
 
-            // Convert list of pixels to matrix. Quicker calculation.
+            // Convert list of pixels to matrix for quicker calculation.
             var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
-            // console.log('pixelsMatrix', pixelsMatrix);
 
+            // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, 0);
-            // console.log('pixelsWithBorder', pixelsWithBorder);
 
             var i, color, x, y, dimensions;
 
@@ -62,32 +56,33 @@
 
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
-
-                // Alpha channel sets to opaque.
-                // pixelsChannelsData[(i * 4) + 3] = 255;
             }
 
             if (scale === 'proportion') {
-                var min = Math.MAX_VALUE;
-                var max = Math.MIN_VALUE;
+                var min = _.first(uniquePixelsChannels);
+                var max = _.last(uniquePixelsChannels);
 
                 for (i = 0; i < len / 4; i++) {
                     color = pixelsChannelsData[(i * 4)];
 
-                    if (color > max) max = color;
-                    if (color < min) min = color;
+                    if (color > max) {
+                        max = color;
+                    } else if (color < min) {
+                        min = color;
+                    }
                 }
 
                 var difference = max - min;
 
                 for (i = 0; i < len / 4; i++) {
                     color = pixelsChannelsData[(i * 4)];
+                    color = parseInt(((color - min) / difference) * 255, 10);
 
-                    var nval = ((color - min) / difference) * 255;
-                    color = parseInt(nval, 10);
-
-                    if (color < 0) color = 0;
-                    if (color > 255) color = 255;
+                    if (color < 0) {
+                        color = 0;
+                    } else if (color > 255) {
+                        color = 255;
+                    }
                 }
             }
 

@@ -147,7 +147,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Po najechaniu na histogram, prezentować pod nim: nr kanały szarości i ilość wystąpień (oraz dodać paletę kolorów).
 - [x] Lista kanałów szarości do modyfikacji (UOP).
 - [x] Wybieranie operacji arytmetycznych oraz logicznych na podstawie otwartych okien, a nie wybrania kilku obrazów.
-- [ ] Wygładzanie: maska 1 (źle).
+- [x] Wygładzanie: maska 1 (źle).
 - [ ] Do zaliczenia (ptak morf, i ptak morf bin):
     - [ ] Z 4 ćw. zadania (morfologiczne).
     - [ ] Algorytm żółwia.
