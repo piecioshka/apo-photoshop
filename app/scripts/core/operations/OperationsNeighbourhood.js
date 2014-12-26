@@ -50,28 +50,15 @@
                 // Update color.
                 color = temp;
 
-
-                /*
-                switch(scale) {
-                    case 'proportion':
-                        if (min == null || color < min) {
-                            min = color;
-                        }
-                        if (max == null || color > max) {
-                            max = color;
-                        }
-                        break;
+                switch (scale) {
                     case 'ternary':
                         color = (color > 255 ? 255 : (color < 0 ? 0 : 127));
                         break;
+
                     case 'cutting':
-                        color = Math.max(0, Math.min(255, color));
+                        color = root.Utilities.intToByte(color);
                         break;
-                */
-
-
-                // Save protection (0 - 255).
-                color = root.Utilities.intToByte(color);
+                }
 
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
@@ -80,28 +67,29 @@
                 // pixelsChannelsData[(i * 4) + 3] = 255;
             }
 
-            /*
             if (scale === 'proportion') {
+                var min = Math.MAX_VALUE;
+                var max = Math.MIN_VALUE;
+
                 for (i = 0; i < len / 4; i++) {
                     color = pixelsChannelsData[(i * 4)];
-                    dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
 
-                    x = dimensions.x;
-                    y = dimensions.y;
+                    if (color > max) max = color;
+                    if (color < min) min = color;
+                }
 
-                    int sum = 0;
+                var difference = max - min;
 
-                    for (Point offset : neighbors3x3) {
-                        sum += imgModelNoFilter.getPixelValue((int)(x + offset.getX()),(int)(y + offset.getY())) * mask[1+((int)offset.getY())][1+((int)offset.getX())];
-                    }
+                for (i = 0; i < len / 4; i++) {
+                    color = pixelsChannelsData[(i * 4)];
 
-                    int color = sum/maskSum;
-                    color = (int) (((double)color-(double)min)/((double)max-(double)min)*255.0);
+                    var nval = ((color - min) / difference) * 255;
+                    color = parseInt(nval, 10);
 
-                    imgModel.setPixelValue(x, y, color);
+                    if (color < 0) color = 0;
+                    if (color > 255) color = 255;
                 }
             }
-            */
 
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);
