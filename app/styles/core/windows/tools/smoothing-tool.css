@@ -39,6 +39,12 @@
     margin: 10px auto 0;
 }
 
+.smoothing-tool-preview-divisor-label {
+    text-align: center;
+    display: block;
+    margin: 10px 0 0 0;
+}
+
 .smoothing-tool-scale label {
     display: block;
 }

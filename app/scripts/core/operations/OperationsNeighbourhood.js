@@ -6,50 +6,102 @@
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var mask = params.mask;
+            var sum = root.Utilities.sum(mask) || 1;
             var type = params.type;
+            var scale = params.scale;
 
             console.log('params', params);
 
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
+            var len = pixelsChannelsData.length;
 
-            // Copy to array all channels. References was destroyed.
+            // Add border to matrix of pixels.
+            // var pixelsWithBorder = root.CanvasHelper.completePixelList(_.toArray(pixelsChannelsData), can.settings.width, can.settings.height, 0);
+
             var pixelsArray = can.getOneChannelOfPixels();
+            // console.log('pixelsArray', pixelsArray);
 
             // Convert list of pixels to matrix. Quicker calculation.
             var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+            // console.log('pixelsMatrix', pixelsMatrix);
 
-            // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, 0);
+            // console.log('pixelsWithBorder', pixelsWithBorder);
 
-            var i = 0;
+            var i, color, x, y, dimensions;
 
-            // TODO(piecioshka): przerobić na for po wszystkich pikselach
-            _.each(pixelsMatrix, function (row, y) {
-                _.each(row, function (color, x) {
-                    // console.log(x, y);
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
+                dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
 
-                    var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1);
+                x = dimensions.x;
+                y = dimensions.y;
 
-                    var temp = 0;
+                var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1);
 
-                    // Multiply mask with neighbours.
-                    _.each(ne, function (n, index) {
-                        temp += n * mask[index];
-                    });
+                var temp = 0;
 
-                    // Update color.
-                    color = temp;
-
-                    // Save protection (0 - 255).
-                    color = root.Utilities.intToByte(color);
-
-                    // Update each channel (RGB) of pixel. Not modify channel alpha.
-                    pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
-
-                    i++;
+                // Multiply mask with neighbours.
+                _.each(ne, function (n, index) {
+                    temp += n * mask[index] / sum;
                 });
-            });
+
+                // Update color.
+                color = temp;
+
+
+                /*
+                switch(scale) {
+                    case 'proportion':
+                        if (min == null || color < min) {
+                            min = color;
+                        }
+                        if (max == null || color > max) {
+                            max = color;
+                        }
+                        break;
+                    case 'ternary':
+                        color = (color > 255 ? 255 : (color < 0 ? 0 : 127));
+                        break;
+                    case 'cutting':
+                        color = Math.max(0, Math.min(255, color));
+                        break;
+                */
+
+
+                // Save protection (0 - 255).
+                color = root.Utilities.intToByte(color);
+
+                // Update each channel (RGB) of pixel. Not modify channel alpha.
+                pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+
+                // Alpha channel sets to opaque.
+                // pixelsChannelsData[(i * 4) + 3] = 255;
+            }
+
+            /*
+            if (scale === 'proportion') {
+                for (i = 0; i < len / 4; i++) {
+                    color = pixelsChannelsData[(i * 4)];
+                    dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
+
+                    x = dimensions.x;
+                    y = dimensions.y;
+
+                    int sum = 0;
+
+                    for (Point offset : neighbors3x3) {
+                        sum += imgModelNoFilter.getPixelValue((int)(x + offset.getX()),(int)(y + offset.getY())) * mask[1+((int)offset.getY())][1+((int)offset.getX())];
+                    }
+
+                    int color = sum/maskSum;
+                    color = (int) (((double)color-(double)min)/((double)max-(double)min)*255.0);
+
+                    imgModel.setPixelValue(x, y, color);
+                }
+            }
+            */
 
             // Update <canvas>
             ctx.putImageData(pixelsChannels, 0, 0);

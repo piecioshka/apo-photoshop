@@ -59,23 +59,27 @@
 
             var $select = self.$content.querySelector('.smoothing-tool-options select');
             var $preview = self.$content.querySelector('.smoothing-tool-preview');
-            var $textes = $preview.querySelectorAll('input[type="text"]');
+            var $scaleArea = self.$content.querySelector('.smoothing-tool-scale');
+            var $scale = $scaleArea.querySelectorAll('input[type="radio"]');
+
+            var $divisor = $preview.querySelector('.smoothing-tool-preview-divisor');
+            var $textes = $preview.querySelectorAll('fieldset input[type="text"]');
             var $submit = $preview.querySelector('input[type="submit"]');
 
             function disable(status) {
                 _.each($textes, function ($text) {
                     $text.disabled = !!status;
-                    $text.classList[status ? 'add' : 'remove']('disabled');
                 });
 
                 $submit.disabled = !!status;
-                $submit.classList[status ? 'add' : 'remove']('disabled');
             }
 
             function put(mask) {
                 _.each($textes, function ($text, index) {
                     $text.value = mask[index];
                 });
+
+                $divisor.value = root.Utilities.sum(mask) || 1;
             }
 
             function fetch() {
@@ -88,22 +92,28 @@
                 return mask;
             }
 
-            function handleChosenMask(evt) {
-                var type, mask;
-                var v = evt.target.value;
+            function getScale() {
+                return _.findWhere($scale, { checked: true }).value;
+            }
+
+            function handleChosenMask() {
+                var type, mask, scale;
+                var v = $select.value;
 
                 self.contextWindow.setPrimaryState();
 
                 if (v !== '-') {
                     type = v.replace(/[0-9\-]/g, '');
                     mask = SmoothingTool['MASK_' + type.toUpperCase()][v.replace(/[^0-9]/g, '')];
+                    scale = getScale();
 
                     disable(true);
                     put(mask);
 
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask,
-                        type: type
+                        type: type,
+                        scale: scale
                     });
                 } else {
                     disable(false);
@@ -111,18 +121,28 @@
             }
 
             function handleCustomMask() {
+                // Set default value as '0'.
+                _.each($textes, function ($text) {
+                    $text.value = $text.value || 0;
+                });
+
                 var type = $select.value.replace(/[0-9\-]/g, '');
                 var mask = fetch();
+                var scale = getScale();
+
+                $divisor.value = root.Utilities.sum(mask) || 1;
 
                 self.contextWindow.setPrimaryState();
 
                 root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                     mask: mask,
-                    type: type
+                    type: type,
+                    scale: scale
                 });
             }
 
             $select.addEventListener('change', handleChosenMask);
+            _.invoke($scale, 'addEventListener', 'click', handleChosenMask);
             $submit.addEventListener('click', handleCustomMask);
         });
     };

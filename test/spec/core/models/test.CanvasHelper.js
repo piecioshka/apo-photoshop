@@ -87,4 +87,36 @@ describe('CanvasHelper', function () {
             ]);
         });
     });
+
+    it('convertPositionIndexToXY', function () {
+        // 1, 1, 1, 1, 1, 1,
+        // 2, 2, 2, 2, 2, 2,
+        // 3, 3, 3, 3, 3, 3,
+        // 4, 4, 4, 4, 4, 4
+
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 0)).toEqual({ x: 0, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 1)).toEqual({ x: 1, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 2)).toEqual({ x: 2, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 3)).toEqual({ x: 3, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 4)).toEqual({ x: 4, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 5)).toEqual({ x: 5, y: 0 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 6)).toEqual({ x: 0, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 7)).toEqual({ x: 1, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 8)).toEqual({ x: 2, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 9)).toEqual({ x: 3, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 10)).toEqual({ x: 4, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 11)).toEqual({ x: 5, y: 1 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 12)).toEqual({ x: 0, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 13)).toEqual({ x: 1, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 14)).toEqual({ x: 2, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 15)).toEqual({ x: 3, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 16)).toEqual({ x: 4, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 17)).toEqual({ x: 5, y: 2 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 18)).toEqual({ x: 0, y: 3 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 19)).toEqual({ x: 1, y: 3 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 20)).toEqual({ x: 2, y: 3 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 21)).toEqual({ x: 3, y: 3 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 22)).toEqual({ x: 4, y: 3 });
+        expect(CanvasHelper.convertPositionIndexToXY(6, 2, 23)).toEqual({ x: 5, y: 3 });
+    });
 });

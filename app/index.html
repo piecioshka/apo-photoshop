@@ -214,6 +214,12 @@
                         </tr>
                     </table>
                 </fieldset>
+
+                <label class="smoothing-tool-preview-divisor-label">
+                    Dzielnik
+                    <input class="smoothing-tool-preview-divisor disabled" type="text" disabled="disabled">
+                </label>
+
                 <input type="submit" value="Zaktualizuj">
             </div>
 
@@ -221,13 +227,13 @@
                 <fieldset>
                     <legend>Metody skalowania</legend>
                     <label>
-                        <input type="radio" name="smoothing-tool-scale">Proporcjonalna
+                        <input type="radio" name="smoothing-tool-scale" value="proportion" checked="checked">Proporcjonalna
                     </label>
                     <label>
-                        <input type="radio" name="smoothing-tool-scale">Trójwartościowa
+                        <input type="radio" name="smoothing-tool-scale" value="ternary">Trójwartościowa
                     </label>
                     <label>
-                        <input type="radio" name="smoothing-tool-scale">Obcinająca
+                        <input type="radio" name="smoothing-tool-scale" value="cutting">Obcinająca
                     </label>
                 </fieldset>
             </div>

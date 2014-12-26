@@ -67,6 +67,12 @@
             } else {
                 return 0;
             }
+        },
+
+        sum: function (array) {
+            return _.reduce(array, function (memo, i) {
+                return memo + i;
+            }, 0);
         }
 
     };

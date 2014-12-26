@@ -100,7 +100,7 @@
             var max = pixelsArray.length - 1;
 
             function tryAdd(point) {
-                if (point && point !== -1) {
+                if (_.isNumber(point) && point !== -1) {
                     neighbors.push(point);
                 }
             }
@@ -160,6 +160,13 @@
             }
 
             return neighbors;
+        },
+
+        convertPositionIndexToXY: function (width, height, i) {
+            return {
+                x: i % width,
+                y: parseInt(i / width, 10)
+            };
         }
 
     };
