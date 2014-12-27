@@ -338,32 +338,40 @@
         var flatteningHistogramOperationsMenu = new gui.Menu();
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-            root.OperationsFlatteningHistogram.flatteningHistogramMedium(activeWindow);
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsFlatteningHistogram.flatteningHistogramMedium(activeWindow);
+            });
         });
         flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramMediumMethodMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramRandomMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-            root.OperationsFlatteningHistogram.flatteningHistogramRandom(activeWindow);
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsFlatteningHistogram.flatteningHistogramRandom(activeWindow);
+            });
         });
         flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramRandomMethodMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-            root.OperationsFlatteningHistogram.flatteningHistogramNeighbourhood(activeWindow);
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsFlatteningHistogram.flatteningHistogramNeighbourhood(activeWindow);
+            });
         });
         flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramCustomMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-            root.OperationsFlatteningHistogram.flatteningHistogramCustom(activeWindow);
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsFlatteningHistogram.flatteningHistogramCustom(activeWindow);
+            });
         });
         flatteningHistogramOperationsMenu.append(this.operationsFlatteningHistogramCustomMethodMenuItem);
 
@@ -378,8 +386,10 @@
         var onePointOperationsMenu = new gui.Menu();
 
         this.operationsOnePointNegativeMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-            root.OperationsOnePoint.onePointNegative(activeWindow);
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsOnePoint.onePointNegative(activeWindow);
+            });
         });
         onePointOperationsMenu.append(this.operationsOnePointNegativeMenuItem);
 
@@ -480,10 +490,11 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMediumMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            root.OperationsNeighbourhood.sharpen(activeWindow, {
-                type: 'med'
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsNeighbourhood.sharpen(activeWindow, {
+                    type: 'med'
+                });
             });
         });
         neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMediumMenuItem);
@@ -491,10 +502,11 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMinimalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            root.OperationsNeighbourhood.sharpen(activeWindow, {
-                type: 'min'
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsNeighbourhood.sharpen(activeWindow, {
+                    type: 'min'
+                });
             });
         });
         neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMinimalMenuItem);
@@ -502,10 +514,11 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMaximalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL'), function () {
-            var activeWindow = root.App.windowManager.getActiveWindow();
-
-            root.OperationsNeighbourhood.sharpen(activeWindow, {
-                type: 'max'
+            new Operation(function () {
+                var activeWindow = root.App.windowManager.getActiveWindow();
+                root.OperationsNeighbourhood.sharpen(activeWindow, {
+                    type: 'max'
+                });
             });
         });
         neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSharpenMaximalMenuItem);
@@ -533,7 +546,9 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
-                root.TurtleAlgorithm(activeWindow);
+                new Operation(function () {
+                    root.TurtleAlgorithm(activeWindow);
+                });
             }
         }, 'Ctrl', 'L');
 

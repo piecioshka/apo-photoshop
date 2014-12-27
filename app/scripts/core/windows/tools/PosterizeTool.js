@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var PosterizeTool = function PosterizeTool(contextWindow, params) {
-        // console.info('new PosterizeTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,17 +52,19 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $range = self.$content.querySelector('.posterize-tool-regulation-range');
             var $value = self.$content.querySelector('.posterize-tool-regulation-value');
 
             function setupPosterize(levels) {
-                // Restore image to origin.
-                self.contextWindow.setPrimaryState();
+                new Operation(function () {
+                    // Restore image to origin.
+                    self.contextWindow.setPrimaryState();
 
-                // Apply posterize to image.
-                root.OperationsOnePoint.onePointPosterize(self.contextWindow, {
-                    value: levels
+                    // Apply posterize to image.
+                    root.OperationsOnePoint.onePointPosterize(self.contextWindow, {
+                        value: levels
+                    });
                 });
             }
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        });
+        }, 0);
     };
 
     PosterizeTool.DEFAULT_LEVEL = 128;

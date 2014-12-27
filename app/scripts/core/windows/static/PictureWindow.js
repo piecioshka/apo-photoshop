@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var PictureWindow = function PictureWindow(params) {
-        // console.info('new PictureWindow', params);
-
         this.settings = {
             picture: null
         };
@@ -185,10 +183,10 @@
             ctx.fillRect(x, 0, w, y);
 
             // Firstly update <canvas>, next update text labels.
-            requestAnimationFrame(function () {
+            setTimeout(function () {
                 $color.innerHTML = 'Kolor: <b>#' + x + '</b> <i style="background: rgb(' + x + ', ' + x + ', ' + x + ')"></i>';
                 $levels.innerHTML = 'Liczba: <b>' + hist[x] + '</b> (norm: <b>' + histNorm[x] + '</b>)';
-            });
+            }, 0);
         }
 
         // Add event for move cursor above <canvas>

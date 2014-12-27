@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var ArithmeticalLogicalTool = function ArithmeticalLogicalTool() {
-        // console.info('new ArithmeticalLogicalTool');
-
         this.$placeHolder = doc.querySelector(root.WindowManager.RENDER_AREA_ID);
         this.$window = null;
         this.$bar = null;
@@ -50,7 +48,7 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $selectOperation = self.$content.querySelector('select.arithmetical-logical-tool-operations');
             var $selectFirst = self.$content.querySelector('select.arithmetical-logical-tool-first');
             var $selectSecond = self.$content.querySelector('select.arithmetical-logical-tool-second');
@@ -127,10 +125,12 @@
                 canvas.setHeight(newHeight);
 
                 function runOperation() {
-                    root.OperationsOnePoint.onePointArithmeticalLogical(resultWindow, {
-                        operation: getOperationSelect(),
-                        firstPicture: firstPicture,
-                        secondPicture: secondPicture
+                    new Operation(function () {
+                        root.OperationsOnePoint.onePointArithmeticalLogical(resultWindow, {
+                            operation: getOperationSelect(),
+                            firstPicture: firstPicture,
+                            secondPicture: secondPicture
+                        });
                     });
                 }
 
@@ -153,7 +153,7 @@
                     runOperation();
                 }
             });
-        });
+        }, 0);
     };
 
     // Exports `ArithmeticalLogicalTool`.

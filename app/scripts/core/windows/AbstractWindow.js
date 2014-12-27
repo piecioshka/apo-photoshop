@@ -137,7 +137,7 @@
         this.$title.classList.add('sky-hide');
 
         // As quickly as engine can render.
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var diff = self.$bar.offsetWidth - self.$buttons.offsetWidth - BUTTONS_MARGIN;
 
             if (diff < self.$title.offsetWidth) {
@@ -145,7 +145,7 @@
             }
 
             self.$title.classList.remove('sky-hide');
-        });
+        }, 0);
     };
 
     AbstractWindow.prototype.getTitle = function () {
@@ -163,9 +163,9 @@
             hook: this.$bar
         });
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             self.emit(AbstractWindow.EVENTS.RENDER_WINDOW);
-        });
+        }, 0);
     };
 
     AbstractWindow.prototype.removeDOM = function () {

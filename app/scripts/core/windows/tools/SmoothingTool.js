@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var SmoothingTool = function SmoothingTool(contextWindow, params) {
-        // console.info('new SmoothingTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,7 +52,7 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             self.setRigidWidth();
 
             var $select = self.$content.querySelector('.smoothing-tool-options select');
@@ -97,51 +95,55 @@
             }
 
             function handleChosenMask() {
-                var type, mask, scale;
-                var v = $select.value;
+                new Operation(function () {
+                    var type, mask, scale;
+                    var v = $select.value;
 
-                self.contextWindow.setPrimaryState();
+                    self.contextWindow.setPrimaryState();
 
-                if (v !== '-') {
-                    type = v.replace(/[0-9\-]/g, '');
-                    mask = SmoothingTool['MASK_' + type.toUpperCase()][v.replace(/[^0-9]/g, '')];
-                    scale = getScale();
+                    if (v !== '-') {
+                        type = v.replace(/[0-9\-]/g, '');
+                        mask = SmoothingTool['MASK_' + type.toUpperCase()][v.replace(/[^0-9]/g, '')];
+                        scale = getScale();
 
-                    disable(true);
-                    put(mask);
+                        disable(true);
+                        put(mask);
+
+                        root.OperationsNeighbourhood.smoothing(self.contextWindow, {
+                            mask: mask,
+                            scale: scale
+                        });
+                    } else {
+                        disable(false);
+                    }
+                });
+            }
+
+            function handleCustomMask() {
+                new Operation(function () {
+                    // Set default value as '0'.
+                    _.each($textes, function ($text) {
+                        $text.value = $text.value || 0;
+                    });
+
+                    var mask = fetch();
+                    var scale = getScale();
+
+                    $divisor.value = root.Utilities.sum(mask) || 1;
+
+                    self.contextWindow.setPrimaryState();
 
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask,
                         scale: scale
                     });
-                } else {
-                    disable(false);
-                }
-            }
-
-            function handleCustomMask() {
-                // Set default value as '0'.
-                _.each($textes, function ($text) {
-                    $text.value = $text.value || 0;
-                });
-
-                var mask = fetch();
-                var scale = getScale();
-
-                $divisor.value = root.Utilities.sum(mask) || 1;
-
-                self.contextWindow.setPrimaryState();
-
-                root.OperationsNeighbourhood.smoothing(self.contextWindow, {
-                    mask: mask,
-                    scale: scale
                 });
             }
 
             $select.addEventListener('change', handleChosenMask);
             _.invoke($scale, 'addEventListener', 'click', handleChosenMask);
             $submit.addEventListener('click', handleCustomMask);
-        });
+        }, 0);
     };
 
     SmoothingTool.MASK_FD = [

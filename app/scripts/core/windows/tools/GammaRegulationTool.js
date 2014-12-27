@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var GammaRegulationTool = function GammaRegulationTool(contextWindow, params) {
-        // console.info('new GammaRegulationTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,17 +52,19 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $range = self.$content.querySelector('.gamma-regulation-tool-regulation-range');
             var $value = self.$content.querySelector('.gamma-regulation-tool-regulation-value');
 
             function setupContrastRegulation(level) {
-                // Restore image to origin.
-                self.contextWindow.setPrimaryState();
+                new Operation(function () {
+                    // Restore image to origin.
+                    self.contextWindow.setPrimaryState();
 
-                // Apply gamma-regulation to image.
-                root.OperationsOnePoint.onePointGammaRegulation(self.contextWindow, {
-                    value: level
+                    // Apply gamma-regulation to image.
+                    root.OperationsOnePoint.onePointGammaRegulation(self.contextWindow, {
+                        value: level
+                    });
                 });
             }
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        });
+        }, 0);
     };
 
     GammaRegulationTool.DEFAULT_LEVEL = 1;

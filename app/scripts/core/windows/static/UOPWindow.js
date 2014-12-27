@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var UOPWindow = function UOPWindow(contextWindow, params) {
-        // console.info('new UOPWindow', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -64,7 +62,7 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $inputs = self.$content.querySelectorAll('input[type="number"]');
 
             function getColors() {
@@ -75,21 +73,23 @@
 
             _.each($inputs, function ($input) {
                 $input.addEventListener('change', function () {
-                    var color = $input.value;
-                    var negativeColor = 255 - $input.value;
-                    var colors = getColors();
+                    new Operation(function () {
+                        var color = $input.value;
+                        var negativeColor = 255 - $input.value;
+                        var colors = getColors();
 
-                    root.OperationsOnePoint.onePointUOP(self.contextWindow, {
-                        colors: colors,
-                        copy: self.settings.picture
+                        root.OperationsOnePoint.onePointUOP(self.contextWindow, {
+                            colors: colors,
+                            copy: self.settings.picture
+                        });
+
+                        // Update color of changed table cell.
+                        $input.parentNode.style.background = 'rgb(' + color + ', ' + color + ', ' + color + ')';
+                        $input.parentNode.style.color = 'rgb(' + negativeColor + ', ' + negativeColor + ', ' + negativeColor + ')';
                     });
-
-                    // Update color of changed table cell.
-                    $input.parentNode.style.background = 'rgb(' + color + ', ' + color + ', ' + color + ')';
-                    $input.parentNode.style.color = 'rgb(' + negativeColor + ', ' + negativeColor + ', ' + negativeColor + ')';
                 });
             });
-        });
+        }, 0);
     };
 
     // Exports `UOPWindow`.

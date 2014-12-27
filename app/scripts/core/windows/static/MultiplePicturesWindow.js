@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var MultiplePicturesWindow = function (params) {
-        // console.info('new MultiplePicturesWindow', params);
-
         this.settings = {
             pictures: []
         };

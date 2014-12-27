@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var ThresholdTool = function ThresholdTool(contextWindow, params) {
-        // console.info('new ThresholdTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,17 +52,19 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $range = self.$content.querySelector('.threshold-tool-regulation-range');
             var $value = self.$content.querySelector('.threshold-tool-regulation-value');
 
             function setupThreshold(hold) {
-                // Restore image to origin.
-                self.contextWindow.setPrimaryState();
+                new Operation(function () {
+                    // Restore image to origin.
+                    self.contextWindow.setPrimaryState();
 
-                // Apply threshold to image.
-                root.OperationsOnePoint.onePointThreshold(self.contextWindow, {
-                    value: hold
+                    // Apply threshold to image.
+                    root.OperationsOnePoint.onePointThreshold(self.contextWindow, {
+                        value: hold
+                    });
                 });
             }
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        });
+        }, 0);
     };
 
     ThresholdTool.DEFAULT_HOLDER = 128;

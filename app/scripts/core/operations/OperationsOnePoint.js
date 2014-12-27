@@ -5,8 +5,6 @@
 
         // Operacje -> Jednopunktowe -> Odwrotność (negacja)
         onePointNegative: function (contextWindow) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -32,14 +30,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Progowanie
         onePointThreshold: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -63,14 +57,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Redukcja poziomów szarości
         onePointPosterize: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -97,14 +87,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Rozciąganie
         onePointStretching: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -135,14 +121,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja jasnością
         onePointBrightnessRegulation: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -168,14 +150,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja kontrastem
         onePointContrastRegulation: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -207,14 +185,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Regulacja korekcją gamma
         onePointGammaRegulation: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -247,14 +221,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Jednopunktowe -> Arytmetyczne i Logiczne
         onePointArithmeticalLogical: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -375,14 +345,10 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Okno -> UOP
         onePointUOP: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var canCopy = params.copy.canvas;
 
@@ -405,8 +371,6 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         }
     };
 

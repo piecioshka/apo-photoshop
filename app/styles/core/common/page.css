@@ -16,11 +16,11 @@ body:after {
     right: 0;
     bottom: 0;
     margin: auto;
-    width: 500px;
-    height: 70px;
+    width: 490px;
+    height: 60px;
     text-align: center;
     content: "APO: Photoshop";
-    font-size: 60px;
+    font-size: 50px;
     color: #fff;
     text-shadow: 1px 1px 3px #000;
     z-index: 1;

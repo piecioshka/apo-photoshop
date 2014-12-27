@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var MorphologicalTool = function MorphologicalTool(contextWindow, params) {
-        // console.info('new MorphologicalTool');
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,7 +52,7 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $type = self.$content.querySelectorAll('fieldset:nth-child(1) input[type="radio"]');
             var $figure = self.$content.querySelectorAll('fieldset:nth-child(2) input[type="radio"]');
 
@@ -69,23 +67,25 @@
             }
 
             function callMorphologicalAction() {
-                var type = getSelectedType();
-                var figure = getSelectedFigure();
+                new Operation(function () {
+                    var type = getSelectedType();
+                    var figure = getSelectedFigure();
 
-                if (!type || !figure) {
-                    return;
-                }
+                    if (!type || !figure) {
+                        return;
+                    }
 
-                self.contextWindow.setPrimaryState();
+                    self.contextWindow.setPrimaryState();
 
-                root.OperationsMorphological[type](self.contextWindow, {
-                    figure: figure
+                    root.OperationsMorphological[type](self.contextWindow, {
+                        figure: figure
+                    });
                 });
             }
 
             _.invoke($type, 'addEventListener', 'click', callMorphologicalAction);
             _.invoke($figure, 'addEventListener', 'click', callMorphologicalAction);
-        });
+        }, 0);
     };
 
     // Exports `MorphologicalTool`.

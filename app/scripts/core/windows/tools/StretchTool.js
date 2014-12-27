@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var StretchTool = function StretchTool(contextWindow, params) {
-        // console.info('new StretchTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,7 +52,7 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $range1 = self.$content.querySelector('.stretch-tool-regulation-range-min');
             var $value1 = self.$content.querySelector('.stretch-tool-regulation-value-min');
 
@@ -62,15 +60,17 @@
             var $value2 = self.$content.querySelector('.stretch-tool-regulation-value-max');
 
             function setupPosterize(min, max) {
-                // Restore image to origin.
-                self.contextWindow.setPrimaryState();
+                new Operation(function () {
+                    // Restore image to origin.
+                    self.contextWindow.setPrimaryState();
 
-                // Apply stretch to image.
-                root.OperationsOnePoint.onePointStretching(self.contextWindow, {
-                    value: {
-                        min: min,
-                        max: max
-                    }
+                    // Apply stretch to image.
+                    root.OperationsOnePoint.onePointStretching(self.contextWindow, {
+                        value: {
+                            min: min,
+                            max: max
+                        }
+                    });
                 });
             }
 
@@ -97,7 +97,7 @@
             $value1.value = $range1.value = StretchTool.DEFAULT_MIN;
             $value2.value = $range2.value = StretchTool.DEFAULT_MAX;
             setupPosterize(StretchTool.DEFAULT_MIN, StretchTool.DEFAULT_MAX);
-        });
+        }, 0);
     };
 
     StretchTool.DEFAULT_MIN = 0;

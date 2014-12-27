@@ -3,8 +3,6 @@
 
     var OperationsMorphological = {
         erode: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var figure = params.figure;
@@ -46,13 +44,9 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         dilate: function (contextWindow, params) {
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var figure = params.figure;
@@ -94,8 +88,6 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         open: function () {

@@ -6,8 +6,6 @@
         _flatteningHistogram: function (contextWindow, method) {
             _.assert(_.isNumber(method), 'OperationsFlatteningHistogram#_flatteningHistogram: `method` is not a number');
 
-            root.Status.wait();
-
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -154,8 +152,6 @@
 
             // Inform picture window that is modified.
             contextWindow.setModifiedState();
-
-            root.Status.idle();
         },
 
         // Operacje -> Wygładzanie histogram -> Metoda średnich

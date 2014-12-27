@@ -2,8 +2,6 @@
     'use strict';
 
     var TurtleAlgorithm = function (contextWindow) {
-        root.Status.wait();
-
         var can = contextWindow.settings.picture.canvas;
         var width = can.settings.width;
         var height = can.settings.height;
@@ -15,13 +13,14 @@
         var found = false;
         var markColor = [255, 0, 0, 255];
 
-        var tab2 = new Array(width);
-        var w = _.clone(width);
-        while (w--) tab2[w] = new Array(height);
+        var tab2;
+        // Create two-dimension array.
+        (function (w) {
+            tab2 = new Array(w);
+            while (w--) tab2[w] = new Array(height);
+        }(width));
 
         // -------------------------------------------------------------------------------------------------------------
-
-        console.time('Turtle Algorithm');
 
         // Start finding first pixel which will be edge start point.
         for (y = 1; y < height - 1; y++) {
@@ -67,11 +66,7 @@
             }
         }
 
-        console.timeEnd('Turtle Algorithm');
-
         // -------------------------------------------------------------------------------------------------------------
-
-        console.time('Paint Edge');
 
         // Print founded pixels, which are path with edge.
         can.each(function (i, j) {
@@ -87,7 +82,7 @@
             var h = height - 1;
 
             function asyncPaint() {
-                requestAnimationFrame(function () {
+                setTimeout(function () {
                     if (tab2[w][h] === 255) {
                         can.setPixel(w, h, markColor);
                     }
@@ -101,19 +96,15 @@
                     if (h !== 0) {
                         asyncPaint();
                     }
-                });
+                }, 0);
             }
 
             asyncPaint();
         }());
         */
 
-        console.timeEnd('Paint Edge');
-
         // Inform picture window that is modified.
         contextWindow.setModifiedState();
-
-        root.Status.idle();
     };
 
     // Exports `TurtleAlgorithm`.

@@ -98,14 +98,10 @@
                 } else {
                     setDefaultState();
                 }
-
-                // console.warn('Window "%s" is activated!', params.win.getTitle());
             });
 
             wm.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
                 wm.removeWindow(params.win);
-
-                // console.warn('Window "%s" is closed!', params.win.getTitle());
 
                 // Activate last added window.
                 var lastAddedWindow = wm.getLast();

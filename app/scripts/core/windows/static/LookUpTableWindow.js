@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var LookUpTableWindow = function LookUpTableWindow(contextWindow, params) {
-        // console.info('new LookUpTableWindow', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null,

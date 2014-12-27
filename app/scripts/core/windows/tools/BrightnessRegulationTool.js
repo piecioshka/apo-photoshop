@@ -5,8 +5,6 @@
     var doc = root.document;
 
     var BrightnessRegulationTool = function BrightnessRegulationTool(contextWindow, params) {
-        // console.info('new BrightnessRegulationTool', params);
-
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -54,17 +52,19 @@
 
         this.appendContent(renderedTemplate);
 
-        requestAnimationFrame(function () {
+        setTimeout(function () {
             var $range = self.$content.querySelector('.brightness-regulation-tool-regulation-range');
             var $value = self.$content.querySelector('.brightness-regulation-tool-regulation-value');
 
             function setupBrightnessRegulation(level) {
-                // Restore image to origin.
-                self.contextWindow.setPrimaryState();
+                new Operation(function () {
+                    // Restore image to origin.
+                    self.contextWindow.setPrimaryState();
 
-                // Apply brightness-regulation to image.
-                root.OperationsOnePoint.onePointBrightnessRegulation(self.contextWindow, {
-                    value: level
+                    // Apply brightness-regulation to image.
+                    root.OperationsOnePoint.onePointBrightnessRegulation(self.contextWindow, {
+                        value: level
+                    });
                 });
             }
 
@@ -83,7 +83,7 @@
 
             // Set focus on main dynamic element.
             $range.focus();
-        });
+        }, 0);
     };
 
     BrightnessRegulationTool.DEFAULT_LEVEL = 0;
