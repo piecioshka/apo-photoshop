@@ -183,9 +183,17 @@
             _.assert(_.isNumber(width));
             _.assert(_.isNumber(height));
             _.assert(_.isNumber(i));
+            _.assert(i < width * height);
+
+            var x = i % width;
+            _.assert(x < width);
+
+            var y = parseInt(i / width, 10);
+            _.assert(y < height);
+
             return {
-                x: i % width,
-                y: parseInt(i / width, 10)
+                x: x,
+                y: y
             };
         },
 
@@ -194,6 +202,7 @@
             _.assert(_.isNumber(height));
             _.assert(_.isNumber(x));
             _.assert(_.isNumber(y));
+
             return width * y + x;
         }
 

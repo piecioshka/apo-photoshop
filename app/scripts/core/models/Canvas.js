@@ -266,6 +266,7 @@
         _.assert(_.isNumber(x));
         _.assert(_.isNumber(y));
         _.assert(_.isArray(color));
+        _.assert(_.contains([3, 4], _.size(color)));
 
         var pixelsChannels = this.getDataImage();
         var pixelsChannelsData = pixelsChannels.data;

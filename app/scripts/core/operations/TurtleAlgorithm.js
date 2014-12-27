@@ -8,14 +8,18 @@
         var width = can.settings.width;
         var height = can.settings.height;
 
-        var kier = 2;
-        var x = 0, y = 0;
-        var found = false;
         var startX, startY;
+        var kier = 2;
+        var x = 0;
+        var y = 0;
+        var found = false;
+        var markColor = [255, 0, 0, 255];
 
-        var tab2 = new Array(height);
-        var h = _.clone(height);
-        while (h--) tab2[h] = new Array(width);
+        var tab2 = new Array(width);
+        var w = _.clone(width);
+        while (w--) tab2[w] = new Array(height);
+
+        console.time('Turtle Algorithm');
 
         for (y = 1; y < height - 1; y++) {
             for (x = 1; x < width - 1; x++) {
@@ -48,30 +52,31 @@
             tab2[x][y] = 255;
 
             switch (kier) {
-                case 1:
-                    y--;
-                    break;
-                case 2:
-                    x++;
-                    break;
-                case 3:
-                    y++;
-                    break;
-                case 4:
-                    x--;
-                    break;
+                case 1: y--; break;
+                case 2: x++; break;
+                case 3: y++; break;
+                case 4: x--; break;
             }
 
-            if (x === startX && y === startY) {
+            if ((x === startX && y === startY) || x < 0 || y < 0) {
                 found = false;
             }
         }
 
+        console.timeEnd('Turtle Algorithm');
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        console.time('Paint Edge');
+
+        // Print founded pixels, which are path with edge.
         can.each(function (i, j) {
-            if (tab2[j][i] === 255) {
-                can.setPixel(j, i, [255, 0, 0, 255]);
+            if (tab2[i][j] === 255) {
+                can.setPixel(i, j, markColor);
             }
         });
+
+        console.timeEnd('Paint Edge');
 
         // Inform picture window that is modified.
         contextWindow.setModifiedState();
