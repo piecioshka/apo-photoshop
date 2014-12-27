@@ -19,8 +19,11 @@
         var w = _.clone(width);
         while (w--) tab2[w] = new Array(height);
 
+        // -------------------------------------------------------------------------------------------------------------
+
         console.time('Turtle Algorithm');
 
+        // Start finding first pixel which will be edge start point.
         for (y = 1; y < height - 1; y++) {
             for (x = 1; x < width - 1; x++) {
                 if ((can.getPixel(x - 1, y).b - can.getPixel(x, y).b) > 150) {
@@ -40,6 +43,7 @@
         startX = x;
         startY = y;
 
+        // When found first pixel, continue searching to find rest points.
         while (found == true) {
             if (can.getPixel(x, y).b < 150) {
                 kier--;
@@ -75,6 +79,34 @@
                 can.setPixel(i, j, markColor);
             }
         });
+
+        // Alternative version of painting edge. Is too slow - disabled.
+        /*
+        (function () {
+            var w = width - 1;
+            var h = height - 1;
+
+            function asyncPaint() {
+                requestAnimationFrame(function () {
+                    if (tab2[w][h] === 255) {
+                        can.setPixel(w, h, markColor);
+                    }
+                    w--;
+
+                    if (w === 0) {
+                        w = width - 1;
+                        h--;
+                    }
+
+                    if (h !== 0) {
+                        asyncPaint();
+                    }
+                });
+            }
+
+            asyncPaint();
+        }());
+        */
 
         console.timeEnd('Paint Edge');
 
