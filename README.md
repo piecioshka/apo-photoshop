@@ -1,4 +1,4 @@
-# <img src="/pictures/wsisiz.png" align="top" alt="WSISIZ" /> APO: Photoshop
+# <img src="/app/images/wsisiz.png" align="top" alt="WSISIZ" /> APO: Photoshop
 
 **Temat projektu:**
 
@@ -151,7 +151,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Do zaliczenia (ptak morf, i ptak morf bin):
     - [x] Z ćw. 4 - zadania (morfologiczne).
     - [x] Z ćw. 5 - algorytm żółwia.
-- [ ] Pomoc na Windowsie nie działa.
+- [x] Pomoc na Windowsie nie działa.
 - [ ] Resize okna (Duży obrazek w małym oknie programu).
 - [x] Problem z szerokimi obrazkami w filtracji liniowej (analizuje tylko kwadrat).
 
