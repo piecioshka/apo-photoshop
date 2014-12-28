@@ -233,9 +233,20 @@
     /**
      * Convert <canvas> to image with *.png extension.
      *
-     * @returns {Buffer}
+     * @returns {Image}
      */
     Canvas.prototype.toImage = function () {
+        var image = new Image();
+        image.src = this.$canvas.toDataURL('image/png');
+        return image;
+    };
+
+    /**
+     * Convert <canvas> to buffer.
+     *
+     * @returns {Buffer}
+     */
+    Canvas.prototype.toBuffer = function () {
         return new Buffer(this.$canvas.toDataURL('image/png').split(',')[1], 'base64');
     };
 

@@ -38,6 +38,7 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildUI();
+            this.setRigidWidth();
         });
 
         // Render window.
@@ -53,8 +54,6 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            self.setRigidWidth();
-
             var $select = self.$content.querySelector('.smoothing-tool-options select');
             var $preview = self.$content.querySelector('.smoothing-tool-preview');
             var $scaleArea = self.$content.querySelector('.smoothing-tool-scale');

@@ -32,6 +32,7 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildUI();
+            this.setRigidWidth();
         });
 
         // Render window.

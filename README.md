@@ -153,7 +153,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Z ćw. 5 - algorytm żółwia.
 - [x] Pomoc na Windowsie nie działa.
 - [ ] Resize okna (Duży obrazek w małym oknie programu).
+
+**Problemy znalezione podczas testów**
 - [x] Problem z szerokimi obrazkami w filtracji liniowej (analizuje tylko kwadrat).
+- [x] Przywrócenie do pierwotnego stanu nowo stworzonego okna (`Operacje Arytmetyczne i Logiczne`).
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
@@ -167,7 +170,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [ ] Rozpoznanie obiektów na i-tym kadrze.
     - [ ] Dopasowanie go do rozpoznanego wcześniej obiektu.
     - [ ] Zastosowanie tego samego koloru co rozpoznany obiekt.
-- [ ] Po zakończeniu informacja o statusie powodzenia obrazu.
+- [ ] Po zakończeniu informacja o statusie powodzenia obrazu oraz prezentacja sekwencji poklatkowej.
 
 #### Przydatne materiały
 

@@ -43,7 +43,7 @@
     };
 
     FileSaveHelper.prototype.saveCanvas = function (name, canvas) {
-        fs.writeFileSync(name, canvas.toImage());
+        fs.writeFileSync(name, canvas.toBuffer());
     };
 
     // Exports `FileSaveHelper`.
