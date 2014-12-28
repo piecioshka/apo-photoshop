@@ -28,9 +28,6 @@
     PosterizeTool.prototype.initialize = function () {
         this.$window.classList.add('posterize-tool');
 
-        // Update title of window.
-        this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_POSTERIZE') + ' - ' +  this.settings.picture.name);
-
         // Append window list.
         root.App.windowManager.addWindow(this);
 
@@ -38,6 +35,9 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildUI();
+
+            // Update title of window.
+            this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_POSTERIZE') + ' - ' +  this.settings.picture.name);
         });
 
         // Render window.

@@ -155,8 +155,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [ ] Resize okna (Duży obrazek w małym oknie programu).
 
 **Problemy znalezione podczas testów**
+
 - [x] Problem z szerokimi obrazkami w filtracji liniowej (analizuje tylko kwadrat).
 - [x] Przywrócenie do pierwotnego stanu nowo stworzonego okna (`Operacje Arytmetyczne i Logiczne`).
+- [x] Aktualizacja tytułu okienka dopiero po załadowaniu obrazka (problem z długimi nazwami plików).
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 

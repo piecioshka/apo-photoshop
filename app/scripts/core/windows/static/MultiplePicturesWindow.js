@@ -27,11 +27,6 @@
     MultiplePicturesWindow.prototype.initialize = function () {
         this.$window.classList.add('multiple-pictures-window');
 
-        // Update title (add each file name).
-        this.updateTitle('Wiele obrazów: ' + _.map(this.settings.pictures, function (frame) {
-            return frame.name;
-        }).join(', '));
-
         // Append window list.
         root.App.windowManager.addWindow(this);
 
@@ -39,6 +34,11 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildStrip();
+
+            // Update title (add each file name).
+            this.updateTitle('Wiele obrazów: ' + _.map(this.settings.pictures, function (frame) {
+                return frame.name;
+            }).join(', '));
         });
 
         // Render window.

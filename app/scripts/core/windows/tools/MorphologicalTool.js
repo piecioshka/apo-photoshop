@@ -28,9 +28,6 @@
     MorphologicalTool.prototype.initialize = function () {
         this.$window.classList.add('morphological-tool');
 
-        // Update title of window.
-        this.updateTitle(root.Locale.get('OPERATIONS_MORPHOLOGICAL'));
-
         // Append window list.
         root.App.windowManager.addWindow(this);
 
@@ -38,6 +35,9 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildUI();
+
+            // Update title of window.
+            this.updateTitle(root.Locale.get('OPERATIONS_MORPHOLOGICAL'));
         });
 
         // Render window.

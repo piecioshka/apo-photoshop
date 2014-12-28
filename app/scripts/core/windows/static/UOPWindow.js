@@ -28,9 +28,6 @@
     UOPWindow.prototype.initialize = function () {
         this.$window.classList.add('uop-window');
 
-        // Update title of window.
-        this.updateTitle(root.Locale.get('TOOLS_UOP') + ' - ' + this.settings.picture.name);
-
         // Append window list.
         root.App.windowManager.addWindow(this);
 
@@ -38,6 +35,9 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildTable();
+
+            // Update title of window.
+            this.updateTitle(root.Locale.get('TOOLS_UOP') + ' - ' + this.settings.picture.name);
         });
 
         // Render window.

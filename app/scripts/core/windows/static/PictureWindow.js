@@ -38,8 +38,6 @@
     PictureWindow.prototype.initialize = function () {
         this.$window.classList.add('picture-window');
 
-        this.updateTitle(this.settings.picture.name);
-
         root.App.windowManager.addWindow(this);
 
         // Listen when window will be rendered.
@@ -50,7 +48,12 @@
             this._buildBarGraph();
             this._updateHistogram();
             this._renderHistogramInformation();
+
+            // Set static width.
             this.setRigidWidth();
+
+            // Update title of window.
+            this.updateTitle(this.settings.picture.name);
         }, this);
 
         this.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
