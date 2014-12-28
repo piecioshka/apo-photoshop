@@ -13,7 +13,7 @@
         var found = false;
         var markColor = [255, 0, 0, 255];
 
-        var tab2;
+        var tab2 = [];
         // Create two-dimension array.
         (function (w) {
             tab2 = new Array(w);
@@ -42,7 +42,7 @@
         startX = x;
         startY = y;
 
-        // When found first pixel, continue searching to find rest points.
+        // When found first pixel, continue searching rest points.
         while (found == true) {
             if (can.getPixel(x, y).b < 150) {
                 kier--;
