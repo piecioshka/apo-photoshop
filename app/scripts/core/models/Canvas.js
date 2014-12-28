@@ -262,6 +262,13 @@
         return { r: r, g: g, b: b, a: a };
     };
 
+    /**
+     * Update color.
+     *
+     * @param {number} x
+     * @param {number} y
+     * @param {Array} color
+     */
     Canvas.prototype.setPixel = function (x, y, color) {
         _.assert(_.isNumber(x));
         _.assert(_.isNumber(y));

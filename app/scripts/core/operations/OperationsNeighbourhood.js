@@ -11,7 +11,6 @@
             var width = can.settings.width;
             var height = can.settings.height;
 
-            var uniquePixelsChannels = can.getUniqueChannels().sort(root.Utilities.sortNumbers);
             var pixelsChannels = can.getDataImage();
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
@@ -59,6 +58,8 @@
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
+
+            var uniquePixelsChannels = can.getUniqueChannels().sort(root.Utilities.sortNumbers);
 
             if (scale === 'proportion') {
                 var min = _.first(uniquePixelsChannels);

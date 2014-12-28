@@ -98,7 +98,8 @@
         getNeighbors: function (pixelsArray, x, y, figure) {
             var point;
             var neighbors = [];
-            var max = pixelsArray.length - 1;
+            var maxHeight = pixelsArray.length - 1;
+            var maxWidth = pixelsArray[0].length - 1;
 
             figure = figure || 'square';
 
@@ -130,7 +131,7 @@
                     tryAdd(point);
                 }
 
-                if (x < max && isSquare()) {
+                if (x < maxWidth && isSquare()) {
                     point = pixelsArray[y - 1][x + 1];
                     tryAdd(point);
                 }
@@ -139,7 +140,7 @@
             // Same level.
             // -----------
 
-            if (y >= 0 && y <= max) {
+            if (y >= 0 && y <= maxHeight) {
                 if (x > 0 && (isSquare() || isDiamond())) {
                     point = pixelsArray[y][x - 1];
                     tryAdd(point);
@@ -150,7 +151,7 @@
                     tryAdd(point);
                 }
 
-                if (x < max && (isSquare() || isDiamond())) {
+                if (x < maxWidth && (isSquare() || isDiamond())) {
                     point = pixelsArray[y][x + 1];
                     tryAdd(point);
                 }
@@ -159,7 +160,7 @@
             // Bottom row.
             // -----------
 
-            if (y < max) {
+            if (y < maxHeight) {
                 if (x > 0 && isSquare()) {
                     point = pixelsArray[y + 1][x - 1];
                     tryAdd(point);
@@ -170,7 +171,7 @@
                     tryAdd(point);
                 }
 
-                if (x < max && isSquare()) {
+                if (x < maxWidth && isSquare()) {
                     point = pixelsArray[y + 1][x + 1];
                     tryAdd(point);
                 }
