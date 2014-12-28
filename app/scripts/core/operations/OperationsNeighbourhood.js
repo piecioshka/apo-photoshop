@@ -8,6 +8,8 @@
             var mask = params.mask;
             var sum = root.Utilities.sum(mask) || 1;
             var scale = params.scale;
+            var width = can.settings.width;
+            var height = can.settings.height;
 
             var uniquePixelsChannels = can.getUniqueChannels().sort(root.Utilities.sortNumbers);
             var pixelsChannels = can.getDataImage();
@@ -18,7 +20,7 @@
             var pixelsArray = can.getOneChannelOfPixels();
 
             // Convert list of pixels to matrix for quicker calculation.
-            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, can.settings.width);
+            var pixelsMatrix = root.CanvasHelper.toPixelMatrix(pixelsArray, width);
 
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, 0);
@@ -27,7 +29,7 @@
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
-                dimensions = root.CanvasHelper.convertPositionIndexToXY(can.settings.width, can.settings.height, i);
+                dimensions = root.CanvasHelper.convertPositionIndexToXY(width, height, i);
 
                 x = dimensions.x;
                 y = dimensions.y;
@@ -38,7 +40,7 @@
 
                 // Multiply mask with neighbours.
                 _.each(ne, function (n, index) {
-                    temp += n * mask[index] / sum;
+                    temp += (n * mask[index] / sum);
                 });
 
                 // Update color.
@@ -83,6 +85,9 @@
                     } else if (color > 255) {
                         color = 255;
                     }
+
+                    // Update each channel (RGB) of pixel. Not modify channel alpha.
+                    pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
                 }
             }
 

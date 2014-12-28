@@ -152,7 +152,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Z ćw. 4 - zadania (morfologiczne).
     - [x] Z ćw. 5 - algorytm żółwia.
 - [ ] Pomoc na Windowsie nie działa.
-- [ ] Resize okna.
+- [ ] Resize okna (Duży obrazek w małym oknie programu)
+- [ ] Problem z szerokimi obrazkami w filtracji liniowej (analizuje tylko kwadrat)
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
