@@ -30,6 +30,7 @@
         TOOLS_UOP: 'Uniwersalna operacja punktowa',
         TOOLS_OBJECTS_RECOGNITION: 'Rozpoznanie obiektów na obrazie',
         TOOLS_STOP_MOTION_SEQUENCE: 'Sekwencja poklatkowa',
+        TOOLS_COLOR_PALETTE: 'Paleta kolorów',
 
         OPERATIONS: 'Operacje',
 

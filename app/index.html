@@ -12,6 +12,32 @@
 
     <div class="sky-hide">
 
+        <!-- windows/special -->
+
+        <script type="text/html" id="template-color-palette-special">
+            <div class="color-palette-content">
+                <div class="color-palette-chooser">
+                    <label>Wybierz paletę: <br />
+                        <select>
+                            <option value="colorwheel1.png" selected="selected">Paleta 1</option>
+                            <option value="colorwheel2.png">Paleta 2</option>
+                            <option value="colorwheel3.png">Paleta 3</option>
+                            <option value="colorwheel4.png">Paleta 4</option>
+                            <option value="colorwheel5.png">Paleta 5</option>
+                        </select>
+                    </label>
+                </div>
+                <fieldset>
+                    <label><span>R:</span> <input type="text" class="color-palette-r"></label>
+                    <label><span>G:</span> <input type="text" class="color-palette-g"></label>
+                    <label><span>B:</span> <input type="text" class="color-palette-b"></label>
+                    <label><span>A:</span> <input type="text" class="color-palette-a"></label>
+
+                    <span class="color-palette-c"></span>
+                </fieldset>
+            </div>
+        </script>
+
         <!-- windows/static -->
 
         <script type="text/html" id="template-lut-static">
@@ -323,6 +349,7 @@
         <script src="scripts/core/windows/WindowManager.js"></script>
 
         <!-- core/windows/special //-->
+        <script src="scripts/core/windows/special/ColorPaletteWindow.js"></script>
         <script src="scripts/core/windows/special/ObjectsRecognitionWindow.js"></script>
         <script src="scripts/core/windows/special/StopMotionSequenceWindow.js"></script>
 

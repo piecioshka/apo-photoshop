@@ -1,0 +1,55 @@
+.color-palette-window canvas {
+    float: left;
+    -webkit-clip-path: circle(100px at center);
+    background: transparent;
+    margin: 10px 0 10px 10px;
+}
+
+.color-palette-window canvas:hover {
+    cursor: crosshair;
+}
+
+.color-palette-window .color-palette-content {
+    float: right;
+}
+
+.color-palette-window .color-palette-content .color-palette-chooser {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 0;
+}
+
+.color-palette-window .color-palette-content .color-palette-chooser select {
+    margin: 5px 0 0 0;
+}
+
+.color-palette-window .color-palette-content fieldset {
+    border: 1px solid #dbdaee;
+    margin: 20px 10px 0 20px;
+}
+
+.color-palette-window .color-palette-content fieldset label {
+    display: block;
+    margin: 2px 0;
+}
+
+.color-palette-window .color-palette-content fieldset label span {
+    display: inline-block;
+    width: 15px;
+}
+
+.color-palette-window .color-palette-content fieldset label input[type="text"] {
+    display: inline-block;
+    width: 30px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.color-palette-window .color-palette-content fieldset .color-palette-c {
+    display: block;
+    width: 60px;
+    height: 20px;
+    border: 1px solid #dbdaee;
+    border-radius: 3px;
+    margin: 10px 0 0 0;
+}

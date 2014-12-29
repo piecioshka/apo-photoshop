@@ -10,7 +10,7 @@
             op.call(ctx);
 
             root.Status.idle();
-        }, 0);
+        }, 10);
     };
 
     // Exports `Operation`.
