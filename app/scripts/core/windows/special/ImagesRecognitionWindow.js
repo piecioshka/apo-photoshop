@@ -45,6 +45,25 @@
     };
 
     ImagesRecognitionWindow.prototype.buildUI = function () {
+        new Operation(function () {
+            var objectColors = this._useValleyMethod(this.settings.picture);
+            this._buildStrip(objectColors);
+        }, this);
+    };
+
+    ImagesRecognitionWindow.prototype._buildStrip = function (objectColors) {
+        var $strip = doc.createElement('div');
+        $strip.classList.add('strip-axis');
+
+        this.$content.appendChild($strip);
+        this.$content = $strip;
+
+        _.each(objectColors, function (objectColor) {
+            this._addPicture(objectColor);
+        }, this);
+    };
+
+    ImagesRecognitionWindow.prototype._addPicture = function (objectColor) {
         var self = this;
         var pic = this.settings.picture;
 
@@ -56,40 +75,36 @@
         var originalCanvasPixelsChannels = originalCanvas.getDataImage();
         var originalCanvasPixelsChannelsData = originalCanvasPixelsChannels.data;
 
-        var objectColors = this._useValleyMethod(this.settings.picture);
+        var newColor;
+        var canvas = new root.Canvas({
+            width: width,
+            height: height
+        });
 
-        _.each(objectColors, function (objectColor) {
-            var newColor;
-            var canvas = new root.Canvas({
-                width: width,
-                height: height
-            });
+        var pixelsChannels = canvas.getDataImage();
+        var pixelsChannelsData = pixelsChannels.data;
+        var len = pixelsChannelsData.length;
 
-            var pixelsChannels = canvas.getDataImage();
-            var pixelsChannelsData = pixelsChannels.data;
-            var len = pixelsChannelsData.length;
+        for (var i = 0; i < len / 4; i++) {
+            var color = originalCanvasPixelsChannelsData[(i * 4)];
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = originalCanvasPixelsChannelsData[(i * 4)];
-
-                if (objectColor !== color) {
-                    newColor = whiteColor;
-                } else {
-                    newColor = color;
-                }
-
-                // Update each channel (RGB) of pixel.
-                pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = newColor;
-
-                // Alpha channel sets to opaque.
-                pixelsChannelsData[(i * 4) + 3] = 255;
+            if (objectColor !== color) {
+                newColor = whiteColor;
+            } else {
+                newColor = color;
             }
 
-            // Update <canvas>
-            canvas.ctx.putImageData(pixelsChannels, 0, 0);
+            // Update each channel (RGB) of pixel.
+            pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = newColor;
 
-            canvas.render(self);
-        });
+            // Alpha channel sets to opaque.
+            pixelsChannelsData[(i * 4) + 3] = 255;
+        }
+
+        // Update <canvas>
+        canvas.ctx.putImageData(pixelsChannels, 0, 0);
+
+        canvas.render(self);
     };
 
     // POB - Wykład 6, p. 15 - valley method
