@@ -266,8 +266,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
-                var original = activeWindow.settings.picture;
-                var copy = _.clone(activeWindow.settings.picture);
+                var original = activeWindow.getPicture();
+                var copy = _.clone(original);
 
                 copy.canvas = original.canvas.copy();
 
@@ -289,14 +289,14 @@
 
             if (activeWindow instanceof root.PictureWindow) {
                 // Save current version.
-                var current = activeWindow.settings.picture.canvas;
+                var current = activeWindow.getPicture().canvas;
 
                 // Restore to original version.
-                var original = new root.Canvas(activeWindow.settings.picture.canvas.settings);
-                original.loadGrayScaleImage(activeWindow.settings.picture.img, activeWindow.settings.picture.width, activeWindow.settings.picture.height);
+                var original = new root.Canvas(activeWindow.getPicture().canvas.settings);
+                original.loadGrayScaleImage(activeWindow.getPicture().img, activeWindow.getPicture().width, activeWindow.getPicture().height);
 
                 new root.LookUpTableWindow(activeWindow, {
-                    picture: activeWindow.settings.picture,
+                    picture: activeWindow.getPicture(),
                     canvas: {
                         current: current,
                         original: original
@@ -312,8 +312,8 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
-                var original = activeWindow.settings.picture;
-                var copy = _.clone(activeWindow.settings.picture);
+                var original = activeWindow.getPicture();
+                var copy = _.clone(original);
 
                 copy.canvas = original.canvas.copy();
 
@@ -336,6 +336,10 @@
             if (activeWindow instanceof root.MultiplePicturesWindow) {
                 new root.ImagesRecognitionWindow(activeWindow, {
                     picture: activeWindow.getSelectedPicture()
+                });
+            } else if (activeWindow instanceof root.PictureWindow) {
+                new root.ImagesRecognitionWindow(activeWindow, {
+                    picture: activeWindow.getPicture()
                 });
             }
         }, 'Ctrl', 'L');
@@ -434,7 +438,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ThresholdTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointThresholdMenuItem);
@@ -445,7 +449,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new PosterizeTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointPosterizeMenuItem);
@@ -456,7 +460,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new StretchTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointStretchingMenuItem);
@@ -467,7 +471,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new BrightnessRegulationTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointBrightnessRegulationMenuItem);
@@ -478,7 +482,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new ContrastRegulationTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointContrastRegulationMenuItem);
@@ -489,7 +493,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new GammaRegulationTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         onePointOperationsMenu.append(this.operationsOnePointGammaRegulationMenuItem);
@@ -517,7 +521,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new SmoothingTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
         neighbourhoodOperationsMenu.append(this.operationsNeighbourhoodSmoothingMenuItem);
@@ -570,7 +574,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             return new MorphologicalTool(activeWindow, {
-                picture: activeWindow.settings.picture
+                picture: activeWindow.getPicture()
             });
         });
 

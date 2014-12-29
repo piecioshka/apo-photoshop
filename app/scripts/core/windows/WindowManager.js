@@ -47,7 +47,7 @@
     };
 
     WindowManager.prototype.getActiveWindow = function () {
-        var activeWindows = this._windows.filter(function (win) {
+        var activeWindows = _.filter(this._windows, function (win) {
             return win.isActive;
         });
 

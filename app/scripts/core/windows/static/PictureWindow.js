@@ -79,6 +79,10 @@
         }, this);
     };
 
+    PictureWindow.prototype.getPicture = function () {
+        return this.settings.picture;
+    };
+
     // -----------------------------------------------------------------------------------------------------------------
 
     PictureWindow.prototype.setPrimaryState = function () {

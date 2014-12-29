@@ -4,6 +4,7 @@
 
 @import "windows/abstract-window.css";
 
+@import "windows/special/images-recognition-window.css";
 @import "windows/special/stop-motion-sequence-window.css";
 
 @import "windows/static/look-up-table-window.css";

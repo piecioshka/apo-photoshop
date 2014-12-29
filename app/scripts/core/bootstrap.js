@@ -56,7 +56,7 @@
                 menu.toolsDuplicateMenuItem.enabled = true;
                 menu.toolsLutMenuItem.enabled = true;
                 menu.toolsUOPMenuItem.enabled = true;
-                menu.toolsImagesRecognitionMenuItem.enabled = false;
+                menu.toolsImagesRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;

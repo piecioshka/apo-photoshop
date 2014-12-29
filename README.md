@@ -163,9 +163,9 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
 - [x] Wczytanie sekwencji obrazów.
-- [ ] Rozpoznanie obiektów z pierwszego kadru.
-    - [ ] (Progowanie przedziałami) wytniemy obrazek w zadanym odcieniu szarości.
-- [ ] Prezentacja wyodrębnionych obiektów w osobnym oknie.
+- [x] Rozpoznanie obiektów z pierwszego kadru.
+    - [x] (Progowanie przedziałami) wytniemy obrazek w zadanym odcieniu szarości.
+- [x] Prezentacja wyodrębnionych obiektów w osobnym oknie.
 - [ ] Dobór kolorów z palety HSV dla każdego obiektu.
 - [ ] Zastosowanie koloru do pierwszego kadru.
 - [ ] Algorytm iteracyjny:

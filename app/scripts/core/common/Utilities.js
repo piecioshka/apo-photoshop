@@ -13,7 +13,7 @@
             var args = _.toArray(arguments);
 
             // Remove non-numbers elements, ex. all `undefined` values.
-            var numbers = args.filter(function (item) {
+            var numbers = _.filter(args, function (item) {
                 return !isNaN(item);
             });
 
@@ -25,7 +25,7 @@
             var args = _.toArray(arguments);
 
             // Remove non-numbers elements, ex. all `undefined` values.
-            var numbers = args.filter(function (item) {
+            var numbers = _.filter(args, function (item) {
                 return !isNaN(item);
             });
 

@@ -9,7 +9,7 @@
                 return false;
             }
 
-            var can = activeWindow.settings.picture.canvas;
+            var can = activeWindow.getPicture().canvas;
             var width = can.settings.width;
             var height = can.settings.height;
             var squareSize = Math.min(width, height);

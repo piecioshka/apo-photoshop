@@ -19,4 +19,5 @@
 .multiple-pictures-window .abstract-window-content .strip-axis canvas.active {
     border-color: #181818;
     box-shadow: 0 0 5px #181818;
+    border-radius: 3px;
 }
