@@ -28,7 +28,7 @@
         TOOLS_DUPLICATE: 'Duplikuj',
         TOOLS_LUT: 'Look-up Table',
         TOOLS_UOP: 'Uniwersalna operacja punktowa',
-        TOOLS_SEQUENCE_ANALYZES: 'Analizuj sekwencję',
+        TOOLS_IMAGES_RECOGNITION: 'Rozpoznanie obrazów',
         TOOLS_STOP_MOTION_SEQUENCE: 'Sekwencja poklatkowa',
 
         OPERATIONS: 'Operacje',

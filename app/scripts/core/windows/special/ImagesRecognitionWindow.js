@@ -7,7 +7,7 @@
     var ImagesRecognitionWindow = function ImagesRecognitionWindow(contextWindow, params) {
         this.contextWindow = contextWindow;
         this.settings = {
-            pictures: null
+            picture: null
         };
         _.extend(this.settings, params);
 
@@ -26,7 +26,7 @@
     ImagesRecognitionWindow.prototype = new root.AbstractWindow();
 
     ImagesRecognitionWindow.prototype.initialize = function () {
-        this.$window.classList.add('lut-window');
+        this.$window.classList.add('images-recognition-window');
 
         // Append window list.
         root.App.windowManager.addWindow(this);
@@ -37,7 +37,7 @@
             this.buildUI();
 
             // Update title (add each file name).
-            this.updateTitle(root.Locale.get('TOOLS_SEQUENCE_ANALYZES') + ' - ' + _.map(this.settings.pictures, function (frame) {
+            this.updateTitle(root.Locale.get('TOOLS_IMAGES_RECOGNITION') + ' - ' + _.map(this.settings.pictures, function (frame) {
                 return frame.name;
             }).join(', '));
         });
@@ -48,11 +48,7 @@
 
     ImagesRecognitionWindow.prototype.buildUI = function () {
         var self = this;
-        var template = doc.querySelector('#template-lut-static').innerHTML;
-        var compiled = _.template(template);
-        var renderedTemplate = compiled();
-
-        this.appendContent(renderedTemplate);
+        console.log(this.settings.picture);
     };
 
     // Exports `ImagesRecognitionWindow`.

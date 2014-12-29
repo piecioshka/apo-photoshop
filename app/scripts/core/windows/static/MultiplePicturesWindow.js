@@ -18,6 +18,8 @@
         this.$content = null;
         this.isActive = false;
 
+        this._selectedPictureIndex = 0;
+
         this.setup();
         this.initialize();
     };
@@ -34,6 +36,8 @@
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
             this.buildStrip();
+            // Add interactive as clicked image.
+            this.addClickEvent();
 
             // Update title (add each file name).
             this.updateTitle(_.map(this.settings.pictures, function (frame) {
@@ -98,20 +102,34 @@
             return element.nodeName.toLowerCase() === 'canvas';
         }
 
+        function selectCanvas($element) {
+            clearSelection();
+            addSelection($element);
+
+            // Get index of selected image.
+            self._selectedPictureIndex = _.toArray($element.parentNode.children).indexOf($element);
+
+            self.emit(MultiplePicturesWindow.EVENTS.SELECT_PICTURE, { picture: $element });
+        }
+
         this.$content.addEventListener('click', function (evt) {
             var $element = evt.target;
 
             if (isCanvas($element)) {
-                clearSelection();
-                addSelection($element);
-
-                self.emit(MultiplePicturesWindow.EVENTS.SELECT_PICTURE, { picture: $element });
+                selectCanvas($element);
             }
         });
+
+        // Add selection for first image.
+        selectCanvas(this.$content.querySelector('canvas'));
     };
 
     MultiplePicturesWindow.prototype.getPictures = function () {
         return this.settings.pictures;
+    };
+
+    MultiplePicturesWindow.prototype.getSelectedPicture = function () {
+        return this.settings.pictures[this._selectedPictureIndex];
     };
 
     MultiplePicturesWindow.MARGIN_BOTTOM = 3;

@@ -19,7 +19,7 @@
         this.toolsDuplicateMenuItem = null;
         this.toolsLutMenuItem = null;
         this.toolsUOPMenuItem = null;
-        this.toolsSequenceAnalyzesMenuItem = null;
+        this.toolsImagesRecognitionMenuItem = null;
         this.toolsStopMotionSequenceMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
@@ -330,16 +330,16 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.toolsSequenceAnalyzesMenuItem = this.addMenuItem(root.Locale.get('TOOLS_SEQUENCE_ANALYZES'), function () {
+        this.toolsImagesRecognitionMenuItem = this.addMenuItem(root.Locale.get('TOOLS_IMAGES_RECOGNITION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.MultiplePicturesWindow) {
                 new root.ImagesRecognitionWindow(activeWindow, {
-                    pictures: activeWindow.getPictures()
+                    picture: activeWindow.getSelectedPicture()
                 });
             }
-        });
-        toolsMenu.append(this.toolsSequenceAnalyzesMenuItem);
+        }, 'Ctrl', 'L');
+        toolsMenu.append(this.toolsImagesRecognitionMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
@@ -351,7 +351,7 @@
                     pictures: activeWindow.getPictures()
                 });
             }
-        }, 'Ctrl', 'L');
+        });
         toolsMenu.append(this.toolsStopMotionSequenceMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
