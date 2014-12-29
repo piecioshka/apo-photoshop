@@ -35,9 +35,9 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildStrip();
+            this._buildStrip();
             // Add interactive as clicked image.
-            this.addClickEvent();
+            this._addClickEvent();
 
             // Update title (add each file name).
             this.updateTitle(_.map(this.settings.pictures, function (frame) {
@@ -49,7 +49,7 @@
         this.render();
     };
 
-    MultiplePicturesWindow.prototype.buildStrip = function () {
+    MultiplePicturesWindow.prototype._buildStrip = function () {
         var $strip = doc.createElement('div');
         $strip.classList.add('strip-axis');
 
@@ -57,11 +57,11 @@
         this.$content = $strip;
 
         _.each(this.settings.pictures, function (picture, index) {
-            this.addPicture(picture, index);
+            this._addPicture(picture, index);
         }, this);
     };
 
-    MultiplePicturesWindow.prototype.addPicture = function (picture, index) {
+    MultiplePicturesWindow.prototype._addPicture = function (picture, index) {
         // Append width of pictures list (use margin bottom).
         this._resizeStrip(picture.img.height + MultiplePicturesWindow.MARGIN_BOTTOM);
 
@@ -84,7 +84,7 @@
         this.$content.style.height = (parseInt(this.$content.style.height, 10) || 0) + (size) + 'px';
     };
 
-    MultiplePicturesWindow.prototype.addClickEvent = function () {
+    MultiplePicturesWindow.prototype._addClickEvent = function () {
         var self = this;
 
         function clearSelection() {

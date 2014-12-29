@@ -4,7 +4,7 @@
     // Aliases.
     var doc = root.document;
 
-    var ImagesRecognitionWindow = function ImagesRecognitionWindow(contextWindow, params) {
+    var ObjectsRecognitionWindow = function ObjectsRecognitionWindow(contextWindow, params) {
         this.contextWindow = contextWindow;
         this.settings = {
             picture: null
@@ -23,9 +23,9 @@
         this.initialize();
     };
 
-    ImagesRecognitionWindow.prototype = new root.AbstractWindow();
+    ObjectsRecognitionWindow.prototype = new root.AbstractWindow();
 
-    ImagesRecognitionWindow.prototype.initialize = function () {
+    ObjectsRecognitionWindow.prototype.initialize = function () {
         this.$window.classList.add('images-recognition-window');
 
         // Append window list.
@@ -37,21 +37,21 @@
             this.buildUI();
 
             // Update title (add each file name).
-            this.updateTitle(root.Locale.get('TOOLS_IMAGES_RECOGNITION') + ' - ' + this.settings.picture.name);
+            this.updateTitle(root.Locale.get('TOOLS_OBJECTS_RECOGNITION') + ' - ' + this.settings.picture.name);
         });
 
         // Render window.
         this.render();
     };
 
-    ImagesRecognitionWindow.prototype.buildUI = function () {
+    ObjectsRecognitionWindow.prototype.buildUI = function () {
         new Operation(function () {
             var objectColors = this._useValleyMethod(this.settings.picture);
             this._buildStrip(objectColors);
         }, this);
     };
 
-    ImagesRecognitionWindow.prototype._buildStrip = function (objectColors) {
+    ObjectsRecognitionWindow.prototype._buildStrip = function (objectColors) {
         var $strip = doc.createElement('div');
         $strip.classList.add('strip-axis');
 
@@ -63,7 +63,7 @@
         }, this);
     };
 
-    ImagesRecognitionWindow.prototype._addPicture = function (objectColor) {
+    ObjectsRecognitionWindow.prototype._addPicture = function (objectColor) {
         var self = this;
         var pic = this.settings.picture;
 
@@ -108,7 +108,7 @@
     };
 
     // POB - Wykład 6, p. 15 - valley method
-    ImagesRecognitionWindow.prototype._useValleyMethod = function (pic) {
+    ObjectsRecognitionWindow.prototype._useValleyMethod = function (pic) {
         var objectColors = [];
         var objectColorsCounting = [];
         var pixels = pic.canvas.getCountingColorList();
@@ -145,7 +145,7 @@
         return objectColors;
     };
 
-    // Exports `ImagesRecognitionWindow`.
-    return (root.ImagesRecognitionWindow = ImagesRecognitionWindow);
+    // Exports `ObjectsRecognitionWindow`.
+    return (root.ObjectsRecognitionWindow = ObjectsRecognitionWindow);
 
 }(this));

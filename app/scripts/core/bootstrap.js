@@ -20,7 +20,7 @@
                 menu.toolsDuplicateMenuItem.enabled = false;
                 menu.toolsLutMenuItem.enabled = false;
                 menu.toolsUOPMenuItem.enabled = false;
-                menu.toolsImagesRecognitionMenuItem.enabled = false;
+                menu.toolsObjectsRecognitionMenuItem.enabled = false;
                 menu.toolsStopMotionSequenceMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
@@ -56,7 +56,7 @@
                 menu.toolsDuplicateMenuItem.enabled = true;
                 menu.toolsLutMenuItem.enabled = true;
                 menu.toolsUOPMenuItem.enabled = true;
-                menu.toolsImagesRecognitionMenuItem.enabled = true;
+                menu.toolsObjectsRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;
@@ -86,7 +86,7 @@
             function setMultiplePicturesWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
 
-                menu.toolsImagesRecognitionMenuItem.enabled = true;
+                menu.toolsObjectsRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = true;
             }
 

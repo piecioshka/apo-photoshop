@@ -19,7 +19,7 @@
         this.toolsDuplicateMenuItem = null;
         this.toolsLutMenuItem = null;
         this.toolsUOPMenuItem = null;
-        this.toolsImagesRecognitionMenuItem = null;
+        this.toolsObjectsRecognitionMenuItem = null;
         this.toolsStopMotionSequenceMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
@@ -330,20 +330,20 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.toolsImagesRecognitionMenuItem = this.addMenuItem(root.Locale.get('TOOLS_IMAGES_RECOGNITION'), function () {
+        this.toolsObjectsRecognitionMenuItem = this.addMenuItem(root.Locale.get('TOOLS_OBJECTS_RECOGNITION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.MultiplePicturesWindow) {
-                new root.ImagesRecognitionWindow(activeWindow, {
+                new root.ObjectsRecognitionWindow(activeWindow, {
                     picture: activeWindow.getSelectedPicture()
                 });
             } else if (activeWindow instanceof root.PictureWindow) {
-                new root.ImagesRecognitionWindow(activeWindow, {
+                new root.ObjectsRecognitionWindow(activeWindow, {
                     picture: activeWindow.getPicture()
                 });
             }
         }, 'Ctrl', 'L');
-        toolsMenu.append(this.toolsImagesRecognitionMenuItem);
+        toolsMenu.append(this.toolsObjectsRecognitionMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
