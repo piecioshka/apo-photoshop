@@ -56,7 +56,7 @@
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL: 'Filtracja minimalna',
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
 
-        OPERATIONS_MORPHOLOGICAL: 'Operacje morfologiczne',
+        OPERATIONS_MORPHOLOGICAL: '(W) Operacje morfologiczne',
         OPERATIONS_TURTLE: 'Algorytm Żółwia',
 
         ABOUT: 'O programie',

@@ -36,6 +36,9 @@
             // Put image to canvas.
             this.buildUI();
 
+            // Set static width.
+            this.setRigidWidth();
+
             // Update title of window.
             this.updateTitle(root.Locale.get('OPERATIONS_MORPHOLOGICAL'));
         });
