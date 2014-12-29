@@ -2,8 +2,12 @@
     'use strict';
 
     var AssetsLoader = {
-        UNSUPPORTED_EXTENSIONS: [
-            /.\.tif(f?)/i
+        SUPPORTED_EXTENSIONS: [
+            /.\.png/i,
+            /.\.jpg/i,
+            /.\.jpeg/i,
+            /.\.gif/i,
+            /.\.bmp/i
         ],
 
         loadImage: function (file, name, callback, ctx) {

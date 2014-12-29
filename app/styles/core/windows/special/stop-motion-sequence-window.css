@@ -1,0 +1,11 @@
+.stop-motion-sequence-window fieldset {
+    margin: 5px 0 0 0;
+    padding: 5px 0;
+    clear: both;
+    border: 1px solid #abaaba;
+    text-align: center;
+}
+
+.stop-motion-sequence-window fieldset button:nth-child(1) {
+    margin: 0 10px 0 0;
+}

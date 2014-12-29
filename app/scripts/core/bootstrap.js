@@ -20,6 +20,8 @@
                 menu.toolsDuplicateMenuItem.enabled = false;
                 menu.toolsLutMenuItem.enabled = false;
                 menu.toolsUOPMenuItem.enabled = false;
+                menu.toolsSequenceAnalyzesMenuItem.enabled = false;
+                menu.toolsStopMotionSequenceMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = false;
@@ -54,6 +56,8 @@
                 menu.toolsDuplicateMenuItem.enabled = true;
                 menu.toolsLutMenuItem.enabled = true;
                 menu.toolsUOPMenuItem.enabled = true;
+                menu.toolsSequenceAnalyzesMenuItem.enabled = false;
+                menu.toolsStopMotionSequenceMenuItem.enabled = false;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = true;
@@ -82,7 +86,8 @@
             function setMultiplePicturesWindowState() {
                 menu.fileCloseMenuItem.enabled = true;
 
-                // TODO(piecioshka): dodać button, który uruchomi projekt
+                menu.toolsSequenceAnalyzesMenuItem.enabled = true;
+                menu.toolsStopMotionSequenceMenuItem.enabled = true;
             }
 
             setDefaultState();

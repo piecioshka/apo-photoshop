@@ -12,6 +12,7 @@
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',
         MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',
         MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW: 'Nie aktywowano okna z obrazkiem!',
+        MSG_ERR_DIFFERENT_DIMENSION: 'Obrazki mają różne rozmiary',
 
         FILE: 'Plik',
         FILES_OPEN: 'Otwórz',
@@ -27,6 +28,8 @@
         TOOLS_DUPLICATE: 'Duplikuj',
         TOOLS_LUT: 'Look-up Table',
         TOOLS_UOP: 'Uniwersalna operacja punktowa',
+        TOOLS_SEQUENCE_ANALYZES: 'Analizuj sekwencję',
+        TOOLS_STOP_MOTION_SEQUENCE: 'Sekwencja poklatkowa',
 
         OPERATIONS: 'Operacje',
 

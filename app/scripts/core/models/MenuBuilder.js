@@ -19,6 +19,8 @@
         this.toolsDuplicateMenuItem = null;
         this.toolsLutMenuItem = null;
         this.toolsUOPMenuItem = null;
+        this.toolsSequenceAnalyzesMenuItem = null;
+        this.toolsStopMotionSequenceMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
         this.operationsFlatteningHistogramRandomMethodMenuItem = null;
@@ -67,7 +69,7 @@
     MenuBuilder.prototype.setup = function () {
         this.setupFileMenu();
         this.setupEditMenu();
-        this.setupBoxMenu();
+        this.setupToolsMenu();
         this.setupOperationsMenu();
         this.setupHelpMenu();
     };
@@ -111,20 +113,23 @@
     MenuBuilder.prototype.setupFileMenu = function () {
         var fileMenu = new gui.Menu();
 
+        // true - OK, false - ERROR
         function validateParams(params) {
-            var i, j, name, ext;
+            var i, j, name, exp;
+            var supportedArray = [];
             var names = _.pluck(params, 'name');
-            var unsupported = root.AssetsLoader.UNSUPPORTED_EXTENSIONS;
+            var supported = root.AssetsLoader.SUPPORTED_EXTENSIONS;
 
             for (i = 0; i < names.length; i++) {
                 name = names[i];
 
-                for (j = 0; j < unsupported.length; j++) {
-                    ext = unsupported[j];
+                for (j = 0; j < supported.length; j++) {
+                    exp = supported[j];
+                    supportedArray.push(exp.test(name));
+                }
 
-                    if (ext.test(name)) {
-                        return false;
-                    }
+                if (_.compact(supportedArray).length === 0) {
+                    return false;
                 }
             }
 
@@ -252,7 +257,7 @@
         }));
     };
 
-    MenuBuilder.prototype.setupBoxMenu = function () {
+    MenuBuilder.prototype.setupToolsMenu = function () {
         var toolsMenu = new gui.Menu();
 
         // -------------------------------------------------------------------------------------------------------------
@@ -318,6 +323,36 @@
             }
         }, 'Ctrl-Shift', 'U');
         toolsMenu.append(this.toolsUOPMenuItem);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.addSeparator(toolsMenu);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.toolsSequenceAnalyzesMenuItem = this.addMenuItem(root.Locale.get('TOOLS_SEQUENCE_ANALYZES'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof root.MultiplePicturesWindow) {
+                new root.ImagesRecognitionWindow(activeWindow, {
+                    pictures: activeWindow.getPictures()
+                });
+            }
+        });
+        toolsMenu.append(this.toolsSequenceAnalyzesMenuItem);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.toolsStopMotionSequenceMenuItem = this.addMenuItem(root.Locale.get('TOOLS_STOP_MOTION_SEQUENCE'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof root.MultiplePicturesWindow) {
+                new root.StopMotionSequenceWindow(activeWindow, {
+                    pictures: activeWindow.getPictures()
+                });
+            }
+        }, 'Ctrl', 'L');
+        toolsMenu.append(this.toolsStopMotionSequenceMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
@@ -550,7 +585,7 @@
                     root.TurtleAlgorithm(activeWindow);
                 });
             }
-        }, 'Ctrl', 'L');
+        });
 
         // ----
 

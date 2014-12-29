@@ -36,7 +36,7 @@
             this.buildStrip();
 
             // Update title (add each file name).
-            this.updateTitle('Wiele obrazów: ' + _.map(this.settings.pictures, function (frame) {
+            this.updateTitle(_.map(this.settings.pictures, function (frame) {
                 return frame.name;
             }).join(', '));
         });
