@@ -13,6 +13,8 @@
         this.$content = null;
         this.isActive = false;
 
+        this._selectedColor = undefined;
+
         this.setup();
         this.initialize();
     };
@@ -84,7 +86,7 @@
             canvas.$canvas.addEventListener('mousemove', function (evt) {
                 var mousePos = getMousePos(canvas.$canvas, evt);
                 var imageData = canvas.ctx.getImageData(mousePos.x, mousePos.y, 1, 1);
-                var data = imageData.data;
+                var data = self._selectedColor = imageData.data;
 
                 $r.value = data[0];
                 $g.value = data[1];
@@ -99,6 +101,10 @@
                 loadPalette('images/palette/' + $select.value);
             });
         });
+    };
+
+    ColorPaletteWindow.prototype.getSelectedColor = function () {
+        return this._selectedColor;
     };
 
     // Exports `ColorPaletteWindow`.

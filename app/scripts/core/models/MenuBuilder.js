@@ -356,7 +356,7 @@
                     pictures: activeWindow.getPictures()
                 });
             }
-        });
+        }, 'Ctrl', 'K');
         toolsMenu.append(this.toolsStopMotionSequenceMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------

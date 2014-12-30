@@ -166,13 +166,13 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Rozpoznanie obiektów z pierwszego kadru.
     - [x] (Progowanie przedziałami) wytniemy obrazek w zadanym odcieniu szarości.
 - [x] Prezentacja wyodrębnionych obiektów w osobnym oknie.
-- [ ] Dobór kolorów z palety HSV dla każdego obiektu.
-- [ ] Zastosowanie koloru do pierwszego kadru.
-- [ ] Algorytm iteracyjny:
-    - [ ] Rozpoznanie obiektów na i-tym kadrze.
-    - [ ] Dopasowanie go do rozpoznanego wcześniej obiektu.
-    - [ ] Zastosowanie tego samego koloru co rozpoznany obiekt.
-- [ ] Po zakończeniu informacja o statusie powodzenia obrazu oraz prezentacja sekwencji poklatkowej.
+- [x] Dobór kolorów z palety HSV dla każdego obiektu.
+- [x] Zastosowanie koloru do pierwszego kadru.
+- [x] Algorytm iteracyjny:
+    - [x] Rozpoznanie obiektów na i-tym kadrze.
+    - [x] Dopasowanie go do rozpoznanego wcześniej obiektu.
+    - [x] Zastosowanie tego samego koloru co rozpoznany obiekt.
+- [x] Po zakończeniu informacja o statusie powodzenia obrazu oraz prezentacja sekwencji poklatkowej.
 
 #### Przydatne materiały
 

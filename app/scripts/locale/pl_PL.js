@@ -8,6 +8,8 @@
 
         MSG_UNKNOWN: '- brak nazwy -',
         MSG_WAITING: 'Proszę czekać...',
+        MSG_APPLY: 'Zastosuj',
+        MSG_CANCEL: 'Anuluj',
 
         MSG_ERR_UNSUPPORTED: 'Nieobsługiwany typ pliku!',
         MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',

@@ -103,7 +103,7 @@
     StopMotionSequenceWindow.prototype.showFirstFrame = function () {
         var pics = this.settings.pictures;
         var firstFrame = pics[0];
-        this._screen.loadGrayScaleImage(firstFrame.img, firstFrame.width, firstFrame.height);
+        this._screen.ctx.drawImage(firstFrame.canvas.toImage(), 0, 0, firstFrame.width, firstFrame.height);
     };
 
     StopMotionSequenceWindow.prototype.startMovie = function () {
@@ -113,6 +113,8 @@
         var index = 0;
         var limit = pics.length;
 
+        this.stopMovie();
+
         this._interval = root.setInterval(function () {
             if (index === limit) {
                 self.stopMovie();
@@ -120,7 +122,7 @@
             }
 
             frame = pics[index];
-            self._screen.loadGrayScaleImage(frame.img, frame.width, frame.height);
+            self._screen.ctx.drawImage(frame.canvas.toImage(), 0, 0, frame.width, frame.height);
 
             index++;
         }, StopMotionSequenceWindow.TIME);
