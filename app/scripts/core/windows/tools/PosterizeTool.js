@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    PosterizeTool.prototype = new AbstractWindow();
+    PosterizeTool.prototype = new root.AbstractWindow();
 
     PosterizeTool.prototype.initialize = function () {
         this.$window.classList.add('posterize-tool');
@@ -57,7 +57,7 @@
             var $value = self.$content.querySelector('.posterize-tool-regulation-value');
 
             function setupPosterize(levels) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

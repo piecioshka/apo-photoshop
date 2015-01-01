@@ -73,7 +73,7 @@
 
             _.each($inputs, function ($input) {
                 $input.addEventListener('change', function () {
-                    new Operation(function () {
+                    new root.Operation(function () {
                         var color = $input.value;
                         var negativeColor = 255 - $input.value;
                         var colors = getColors();

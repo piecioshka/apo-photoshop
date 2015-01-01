@@ -13,6 +13,7 @@
          * @returns {Array}
          */
         completePixelList: function (pixels, width, height, border) {
+            var i;
             var complement = [];
             var k = width + 2;
 
@@ -20,7 +21,7 @@
                 complement.push(border);
             });
 
-            for (var i = 0; i < pixels.length; i += width) {
+            for (i = 0; i < pixels.length; i += width) {
                 complement.push(border);
                 complement.push.apply(complement, pixels.slice(i, i + width));
                 complement.push(border);
@@ -51,8 +52,10 @@
 
             complement.push(borderRow);
 
-            for (var i = 0; i < pixels.length; i++) {
-                var row = [];
+            var i, row;
+
+            for (i = 0; i < pixels.length; i++) {
+                row = [];
 
                 row.push(border);
                 row.push.apply(row, pixels[i]);
@@ -76,10 +79,11 @@
         toPixelMatrix: function (list, width) {
             _.assert(list.length % width === 0, 'CanvasHelper#toPixelMatrix: `passed` width is not divide a list without tail.');
 
+            var i, row;
             var matrix = [];
 
-            for (var i = 0; i < list.length; i += width) {
-                var row = list.slice(i, i + width);
+            for (i = 0; i < list.length; i += width) {
+                row = list.slice(i, i + width);
                 matrix.push(row);
             }
 

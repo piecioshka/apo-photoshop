@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    BrightnessRegulationTool.prototype = new AbstractWindow();
+    BrightnessRegulationTool.prototype = new root.AbstractWindow();
 
     BrightnessRegulationTool.prototype.initialize = function () {
         this.$window.classList.add('brightness-regulation-tool');
@@ -57,7 +57,7 @@
             var $value = self.$content.querySelector('.brightness-regulation-tool-regulation-value');
 
             function setupBrightnessRegulation(level) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

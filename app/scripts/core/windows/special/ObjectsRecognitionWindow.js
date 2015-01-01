@@ -48,7 +48,7 @@
     };
 
     ObjectsRecognitionWindow.prototype.buildUI = function () {
-        new Operation(function () {
+        new root.Operation(function () {
             this.originalColors = this._useValleyMethod(this.settings.picture);
             this._buildStrip();
         }, this);
@@ -154,8 +154,10 @@
         var pixelsChannelsData = pixelsChannels.data;
         var len = pixelsChannelsData.length;
 
-        for (var i = 0; i < len / 4; i++) {
-            var color = originalCanvasPixelsChannelsData[(i * 4)];
+        var i, color;
+
+        for (i = 0; i < len / 4; i++) {
+            color = originalCanvasPixelsChannelsData[(i * 4)];
 
             if (objectColor !== color) {
                 newColor = whiteColor;

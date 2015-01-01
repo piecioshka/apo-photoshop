@@ -6,6 +6,7 @@
         _flatteningHistogram: function (contextWindow, method) {
             _.assert(_.isNumber(method), 'OperationsFlatteningHistogram#_flatteningHistogram: `method` is not a number');
 
+            var z, r;
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
 
@@ -21,7 +22,7 @@
             var news = [];
 
             // 2 pkt.
-            for (var z = 0, r = 0; z < h.length; ++z) {
+            for (z = 0, r = 0; z < h.length; ++z) {
                 // Reset value.
                 left[z] = right[z] = news[z] = 0;
 
@@ -82,15 +83,15 @@
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, -1);
 
-            // 7 pkt.
-            for (var i = 0; i < len / 4; i++) {
-                var ne, avg, max;
+            var i, ne, avg, max, index, y, x, color, val;
 
-                var index = i * 4;
-                var y = Math.floor(i / can.settings.width) + 1;
-                var x = (i % can.settings.height) + 1;
-                var color = 0;
-                var val = pixelsChannelsData[index];
+            // 7 pkt.
+            for (i = 0; i < len / 4; i++) {
+                index = i * 4;
+                y = Math.floor(i / can.settings.width) + 1;
+                x = (i % can.settings.height) + 1;
+                color = 0;
+                val = pixelsChannelsData[index];
 
                 // 8 pkt.
                 if (left[val] === right[val]) {

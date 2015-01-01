@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    SmoothingTool.prototype = new AbstractWindow();
+    SmoothingTool.prototype = new root.AbstractWindow();
 
     SmoothingTool.prototype.initialize = function () {
         this.$window.classList.add('smoothing-tool');
@@ -96,7 +96,7 @@
             }
 
             function handleChosenMask() {
-                new Operation(function () {
+                new root.Operation(function () {
                     var type, mask, scale;
                     var v = $select.value;
 
@@ -121,7 +121,7 @@
             }
 
             function handleCustomMask() {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Set default value as '0'.
                     _.each($textes, function ($text) {
                         $text.value = $text.value || 0;

@@ -156,7 +156,7 @@
                     var p = new root.promise.Promise();
 
                     // Load selected file.
-                    root.AssetsLoader.loadImage(image.file, image.name, function (file) {
+                    root.AssetsLoader.loadImage(image.file, function (file) {
                         params[index].canvas = buildCanvasFromImage(file);
                         _.extend(params[index], file);
                         p.done();
@@ -385,7 +385,7 @@
         var flatteningHistogramOperationsMenu = new gui.Menu();
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_MEDIUM_METHOD'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsFlatteningHistogram.flatteningHistogramMedium(activeWindow);
             });
@@ -395,7 +395,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramRandomMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_RANDOM_METHOD'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsFlatteningHistogram.flatteningHistogramRandom(activeWindow);
             });
@@ -405,7 +405,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramNeighboudhoodMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_NEIGHBOURHOOD_METHOD'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsFlatteningHistogram.flatteningHistogramNeighbourhood(activeWindow);
             });
@@ -415,7 +415,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsFlatteningHistogramCustomMethodMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_FLATTENING_HISTOGRAM_CUSTOM_METHOD'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsFlatteningHistogram.flatteningHistogramCustom(activeWindow);
             });
@@ -433,7 +433,7 @@
         var onePointOperationsMenu = new gui.Menu();
 
         this.operationsOnePointNegativeMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_NEGATIVE'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsOnePoint.onePointNegative(activeWindow);
             });
@@ -445,7 +445,7 @@
         this.operationsOnePointThresholdMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_THRESHOLD'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new ThresholdTool(activeWindow, {
+            return new root.ThresholdTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -456,7 +456,7 @@
         this.operationsOnePointPosterizeMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_POSTERIZE'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new PosterizeTool(activeWindow, {
+            return new root.PosterizeTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -467,7 +467,7 @@
         this.operationsOnePointStretchingMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_STRETCHING'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new StretchTool(activeWindow, {
+            return new root.StretchTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -478,7 +478,7 @@
         this.operationsOnePointBrightnessRegulationMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_BRIGHTNESS_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new BrightnessRegulationTool(activeWindow, {
+            return new root.BrightnessRegulationTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -489,7 +489,7 @@
         this.operationsOnePointContrastRegulationMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_CONTRAST_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new ContrastRegulationTool(activeWindow, {
+            return new root.ContrastRegulationTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -500,7 +500,7 @@
         this.operationsOnePointGammaRegulationMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_GAMMA_REGULATION'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new GammaRegulationTool(activeWindow, {
+            return new root.GammaRegulationTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -509,7 +509,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsOnePointArithmeticalLogicalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL'), function () {
-            return new ArithmeticalLogicalTool();
+            return new root.ArithmeticalLogicalTool();
         });
         onePointOperationsMenu.append(this.operationsOnePointArithmeticalLogicalMenuItem);
 
@@ -528,7 +528,7 @@
         this.operationsNeighbourhoodSmoothingMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new SmoothingTool(activeWindow, {
+            return new root.SmoothingTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -537,7 +537,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMediumMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MEDIUM'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsNeighbourhood.sharpen(activeWindow, {
                     type: 'med'
@@ -549,7 +549,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMinimalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MINIMAL'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsNeighbourhood.sharpen(activeWindow, {
                     type: 'min'
@@ -561,7 +561,7 @@
         // -------------------------------------------------------------------------------------------------------------
 
         this.operationsNeighbourhoodSharpenMaximalMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL'), function () {
-            new Operation(function () {
+            new root.Operation(function () {
                 var activeWindow = root.App.windowManager.getActiveWindow();
                 root.OperationsNeighbourhood.sharpen(activeWindow, {
                     type: 'max'
@@ -581,7 +581,7 @@
         this.morphologicalOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_MORPHOLOGICAL'), function () {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
-            return new MorphologicalTool(activeWindow, {
+            return new root.MorphologicalTool(activeWindow, {
                 picture: activeWindow.getPicture()
             });
         });
@@ -593,7 +593,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow instanceof root.PictureWindow) {
-                new Operation(function () {
+                new root.Operation(function () {
                     root.TurtleAlgorithm(activeWindow);
                 });
             }

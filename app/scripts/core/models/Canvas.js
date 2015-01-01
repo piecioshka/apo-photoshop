@@ -96,8 +96,10 @@
         var pixelsChannelsData = pixelsChannels.data;
         var len = pixelsChannelsData.length;
 
-        for (var i = 0; i < len / 4; i++) {
-            var color = pixelsChannelsData[(i * 4)];
+        var i, color;
+
+        for (i = 0; i < len / 4; i++) {
+            color = pixelsChannelsData[(i * 4)];
 
             // Update each channel (RGB) of pixel. Not modify channel alpha.
             pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
@@ -177,38 +179,6 @@
         });
 
         return hist;
-    };
-
-    /**
-     * Put cross as a sign, that canvas is not active.
-     */
-    Canvas.prototype.markAsNotActive = function () {
-        var w = this.settings.width;
-        var h = this.settings.height;
-
-        this.ctx.strokeStyle = '#4e4e4e';
-
-        // Full white rectangle
-        this.ctx.fillStyle = '#eee';
-        this.ctx.fillRect(0 , 0, this.settings.width, this.settings.height);
-
-        this.ctx.lineWidth = 2;
-
-        // Border left
-        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
-        // Border right
-        this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
-        // Border top
-        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, 0); this.ctx.stroke();
-        // Border bottom
-        this.ctx.beginPath(); this.ctx.moveTo(0, h); this.ctx.lineTo(w, h); this.ctx.stroke();
-
-        this.ctx.lineWidth = 1;
-
-        // Draw cross - first cross line
-        this.ctx.beginPath(); this.ctx.moveTo(0, 0); this.ctx.lineTo(w, h); this.ctx.stroke();
-        // Draw cross - second cross line
-        this.ctx.beginPath(); this.ctx.moveTo(w, 0); this.ctx.lineTo(0, h); this.ctx.stroke();
     };
 
     /**

@@ -56,7 +56,7 @@
             };
         }
 
-        new Operation(function buildHSVPalette() {
+        new root.Operation(function buildHSVPalette() {
             var $select = self.$content.querySelector('.color-palette-chooser select');
             var $r = self.$content.querySelector('.color-palette-r');
             var $g = self.$content.querySelector('.color-palette-g');
@@ -74,7 +74,7 @@
             });
 
             function loadPalette(url) {
-                var img = new Image();
+                var img = new root.Image();
                 img.src = url;
                 img.onload = function () {
                     canvas.clear();

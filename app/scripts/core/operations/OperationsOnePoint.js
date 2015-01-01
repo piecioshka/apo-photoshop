@@ -12,8 +12,10 @@
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 // Negative value.
                 color = 255 - color;
@@ -42,8 +44,10 @@
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 // If more than holder returns 255 (white) otherwise 0 (black).
                 color = (color > hold) ? 255 : 0;
@@ -69,8 +73,10 @@
             var len = pixelsChannelsData.length;
             var levels = parseInt(params.value, 10);
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 // Round ratio color by levels multiply by levels.
                 color = Math.round(color / levels) * levels;
@@ -100,8 +106,10 @@
             var min = parseInt(params.value.min, 10);
             var max = parseInt(params.value.max, 10);
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 if (color <= min || color > max) {
                     color = 0;
@@ -133,8 +141,10 @@
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 color += color * (hold / 100);
 
@@ -166,10 +176,12 @@
             var multiplier = (100.0 + hold) / 100.0;
             var lmax = (uniqueChannels.length - 1);
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color, temp;
 
-                var temp = (color / lmax) - 0.5;
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
+
+                temp = (color / lmax) - 0.5;
                 temp = temp * multiplier + 0.5;
                 color = Math.max(0, Math.min(uniqueChannels.length - 1, temp * lmax));
 
@@ -201,14 +213,18 @@
             var upo = new Array(uniqueChannels.length);
             var lmax = (uniqueChannels.length - 1);
 
-            for (var j = 0; j < uniqueChannels.length; ++j) {
-                var pos = (lmax * Math.pow(j / lmax, 1.0 / hold)) + 0.5;
+            var j, pos;
+
+            for (j = 0; j < uniqueChannels.length; ++j) {
+                pos = (lmax * Math.pow(j / lmax, 1.0 / hold)) + 0.5;
                 pos = Math.min(Math.max(pos, 0), uniqueChannels.length - 1);
                 upo[j] = pos;
             }
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 color = upo[color];
 
@@ -356,8 +372,10 @@
             var pixelsChannelsData = pixelsChannels.data;
             var len = pixelsChannelsData.length;
 
-            for (var i = 0; i < len / 4; i++) {
-                var color = pixelsChannelsData[(i * 4)];
+            var i, color;
+
+            for (i = 0; i < len / 4; i++) {
+                color = pixelsChannelsData[(i * 4)];
 
                 // When current color is color from start position, change it to ending color.
                 color = params.colors[color];

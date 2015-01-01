@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    ContrastRegulationTool.prototype = new AbstractWindow();
+    ContrastRegulationTool.prototype = new root.AbstractWindow();
 
     ContrastRegulationTool.prototype.initialize = function () {
         this.$window.classList.add('contrast-regulation-tool');
@@ -57,7 +57,7 @@
             var $value = self.$content.querySelector('.contrast-regulation-tool-regulation-value');
 
             function setupContrastRegulation(level) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

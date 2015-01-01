@@ -17,7 +17,7 @@
         this.initialize();
     };
 
-    ArithmeticalLogicalTool.prototype = new AbstractWindow();
+    ArithmeticalLogicalTool.prototype = new root.AbstractWindow();
 
     ArithmeticalLogicalTool.prototype.initialize = function () {
         this.$window.classList.add('arithmetical-logical-tool');
@@ -128,7 +128,7 @@
                 canvas.setHeight(newHeight);
 
                 function runOperation() {
-                    new Operation(function () {
+                    new root.Operation(function () {
                         root.OperationsOnePoint.onePointArithmeticalLogical(resultWindow, {
                             operation: getOperationSelect(),
                             firstPicture: firstPicture,

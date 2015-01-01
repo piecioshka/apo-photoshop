@@ -16,7 +16,7 @@
         this.initialize();
     };
 
-    FileSaveHelper.prototype = new AbstractFileHelper();
+    FileSaveHelper.prototype = new root.AbstractFileHelper();
     FileSaveHelper.prototype.constructor = FileSaveHelper;
 
     FileSaveHelper.prototype.createInput = function () {
@@ -36,7 +36,7 @@
                 });
             });
 
-            self.emit(AbstractFileHelper.EVENTS.SAVE_FILE, files);
+            self.emit(root.AbstractFileHelper.EVENTS.SAVE_FILE, files);
             self.remove();
         });
         this.$input.click();

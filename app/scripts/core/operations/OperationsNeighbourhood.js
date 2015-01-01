@@ -24,7 +24,18 @@
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, 0);
 
-            var i, color, x, y, dimensions;
+            var i, color, x, y, dimensions, ne;
+
+            function calculateMask(ne) {
+                var temp = 0;
+
+                // Multiply mask with neighbours.
+                _.each(ne, function (n, index) {
+                    temp += (n * mask[index] / sum);
+                });
+
+                return temp;
+            }
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
@@ -33,17 +44,10 @@
                 x = dimensions.x;
                 y = dimensions.y;
 
-                var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1);
-
-                var temp = 0;
-
-                // Multiply mask with neighbours.
-                _.each(ne, function (n, index) {
-                    temp += (n * mask[index] / sum);
-                });
+                ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1);
 
                 // Update color.
-                color = temp;
+                color = calculateMask(ne);
 
                 switch (scale) {
                     case 'ternary':

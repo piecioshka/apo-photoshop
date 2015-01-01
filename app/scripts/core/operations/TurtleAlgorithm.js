@@ -17,7 +17,9 @@
         // Create two-dimension array.
         (function (w) {
             tab2 = new Array(w);
-            while (w--) tab2[w] = new Array(height);
+            while (w--) {
+                tab2[w] = new Array(height);
+            }
         }(width));
 
         // -------------------------------------------------------------------------------------------------------------
@@ -43,13 +45,17 @@
         startY = y;
 
         // When found first pixel, continue searching rest points.
-        while (found == true) {
+        while (found === true) {
             if (can.getPixel(x, y).b < 150) {
                 kier--;
-                if (kier === 0) kier = 4;
+                if (kier === 0) {
+                    kier = 4;
+                }
             } else {
                 kier++;
-                if (kier === 5) kier = 1;
+                if (kier === 5) {
+                    kier = 1;
+                }
             }
 
             tab2[x][y] = 255;

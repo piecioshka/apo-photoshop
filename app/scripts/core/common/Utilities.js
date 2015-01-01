@@ -60,13 +60,15 @@
         },
 
         sortNumbers: function (a, b) {
+            var type = 0;
+
             if (a > b) {
-                return 1;
+                type = 1;
             } else if (a < b) {
-                return -1;
-            } else {
-                return 0;
+                type = -1;
             }
+
+            return type;
         },
 
         sum: function (array) {

@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    MorphologicalTool.prototype = new AbstractWindow();
+    MorphologicalTool.prototype = new root.AbstractWindow();
 
     MorphologicalTool.prototype.initialize = function () {
         this.$window.classList.add('morphological-tool');
@@ -70,7 +70,7 @@
             }
 
             function callMorphologicalAction() {
-                new Operation(function () {
+                new root.Operation(function () {
                     var type = getSelectedType();
                     var figure = getSelectedFigure();
 

@@ -16,7 +16,7 @@
         this.initialize();
     };
 
-    FileOpenHelper.prototype = new AbstractFileHelper();
+    FileOpenHelper.prototype = new root.AbstractFileHelper();
     FileOpenHelper.prototype.constructor = FileOpenHelper;
 
     FileOpenHelper.prototype.createInput = function () {
@@ -36,7 +36,7 @@
                 });
             });
 
-            self.emit(AbstractFileHelper.EVENTS.LOAD_FILES, files);
+            self.emit(root.AbstractFileHelper.EVENTS.LOAD_FILES, files);
             self.remove();
         });
         this.$input.click();

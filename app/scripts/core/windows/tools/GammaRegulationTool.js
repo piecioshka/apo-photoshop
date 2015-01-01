@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    GammaRegulationTool.prototype = new AbstractWindow();
+    GammaRegulationTool.prototype = new root.AbstractWindow();
 
     GammaRegulationTool.prototype.initialize = function () {
         this.$window.classList.add('gamma-regulation-tool');
@@ -57,7 +57,7 @@
             var $value = self.$content.querySelector('.gamma-regulation-tool-regulation-value');
 
             function setupContrastRegulation(level) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

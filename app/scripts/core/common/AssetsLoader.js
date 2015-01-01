@@ -10,12 +10,12 @@
             /.\.bmp/i
         ],
 
-        loadImage: function (file, name, callback, ctx) {
-            this._useImageConstructor(file, name, callback.bind(ctx || this));
+        loadImage: function (file, callback, ctx) {
+            this._useImageConstructor(file, callback.bind(ctx || this));
         },
 
-        _useImageConstructor: function (file, name, callback) {
-            var img = new Image();
+        _useImageConstructor: function (file, callback) {
+            var img = new root.Image();
 
             img.addEventListener('load', function () {
                 callback({

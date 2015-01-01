@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    ThresholdTool.prototype = new AbstractWindow();
+    ThresholdTool.prototype = new root.AbstractWindow();
 
     ThresholdTool.prototype.initialize = function () {
         this.$window.classList.add('threshold-tool');
@@ -57,7 +57,7 @@
             var $value = self.$content.querySelector('.threshold-tool-regulation-value');
 
             function setupThreshold(hold) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

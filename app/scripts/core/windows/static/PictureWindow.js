@@ -57,7 +57,7 @@
         }, this);
 
         this.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
-            if (this.isModified && confirm(root.Locale.get('FILE_SAVE_AS_CONFIRM'))) {
+            if (this.isModified && root.confirm(root.Locale.get('FILE_SAVE_AS_CONFIRM'))) {
                 this.saveAsPicture();
             }
         }, this);

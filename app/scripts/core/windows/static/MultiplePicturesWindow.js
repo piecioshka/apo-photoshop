@@ -81,7 +81,7 @@
     };
 
     MultiplePicturesWindow.prototype._resizeStrip = function (size) {
-        this.$content.style.height = (parseInt(this.$content.style.height, 10) || 0) + (size) + 'px';
+        this.$content.style.height = (parseInt(this.$content.style.height, 10) || 0) + size + 'px';
     };
 
     MultiplePicturesWindow.prototype._addClickEvent = function () {

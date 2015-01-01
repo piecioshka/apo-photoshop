@@ -23,7 +23,7 @@
         this.initialize();
     };
 
-    StretchTool.prototype = new AbstractWindow();
+    StretchTool.prototype = new root.AbstractWindow();
 
     StretchTool.prototype.initialize = function () {
         this.$window.classList.add('stretch-tool');
@@ -60,7 +60,7 @@
             var $value2 = self.$content.querySelector('.stretch-tool-regulation-value-max');
 
             function setupPosterize(min, max) {
-                new Operation(function () {
+                new root.Operation(function () {
                     // Restore image to origin.
                     self.contextWindow.setPrimaryState();
 

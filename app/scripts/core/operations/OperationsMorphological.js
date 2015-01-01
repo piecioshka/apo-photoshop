@@ -22,7 +22,7 @@
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, -1);
 
-            var i, color, x, y, dimensions;
+            var i, color, x, y, dimensions, ne;
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
@@ -31,7 +31,7 @@
                 x = dimensions.x;
                 y = dimensions.y;
 
-                var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1, figure);
+                ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1, figure);
 
                 color = _.min(ne);
 
@@ -66,7 +66,7 @@
             // Add border to matrix of pixels.
             var pixelsWithBorder = root.CanvasHelper.completePixelArray(pixelsMatrix, -1);
 
-            var i, color, x, y, dimensions;
+            var i, color, x, y, dimensions, ne;
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
@@ -75,7 +75,7 @@
                 x = dimensions.x;
                 y = dimensions.y;
 
-                var ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1, figure);
+                ne = root.CanvasHelper.getNeighbors(pixelsWithBorder, x + 1, y + 1, figure);
 
                 color = _.max(ne);
 
