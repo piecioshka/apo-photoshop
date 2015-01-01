@@ -47,7 +47,7 @@
     color: #383838;
 }
 
-body.darwin .abstract-window .abstract-window-bar .abstract-window-title {
+body.macosx .abstract-window .abstract-window-bar .abstract-window-title {
     float: right;
 }
 
@@ -55,7 +55,7 @@ body.darwin .abstract-window .abstract-window-bar .abstract-window-title {
     float: right;
 }
 
-body.darwin .abstract-window .abstract-window-bar .abstract-window-buttons {
+body.macosx .abstract-window .abstract-window-bar .abstract-window-buttons {
     float: left;
 }
 

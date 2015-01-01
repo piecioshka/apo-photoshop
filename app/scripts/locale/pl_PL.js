@@ -15,6 +15,7 @@
         MSG_ERR_NO_OPEN_WINDOW: 'Nie ma żadnego otwartego okna!',
         MSG_ERR_NOT_SELECT_ANY_PICTURE_WINDOW: 'Nie aktywowano okna z obrazkiem!',
         MSG_ERR_DIFFERENT_DIMENSION: 'Obrazki mają różne rozmiary',
+        MSG_ERR_UNRECOGNIZED_PLATFORM: 'Nie rozpoznano platformy',
 
         FILE: 'Plik',
         FILES_OPEN: 'Otwórz',

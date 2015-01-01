@@ -121,7 +121,21 @@
                 }
             });
 
-            root.document.body.classList.add(process.platform);
+            root.document.body.classList.add(this.translatePlatform(process.platform));
+        },
+
+        translatePlatform: function (platform) {
+            if (_.contains(['win32', 'win64'], platform)) {
+                platform = 'windows';
+            } else if ('darwin' === platform) {
+                platform = 'macosx';
+            } else if ('linux' === platform) {
+                platform = 'linux';
+            } else {
+                throw new Error(root.Locale.get('MSG_ERR_UNRECOGNIZED_PLATFORM'));
+            }
+
+            return platform;
         }
     };
 
