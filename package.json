@@ -11,7 +11,9 @@
     "window": {
         "title": "APO: Photoshop",
         "width": 1024,
-        "height": 600
+        "height": 600,
+        "toolbar": true,
+        "frame": true
     },
 
     "webkit": {

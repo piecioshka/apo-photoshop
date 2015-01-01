@@ -46,7 +46,7 @@
                 'package.json'
             ],
             // win64, win32, osx64, osx32, linux
-            platforms: ['win64', 'osx64'],
+            platforms: ['win32', 'win64', 'osx64'],
             buildDir: './dist'
         });
 
