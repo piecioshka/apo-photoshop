@@ -137,13 +137,13 @@
             return true;
         }
 
-        function buildCanvasFromImage(image) {
+        function buildCanvasFromImage(picture) {
             var canvas = new root.Canvas({
-                width: image.width,
-                height: image.height
+                width: picture.width,
+                height: picture.height
             });
             canvas.$canvas.classList.add('canvas-picture');
-            canvas.loadGrayScaleImage(image.img, image.width, image.height);
+            canvas.loadGrayScaleImage(picture.img, picture.width, picture.height);
             return canvas;
         }
 
@@ -293,8 +293,8 @@
                 var current = activeWindow.getPicture().canvas;
 
                 // Restore to original version.
-                var original = new root.Canvas(activeWindow.getPicture().canvas.settings);
-                original.loadGrayScaleImage(activeWindow.getPicture().img, activeWindow.getPicture().width, activeWindow.getPicture().height);
+                var original = new root.Canvas(current.settings);
+                original.ctx.drawImage(current.toImage(), 0, 0, activeWindow.getPicture().width, activeWindow.getPicture().height);
 
                 new root.LookUpTableWindow(activeWindow, {
                     picture: activeWindow.getPicture(),

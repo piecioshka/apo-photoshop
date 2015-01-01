@@ -86,8 +86,8 @@
     // -----------------------------------------------------------------------------------------------------------------
 
     PictureWindow.prototype.setPrimaryState = function () {
-        var pic = this.settings.picture;
-        pic.canvas.loadGrayScaleImage(pic.img, pic.width, pic.height);
+        var picture = this.settings.picture;
+        picture.canvas.loadGrayScaleImage(picture.img, picture.width, picture.height);
         this.setPrimaryTitle();
         this.isModified = false;
         this.histogram.list = this.settings.picture.canvas.getCountingColorList();

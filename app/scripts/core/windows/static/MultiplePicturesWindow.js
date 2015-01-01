@@ -63,12 +63,12 @@
 
     MultiplePicturesWindow.prototype._addPicture = function (picture, index) {
         // Append width of pictures list (use margin bottom).
-        this._resizeStrip(picture.img.height + MultiplePicturesWindow.MARGIN_BOTTOM);
+        this._resizeStrip(picture.height + MultiplePicturesWindow.MARGIN_BOTTOM);
 
         // Create `Canvas` instance.
         var canvas = new root.Canvas({
-            width: picture.img.width,
-            height: picture.img.height
+            width: picture.width,
+            height: picture.height
         });
 
         // Create $canvas space.
