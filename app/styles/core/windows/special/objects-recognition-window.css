@@ -19,15 +19,18 @@
     margin-bottom: 0;
 }
 
+/* --- */
+
 .objects-recognition-window .abstract-window-content .selected-color {
-    padding: 0 10px;
+    width: 170px;
+    text-align: center;
     display: table-cell;
     vertical-align: middle;
 }
 
 .objects-recognition-window .abstract-window-content .selected-color label {
     display: inline-block;
-    margin: 0 10px 0 0;
+    padding: 0 10px 0 0;
 }
 
 .objects-recognition-window .abstract-window-content .selected-color i {
@@ -39,6 +42,8 @@
     cursor: pointer;
     vertical-align: middle;
 }
+
+/* --- */
 
 .objects-recognition-window fieldset {
     margin: 5px 0 0 0;
