@@ -29,9 +29,9 @@
 
 .smoothing-tool-preview input[type="text"] {
     width: 40px;
-    height: 20px;
-    text-align: center;
+    height: 30px;
     border: none;
+    text-align: center;
 }
 
 .smoothing-tool-preview input[type="submit"] {

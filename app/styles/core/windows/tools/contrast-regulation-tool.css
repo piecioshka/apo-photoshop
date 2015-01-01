@@ -10,8 +10,9 @@
 
 .contrast-regulation-tool-content input[type="text"] {
     display: inline-block;
-    width: 20px;
+    width: 30px;
     margin: 0 5px;
+    text-align: center;
 }
 
 .contrast-regulation-tool-content input[type="range"] {

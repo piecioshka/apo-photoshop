@@ -3,6 +3,10 @@
     height: 70px;
 }
 
+body.windows .stretch-tool-content {
+    height: 85px;
+}
+
 .stretch-tool-content span {
     display: inline-block;
     width: 60px;
@@ -10,8 +14,9 @@
 
 .stretch-tool-content input[type="text"] {
     display: inline-block;
-    width: 20px;
+    width: 30px;
     margin: 0 5px;
+    text-align: center;
 }
 
 .stretch-tool-content input[type="range"] {
