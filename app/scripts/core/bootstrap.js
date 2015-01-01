@@ -120,6 +120,8 @@
                     setDefaultState();
                 }
             });
+
+            root.document.body.classList.add(process.platform);
         }
     };
 

@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body.win32 .multiple-pictures-window .abstract-window-content {
+    padding: 0 20px 0 0;
+}
+
 .multiple-pictures-window .abstract-window-content .strip-axis {
     padding: 5px;
     float: left;

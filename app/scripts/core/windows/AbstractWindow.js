@@ -53,10 +53,6 @@
                 root.App.windowManager.emit(AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: self });
             }
         }, false);
-
-        if (root.Utilities.isDarwin()) {
-            this.$window.classList.add('macosx');
-        }
     };
 
     AbstractWindow.prototype.createTopBar = function () {

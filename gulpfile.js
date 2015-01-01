@@ -39,7 +39,7 @@
         'find app/scripts/core -name "*.js" | xargs wc -l | sort -r'
     ]));
 
-    gulp.task('build', 'Building application for distribution.', function () {
+    gulp.task('build', 'Building application for distribution.', function (cb) {
         var nw = new NwBuilder({
             files: [
                 'app/**/**',
@@ -52,7 +52,9 @@
 
         nw.on('log', console.log);
 
-        nw.build().catch(function (error) {
+        nw.build().then(function () {
+            cb();
+        }).catch(function (error) {
             console.error(error);
         });
     });
