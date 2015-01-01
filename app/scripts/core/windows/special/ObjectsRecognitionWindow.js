@@ -107,9 +107,15 @@
 
             palette.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
                 var c = palette.getSelectedColor();
-                $i.style.background = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', ' + c[3] + ')';
+
+                if (!_.isEmpty(c)) {
+                    $i.style.background = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', ' + c[3] + ')';
+                }
             });
         });
+
+        // Set to black.
+        $i.style.background = 'rgba(0, 0, 0, 255)';
     };
 
     ObjectsRecognitionWindow.prototype._addSubmitButton = function () {
@@ -183,12 +189,17 @@
 
         if (this.contextWindow instanceof root.MultiplePicturesWindow) {
             var $pictures = this.contextWindow.getPictures();
+
             _.each($pictures, function ($picture) {
                 $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
             }, this);
         } else if (this.contextWindow instanceof root.PictureWindow) {
             var $picture = this.contextWindow.getPicture();
+
             $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
+
+            // Inform picture window that is modified.
+            this.contextWindow.setModifiedState();
         }
 
         // Close current window.

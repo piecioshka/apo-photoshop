@@ -13,7 +13,7 @@
         this.$content = null;
         this.isActive = false;
 
-        this._selectedColor = undefined;
+        this._selectedColor = [];
 
         this.setup();
         this.initialize();
