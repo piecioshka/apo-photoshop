@@ -57,12 +57,13 @@
         }
 
         new Operation(function buildHSVPalette() {
+            var $select = self.$content.querySelector('.color-palette-chooser select');
             var $r = self.$content.querySelector('.color-palette-r');
             var $g = self.$content.querySelector('.color-palette-g');
             var $b = self.$content.querySelector('.color-palette-b');
             var $a = self.$content.querySelector('.color-palette-a');
-            var $c = self.$content.querySelector('.color-palette-c');
-            var $select = self.$content.querySelector('.color-palette-chooser select');
+            var $ch = self.$content.querySelector('.color-palette-ch');
+            var $cs = self.$content.querySelector('.color-palette-cs');
 
             var paletteWidth = 200;
             var paletteHeight = 200;
@@ -86,14 +87,22 @@
             canvas.$canvas.addEventListener('mousemove', function (evt) {
                 var mousePos = getMousePos(canvas.$canvas, evt);
                 var imageData = canvas.ctx.getImageData(mousePos.x, mousePos.y, 1, 1);
-                var data = self._selectedColor = imageData.data;
+                var data = imageData.data;
+                $ch.style.background = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + data[3] + ')';
 
+                // Put channels into inputs.
                 $r.value = data[0];
                 $g.value = data[1];
                 $b.value = data[2];
                 $a.value = data[3];
-                $c.style.background = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + data[3] + ')';
             }, false);
+
+            canvas.$canvas.addEventListener('click', function (evt) {
+                var mousePos = getMousePos(canvas.$canvas, evt);
+                var imageData = canvas.ctx.getImageData(mousePos.x, mousePos.y, 1, 1);
+                var data = self._selectedColor = imageData.data;
+                $cs.style.background = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + data[3] + ')';
+            });
 
             canvas.render(self);
 

@@ -45,11 +45,15 @@
     text-align: center;
 }
 
-.color-palette-window .color-palette-content fieldset .color-palette-c {
+.color-palette-window .color-palette-content fieldset .color-palette-ch {
+    margin: 10px 0 0 0;
+}
+
+.color-palette-window .color-palette-content fieldset .color-palette-ch,
+.color-palette-window .color-palette-content fieldset .color-palette-cs {
     display: block;
     width: 60px;
     height: 20px;
     border: 1px solid #dbdaee;
     border-radius: 3px;
-    margin: 10px 0 0 0;
 }
