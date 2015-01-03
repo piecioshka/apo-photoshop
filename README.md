@@ -30,6 +30,8 @@ $ git clone https://github.com/piecioshka/apo-photoshop.git
 $ cd apo-photoshop
 $ npm install
 $ npm start
+# Bądź też można wygenerować paczka na wszystkie platformy:
+$ gulp build
 ```
 
 ## Wykorzystywane narzędzia

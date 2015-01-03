@@ -45,12 +45,11 @@
                 'app/**/**',
                 'package.json'
             ],
-            // win64, win32, osx64, osx32, linux
-            platforms: ['win32', 'win64', 'osx64'],
+            platforms: ['win32', 'win64', 'osx32', 'osx64', 'linux32', 'linux64'],
             buildDir: './dist'
         });
 
-        nw.on('log', console.log);
+        // nw.on('log', console.log);
 
         nw.build().then(function () {
             cb();
