@@ -26,12 +26,16 @@ Koła, trójkąty, kwadraty, intensywność szarości na intensywność jasnośc
 ### Z użyciem konsoli (dla programistów)
 
 ```
-$ git clone https://github.com/piecioshka/apo-photoshop.git
-$ cd apo-photoshop
-$ npm install
-$ npm start
-# Bądź też można wygenerować paczka na wszystkie platformy:
-$ gulp build
+$ ~/ # git clone https://github.com/piecioshka/apo-photoshop.git
+$ ~/ # cd apo-photoshop
+$ ~/apo-photoshop/ # npm install
+$ ~/apo-photoshop/ # npm start
+```
+
+Bądź też można wygenerować paczkę na wszystkie platformy:
+
+```
+$ ~/apo-photoshop/ # gulp build
 ```
 
 ## Wykorzystywane narzędzia
