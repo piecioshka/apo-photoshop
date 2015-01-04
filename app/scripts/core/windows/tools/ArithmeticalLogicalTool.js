@@ -28,20 +28,20 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildUI();
+            this.buildUI(function () {
+                // Set static width.
+                this.setRigidWidth();
 
-            // Set static width.
-            this.setRigidWidth();
-
-            // Update title of window.
-            this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL'));
+                // Update title of window.
+                this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_ARITHMETICAL_LOGICAL'));
+            });
         });
 
         // Render window.
         this.render();
     };
 
-    ArithmeticalLogicalTool.prototype.buildUI = function () {
+    ArithmeticalLogicalTool.prototype.buildUI = function (cb) {
         var self = this;
         var resultWindow = null;
         var wm = root.App.windowManager;
@@ -156,6 +156,10 @@
                     runOperation();
                 }
             });
+
+            if (_.isFunction(cb)) {
+                cb.call(self);
+            }
         }, 0);
     };
 

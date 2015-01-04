@@ -34,20 +34,20 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildUI();
+            this.buildUI(function () {
+                // Set static width.
+                this.setRigidWidth();
 
-            // Set static width.
-            this.setRigidWidth();
-
-            // Update title of window.
-            this.updateTitle(root.Locale.get('OPERATIONS_MORPHOLOGICAL'));
+                // Update title of window.
+                this.updateTitle(root.Locale.get('OPERATIONS_MORPHOLOGICAL'));
+            });
         });
 
         // Render window.
         this.render();
     };
 
-    MorphologicalTool.prototype.buildUI = function () {
+    MorphologicalTool.prototype.buildUI = function (cb) {
         var self = this;
         var template = doc.querySelector('#template-morphological-tool').innerHTML;
         var compiled = _.template(template);
@@ -88,6 +88,10 @@
 
             _.invoke($type, 'addEventListener', 'click', callMorphologicalAction);
             _.invoke($figure, 'addEventListener', 'click', callMorphologicalAction);
+
+            if (_.isFunction(cb)) {
+                cb.call(self);
+            }
         }, 0);
     };
 

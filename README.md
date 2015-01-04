@@ -164,7 +164,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - Do ćwiczeń
 
-    - [ ] Dodać słowo 'Kopia' do nazwy obrazka gdy go duplikujemy.
+    - [x] Dodać słowo 'Kopia' do nazwy obrazka gdy go duplikujemy.
     - [ ] Skrót do zwiększania/zmniejszania wartości.
     - [ ] Operacje morfologiczne bez limitu wykonania.
     - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
@@ -187,15 +187,12 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 
 - [x] Wczytanie sekwencji obrazów.
 - [x] Rozpoznanie obiektów z pierwszego kadru.
-    - [x] (Progowanie przedziałami) wytniemy obrazek w zadanym odcieniu szarości.
+    - [x] Wykorzystując `Progowanie przedziałami` wytniemy obrazek w zadanym odcieniu szarości.
 - [x] Prezentacja wyodrębnionych obiektów w osobnym oknie.
 - [x] Dobór kolorów z palety HSV dla każdego obiektu.
-- [x] Zastosowanie koloru do pierwszego kadru.
 - [x] Algorytm iteracyjny:
-    - [x] Rozpoznanie obiektów na i-tym kadrze.
-    - [x] Dopasowanie go do rozpoznanego wcześniej obiektu.
-    - [x] Zastosowanie tego samego koloru co rozpoznany obiekt.
-- [x] Po zakończeniu informacja o statusie powodzenia obrazu oraz prezentacja sekwencji poklatkowej.
+    - [x] Zastosowanie nowego koloru do wyodrębionego obiektu.
+- [x] Po zakończeniu nakładania koloru pokazujemy w nowym oknie wynik pokolorowanej sekwencji obrazów.
 
 #### Przydatne materiały
 

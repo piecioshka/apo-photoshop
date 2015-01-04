@@ -271,6 +271,7 @@
                 var copy = _.clone(original);
 
                 copy.canvas = original.canvas.copy();
+                copy.name += ' - ' + root.Locale.get('MSG_COPY');
 
                 new root.PictureWindow({
                     picture: copy

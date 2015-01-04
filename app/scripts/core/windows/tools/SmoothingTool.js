@@ -34,20 +34,20 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildUI();
+            this.buildUI(function () {
+                // Set static width.
+                this.setRigidWidth();
 
-            // Set static width.
-            this.setRigidWidth();
-
-            // Update title of window.
-            this.updateTitle(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING') + ' - ' +  this.settings.picture.name);
+                // Update title of window.
+                this.updateTitle(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING') + ' - ' +  this.settings.picture.name);
+            });
         });
 
         // Render window.
         this.render();
     };
 
-    SmoothingTool.prototype.buildUI = function () {
+    SmoothingTool.prototype.buildUI = function (cb) {
         var self = this;
         var template = doc.querySelector('#template-smoothing-tool').innerHTML;
         var compiled = _.template(template);
@@ -144,6 +144,10 @@
             $select.addEventListener('change', handleChosenMask);
             _.invoke($scale, 'addEventListener', 'click', handleChosenMask);
             $submit.addEventListener('click', handleCustomMask);
+
+            if (_.isFunction(cb)) {
+                cb.call(self);
+            }
         }, 0);
     };
 
