@@ -140,7 +140,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Konwertuj otwierane kolorowe obrazy do postaci obrazu w odcieniach szarości.
 - [x] Przesuwać oknem klikając w tytuł okna.
 
-**Uwagi zgłoszone na ost. zajęciach:**
+**Uwagi zgłoszone na ostatnich zajęciach:**
 
 - [x] Histogram obok obrazka.
 - [x] Aktualizacja histogramu, kiedy uruchamiamy jakąś operację.
@@ -159,6 +159,23 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Z ćw. 5 - algorytm żółwia.
 - [x] Pomoc na Windowsie nie działa.
 - [ ] Resize okna (Duży obrazek w małym oknie programu).
+
+**Uwagi zgłoszone na dodatkowych zajęciach:**
+
+- Do ćwiczeń
+
+    - [ ] Dodać słowo 'Kopia' do nazwy obrazka gdy go duplikujemy.
+    - [ ] Skrót do zwiększania/zmniejszania wartości.
+    - [ ] Operacje morfologiczne bez limitu wykonania.
+    - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
+    - [ ] Metoda trójwartościowa - źle działa.
+    - [ ] Button zamknij wszystko okna.
+
+- Do projektu
+
+    - [ ] Kolorować w nowym oknie, aby nie modyfikować oryginału.
+    - [ ] Wysegmentować jakąś postać z dowolnego obrazka (np. kreskówki - reksio?).
+    - [ ] Dorobić jeszcze z 2 sekwencje, bardziej rozbudowane (więcej obiektów).
 
 **Problemy znalezione podczas testów:**
 
@@ -183,10 +200,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 #### Przydatne materiały
 
 - Online
-    - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji
-    - http://www.cs.huji.ac.il/~yweiss/Colorization/
-    - https://github.com/cmisenas/canny-edge-detection
-    - http://mbs98.republika.pl/projekty/ro/ro.html
-    - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html
+    - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji _(2014/12/16 13:00)_
+    - http://www.cs.huji.ac.il/~yweiss/Colorization/ _(2014/12/16 14:00)_
+    - https://github.com/cmisenas/canny-edge-detection _(2014/12/16 15:00)_
+    - http://mbs98.republika.pl/projekty/ro/ro.html _(2014/12/16 16:00)_
+    - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html _(2014/12/16 17:00)_
 - Książki
     - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, 2000
