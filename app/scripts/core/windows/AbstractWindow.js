@@ -32,7 +32,7 @@
         });
 
         this.once(AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
-            root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: params.win});
+            root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: params.win });
         });
 
         if (contextWindow instanceof AbstractWindow) {
@@ -164,8 +164,15 @@
         }, 0);
     };
 
-    AbstractWindow.prototype.removeDOM = function () {
+    AbstractWindow.prototype.remove = function () {
+        // Remove all listeners.
+        // this.off();
+
+        // Remove from DOM.
         this.$window.parentNode.removeChild(this.$window);
+
+        // Clear all properties.
+        this.$window = this.$placeHolder = this.$bar = this.$buttons = this.$title = this.$content = null;
     };
 
     AbstractWindow.prototype.setRigidWidth = function () {

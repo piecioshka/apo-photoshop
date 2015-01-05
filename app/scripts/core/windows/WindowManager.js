@@ -25,12 +25,17 @@
         this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
     };
 
+    /**
+     * Remove window from viewport.
+     *
+     * @param {AbstractWindow} windowToRemove
+     */
     WindowManager.prototype.removeWindow = function (windowToRemove) {
         var self = this;
 
-        windowToRemove.removeDOM();
+        windowToRemove.remove();
 
-        this._windows.forEach(function (win, index) {
+        _.each(this._windows, function (win, index) {
             if (win === windowToRemove) {
                 self._windows.splice(index, 1);
             }
@@ -39,7 +44,7 @@
 
     WindowManager.prototype.inactivateWindowsWithout = function (windowToActive) {
         // Inactivate rest windows.
-        this._windows.forEach(function (win) {
+        _.each(this._windows, function (win) {
             if (win !== windowToActive) {
                 win.emit(root.AbstractWindow.EVENTS.INACTIVE_WINDOW);
             }
@@ -69,6 +74,10 @@
 
     WindowManager.prototype.getWindowsById = function (id) {
         return _.find(this._windows, { id: id });
+    };
+
+    WindowManager.prototype.each = function (callback, ctx) {
+        _.each(this._windows, callback, ctx || this);
     };
 
     // Extend `WindowManager` module with events.

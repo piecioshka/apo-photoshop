@@ -13,7 +13,8 @@
 
             function setDefaultState() {
                 menu.fileSaveMenuItem.enabled = false;
-                menu.fileCloseMenuItem.enabled = false;
+                menu.closeActiveWindowMenuItem.enabled = false;
+                menu.closeAllWindowsMenuItem.enabled = true;
 
                 menu.editRestoreMenuItem.enabled = false;
 
@@ -50,7 +51,8 @@
 
             function setPictureWindowState() {
                 menu.fileSaveMenuItem.enabled = true;
-                menu.fileCloseMenuItem.enabled = true;
+                menu.closeActiveWindowMenuItem.enabled = true;
+                menu.closeAllWindowsMenuItem.enabled = true;
 
                 menu.editRestoreMenuItem.enabled = true;
 
@@ -86,7 +88,8 @@
             }
 
             function setMultiplePicturesWindowState() {
-                menu.fileCloseMenuItem.enabled = true;
+                menu.closeActiveWindowMenuItem.enabled = true;
+                menu.closeAllWindowsMenuItem.enabled = true;
 
                 menu.toolsObjectsRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = true;

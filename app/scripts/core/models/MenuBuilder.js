@@ -11,7 +11,8 @@
 
         this.filesOpenMenuItem = null;
         this.fileSaveMenuItem = null;
-        this.fileCloseMenuItem = null;
+        this.closeActiveWindowMenuItem = null;
+        this.closeAllWindowsMenuItem = null;
         this.closeMenuItem = null;
 
         this.editRestoreMenuItem = null;
@@ -200,7 +201,7 @@
             }
         }
 
-        function windowCloseHandler() {
+        function closeActiveWindowHandler() {
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
@@ -220,12 +221,17 @@
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.fileCloseMenuItem = this.addMenuItem(root.Locale.get('FILE_CLOSE'), windowCloseHandler, 'Ctrl', 'W');
-        fileMenu.append(this.fileCloseMenuItem);
+        this.closeActiveWindowMenuItem = this.addMenuItem(root.Locale.get('CLOSE_ACTIVE_WINDOW'), closeActiveWindowHandler, 'Ctrl', 'W');
+        fileMenu.append(this.closeActiveWindowMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
-        this.closeMenuItem = this.addMenuItem(root.Locale.get('CLOSE'), root.close.bind(root), 'Ctrl', 'Q');
+        this.closeAllWindowsMenuItem = this.addMenuItem(root.Locale.get('CLOSE_ALL_WINDOW'), closeActiveWindowHandler, 'Ctrl-Shift', 'W');
+        fileMenu.append(this.closeAllWindowsMenuItem);
+
+        // -------------------------------------------------------------------------------------------------------------
+
+        this.closeMenuItem = this.addMenuItem(root.Locale.get('CLOSE_APPLICATION'), root.close.bind(root), 'Ctrl', 'Q');
         fileMenu.append(this.closeMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------

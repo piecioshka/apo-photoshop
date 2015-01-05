@@ -224,7 +224,7 @@
 
         ctx.fillStyle = 'rgb(0, 0, 0)';
 
-        histNorm.forEach(function (size, index) {
+        _.each(histNorm, function (size, index) {
             var w = 1;
             var h = size * histHeight / 100;
             var x = index * w;

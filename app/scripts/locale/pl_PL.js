@@ -22,8 +22,9 @@
         FILES_OPEN: 'Otwórz',
         FILE_SAVE_AS: 'Zapisz jako...',
         FILE_SAVE_AS_CONFIRM: 'Plik został zmodyfikowany. Czy chcesz zapisać zmiany?',
-        FILE_CLOSE: 'Zamknij otwarte okno',
-        CLOSE: 'Zamknij',
+        CLOSE_ACTIVE_WINDOW: 'Zamknij otwarte okno',
+        CLOSE_ALL_WINDOW: 'Zamknij wszystkie okna',
+        CLOSE_APPLICATION: 'Zamknij aplikację',
 
         EDIT: 'Edycja',
         EDIT_RESTORE: 'Przywróć do oryginału',

@@ -173,7 +173,7 @@
         var pixelsArray = this.getOneChannelOfPixels();
 
         // Loop for each pixels.
-        pixelsArray.forEach(function (color) {
+        _.each(pixelsArray, function (color) {
             // Append histogram list.
             hist[color] = (hist[color] || 0) + 1;
         });
