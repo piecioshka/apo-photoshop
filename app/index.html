@@ -171,20 +171,23 @@
 
         <script type="text/html" id="template-morphological-tool">
             <div class="morphological-tool-content">
-                <fieldset class="left">
-                    <ul>
-                        <li><label><input type="radio" name="morphological-tool-type" value="erode"> Erozja</label></li>
-                        <li><label><input type="radio" name="morphological-tool-type" value="dilate"> Dylatacja</label></li>
-                        <li><label><input type="radio" name="morphological-tool-type" value="open"> Otwarcie</label></li>
-                        <li><label><input type="radio" name="morphological-tool-type" value="close"> Zamknięcie</label></li>
-                    </ul>
-                </fieldset>
-                <fieldset class="right">
+                <fieldset>
                     <ul>
                         <li><label><input type="radio" name="morphological-tool-figure" value="diamond"> Romb (4-spójny)</label></li>
                         <li><label><input type="radio" name="morphological-tool-figure" value="square"> Kwadrat (8-spójny)</label></li>
                     </ul>
                 </fieldset>
+
+                <fieldset>
+                    <ul>
+                        <li class="left"><button class="morphological-tool-type" data-type="erode">Erozja</button></li>
+                        <li class="right"><button class="morphological-tool-type" data-type="open">Otwarcie</button></li>
+                        <li class="left"><button class="morphological-tool-type" data-type="dilate">Dylatacja</button></li>
+                        <li class="right"><button class="morphological-tool-type" data-type="close">Zamknięcie</button></li>
+                    </ul>
+                </fieldset>
+
+                <button class="morphological-tool-reset">Reset</button>
             </div>
         </script>
 

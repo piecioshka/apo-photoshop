@@ -68,7 +68,8 @@
     };
 
     WindowManager.prototype.getLast = function () {
-        return _.last(this._windows) || null;
+        var openedWindows = _.compact(this._windows);
+        return _.last(openedWindows) || null;
     };
 
     WindowManager.prototype.getOnlyPictureWindows = function () {

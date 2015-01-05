@@ -3,10 +3,18 @@
 
 .morphological-tool-content fieldset {
     width: 150px;
-    height: 100px;
 }
 
-.morphological-tool-content ul {
+.morphological-tool-content fieldset ul {
     list-style: none;
     padding: 0;
+}
+
+.morphological-tool-content fieldset:nth-child(2) > ul li {
+    margin: 5px 0;
+}
+
+.morphological-tool-content .morphological-tool-reset {
+    margin: 10px auto 0;
+    display: block;
 }

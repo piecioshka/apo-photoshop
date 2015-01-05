@@ -56,29 +56,28 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $type = self.$content.querySelectorAll('fieldset:nth-child(1) input[type="radio"]');
-            var $figure = self.$content.querySelectorAll('fieldset:nth-child(2) input[type="radio"]');
-
-            function getSelectedType() {
-                var type = _.findWhere($type, { checked: true });
-                return type ? type.value : null;
-            }
+            var $figure = self.$content.querySelectorAll('fieldset:nth-child(1) input[type="radio"]');
+            var $type = self.$content.querySelectorAll('fieldset:nth-child(2) button');
+            var $reset = self.$content.querySelector('.morphological-tool-reset');
 
             function getSelectedFigure() {
                 var figure = _.findWhere($figure, { checked: true });
                 return figure ? figure.value : null;
             }
 
-            function callMorphologicalAction() {
+            function callMorphologicalAction(evt) {
+                var type = evt.target.dataset.type;
+
+                if (!type) {
+                    return;
+                }
+
                 new root.Operation(function () {
-                    var type = getSelectedType();
                     var figure = getSelectedFigure();
 
-                    if (!type || !figure) {
+                    if (!figure) {
                         return;
                     }
-
-                    self.contextWindow.setPrimaryState();
 
                     root.OperationsMorphological[type](self.contextWindow, {
                         figure: figure
@@ -86,8 +85,12 @@
                 });
             }
 
+            function resetPicture() {
+                self.contextWindow.setPrimaryState();
+            }
+
             _.invoke($type, 'addEventListener', 'click', callMorphologicalAction);
-            _.invoke($figure, 'addEventListener', 'click', callMorphologicalAction);
+            $reset.addEventListener('click', resetPicture);
 
             if (_.isFunction(cb)) {
                 cb.call(self);
