@@ -78,6 +78,14 @@
         return _.each(this._windows, callback, ctx || this);
     };
 
+    WindowManager.prototype.getWindowsWithThatContextWindow = function (contextWindow) {
+        _.each(this._windows, function (win) {
+            if (win.contextWindow === contextWindow) {
+                this.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: win });
+            }
+        }, this);
+    };
+
     // Extend `WindowManager` module with events.
     _.extend(WindowManager.prototype, root.EventEmitter);
 
