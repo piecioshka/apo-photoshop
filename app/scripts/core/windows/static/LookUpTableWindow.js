@@ -23,7 +23,7 @@
         this.$content = null;
         this.isActive = false;
 
-        this.setup(contextWindow);
+        this.setup();
         this.initialize();
     };
 

@@ -24,7 +24,7 @@
 
         _.bindAll(this, 'startMovie', 'stopMovie');
 
-        this.setup(contextWindow);
+        this.setup();
         this.initialize();
     };
 
@@ -64,7 +64,7 @@
         });
 
         if (badPictures.length !== 0) {
-            this.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: this });
+            root.App.windowManager.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: this });
             root.alert(root.Locale.get('MSG_ERR_DIFFERENT_DIMENSION'));
             return;
         }

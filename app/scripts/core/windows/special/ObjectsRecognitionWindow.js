@@ -22,7 +22,7 @@
         this.originalColors = [];
         this.newColors = [];
 
-        this.setup(contextWindow);
+        this.setup();
         this.initialize();
     };
 
@@ -135,7 +135,7 @@
         $fieldset.appendChild($cancel);
 
         $cancel.addEventListener('click', function () {
-            self.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
+            root.App.windowManager.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
         });
 
         this.$content.appendChild($fieldset);
@@ -205,7 +205,7 @@
         }
 
         // Close current window.
-        this.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: this });
+        root.App.windowManager.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: this });
     };
 
     ObjectsRecognitionWindow.prototype._replaceColor = function (canvas, oldColors, newColors) {

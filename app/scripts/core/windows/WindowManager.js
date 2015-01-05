@@ -8,38 +8,36 @@
     WindowManager.RENDER_AREA_ID = '#app';
 
     WindowManager.prototype.addWindow = function (win) {
-        var st, left, width;
-        this._windows.push(win);
+        var st, left, top;
+        var CASCADE_MARGIN = 22;
 
         var active = this.getActiveWindow();
 
         if (active !== null) {
             st = root.getComputedStyle(active.$window, null);
             left = parseInt(st.getPropertyValue('left'), 10) || 0;
-            width = parseInt(st.getPropertyValue('width'), 10) || 0;
+            top = parseInt(st.getPropertyValue('top'), 10) || 0;
 
-            // Open cascade? Disable for now.
-            // win.$window.style.left = left + width + 'px';
+            // Open cascaded
+            win.$window.style.left = left + CASCADE_MARGIN + 'px';
+            win.$window.style.top = top + CASCADE_MARGIN + 'px';
         }
+
+        this._windows.push(win);
 
         this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
     };
 
-    /**
-     * Remove window from viewport.
-     *
-     * @param {AbstractWindow} windowToRemove
-     */
-    WindowManager.prototype.removeWindow = function (windowToRemove) {
-        var self = this;
+    WindowManager.prototype.removeWindow = function (win) {
+        win.remove();
 
-        windowToRemove.remove();
+        var index = _.indexOf(this._windows, win);
 
-        _.each(this._windows, function (win, index) {
-            if (win === windowToRemove) {
-                self._windows.splice(index, 1);
-            }
-        });
+        // Removed instance.
+        delete this._windows[index];
+
+        // Clear list index.
+        this._windows.splice(index, 1);
     };
 
     WindowManager.prototype.inactivateWindowsWithout = function (windowToActive) {
@@ -66,7 +64,7 @@
         return _.last(this._windows) || null;
     };
 
-    WindowManager.prototype.getPictureWindows = function () {
+    WindowManager.prototype.getOnlyPictureWindows = function () {
         return _.filter(this._windows, function (win) {
             return win instanceof root.PictureWindow;
         });
@@ -77,7 +75,7 @@
     };
 
     WindowManager.prototype.each = function (callback, ctx) {
-        _.each(this._windows, callback, ctx || this);
+        return _.each(this._windows, callback, ctx || this);
     };
 
     // Extend `WindowManager` module with events.

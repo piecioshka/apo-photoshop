@@ -205,7 +205,7 @@
             var activeWindow = root.App.windowManager.getActiveWindow();
 
             if (activeWindow !== null) {
-                activeWindow.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: activeWindow });
+                root.App.windowManager.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: activeWindow });
             }
         }
 

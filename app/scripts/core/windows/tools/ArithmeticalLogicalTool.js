@@ -64,7 +64,7 @@
             }
 
             function buildWindowSelects() {
-                var picturesWindows = wm.getPictureWindows();
+                var picturesWindows = wm.getOnlyPictureWindows();
 
                 $selectFirst.innerHTML = $selectSecond.innerHTML = '';
 

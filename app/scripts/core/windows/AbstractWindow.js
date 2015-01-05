@@ -8,17 +8,17 @@
         return this;
     };
 
-    AbstractWindow.prototype.setup = function (contextWindow) {
+    AbstractWindow.prototype.setup = function () {
         this.id = _.uniqueId('window-');
 
         this.createWindow();
         this.createTopBar();
         this.createContent();
 
-        this.listenOnActivationEvents(contextWindow);
+        this.listenOnActivationEvents();
     };
 
-    AbstractWindow.prototype.listenOnActivationEvents = function (contextWindow) {
+    AbstractWindow.prototype.listenOnActivationEvents = function () {
         var self = this;
 
         this.on(AbstractWindow.EVENTS.ACTIVE_WINDOW, function () {
@@ -30,16 +30,6 @@
             self.isActive = false;
             self.$window.classList.remove('active');
         });
-
-        this.once(AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
-            root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: params.win });
-        });
-
-        if (contextWindow instanceof AbstractWindow) {
-            contextWindow.on(AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
-                self.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
-            });
-        }
     };
 
     AbstractWindow.prototype.createWindow = function () {
@@ -96,7 +86,7 @@
 
         closeButton.addEventListener('click', function (evt) {
             evt.preventDefault();
-            self.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
+            root.App.windowManager.emit(AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
         });
 
         return this.$buttons;
@@ -165,14 +155,12 @@
     };
 
     AbstractWindow.prototype.remove = function () {
-        // Remove all listeners.
-        // this.off();
-
         // Remove from DOM.
         this.$window.parentNode.removeChild(this.$window);
-
         // Clear all properties.
-        this.$window = this.$placeHolder = this.$bar = this.$buttons = this.$title = this.$content = null;
+        // this.$window = this.$placeHolder = this.$bar = this.$buttons = this.$title = this.$content = null;
+        // Remove all listeners.
+        this.off();
     };
 
     AbstractWindow.prototype.setRigidWidth = function () {
