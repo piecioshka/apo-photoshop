@@ -59,6 +59,9 @@
             var $range2 = self.$content.querySelector('.stretch-tool-regulation-range-max');
             var $value2 = self.$content.querySelector('.stretch-tool-regulation-value-max');
 
+            root.InputRangeHelper.bindKeyShortcuts($range1);
+            root.InputRangeHelper.bindKeyShortcuts($range2);
+
             function setupPosterize(min, max) {
                 new root.Operation(function () {
                     // Restore image to origin.

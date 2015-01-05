@@ -56,6 +56,8 @@
             var $range = self.$content.querySelector('.posterize-tool-regulation-range');
             var $value = self.$content.querySelector('.posterize-tool-regulation-value');
 
+            root.InputRangeHelper.bindKeyShortcuts($range);
+
             function setupPosterize(levels) {
                 new root.Operation(function () {
                     // Restore image to origin.

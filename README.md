@@ -167,7 +167,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Dodać słowo 'Kopia' do nazwy obrazka gdy go duplikujemy.
     - [x] Button zamknij wszystko okna.
     - [x] Operacje morfologiczne bez limitu wykonania.
-    - [ ] Skrót do zwiększania/zmniejszania wartości.
+    - [x] Skrót do zwiększania/zmniejszania wartości.
     - [ ] Metoda trójwartościowa - źle działa.
     - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
 

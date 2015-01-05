@@ -56,6 +56,8 @@
             var $range = self.$content.querySelector('.threshold-tool-regulation-range');
             var $value = self.$content.querySelector('.threshold-tool-regulation-value');
 
+            root.InputRangeHelper.bindKeyShortcuts($range);
+
             function setupThreshold(hold) {
                 new root.Operation(function () {
                     // Restore image to origin.

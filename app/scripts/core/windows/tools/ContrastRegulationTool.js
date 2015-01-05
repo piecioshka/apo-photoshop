@@ -56,6 +56,8 @@
             var $range = self.$content.querySelector('.contrast-regulation-tool-regulation-range');
             var $value = self.$content.querySelector('.contrast-regulation-tool-regulation-value');
 
+            root.InputRangeHelper.bindKeyShortcuts($range);
+
             function setupContrastRegulation(level) {
                 new root.Operation(function () {
                     // Restore image to origin.
