@@ -35,8 +35,6 @@
          * @param {Object} [ctx]
          */
         once: function (name, fn, ctx) {
-            _.assert(_.isString(name), 'EventEmitter#once: `name` is not a string');
-            _.assert(_.isFunction(fn), 'EventEmitter#once: `fn` is not a function');
             ctx = ctx || this;
 
             var self = this;
@@ -50,25 +48,27 @@
         /**
          * Unregister listener.
          *
-         * @param {string} name
+         * @param {string} [name]
          * @param {Function} [fn]
          */
         off: function (name, fn) {
-            _.assert(_.isString(name), 'EventEmitter#off: `name` is not a string');
-
             if (!_.isArray(this._listeners)) {
                 this._listeners = [];
             }
 
-            this._listeners.forEach(function (listener, index) {
-                if (listener.name === name) {
-                    if (_.isFunction(fn)) {
-                        if (listener.fn === fn) {
+            _.each(this._listeners, function (listener, index) {
+                if (name) {
+                    if (listener.name === name) {
+                        if (_.isFunction(fn)) {
+                            if (listener.fn === fn) {
+                                this._listeners.splice(index, 1);
+                            }
+                        } else {
                             this._listeners.splice(index, 1);
                         }
-                    } else {
-                        this._listeners.splice(index, 1);
                     }
+                } else {
+                    this._listeners.splice(index, 1);
                 }
             }, this);
         },
@@ -86,7 +86,7 @@
                 this._listeners = [];
             }
 
-            this._listeners.forEach(function (event) {
+            _.each(this._listeners, function (event) {
                 if (event.name === name) {
                     event.fn.call(event.ctx, params);
                 }
