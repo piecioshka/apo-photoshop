@@ -112,13 +112,14 @@
             });
 
             wm.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function (params) {
+                // Found all windows, with `contextWindow` equal to that window.
                 var relatedWindows = wm.getWindowsWithThatContextWindow(params.win);
 
                 _.each(relatedWindows, function (win) {
-                    wm.removeWindow(win);
+                    wm.closeWindow(win);
                 });
 
-                wm.removeWindow(params.win);
+                wm.closeWindow(params.win);
 
                 // Activate last added window.
                 var lastAddedWindow = wm.getLast();

@@ -28,22 +28,26 @@
         this.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: win });
     };
 
-    WindowManager.prototype.removeWindow = function (win) {
+    WindowManager.prototype.closeWindow = function (win) {
         win.remove();
 
         var index = _.indexOf(this._windows, win);
 
         // Removed instance.
         delete this._windows[index];
+    };
 
-        // Clear list index.
-        this._windows.splice(index, 1);
+    WindowManager.prototype.closeAllWindows = function () {
+        _.each(this._windows, function (win) {
+            if (win instanceof root.AbstractWindow) {
+                this.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: win });
+            }
+        }, this);
     };
 
     WindowManager.prototype.inactivateWindowsWithout = function (windowToActive) {
-        // Inactivate rest windows.
         _.each(this._windows, function (win) {
-            if (win !== windowToActive) {
+            if (win instanceof root.AbstractWindow && win !== windowToActive) {
                 win.emit(root.AbstractWindow.EVENTS.INACTIVE_WINDOW);
             }
         });
@@ -51,7 +55,10 @@
 
     WindowManager.prototype.getActiveWindow = function () {
         var activeWindows = _.filter(this._windows, function (win) {
-            return win.isActive;
+            if (win instanceof root.AbstractWindow) {
+                return win.isActive;
+            }
+            return false;
         });
 
         _.assert(activeWindows.length <= 1, 'WindowManager#getActiveWindow: is more than one active windows');
@@ -80,7 +87,7 @@
 
     WindowManager.prototype.getWindowsWithThatContextWindow = function (contextWindow) {
         _.each(this._windows, function (win) {
-            if (win.contextWindow === contextWindow) {
+            if (win instanceof root.AbstractWindow && win.contextWindow === contextWindow) {
                 this.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: win });
             }
         }, this);

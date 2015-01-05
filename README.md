@@ -165,11 +165,11 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - Do ćwiczeń
 
     - [x] Dodać słowo 'Kopia' do nazwy obrazka gdy go duplikujemy.
-    - [ ] Skrót do zwiększania/zmniejszania wartości.
+    - [x] Button zamknij wszystko okna.
     - [ ] Operacje morfologiczne bez limitu wykonania.
-    - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
+    - [ ] Skrót do zwiększania/zmniejszania wartości.
     - [ ] Metoda trójwartościowa - źle działa.
-    - [ ] Button zamknij wszystko okna.
+    - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
 
 - Do projektu
 
