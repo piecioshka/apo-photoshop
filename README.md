@@ -168,8 +168,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Button zamknij wszystko okna.
     - [x] Operacje morfologiczne bez limitu wykonania.
     - [x] Skrót do zwiększania/zmniejszania wartości.
-    - [ ] Metoda trójwartościowa - źle działa.
-    - [ ] Filtracja liniowa (dolnoprzepustowe) bez tej prawej kolumny.
+    - [x] Filtracja liniowa: Metoda trójwartościowa - źle działa.
+    - [ ] Filtracja liniowa: Filtracja dolnoprzepustowa - bez tej prawej kolumny.
 
 - Do projektu
 
@@ -186,12 +186,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
 - [x] Wczytanie sekwencji obrazów.
-- [x] Rozpoznanie obiektów z pierwszego kadru.
-    - [x] Wykorzystując `Progowanie przedziałami` wytniemy obrazek w zadanym odcieniu szarości.
+- [x] Rozpoznanie obiektów z pierwszego kadru wykorzystując `Progowanie przedziałami`. Wytniemy obrazek w zadanym odcieniu szarości.
 - [x] Prezentacja wyodrębnionych obiektów w osobnym oknie.
 - [x] Dobór kolorów z palety HSV dla każdego obiektu.
-- [x] Algorytm iteracyjny:
-    - [x] Zastosowanie nowego koloru do wyodrębionego obiektu.
+- [x] Algorytm iteracyjny: Zastosowanie nowego koloru do wyodrębionego obiektu.
 - [x] Po zakończeniu nakładania koloru pokazujemy w nowym oknie wynik pokolorowanej sekwencji obrazów.
 
 #### Przydatne materiały

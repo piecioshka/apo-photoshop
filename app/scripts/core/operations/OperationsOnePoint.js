@@ -172,9 +172,9 @@
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
-            var uniqueChannels = can.getUniqueChannels();
+            var uniquePixelsChannels = can.getUniqueChannels();
             var multiplier = (100.0 + hold) / 100.0;
-            var lmax = (uniqueChannels.length - 1);
+            var lmax = (uniquePixelsChannels.length - 1);
 
             var i, color, temp;
 
@@ -183,7 +183,7 @@
 
                 temp = (color / lmax) - 0.5;
                 temp = temp * multiplier + 0.5;
-                color = Math.max(0, Math.min(uniqueChannels.length - 1, temp * lmax));
+                color = Math.max(0, Math.min(uniquePixelsChannels.length - 1, temp * lmax));
 
                 // Save protection (0 - 255).
                 color = root.Utilities.intToByte(color);
@@ -209,15 +209,15 @@
             var len = pixelsChannelsData.length;
             var hold = parseInt(params.value, 10);
 
-            var uniqueChannels = can.getUniqueChannels();
-            var upo = new Array(uniqueChannels.length);
-            var lmax = (uniqueChannels.length - 1);
+            var uniquePixelsChannels = can.getUniqueChannels();
+            var upo = new Array(uniquePixelsChannels.length);
+            var lmax = (uniquePixelsChannels.length - 1);
 
             var j, pos;
 
-            for (j = 0; j < uniqueChannels.length; ++j) {
+            for (j = 0; j < uniquePixelsChannels.length; ++j) {
                 pos = (lmax * Math.pow(j / lmax, 1.0 / hold)) + 0.5;
-                pos = Math.min(Math.max(pos, 0), uniqueChannels.length - 1);
+                pos = Math.min(Math.max(pos, 0), uniquePixelsChannels.length - 1);
                 upo[j] = pos;
             }
 

@@ -51,7 +51,13 @@
 
                 switch (scale) {
                     case 'ternary':
-                        color = (color > 255 ? 255 : (color < 0 ? 0 : 127));
+                        if (color > 0) {
+                            color = 255;
+                        } else if (color < 0) {
+                            color = 0;
+                        } else {
+                            color = 127;
+                        }
                         break;
 
                     case 'cutting':
@@ -63,7 +69,7 @@
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
-            var uniquePixelsChannels = can.getUniqueChannels().sort(root.Utilities.sortNumbers);
+            var uniquePixelsChannels = can.getUniqueChannels();
 
             if (scale === 'proportion') {
                 var min = _.first(uniquePixelsChannels);
