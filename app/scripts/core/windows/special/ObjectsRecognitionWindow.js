@@ -274,14 +274,19 @@
 
         // Normalize
         var max = root.Utilities.max.apply(this, pixels);
-
         var normalizePixels = _.map(pixels, function (item) {
             return parseInt(item / max * histHeight, 10);
         });
 
-        _.each(normalizePixels, function (pixel, index) {
+        // When we have a lot of colors, get as working only most popular.
+        // var workingPixels = normalizePixels;
+
+        // When we have picture only with couple of colors use all them.
+        var workingPixels = pixels;
+
+        _.each(workingPixels, function (pixel, index) {
             // If color is not empty (zero)
-            if (normalizePixels[index]) {
+            if (workingPixels[index]) {
                 // Push it to object colors counting list.
                 objectColorsCounting.push(pixels[index]);
             }

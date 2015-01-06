@@ -174,8 +174,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - Do projektu
 
     - [x] Kolorować w nowym oknie, aby nie modyfikować oryginału.
-    - [ ] Wysegmentować jakąś postać z dowolnego obrazka (np. kreskówki - reksio?).
-    - [ ] Dorobić jeszcze z 2 sekwencje, bardziej rozbudowane (więcej obiektów).
+    - [x] Wysegmentować jakąś postać z dowolnego obrazka
+    - [x] Dorobić jeszcze z 2 sekwencje, bardziej rozbudowane (więcej obiektów).
 
 **Problemy znalezione podczas testów:**
 

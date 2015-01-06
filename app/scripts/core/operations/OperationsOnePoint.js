@@ -82,21 +82,21 @@
                 color = pixelsChannelsData[(i * 4)];
 
                 // for more comments see http://www.axiomx.com/posterize.htm
-                var redAreaFloat = color / numOfAreas;
-                var redArea = parseInt(redAreaFloat, 10);
+                var colorAreaFloat = color / numOfAreas;
+                var colorArea = parseInt(colorAreaFloat, 10);
 
-                if (redArea > redAreaFloat) {
-                    redArea = redArea - 1;
+                if (colorArea > colorAreaFloat) {
+                    colorArea = colorArea - 1;
                 }
 
-                var newRedFloat = numOfValues * redArea;
-                var newRed = parseInt(newRedFloat, 10);
+                var newColorFloat = numOfValues * colorArea;
+                var newColor = parseInt(newColorFloat, 10);
 
-                if (newRed > newRedFloat) {
-                    newRed = newRed - 1
+                if (newColor > newColorFloat) {
+                    newColor = newColor - 1
                 }
 
-                color = newRed;
+                color = newColor;
 
                 // Save protection (0 - 255).
                 color = root.Utilities.intToByte(color);

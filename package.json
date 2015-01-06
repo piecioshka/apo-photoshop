@@ -12,7 +12,7 @@
         "title": "APO: Photoshop",
         "width": 1024,
         "height": 600,
-        "toolbar": true,
+        "toolbar": false,
         "frame": true
     },
 
