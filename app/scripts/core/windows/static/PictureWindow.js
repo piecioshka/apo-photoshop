@@ -38,8 +38,6 @@
     PictureWindow.prototype.initialize = function () {
         this.$window.classList.add('picture-window');
 
-        root.App.windowManager.addWindow(this);
-
         // Listen when window will be rendered.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             this.settings.picture.canvas.render(this);
@@ -54,7 +52,12 @@
 
             // Update title of window.
             this.updateTitle(this.settings.picture.name);
-        }, this);
+
+            // Append window list.
+            root.App.windowManager.addWindow(this);
+
+            this.emit(root.AbstractWindow.EVENTS.READY);
+        });
 
         this.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
             if (this.isModified && root.confirm(root.Locale.get('FILE_SAVE_AS_CONFIRM'))) {

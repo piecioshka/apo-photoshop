@@ -174,7 +174,8 @@
         INACTIVE_WINDOW: 'window:inactive',
         ACTIVE_WINDOW: 'window:active',
         CLOSE_WINDOW: 'window:close',
-        RENDER_WINDOW: 'window:render'
+        RENDER_WINDOW: 'window:render',
+        READY: 'window:ready'
     };
 
     // Extend `AbstractWindow` module with events.

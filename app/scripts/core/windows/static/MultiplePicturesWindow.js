@@ -29,9 +29,6 @@
     MultiplePicturesWindow.prototype.initialize = function () {
         this.$window.classList.add('multiple-pictures-window');
 
-        // Append window list.
-        root.App.windowManager.addWindow(this);
-
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
@@ -43,6 +40,11 @@
             this.updateTitle(_.map(this.settings.pictures, function (frame) {
                 return frame.name;
             }).join(', '));
+
+            // Append window list.
+            root.App.windowManager.addWindow(this);
+
+            this.emit(root.AbstractWindow.EVENTS.READY);
         });
 
         // Render window.

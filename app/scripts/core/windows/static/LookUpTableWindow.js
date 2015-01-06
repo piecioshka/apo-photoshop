@@ -32,9 +32,6 @@
     LookUpTableWindow.prototype.initialize = function () {
         this.$window.classList.add('lut-window');
 
-        // Append window list.
-        root.App.windowManager.addWindow(this);
-
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
@@ -42,6 +39,11 @@
 
             // Update title of window.
             this.updateTitle(root.Locale.get('TOOLS_LUT') + ' - ' + this.settings.picture.name);
+
+            // Append window list.
+            root.App.windowManager.addWindow(this);
+
+            this.emit(root.AbstractWindow.EVENTS.READY);
         });
 
         // Render window.

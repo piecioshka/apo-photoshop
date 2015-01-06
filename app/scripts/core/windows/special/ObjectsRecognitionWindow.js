@@ -31,9 +31,6 @@
     ObjectsRecognitionWindow.prototype.initialize = function () {
         this.$window.classList.add('objects-recognition-window');
 
-        // Append window list.
-        root.App.windowManager.addWindow(this);
-
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
@@ -43,6 +40,11 @@
 
                 // Update title (add each file name).
                 this.updateTitle(root.Locale.get('TOOLS_OBJECTS_RECOGNITION') + ' - ' + this.settings.picture.name);
+
+                // Append window list.
+                root.App.windowManager.addWindow(this);
+
+                this.emit(root.AbstractWindow.EVENTS.READY);
             });
         });
 
@@ -109,10 +111,6 @@
 
         $i.addEventListener('click', function () {
             var palette = new root.ColorPaletteWindow();
-
-            setTimeout(function () {
-                root.App.windowManager.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: palette });
-            }, 0);
 
             palette.on(root.ColorPaletteWindow.EVENTS.SELECT_COLOR, function () {
                 var c = palette.getSelectedColor();
@@ -199,18 +197,30 @@
         }, this);
 
         if (this.contextWindow instanceof root.MultiplePicturesWindow) {
-            var $pictures = this.contextWindow.getPictures();
+            var multiply = new root.MultiplePicturesWindow({
+                pictures: this.contextWindow.getPictures()
+            });
 
-            _.each($pictures, function ($picture) {
-                $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
+            multiply.on(root.AbstractWindow.EVENTS.READY, function () {
+                var $pictures = multiply.getPictures();
+
+                _.each($pictures, function ($picture) {
+                    $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
+                }, this);
             }, this);
         } else if (this.contextWindow instanceof root.PictureWindow) {
-            var $picture = this.contextWindow.getPicture();
+            var single = new root.PictureWindow({
+                picture: this.contextWindow.getPicture()
+            });
 
-            $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
+            single.on(root.AbstractWindow.EVENTS.READY, function () {
+                var $picture = single.getPicture();
 
-            // Inform picture window that is modified.
-            this.contextWindow.setModifiedState();
+                $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
+
+                // Inform picture window that is modified.
+                this.contextWindow.setModifiedState();
+            }, this);
         }
 
         // Close current window.

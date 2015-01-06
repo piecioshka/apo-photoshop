@@ -28,9 +28,6 @@
     SmoothingTool.prototype.initialize = function () {
         this.$window.classList.add('smoothing-tool');
 
-        // Append window list.
-        root.App.windowManager.addWindow(this);
-
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
@@ -40,6 +37,11 @@
 
                 // Update title of window.
                 this.updateTitle(root.Locale.get('OPERATIONS_NEIGHBOURHOOD_SMOOTHING') + ' - ' +  this.settings.picture.name);
+
+                // Append window list.
+                root.App.windowManager.addWindow(this);
+
+                this.emit(root.AbstractWindow.EVENTS.READY);
             });
         });
 
