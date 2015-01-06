@@ -169,7 +169,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Operacje morfologiczne bez limitu wykonania.
     - [x] Skrót do zwiększania/zmniejszania wartości.
     - [x] Filtracja liniowa: Metoda trójwartościowa - źle działa.
-    - [ ] Filtracja liniowa: Filtracja dolnoprzepustowa - bez tej prawej kolumny.
+    - [x] Filtracja liniowa: Filtracja dolnoprzepustowa - bez tej prawej kolumny.
 
 - Do projektu
 

@@ -152,6 +152,7 @@
     Canvas.prototype.getUniqueChannels = function () {
         // Copy to array all channels. References was destroyed.
         var pixelsArray = this.getOneChannelOfPixels();
+        // Remove duplicated colors. Sort result.
         return _.uniq(pixelsArray).sort(root.Utilities.sortNumbers);
     };
 

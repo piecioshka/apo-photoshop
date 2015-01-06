@@ -6,6 +6,7 @@
             var can = contextWindow.settings.picture.canvas;
             var ctx = can.ctx;
             var mask = params.mask;
+            var type = params.type;
             var sum = root.Utilities.sum(mask) || 1;
             var scale = params.scale;
             var width = can.settings.width;
@@ -49,56 +50,62 @@
                 // Update color.
                 color = calculateMask(ne);
 
-                switch (scale) {
-                    case 'ternary':
-                        if (color > 0) {
-                            color = 255;
-                        } else if (color < 0) {
-                            color = 0;
-                        } else {
-                            color = 127;
-                        }
-                        break;
+                // Support only 'Filtracja górnoprzepustowa'.
+                if (type === 'fg') {
+                    switch (scale) {
+                        case 'ternary':
+                            if (color > 0) {
+                                color = 255;
+                            } else if (color < 0) {
+                                color = 0;
+                            } else {
+                                color = 127;
+                            }
+                            break;
 
-                    case 'cutting':
-                        color = root.Utilities.intToByte(color);
-                        break;
+                        case 'cutting':
+                            color = root.Utilities.intToByte(color);
+                            break;
+                    }
                 }
 
                 // Update each channel (RGB) of pixel. Not modify channel alpha.
                 pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
             }
 
-            var uniquePixelsChannels = can.getUniqueChannels();
+            // Support only 'Filtracja górnoprzepustowa'.
+            if (type === 'fg') {
+                var uniquePixelsChannels = can.getUniqueChannels();
 
-            if (scale === 'proportion') {
-                var min = _.first(uniquePixelsChannels);
-                var max = _.last(uniquePixelsChannels);
+                if (scale === 'proportion') {
+                    var min = _.first(uniquePixelsChannels);
+                    var max = _.last(uniquePixelsChannels);
 
-                for (i = 0; i < len / 4; i++) {
-                    color = pixelsChannelsData[(i * 4)];
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
 
-                    if (color > max) {
-                        max = color;
-                    } else if (color < min) {
-                        min = color;
-                    }
-                }
-
-                var difference = max - min;
-
-                for (i = 0; i < len / 4; i++) {
-                    color = pixelsChannelsData[(i * 4)];
-                    color = parseInt(((color - min) / difference) * 255, 10);
-
-                    if (color < 0) {
-                        color = 0;
-                    } else if (color > 255) {
-                        color = 255;
+                        if (color > max) {
+                            max = color;
+                        } else if (color < min) {
+                            min = color;
+                        }
                     }
 
-                    // Update each channel (RGB) of pixel. Not modify channel alpha.
-                    pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    var difference = max - min;
+
+                    for (i = 0; i < len / 4; i++) {
+                        color = pixelsChannelsData[(i * 4)];
+                        color = parseInt(((color - min) / difference) * 255, 10);
+
+                        if (color < 0) {
+                            color = 0;
+                        } else if (color > 255) {
+                            color = 255;
+                        }
+
+                        // Update each channel (RGB) of pixel. Not modify channel alpha.
+                        pixelsChannelsData[(i * 4)] = pixelsChannelsData[(i * 4) + 1] = pixelsChannelsData[(i * 4) + 2] = color;
+                    }
                 }
             }
 

@@ -65,12 +65,18 @@
             var $textes = $preview.querySelectorAll('fieldset input[type="text"]');
             var $submit = $preview.querySelector('input[type="submit"]');
 
-            function disable(status) {
+            function disableInputText(status) {
                 _.each($textes, function ($text) {
                     $text.disabled = !!status;
                 });
 
                 $submit.disabled = !!status;
+            }
+
+            function disableInputRadio(status) {
+                _.each($scale, function ($s) {
+                    $s.disabled = !!status;
+                });
             }
 
             function put(mask) {
@@ -107,15 +113,18 @@
                         mask = SmoothingTool['MASK_' + type.toUpperCase()][v.replace(/[^0-9]/g, '')];
                         scale = getScale();
 
-                        disable(true);
+                        disableInputRadio(type !== 'fg');
+                        disableInputText(true);
                         put(mask);
 
                         root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                             mask: mask,
-                            scale: scale
+                            scale: scale,
+                            type: type
                         });
                     } else {
-                        disable(false);
+                        disableInputRadio(true);
+                        disableInputText(false);
                     }
                 });
             }
@@ -136,7 +145,8 @@
 
                     root.OperationsNeighbourhood.smoothing(self.contextWindow, {
                         mask: mask,
-                        scale: scale
+                        scale: scale,
+                        type: -1
                     });
                 });
             }
@@ -144,6 +154,9 @@
             $select.addEventListener('change', handleChosenMask);
             _.invoke($scale, 'addEventListener', 'click', handleChosenMask);
             $submit.addEventListener('click', handleCustomMask);
+
+            // Default is 'Maska własna' so disable scale methods.
+            disableInputRadio(true);
 
             if (_.isFunction(cb)) {
                 cb.call(self);
