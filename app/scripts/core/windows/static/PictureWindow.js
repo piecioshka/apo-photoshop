@@ -139,7 +139,7 @@
         var max = root.Utilities.max.apply(this, pixels);
         var histHeight = this.histogram.height;
 
-        return pixels.map(function (item) {
+        return _.map(pixels, function (item) {
             return parseInt(item / max * histHeight, 10);
         });
     };
@@ -153,7 +153,6 @@
         var self = this;
         var margin = 16;
 
-        var hist = self.histogram.list;
         var histHeight = this.histogram.height;
         var pictureWidth = this.settings.picture.width;
         var ctx = this.histogram.canvas.ctx;
@@ -187,6 +186,7 @@
         this.$content.appendChild($average);
 
         function mouseMoveHandler(evt) {
+            var hist = self.histogram.list;
             var histNorm = self._returnsNormalizedHistogram();
 
             var x = evt.offsetX;

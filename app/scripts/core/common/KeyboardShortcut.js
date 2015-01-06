@@ -37,7 +37,7 @@
         },
 
         add: function (type, callback) {
-            var elements = type.split('-').map(function (item) {
+            var elements = _.map(type.split('-'), function (item) {
                 return item.trim();
             });
             shortcuts[elements] = callback;

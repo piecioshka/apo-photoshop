@@ -275,7 +275,7 @@
         // Normalize
         var max = root.Utilities.max.apply(this, pixels);
 
-        var normalizePixels = pixels.map(function (item) {
+        var normalizePixels = _.map(pixels, function (item) {
             return parseInt(item / max * histHeight, 10);
         });
 
