@@ -17,6 +17,7 @@
         bindKeyShortcuts: function ($input) {
             $input.addEventListener('keydown', function (evt) {
                 var shortButton = root.Utilities.isDarwin() ? evt.metaKey : evt.ctrlKey;
+                var cacheValue = $input.value;
 
                 if (shortButton) {
                     switch (evt.keyCode) {
@@ -26,7 +27,9 @@
                     }
                 }
 
-                InputRangeHelper._triggerEvent($input, 'change');
+                if ($input.value !== cacheValue) {
+                    InputRangeHelper._triggerEvent($input, 'change');
+                }
             });
         }
     };

@@ -200,5 +200,6 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - https://github.com/cmisenas/canny-edge-detection _(2014/12/16 15:00)_
     - http://mbs98.republika.pl/projekty/ro/ro.html _(2014/12/16 16:00)_
     - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html _(2014/12/16 17:00)_
+    - http://www.axiomx.com/posterize.htm _(2015/01/06 21:37)_
 - Książki
     - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, 2000

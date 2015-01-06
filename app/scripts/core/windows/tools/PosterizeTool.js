@@ -90,7 +90,7 @@
         }, 0);
     };
 
-    PosterizeTool.DEFAULT_LEVEL = 128;
+    PosterizeTool.DEFAULT_LEVEL = 256;
 
     // Exports `PosterizeTool`.
     return (root.PosterizeTool = PosterizeTool);

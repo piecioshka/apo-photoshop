@@ -489,7 +489,7 @@
                     picture: activeWindow.getPicture()
                 });
             }
-        });
+        }, 'Ctrl-Shift', 'R');
         onePointOperationsMenu.append(this.operationsOnePointPosterizeMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------

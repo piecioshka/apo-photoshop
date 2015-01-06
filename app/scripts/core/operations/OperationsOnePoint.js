@@ -73,13 +73,30 @@
             var len = pixelsChannelsData.length;
             var levels = parseInt(params.value, 10);
 
+            var numOfAreas = 256 / levels;
+            var numOfValues = 255 / (levels - 1);
+
             var i, color;
 
             for (i = 0; i < len / 4; i++) {
                 color = pixelsChannelsData[(i * 4)];
 
-                // Round ratio color by levels multiply by levels.
-                color = Math.round(color / levels) * levels;
+                // for more comments see http://www.axiomx.com/posterize.htm
+                var redAreaFloat = color / numOfAreas;
+                var redArea = parseInt(redAreaFloat, 10);
+
+                if (redArea > redAreaFloat) {
+                    redArea = redArea - 1;
+                }
+
+                var newRedFloat = numOfValues * redArea;
+                var newRed = parseInt(newRedFloat, 10);
+
+                if (newRed > newRedFloat) {
+                    newRed = newRed - 1
+                }
+
+                color = newRed;
 
                 // Save protection (0 - 255).
                 color = root.Utilities.intToByte(color);
