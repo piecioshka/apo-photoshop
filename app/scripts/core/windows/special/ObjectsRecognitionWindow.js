@@ -57,10 +57,18 @@
 
         new root.Operation(function () {
             this.originalColors = this._useValleyMethod(this.settings.picture);
-            this._buildStrip();
 
-            if (_.isFunction(cb)) {
-                cb.call(self);
+            if (_.isEmpty(this.originalColors)) {
+                root.alert(root.Locale.get('MSG_ERR_UNRECOGNIZED_OBJECTS'));
+
+                // Close window.
+                root.App.windowManager.emit(root.AbstractWindow.EVENTS.CLOSE_WINDOW, { win: self });
+            } else {
+                this._buildStrip();
+
+                if (_.isFunction(cb)) {
+                    cb.call(self);
+                }
             }
         }, this);
     };
@@ -198,7 +206,7 @@
 
         if (this.contextWindow instanceof root.MultiplePicturesWindow) {
             var multiply = new root.MultiplePicturesWindow({
-                pictures: this.contextWindow.getPictures()
+                pictures: this.contextWindow.getCopyOfPictures()
             });
 
             multiply.on(root.AbstractWindow.EVENTS.READY, function () {
@@ -210,7 +218,7 @@
             }, this);
         } else if (this.contextWindow instanceof root.PictureWindow) {
             var single = new root.PictureWindow({
-                picture: this.contextWindow.getPicture()
+                picture: this.contextWindow.getCopyOfPicture()
             });
 
             single.on(root.AbstractWindow.EVENTS.READY, function () {
@@ -219,7 +227,7 @@
                 $picture.canvas = this._replaceColor($picture.canvas, this.originalColors, this.newColors);
 
                 // Inform picture window that is modified.
-                this.contextWindow.setModifiedState();
+                single.setModifiedState();
             }, this);
         }
 

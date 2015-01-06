@@ -130,6 +130,19 @@
         return this.settings.pictures;
     };
 
+    MultiplePicturesWindow.prototype.getCopyOfPictures = function () {
+        return _.map(this.settings.pictures, function (picture) {
+            return {
+                file: picture.file,
+                name: picture.name,
+                height: picture.height,
+                width: picture.width,
+                img: picture.img,
+                canvas: picture.canvas.copy()
+            };
+        });
+    };
+
     MultiplePicturesWindow.prototype.getSelectedPicture = function () {
         return this.settings.pictures[this._selectedPictureIndex];
     };

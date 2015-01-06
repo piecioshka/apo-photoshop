@@ -86,6 +86,19 @@
         return this.settings.picture;
     };
 
+    PictureWindow.prototype.getCopyOfPicture = function () {
+        var picture = this.settings.picture;
+
+        return {
+            file: picture.file,
+            name: picture.name,
+            height: picture.height,
+            width: picture.width,
+            img: picture.img,
+            canvas: picture.canvas.copy()
+        }
+    };
+
     // -----------------------------------------------------------------------------------------------------------------
 
     PictureWindow.prototype.setPrimaryState = function () {
