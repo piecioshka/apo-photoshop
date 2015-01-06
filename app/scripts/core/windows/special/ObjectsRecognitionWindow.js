@@ -37,20 +37,29 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildUI();
+            this.buildUI(function () {
+                // Set static width.
+                this.setRigidWidth();
 
-            // Update title (add each file name).
-            this.updateTitle(root.Locale.get('TOOLS_OBJECTS_RECOGNITION') + ' - ' + this.settings.picture.name);
+                // Update title (add each file name).
+                this.updateTitle(root.Locale.get('TOOLS_OBJECTS_RECOGNITION') + ' - ' + this.settings.picture.name);
+            });
         });
 
         // Render window.
         this.render();
     };
 
-    ObjectsRecognitionWindow.prototype.buildUI = function () {
+    ObjectsRecognitionWindow.prototype.buildUI = function (cb) {
+        var self = this;
+
         new root.Operation(function () {
             this.originalColors = this._useValleyMethod(this.settings.picture);
             this._buildStrip();
+
+            if (_.isFunction(cb)) {
+                cb.call(self);
+            }
         }, this);
     };
 
@@ -105,7 +114,7 @@
                 root.App.windowManager.emit(root.AbstractWindow.EVENTS.ACTIVE_WINDOW, { win: palette });
             }, 0);
 
-            palette.on(root.AbstractWindow.EVENTS.CLOSE_WINDOW, function () {
+            palette.on(root.ColorPaletteWindow.EVENTS.SELECT_COLOR, function () {
                 var c = palette.getSelectedColor();
 
                 if (!_.isEmpty(c)) {

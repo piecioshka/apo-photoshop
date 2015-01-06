@@ -102,6 +102,8 @@
                 var imageData = canvas.ctx.getImageData(mousePos.x, mousePos.y, 1, 1);
                 var data = self._selectedColor = imageData.data;
                 $cs.style.background = 'rgba(' + data[0] + ', ' + data[1] + ', ' + data[2] + ', ' + data[3] + ')';
+
+                self.emit(ColorPaletteWindow.EVENTS.SELECT_COLOR);
             });
 
             canvas.render(self);
@@ -114,6 +116,10 @@
 
     ColorPaletteWindow.prototype.getSelectedColor = function () {
         return this._selectedColor;
+    };
+
+    ColorPaletteWindow.EVENTS = {
+        SELECT_COLOR: 'palette:selectColor'
     };
 
     // Exports `ColorPaletteWindow`.
