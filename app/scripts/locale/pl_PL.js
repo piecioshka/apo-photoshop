@@ -64,7 +64,8 @@
         OPERATIONS_NEIGHBOURHOOD_SHARPEN_MAXIMAL: 'Filtracja maksymalna',
 
         OPERATIONS_MORPHOLOGICAL: '(W) Operacje morfologiczne',
-        OPERATIONS_TURTLE: 'Algorytm Żółwia',
+        OPERATIONS_TURTLE: '(W) Algorytm Żółwia',
+        OPERATIONS_IMAGE_COLORFUL: 'Pokoloruj obraz',
 
         ABOUT: 'O programie',
         ABOUT_AUTHORS: 'Autorzy',

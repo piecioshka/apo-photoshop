@@ -31,22 +31,22 @@
         // Listen on window render.
         this.on(root.AbstractWindow.EVENTS.RENDER_WINDOW, function () {
             // Put image to canvas.
-            this.buildUI();
+            this.buildUI(function () {
+                // Update title of window.
+                this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_POSTERIZE') + ' - ' +  this.settings.picture.name);
 
-            // Update title of window.
-            this.updateTitle(root.Locale.get('OPERATIONS_ONE_POINT_POSTERIZE') + ' - ' +  this.settings.picture.name);
+                // Append window list.
+                root.App.windowManager.addWindow(this);
 
-            // Append window list.
-            root.App.windowManager.addWindow(this);
-
-            this.emit(root.AbstractWindow.EVENTS.READY);
+                this.emit(root.AbstractWindow.EVENTS.READY);
+            });
         });
 
         // Render window.
         this.render();
     };
 
-    PosterizeTool.prototype.buildUI = function () {
+    PosterizeTool.prototype.buildUI = function (cb) {
         var self = this;
         var template = doc.querySelector('#template-posterize-tool').innerHTML;
         var compiled = _.template(template);
@@ -87,6 +87,10 @@
 
             // Set focus on main dynamic element.
             $range.focus();
+
+            if (_.isFunction(cb)) {
+                cb.call(self);
+            }
         }, 0);
     };
 

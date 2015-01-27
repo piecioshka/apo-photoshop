@@ -183,7 +183,8 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Przywrócenie do pierwotnego stanu nowo stworzonego okna (`Operacje Arytmetyczne i Logiczne`).
 - [x] Aktualizacja tytułu okienka dopiero po załadowaniu obrazka (problem z długimi nazwami plików).
 - [x] Rozszerzamy operacje morfologiczne dla MS Windows.
-- [ ] Kolorowanie jako operacja.
+- [x] Kolorowanie jako operacja.
+- [x] Algorytm Żółwia: wybór koloru który będzie użyty do zaznaczenia granicy obiektu.
 - [ ] Kiedy otworzymy obrazek, który nie będzie się mieścił z powodu kaskadowości, ustawiamy go w pkt (0, 0).
 - [ ] Wyeliminować mruganie w pkt (0, 0) kiedy pokazuje się nowe okno.
 

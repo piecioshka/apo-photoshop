@@ -1,7 +1,7 @@
 (function (root) {
     'use strict';
 
-    var TurtleAlgorithm = function (contextWindow) {
+    var TurtleAlgorithm = function (contextWindow, params) {
         var can = contextWindow.settings.picture.canvas;
         var width = can.settings.width;
         var height = can.settings.height;
@@ -11,7 +11,7 @@
         var x = 0;
         var y = 0;
         var found = false;
-        var markColor = [255, 0, 0, 255];
+        var markColor = params.markColor;
 
         var tab2 = [];
         // Create two-dimension array.

@@ -46,6 +46,7 @@
 
         this.morphologicalOperationsMenuItem = null;
         this.turtleOperationsMenuItem = null;
+        this.imageColorfulOperationsMenuItem = null;
 
         this.aboutAuthorsMenuItem = null;
         this.aboutHelpMenuItem = null;
@@ -647,7 +648,22 @@
 
             if (activeWindow instanceof root.PictureWindow) {
                 new root.Operation(function () {
-                    root.TurtleAlgorithm(activeWindow);
+                    new root.ChooseColorTurtleAlgorithmTool(activeWindow, {
+                        picture: activeWindow.getPicture()
+                    });
+                });
+            }
+        });
+
+        // Pokoloruj obraz
+        // ---------------
+
+        this.imageColorfulOperationsMenuItem = this.addMenuItem(root.Locale.get('OPERATIONS_IMAGE_COLORFUL'), function () {
+            var activeWindow = root.App.windowManager.getActiveWindow();
+
+            if (activeWindow instanceof root.PictureWindow) {
+                new root.Operation(function () {
+                    root.Colorize(activeWindow);
                 });
             }
         });
@@ -660,6 +676,7 @@
         operationsMenu.append(neighbourhoodOperationsMenuItem);
         operationsMenu.append(this.morphologicalOperationsMenuItem);
         operationsMenu.append(this.turtleOperationsMenuItem);
+        operationsMenu.append(this.imageColorfulOperationsMenuItem);
 
         operationItem.submenu = operationsMenu;
 

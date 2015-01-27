@@ -47,6 +47,7 @@
 
                 menu.morphologicalOperationsMenuItem.enabled = false;
                 menu.turtleOperationsMenuItem.enabled = false;
+                menu.imageColorfulOperationsMenuItem.enabled = false;
             }
 
             function setPictureWindowState() {
@@ -85,6 +86,7 @@
 
                 menu.morphologicalOperationsMenuItem.enabled = true;
                 menu.turtleOperationsMenuItem.enabled = true;
+                menu.imageColorfulOperationsMenuItem.enabled = true;
             }
 
             function setMultiplePicturesWindowState() {
