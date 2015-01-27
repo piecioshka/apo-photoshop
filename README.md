@@ -182,6 +182,10 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Problem z szerokimi obrazkami w filtracji liniowej (analizuje tylko kwadrat).
 - [x] Przywrócenie do pierwotnego stanu nowo stworzonego okna (`Operacje Arytmetyczne i Logiczne`).
 - [x] Aktualizacja tytułu okienka dopiero po załadowaniu obrazka (problem z długimi nazwami plików).
+- [x] Rozszerzamy operacje morfologiczne dla MS Windows.
+- [ ] Kolorowanie jako operacja.
+- [ ] Kiedy otworzymy obrazek, który nie będzie się mieścił z powodu kaskadowości, ustawiamy go w pkt (0, 0).
+- [ ] Wyeliminować mruganie w pkt (0, 0) kiedy pokazuje się nowe okno.
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
