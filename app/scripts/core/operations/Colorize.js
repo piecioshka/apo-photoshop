@@ -44,7 +44,7 @@
                 r = 0; g = 146; b = 206;
             } else if (color > 20) {
                 r = 1; g = 84; b = 164;
-            } else if (color > 0) {
+            } else {
                 r = 0; g = 0; b = 0;
             }
 
