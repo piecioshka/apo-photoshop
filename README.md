@@ -199,7 +199,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Dodać prowadzący i APO do pomocy.
 - [x] Dodać liczbę ile jest obrazków otwartych na projekcie (w belce otwartego okna).
 - [x] Zmienić nazwę w menu "Wybór obiektów na obrazie"
-- [ ] Dodać HSV - Wyklad10.pdf
+- [ ] Dodać paletę kolorów HSV - Wyklad10.pdf
 
 **Bonusy**
 
@@ -212,11 +212,11 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 #### Przydatne materiały
 
 - Online
-    - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji _(2014/12/16 13:00)_
-    - http://www.cs.huji.ac.il/~yweiss/Colorization/ _(2014/12/16 14:00)_
-    - https://github.com/cmisenas/canny-edge-detection _(2014/12/16 15:00)_
-    - http://mbs98.republika.pl/projekty/ro/ro.html _(2014/12/16 16:00)_
-    - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html _(2014/12/16 17:00)_
-    - http://www.axiomx.com/posterize.htm _(2015/01/06 21:37)_
+    - http://pl.wikipedia.org/wiki/Lista_czarno-bia%C5%82ych_film%C3%B3w_poddanych_koloryzacji _(Ostatni odczyt: 2014/12/16 13:00)_
+    - http://www.cs.huji.ac.il/~yweiss/Colorization/ _(Ostatni odczyt: 2014/12/16 14:00)_
+    - https://github.com/cmisenas/canny-edge-detection _(Ostatni odczyt: 2014/12/16 15:00)_
+    - http://mbs98.republika.pl/projekty/ro/ro.html _(Ostatni odczyt: 2014/12/16 16:00)_
+    - http://www.algorytm.org/przetwarzanie-obrazow/filtrowanie-obrazow.html _(Ostatni odczyt: 2014/12/16 17:00)_
+    - http://www.axiomx.com/posterize.htm _(Ostatni odczyt: 2015/01/06 21:37)_
 - Książki
-    - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, 2000
+    - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, March 2000
