@@ -199,7 +199,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Dodać prowadzący i APO do pomocy.
 - [x] Dodać liczbę ile jest obrazków otwartych na projekcie (w belce otwartego okna).
 - [x] Zmienić nazwę w menu "Wybór obiektów na obrazie"
-- [ ] Dodać paletę kolorów HSV - Wyklad10.pdf
+- [x] Dodać paletę kolorów HSV (Skorzystać z systemowego).
 
 **Bonusy**
 

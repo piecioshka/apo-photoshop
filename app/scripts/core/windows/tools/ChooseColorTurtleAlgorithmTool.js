@@ -58,33 +58,19 @@
         this.appendContent(renderedTemplate);
 
         setTimeout(function () {
-            var $i = self.$content.querySelector('i');
-            var $apply = self.$content.querySelector('.choose-color-turtle-algorithm-tool-apply');
-            var selectedColor = [255, 0, 0, 255];
+            var $input = self.$content.querySelector('input[type="color"]');
+            var $submit = self.$content.querySelector('.choose-color-turtle-algorithm-tool-apply');
 
-            $i.addEventListener('click', function () {
-                var palette = new root.ColorPaletteWindow();
-
-                palette.on(root.ColorPaletteWindow.EVENTS.SELECT_COLOR, function () {
-                    var c = palette.getSelectedColor();
-                    selectedColor = [c[0], c[1], c[2], c[3]];
-
-                    if (!_.isEmpty(c)) {
-                        $i.style.background = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', ' + c[3] + ')';
-                    }
-                });
-            });
-
-            $apply.addEventListener('click', function () {
+            $submit.addEventListener('click', function () {
                 new root.Operation(function () {
+                    var hex = $input.value.substr(1);
+                    var selectedColor = root.Utilities.hex2rgb(hex);
+
                     root.TurtleAlgorithm(self.contextWindow, {
                         markColor: selectedColor
                     });
                 });
             });
-
-            // Set to black.
-            $i.style.background = 'rgba(255, 0, 0, 255)';
 
             if (_.isFunction(cb)) {
                 cb.call(self);

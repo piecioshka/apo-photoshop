@@ -71,4 +71,9 @@ describe('Utilities', function () {
         expect(Utilities.sum([1, 2, 3])).toEqual(6);
         expect(Utilities.sum([1000, 100, 10, 1])).toEqual(1111);
     });
+
+    it('hex2rgb', function () {
+        expect(Utilities.hex2rgb('000000')).toEqual([0, 0, 0]);
+        expect(Utilities.hex2rgb('28d735')).toEqual([40, 215, 53]);
+    });
 });

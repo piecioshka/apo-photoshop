@@ -112,25 +112,11 @@
         $label.innerText = 'Wybierz kolor:';
         $right.appendChild($label);
 
-        var $i = doc.createElement('i');
-        $right.appendChild($i);
+        var $input = doc.createElement('input');
+        $input.setAttribute('type', 'color');
+        $right.appendChild($input);
 
         this.$content.appendChild($right);
-
-        $i.addEventListener('click', function () {
-            var palette = new root.ColorPaletteWindow();
-
-            palette.on(root.ColorPaletteWindow.EVENTS.SELECT_COLOR, function () {
-                var c = palette.getSelectedColor();
-
-                if (!_.isEmpty(c)) {
-                    $i.style.background = 'rgba(' + c[0] + ', ' + c[1] + ', ' + c[2] + ', ' + c[3] + ')';
-                }
-            });
-        });
-
-        // Set to black.
-        $i.style.background = 'rgba(0, 0, 0, 255)';
     };
 
     ObjectsRecognitionWindow.prototype._addSubmitButton = function () {
@@ -192,16 +178,10 @@
     };
 
     ObjectsRecognitionWindow.prototype._applyColors = function () {
-        _.each(this.$content.querySelectorAll('i'), function ($i) {
-            var styleColor = $i.style.background;
-
-            // Remove RGB labels.
-            styleColor = styleColor.replace('rgb(', '').replace(')', '');
-
-            // Split to array
-            var arrayColors = styleColor.split(', ');
-
-            this.newColors.push(arrayColors);
+        _.each(this.$content.querySelectorAll('input[type="color"]'), function ($input) {
+            var hex = $input.value.substr(1);
+            var selectedColor = root.Utilities.hex2rgb(hex);
+            this.newColors.push(selectedColor);
         }, this);
 
         if (this.contextWindow instanceof root.MultiplePicturesWindow) {

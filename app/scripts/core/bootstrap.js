@@ -23,7 +23,6 @@
                 menu.toolsUOPMenuItem.enabled = false;
                 menu.toolsObjectsRecognitionMenuItem.enabled = false;
                 menu.toolsStopMotionSequenceMenuItem.enabled = false;
-                menu.toolsColorPaletteMenuItem.enabled = true;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = false;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = false;
@@ -62,7 +61,6 @@
                 menu.toolsUOPMenuItem.enabled = true;
                 menu.toolsObjectsRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = false;
-                menu.toolsColorPaletteMenuItem.enabled = true;
 
                 menu.operationsFlatteningHistogramMediumMethodMenuItem.enabled = true;
                 menu.operationsFlatteningHistogramRandomMethodMenuItem.enabled = true;
@@ -95,7 +93,6 @@
 
                 menu.toolsObjectsRecognitionMenuItem.enabled = true;
                 menu.toolsStopMotionSequenceMenuItem.enabled = true;
-                menu.toolsColorPaletteMenuItem.enabled = true;
             }
 
             setDefaultState();

@@ -22,7 +22,6 @@
         this.toolsUOPMenuItem = null;
         this.toolsObjectsRecognitionMenuItem = null;
         this.toolsStopMotionSequenceMenuItem = null;
-        this.toolsColorPaletteMenuItem = null;
 
         this.operationsFlatteningHistogramMediumMethodMenuItem = null;
         this.operationsFlatteningHistogramRandomMethodMenuItem = null;
@@ -370,13 +369,6 @@
             }
         }, 'Ctrl', 'K');
         toolsMenu.append(this.toolsStopMotionSequenceMenuItem);
-
-        // -------------------------------------------------------------------------------------------------------------
-
-        this.toolsColorPaletteMenuItem = this.addMenuItem(root.Locale.get('TOOLS_COLOR_PALETTE'), function () {
-            new root.ColorPaletteWindow();
-        }, 'Ctrl', 'P');
-        toolsMenu.append(this.toolsColorPaletteMenuItem);
 
         // -------------------------------------------------------------------------------------------------------------
 
