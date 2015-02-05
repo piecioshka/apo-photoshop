@@ -34,7 +34,7 @@
         TOOLS_DUPLICATE: 'Duplikuj',
         TOOLS_LUT: 'Look-up Table',
         TOOLS_UOP: 'Uniwersalna operacja punktowa',
-        TOOLS_OBJECTS_RECOGNITION: 'Rozpoznanie obiektów na obrazie',
+        TOOLS_OBJECTS_RECOGNITION: 'Wybór obiektów na obrazie',
         TOOLS_STOP_MOTION_SEQUENCE: 'Sekwencja poklatkowa',
         TOOLS_COLOR_PALETTE: 'Paleta kolorów',
 
@@ -68,7 +68,7 @@
         OPERATIONS_IMAGE_COLORFUL: 'Pokoloruj obraz',
 
         ABOUT: 'O programie',
-        ABOUT_AUTHORS: 'Autorzy',
+        ABOUT_INFO: 'Informacje',
         ABOUT_HELP: 'Pomoc'
     };
 

@@ -158,7 +158,6 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - [x] Z ćw. 4 - zadania (morfologiczne).
     - [x] Z ćw. 5 - algorytm żółwia.
 - [x] Pomoc na Windowsie nie działa.
-- [ ] Resize okna (Duży obrazek w małym oknie programu).
 
 **Uwagi zgłoszone na dodatkowych zajęciach:**
 
@@ -185,8 +184,6 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Rozszerzamy operacje morfologiczne dla MS Windows.
 - [x] Kolorowanie jako operacja.
 - [x] Algorytm Żółwia: wybór koloru który będzie użyty do zaznaczenia granicy obiektu.
-- [ ] Kiedy otworzymy obrazek, który nie będzie się mieścił z powodu kaskadowości, ustawiamy go w pkt (0, 0).
-- [ ] Wyeliminować mruganie w pkt (0, 0) kiedy pokazuje się nowe okno.
 
 **Zadania potrzebne do zrealizowania projektu grupowego:**
 
@@ -196,6 +193,21 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Dobór kolorów z palety HSV dla każdego obiektu.
 - [x] Algorytm iteracyjny: Zastosowanie nowego koloru do wyodrębionego obiektu.
 - [x] Po zakończeniu nakładania koloru pokazujemy w nowym oknie wynik pokolorowanej sekwencji obrazów.
+
+**Uwagi z egzaminu**
+
+- [x] Dodać prowadzący i APO do pomocy.
+- [x] Dodać liczbę ile jest obrazków otwartych na projekcie (w belce otwartego okna).
+- [x] Zmienić nazwę w menu "Wybór obiektów na obrazie"
+- [ ] Dodać HSV - Wyklad10.pdf
+
+**Bonusy**
+
+- [ ] Resize okna (Duży obrazek w małym oknie programu).
+- [ ] Kiedy otworzymy obrazek, który nie będzie się mieścił z powodu kaskadowości, ustawiamy go w pkt (0, 0).
+- [ ] Wyeliminować mruganie w pkt (0, 0) kiedy pokazuje się nowe okno.
+- [ ] Edycja pokolorowanej sekwencji.
+- [ ] Regulacja progów, regulacja kolorów.
 
 #### Przydatne materiały
 

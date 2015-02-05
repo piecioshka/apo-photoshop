@@ -36,10 +36,14 @@
             // Add interactive as clicked image.
             this._addClickEvent();
 
-            // Update title (add each file name).
-            this.updateTitle(_.map(this.settings.pictures, function (frame) {
+            var fileNames = _.map(this.settings.pictures, function (frame) {
                 return frame.name;
-            }).join(', '));
+            }).join(', ');
+            
+            var countFiles = '(' + this.settings.pictures.length + ')';
+
+            // Update title (add each file name).
+            this.updateTitle(countFiles + ' ' + fileNames);
 
             // Append window list.
             root.App.windowManager.addWindow(this);

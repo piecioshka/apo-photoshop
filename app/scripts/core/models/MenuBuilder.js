@@ -686,12 +686,15 @@
     MenuBuilder.prototype.setupHelpMenu = function () {
         var helpMenu = new gui.Menu();
 
-        this.aboutAuthorsMenuItem = this.addMenuItem(root.Locale.get('ABOUT_AUTHORS'), function () {
-            var lines = [
-                root.Locale.get('ABOUT_AUTHORS') + ':',
-                '- Piotr Kowalski - piecioshka@gmail.com',
-                '- Krzysztof Snopkiewicz - k.snopkiewicz@me.com'
-            ];
+        var lines = [
+            'Program stworzony na potrzeby zaliczenia APO.',
+            'Prowadzący: dr inż. Marek Doros\n',
+            'Autorzy:',
+            '- Piotr Kowalski - piecioshka@gmail.com',
+            '- Krzysztof Snopkiewicz - k.snopkiewicz@me.com'
+        ];
+
+        this.aboutAuthorsMenuItem = this.addMenuItem(root.Locale.get('ABOUT_INFO'), function () {
             root.alert(lines.join('\n'));
         }, 'Ctrl-Shift', 'A');
         helpMenu.append(this.aboutAuthorsMenuItem);
