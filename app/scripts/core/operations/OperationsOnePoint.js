@@ -93,7 +93,7 @@
                 var newColor = parseInt(newColorFloat, 10);
 
                 if (newColor > newColorFloat) {
-                    newColor = newColor - 1
+                    newColor = newColor - 1;
                 }
 
                 color = newColor;
