@@ -200,6 +200,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
 - [x] Dodać liczbę ile jest obrazków otwartych na projekcie (w belce otwartego okna).
 - [x] Zmienić nazwę w menu "Wybór obiektów na obrazie"
 - [x] Dodać paletę kolorów HSV (Skorzystać z systemowego).
+- [x] Labelki przycisków w sekwencji poklatkowej przenieść do Locali i spolszczyć.
 
 **Bonusy**
 

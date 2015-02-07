@@ -86,10 +86,10 @@
         var $fieldset = doc.createElement('fieldset');
 
         var $playButton = doc.createElement('button');
-        $playButton.textContent = 'Play';
+        $playButton.textContent = root.Locale.get('TOOLS_PLAY');
 
         var $stopButton = doc.createElement('button');
-        $stopButton.textContent = 'Stop';
+        $stopButton.textContent = root.Locale.get('TOOLS_STOP');
 
         $fieldset.appendChild($playButton);
         $fieldset.appendChild($stopButton);
