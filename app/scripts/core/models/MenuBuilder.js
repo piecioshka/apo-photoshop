@@ -679,11 +679,9 @@
         var helpMenu = new gui.Menu();
 
         var lines = [
+            'Autorzy: Piotr Kowalski, Krzysztof Snopkiewicz',
             'Program stworzony na potrzeby zaliczenia APO.',
-            'Prowadzący: dr inż. Marek Doros\n',
-            'Autorzy:',
-            '- Piotr Kowalski - piecioshka@gmail.com',
-            '- Krzysztof Snopkiewicz - k.snopkiewicz@me.com'
+            'Prowadzący: dr inż. Marek Doros'
         ];
 
         this.aboutAuthorsMenuItem = this.addMenuItem(root.Locale.get('ABOUT_INFO'), function () {
