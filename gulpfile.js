@@ -7,7 +7,6 @@
     var gulp = require('gulp');
     var jshint = require('gulp-jshint');
     var stylish = require('jshint-stylish');
-    var shell = require('gulp-shell');
     var markdownpdf = require('gulp-markdown-pdf');
     var rename = require("gulp-rename");
     var NwBuilder = require('node-webkit-builder');
@@ -34,10 +33,6 @@
             .pipe(jshint(jshintrc))
             .pipe(jshint.reporter(stylish, { verbose: true }));
     });
-
-    gulp.task('count', 'Count LOC of each *.js file in `app/scripts/core`.', shell.task([
-        'find app/scripts/core -name "*.js" | xargs wc -l | sort -r'
-    ]));
 
     gulp.task('build', 'Building application for distribution.', function (cb) {
         var nw = new NwBuilder({

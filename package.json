@@ -5,7 +5,8 @@
     "private": true,
 
     "scripts": {
-        "start": "nodewebkit"
+        "start": "nodewebkit",
+        "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
     },
 
     "window": {
@@ -21,7 +22,6 @@
         "gulp-jshint": "latest",
         "jshint-stylish": "latest",
         "gulp-help": "latest",
-        "gulp-shell": "latest",
         "gulp-rename": "latest",
         "gulp-markdown-pdf": "latest",
         "cjson": "latest",
