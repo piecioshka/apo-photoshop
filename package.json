@@ -6,6 +6,7 @@
 
     "scripts": {
         "start": "nodewebkit",
+        "build": "gulp build",
         "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
     },
 
@@ -19,12 +20,9 @@
 
     "devDependencies": {
         "gulp": "latest",
-        "gulp-jshint": "latest",
-        "jshint-stylish": "latest",
         "gulp-help": "latest",
         "gulp-rename": "latest",
         "gulp-markdown-pdf": "latest",
-        "cjson": "latest",
         "nodewebkit": "latest",
         "node-webkit-builder": "latest",
         "del": "latest"
