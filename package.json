@@ -2,14 +2,13 @@
     "name": "apo-photoshop",
     "main": "app/index.html",
     "version": "3.0.0",
+    "license": "MIT",
     "private": true,
-
     "scripts": {
         "start": "nodewebkit",
         "build": "gulp build",
         "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
     },
-
     "window": {
         "title": "APO: Photoshop",
         "width": 1024,
@@ -17,7 +16,6 @@
         "toolbar": false,
         "frame": true
     },
-
     "devDependencies": {
         "gulp": "latest",
         "gulp-help": "latest",
