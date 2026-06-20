@@ -220,3 +220,7 @@ Wszystkie wykorzystywane narzędzia są darmowe.
     - http://www.axiomx.com/posterize.htm _(Ostatni odczyt: 2015/01/06 21:37)_
 - Książki
     - Io. Pitas: Digital image processing, algorithms and applications, John Wiley & Sons, March 2000
+
+## License
+
+[The MIT License](http://piecioshka.mit-license.org) @ 2026
