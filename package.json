@@ -7,6 +7,8 @@
   "scripts": {
     "start": "nwbuild --mode=run --glob=false --version=0.117.0 --cacheDir=./cache .",
     "build": "node scripts/build.mjs",
+    "test": "jasmine-browser-runner runSpecs --config=test/jasmine-browser.json",
+    "test:serve": "jasmine-browser-runner serve --config=test/jasmine-browser.json",
     "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
   },
   "window": {
@@ -18,6 +20,8 @@
     "icon": "app/images/app-icon.png"
   },
   "devDependencies": {
+    "jasmine-browser-runner": "^5.0.0",
+    "jasmine-core": "^7.0.2",
     "nw-builder": "^4.20.0"
   }
 }

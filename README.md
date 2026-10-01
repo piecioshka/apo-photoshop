@@ -69,6 +69,14 @@ npm start
 
 Paczki na wszystkie systemy buduje `npm run build` (do `dist/`), a wybrane cele `npm run build -- osx-arm64 win-x64` (dostępne: `osx-arm64`, `osx-x64`, `win-x64`, `linux-x64`). Paczka macOS dostaje podpis ad hoc, bez niego macOS zgłasza, że aplikacja jest uszkodzona.
 
+Testy jednostkowe (Jasmine) idą w Chrome bez okna:
+
+```bash
+npm test
+```
+
+`npm run test:serve` wystawia te same testy pod adresem z konsoli, do podglądu w przeglądarce.
+
 ## Wykorzystywane narzędzia
 
 #### Silnik

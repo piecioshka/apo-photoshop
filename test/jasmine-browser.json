@@ -1,0 +1,20 @@
+{
+    "srcDir": "app/scripts",
+    "srcFiles": [
+        "vendor/underscore/underscore.js",
+        "vendor/underscore/underscore.assert.js",
+        "core/common/Utilities.js",
+        "core/models/Canvas.js",
+        "core/models/CanvasHelper.js"
+    ],
+    "specDir": "test",
+    "helpers": ["helpers/**/*.js"],
+    "specFiles": ["spec/**/test.*.js"],
+    "env": {
+        "stopSpecOnExpectationFailure": false,
+        "random": true
+    },
+    "browser": {
+        "name": "headlessChrome"
+    }
+}
