@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="backdrop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b3f46" />
+      <stop offset="1" stop-color="#14161a" />
+    </linearGradient>
+    <linearGradient id="gray" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e3e6ea" />
+      <stop offset="1" stop-color="#6b7079" />
+    </linearGradient>
+    <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd23f" />
+      <stop offset="0.5" stop-color="#ff5c8a" />
+      <stop offset="1" stop-color="#7c5cff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" rx="230" fill="url(#backdrop)" />
+
+  <!-- Obraz w odcieniach szarości (lewa połowa) zamieniony na kolorowy (prawa). -->
+  <path d="M500 212 A300 300 0 0 0 500 812 Z" fill="url(#gray)" />
+  <path d="M524 212 A300 300 0 0 1 524 812 Z" fill="url(#color)" />
+</svg>

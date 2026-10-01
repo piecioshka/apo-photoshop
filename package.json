@@ -1,28 +1,23 @@
 {
-    "name": "apo-photoshop",
-    "main": "app/index.html",
-    "version": "3.0.0",
-    "license": "MIT",
-    "private": true,
-    "scripts": {
-        "start": "nodewebkit",
-        "build": "gulp build",
-        "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
-    },
-    "window": {
-        "title": "APO: Photoshop",
-        "width": 1024,
-        "height": 600,
-        "toolbar": false,
-        "frame": true
-    },
-    "devDependencies": {
-        "gulp": "latest",
-        "gulp-help": "latest",
-        "gulp-rename": "latest",
-        "gulp-markdown-pdf": "latest",
-        "nodewebkit": "latest",
-        "node-webkit-builder": "latest",
-        "del": "latest"
-    }
+  "name": "apo-photoshop",
+  "main": "app/index.html",
+  "version": "3.1.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nwbuild --mode=run --glob=false --version=0.117.0 --cacheDir=./cache .",
+    "build": "node scripts/build.mjs",
+    "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
+  },
+  "window": {
+    "title": "APO Photoshop",
+    "width": 1024,
+    "height": 600,
+    "toolbar": false,
+    "frame": true,
+    "icon": "app/images/app-icon.png"
+  },
+  "devDependencies": {
+    "nw-builder": "^4.20.0"
+  }
 }
