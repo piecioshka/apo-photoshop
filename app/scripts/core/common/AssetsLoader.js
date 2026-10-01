@@ -1,5 +1,9 @@
+/*global require */
+
 (function (root) {
     'use strict';
+
+    var url = require('url');
 
     var AssetsLoader = {
         SUPPORTED_EXTENSIONS: [
@@ -29,7 +33,9 @@
                 throw new Error('AssetsLoader#_useImageConstructor: Problem with loading image: ' + file);
             });
 
-            img.setAttribute('src', file);
+            // The page runs under a chrome-extension:// origin, so a bare disk
+            // path would resolve inside the app package instead of the disk.
+            img.setAttribute('src', url.pathToFileURL(file).href);
         }
 
     };
