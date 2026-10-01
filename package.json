@@ -7,6 +7,9 @@
   "scripts": {
     "start": "nwbuild --mode=run --glob=false --version=0.117.0 --cacheDir=./cache .",
     "build": "node scripts/build.mjs",
+    "build:mac": "node scripts/build.mjs osx-arm64 osx-x64",
+    "build:win": "node scripts/build.mjs win-x64",
+    "build:linux": "node scripts/build.mjs linux-x64",
     "test": "jasmine-browser-runner runSpecs --config=test/jasmine-browser.json",
     "test:serve": "jasmine-browser-runner serve --config=test/jasmine-browser.json",
     "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"

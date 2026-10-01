@@ -8,6 +8,8 @@
 
 <!-- prettier-ignore-start -->
 
+[![github-ci](https://github.com/piecioshka/apo-photoshop/actions/workflows/ci.yml/badge.svg)](https://github.com/piecioshka/apo-photoshop/actions/workflows/ci.yml)
+[![release](https://github.com/piecioshka/apo-photoshop/actions/workflows/release.yml/badge.svg)](https://github.com/piecioshka/apo-photoshop/actions/workflows/release.yml)
 [![Release](https://img.shields.io/github/v/release/piecioshka/apo-photoshop)](https://github.com/piecioshka/apo-photoshop/releases/latest)
 [![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)](#pobierz-)
 [![NW.js](https://img.shields.io/badge/NW.js-0.117-2b5797)](https://nwjs.io/)
