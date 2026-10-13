@@ -62,62 +62,7 @@ xattr -dr com.apple.quarantine "/Applications/APO Photoshop.app"
 
 ## Dla programistów 🛠️
 
-```bash
-git clone https://github.com/piecioshka/apo-photoshop.git
-cd apo-photoshop
-npm install
-npm start
-```
-
-Paczki na wszystkie systemy buduje `npm run build` (do `dist/`), a wybrane cele `npm run build -- osx-arm64 win-x64` (dostępne: `osx-arm64`, `osx-x64`, `win-x64`, `linux-x64`). Skróty na jeden system: `npm run build:mac` (oba cele macOS), `npm run build:win`, `npm run build:linux`. Paczka macOS dostaje podpis ad hoc, bez niego macOS zgłasza, że aplikacja jest uszkodzona. Podpis robi `codesign`, więc paczkę macOS zbudujesz tylko na macOS. Paczki Windows i Linux budują się na macOS i na Linuksie.
-
-Testy jednostkowe (Jasmine) idą w Chrome bez okna:
-
-```bash
-npm test
-```
-
-`npm run test:serve` wystawia te same testy pod adresem z konsoli, do podglądu w przeglądarce.
-
-### CI i wydania
-
-Workflow `.github/workflows/ci.yml` uruchamia testy przy każdym pushu i pull requeście.
-
-`.github/workflows/release.yml` buduje paczki: macOS na `macos-latest` (`npm run build:mac`), Windows i Linux na `ubuntu-latest` (`npm run build:win`, `npm run build:linux`). Uruchomiony ręcznie z zakładki Actions tylko zapisuje paczki jako artefakty.
-
-Wydanie:
-
-```bash
-npm version patch
-git push --follow-tags
-```
-
-`npm version` podbija wersję w `package.json` i tworzy tag `vX.Y.Z`. Wypchnięty tag uruchamia workflow release: job `release` sprawdza, czy tag zgadza się z wersją w `package.json`, i publikuje paczki jako wydanie na GitHubie.
-
-## Wykorzystywane narzędzia
-
-#### Silnik
-
-- NW.js - https://nwjs.io/
-- nw-builder - https://github.com/nwutils/nw-builder
-
-#### Obróbka obrazów
-
-- Canvas - https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
-
-#### Testy
-
-- Jasmine - https://jasmine.github.io/
-- jasmine-browser-runner - https://github.com/jasmine/jasmine-browser-runner
-
-#### Inne pomocne narzędzia
-
-- Underscore.js - https://underscorejs.org/
-- Underscore.assert.js - https://github.com/piecioshka/underscore.assert.js
-- MoveMaster.js - https://github.com/piecioshka/move-master.js
-- promise.js - https://github.com/stackp/promisejs
-
-Wszystkie wykorzystywane narzędzia są darmowe.
+Uruchamianie ze źródeł, testy, budowanie paczek i wydania opisuje [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Lista zadań
 
