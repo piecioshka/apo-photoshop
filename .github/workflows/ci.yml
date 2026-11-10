@@ -26,6 +26,4 @@ jobs:
         env:
           # The tests never start Electron, so skip downloading its binary.
           ELECTRON_SKIP_BINARY_DOWNLOAD: 1
-      - run: npm run format:check --if-present
-      - run: npm run lint --if-present
-      - run: npm test
+      - run: npm run ci

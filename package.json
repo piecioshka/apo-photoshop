@@ -12,7 +12,9 @@
     "build:linux": "node scripts/build.mjs linux-x64",
     "test": "jasmine-browser-runner runSpecs --config=test/jasmine-browser.json",
     "test:serve": "jasmine-browser-runner serve --config=test/jasmine-browser.json",
-    "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r"
+    "count": "find app/scripts/core -name '*.js' | xargs wc -l | sort -r",
+    "ci": "npm test",
+    "prepare": "husky"
   },
   "window": {
     "title": "APO Photoshop",
@@ -23,6 +25,7 @@
     "icon": "app/images/app-icon.png"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "jasmine-browser-runner": "^5.0.0",
     "jasmine-core": "^7.0.2",
     "nw-builder": "^4.20.0"
