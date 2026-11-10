@@ -20,6 +20,8 @@ Desktopowa aplikacja napisana w 2014 roku na zaliczenie przedmiotu „Algorytmy 
 
 </div>
 
+![Okno APO Photoshop: obraz z figurami w odcieniach szarości z histogramem i jego pokolorowana kopia](./screenshots/hero.png)
+
 ## Zadania z zajęć 🎓
 
 Temat projektu, pełna lista zadań od prowadzącego, uwagi z zajęć i egzaminu oraz materiały źródłowe są w [docs/TASKS.md](docs/TASKS.md).
